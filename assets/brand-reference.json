@@ -1,0 +1,40 @@
+{
+  "observed_at": "2026-10-04",
+  "site": "https://efiops.com/",
+  "user_constraint": "Preserve current EFIops colours, style and logo.",
+  "palette": {
+    "bright_blue": "#188BF6",
+    "pale_blue": "#CCE2FF",
+    "navy": "#082F49",
+    "white": "#FFFFFF",
+    "heading_black": "#000000",
+    "body_grey": "#4A4A4A",
+    "link_blue": "#334862",
+    "theme_blue": "#446084",
+    "light_grey": "#F1F1F1"
+  },
+  "fonts": {
+    "headings": "Lato",
+    "body": "Lato",
+    "heading_weight": 700,
+    "body_weight": 400,
+    "uppercase_main_headings": true
+  },
+  "logo": {
+    "source": "https://efiops.com/wp-content/uploads/2024/02/efiops-logo-544-x-180-px.png",
+    "path": "assets/efiops-logo-current.png",
+    "native_width": 544,
+    "native_height": 180,
+    "sha256": "187a54a50f705f070e4d618d9dcd3a5d2af9b3a8019c6d9a70a60bb0e47d9c6e",
+    "preserve_original": true
+  },
+  "illustration_reference": {
+    "source": "https://efiops.com/wp-content/uploads/2024/03/efiops-cheap-monthly-websites.png",
+    "path": "assets/current-3d-style-reference.png"
+  },
+  "notes": [
+    "Values extracted from public homepage inline styles; theme defaults are distinguished in the brief.",
+    "Logo and illustration are existing site assets, not newly generated images.",
+    "The actual page was not rendered for a full visual audit."
+  ]
+}
