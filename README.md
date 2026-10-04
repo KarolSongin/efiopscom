@@ -44,6 +44,8 @@ Browser checks use `/usr/bin/chromium` with Playwright and include all public pa
 
 - `src/content/services/*.json`: complete validated service copy, FAQs, related services and focused CTAs.
 - `src/data/core.json`: editable home, services, process, about and contact copy.
+- `src/data/process.json`: How it works stories, five illustrated stages, clear outputs and preparation guidance.
+- `src/styles/process.css`: responsive process-page compositions.
 - `src/data/experience.json`: homepage feature stories and interactive scenario descriptions.
 - `src/data/scenarios.json`: reconciled sales, order and planning inputs for the interactive cards.
 - `src/lib/planning.mjs`: shared workload/capacity calculations.

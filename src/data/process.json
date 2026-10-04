@@ -1,0 +1,104 @@
+{
+  "eyebrow": "A clear route from problem to practical improvement",
+  "headline": "Good work starts with a clear plan.",
+  "lead": "Understand the work. Agree the result. Build, test and hand over something your team can use. You work directly with Karol, with clear decisions at every stage.",
+  "example": "Follow a quote from first enquiry to a dependable next step.",
+  "stages": [
+    {
+      "id": "understand",
+      "label": "Understand",
+      "title": "Start with the work. Find the friction.",
+      "body": "Show me what happens today: the tools, the handovers and the point where someone has to chase, copy or check. We follow one real task before deciding what to build.",
+      "questions": [
+        "Where does the information come from?",
+        "Who needs to act, and what do they need to know?",
+        "What happens when something is missing?"
+      ],
+      "output": "A shared picture of the problem, the people involved and the constraints.",
+      "example": "A quote is sent from the inbox. The status lives in a spreadsheet. A follow-up depends on someone remembering.",
+      "caption": "Find the gap between the tools—not just the tool to replace.",
+      "kind": "map"
+    },
+    {
+      "id": "agree",
+      "label": "Agree",
+      "title": "Make the first result specific.",
+      "body": "Turn the problem into a focused scope: what is included, what it depends on and how we will know it works. Costs, access, third-party services and support options are discussed before the work starts.",
+      "questions": [
+        "What should this first project deliver?",
+        "What stays with the team, and what can the system do?",
+        "Which checks must pass before handover?"
+      ],
+      "output": "An agreed scope, clear dependencies and acceptance checks.",
+      "example": "Capture enquiries, show quote status and prepare a follow-up after two working days. Keep the customer conversation with its owner.",
+      "caption": "A useful first release has boundaries as well as features.",
+      "kind": "scope"
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "title": "See it take shape. Make the important decisions early.",
+      "body": "Review the parts that matter while they are being built. A working screen, a report view or a connected workflow makes feedback concrete. We check changes against the agreed purpose and discuss additions before expanding the scope.",
+      "questions": [
+        "Does the screen fit the way your team works?",
+        "Are the labels and next actions clear?",
+        "Is this feedback a refinement or a new requirement?"
+      ],
+      "output": "A reviewable solution and a visible record of decisions.",
+      "example": "The team reviews the quote board. They can see which enquiry needs attention, who owns it and why a follow-up is waiting.",
+      "caption": "Review the decision the screen supports—not just how it looks.",
+      "kind": "review"
+    },
+    {
+      "id": "test",
+      "label": "Test",
+      "title": "Check the usual day. Then the awkward one.",
+      "body": "A successful run is a starting point. We also check missing information, repeated requests, permissions and failures relevant to the project. You can see what was checked, what passed and what still needs a decision.",
+      "questions": [
+        "Do the outputs match the source records?",
+        "Does a reply stop the next reminder?",
+        "Can the right person see and resolve an exception?"
+      ],
+      "output": "Test results against the agreed checks, with unresolved items made clear.",
+      "example": "No reply? Prepare a follow-up for review. A reply arrives? Stop the reminder. No customer email? Hold the task and show what needs fixing.",
+      "caption": "Try the conditions below. The right next step changes with the record.",
+      "kind": "checks"
+    },
+    {
+      "id": "handover",
+      "label": "Hand over",
+      "title": "Make it useful beyond the build.",
+      "body": "Walk through the finished solution, the everyday tasks and the dependencies behind it. The handover explains ownership, access and maintenance. Continuing support or further improvements can be agreed around what the business needs.",
+      "questions": [
+        "Who owns the accounts and the next action?",
+        "What needs monitoring, renewing or maintaining?",
+        "How will someone new learn to use the solution?"
+      ],
+      "output": "A practical handover, documented dependencies and an agreed next step.",
+      "example": "The team gets a guide to the quote board, the follow-up rules and the review queue. Account access and the support arrangement are confirmed separately.",
+      "caption": "The finish line is a team that knows what to do next.",
+      "kind": "handover"
+    }
+  ],
+  "prepare": {
+    "heading": "Bring the problem. You don’t need to bring the specification.",
+    "body": "A short description and one example are enough to start the conversation. We can work out the useful questions together.",
+    "items": [
+      {
+        "icon": "file",
+        "title": "One real example",
+        "body": "A report, a spreadsheet, a website journey or a repeated task. Share only information you are comfortable and authorised to share."
+      },
+      {
+        "icon": "workflow",
+        "title": "The tools involved",
+        "body": "Tell me where the work starts, where it ends and who has to move it along."
+      },
+      {
+        "icon": "chart",
+        "title": "The improvement you want",
+        "body": "A clearer answer, fewer repeated steps or an easier enquiry. Describe what a better day would look like."
+      }
+    ]
+  }
+}

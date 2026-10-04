@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import Icon from '../components/Icon.astro';
+import ProcessScene from '../components/ProcessScene.astro';
+import core from '../data/core.json';
+import process from '../data/process.json';
+import '../styles/process.css';
+const page = core['how-it-works'];
+---
+
+<Base title={page.seoTitle} description={page.metaDescription}>
+  <section class="project-hero">
+    <div class="project-hero-ring" aria-hidden="true"></div>
+    <div class="container project-hero-grid">
+      <div class="project-hero-copy">
+        <p class="eyebrow">How we work together</p>
+        <h1>{process.headline}</h1>
+        <p class="project-lead">{process.lead}</p>
+        <a class="button" href="/contact/">
+          Talk through your project
+          <Icon name="arrow" size={19} />
+        </a>
+        <div class="project-assurance">
+          <Icon name="person" size={18} />
+          <span>One point of contact. A clear purpose at every step.</span>
+        </div>
+      </div>
+      <ProcessScene kind="overview" />
+    </div>
+    <nav class="container project-stage-nav" aria-label="Project stages">
+      {process.stages.map((stage, i) => (
+        <a href={`#${stage.id}`}>
+          <span>0{i + 1}</span>
+          {stage.label}
+          <Icon name="down" size={14} />
+        </a>
+      ))}
+    </nav>
+  </section>
+  <section class="container project-intro">
+    <p class="eyebrow">What happens—and what you take away</p>
+    <div>
+      <h2>
+        Five stages.
+        <br />
+        One useful improvement.
+      </h2>
+      <p>
+        Every project has different tools and constraints. The route stays clear. Follow a
+        quote-management workflow through the illustrations to see what each stage makes possible.
+      </p>
+    </div>
+  </section>
+  {process.stages.map((stage, i) => (
+    <section
+      id={stage.id}
+      class:list={[
+        'project-stage',
+        `project-stage-${i + 1}`,
+        { 'project-stage-reverse': i % 2 === 1 },
+      ]}
+    >
+      <div class="container project-stage-grid">
+        <div class="project-stage-copy">
+          <p class="eyebrow">
+            <span class="project-stage-number">0{i + 1}</span>
+            {stage.label}
+          </p>
+          <h2>{stage.title}</h2>
+          <p>{stage.body}</p>
+          <ul class="project-questions">
+            {stage.questions.map((q) => (
+              <li>
+                <Icon name="check" size={16} />
+                {q}
+              </li>
+            ))}
+          </ul>
+          <div class="project-output">
+            <span class="ui-label">What you take away</span>
+            <p>{stage.output}</p>
+          </div>
+        </div>
+        <div class="project-stage-visual">
+          <ProcessScene kind={stage.kind} />
+          <div class="project-example">
+            <span class="ui-label">In the quote workflow</span>
+            <p>{stage.example}</p>
+            <strong>{stage.caption}</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+  <section class="project-prepare">
+    <div class="container section">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Before the first conversation</p>
+          <h2>{process.prepare.heading}</h2>
+        </div>
+        <p>{process.prepare.body}</p>
+      </div>
+      <div class="prepare-grid">
+        {process.prepare.items.map((item, i) => (
+          <article>
+            <div>
+              <span>0{i + 1}</span>
+              <Icon name={item.icon} size={23} />
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <FAQ items={page.faqs} />
+  <CTA />
+</Base>

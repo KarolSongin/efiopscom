@@ -1,0 +1,397 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  kind: string;
+}
+const { kind } = Astro.props;
+---
+
+<div class:list={['process-art', `process-art-${kind}`]}>
+  <div class="process-orbit" aria-hidden="true"></div>
+  <div class="process-sphere" aria-hidden="true"></div>
+  <div class="process-card physical-card" data-process-scene={kind}>
+    {kind === 'overview' && (
+      <>
+        <div class="process-card-header">
+          <span class="tile-icon">
+            <Icon name="workflow" />
+          </span>
+          <div>
+            <span class="ui-label">A project with a purpose</span>
+            <strong>
+              From “who’s following up?”
+              <br />
+              to a clear next step.
+            </strong>
+          </div>
+        </div>
+        <div class="process-goal">
+          <span class="ui-label">The first improvement</span>
+          <strong>Keep every quote visible.</strong>
+          <p>
+            One owner. A clear status.
+            <br />A follow-up that knows when to stop.
+          </p>
+        </div>
+        <ol class="project-route">
+          {[
+            'Understand the current work',
+            'Agree the first result',
+            'Build in reviewable steps',
+            'Check normal runs & exceptions',
+            'Hand over with a plan',
+          ].map((label, i) => (
+            <li>
+              <span>0{i + 1}</span>
+              <strong>{label}</strong>
+              <Icon name={i === 4 ? 'check' : 'chevron'} size={15} />
+            </li>
+          ))}
+        </ol>
+        <div class="process-card-foot">
+          <Icon name="person" size={16} />
+          <span>Direct collaboration with Karol</span>
+        </div>
+      </>
+    )}
+    {kind === 'map' && (
+      <>
+        <div class="process-card-header">
+          <span class="tile-icon">
+            <Icon name="search" />
+          </span>
+          <div>
+            <span class="ui-label">The work today</span>
+            <strong>Where does the next step live?</strong>
+          </div>
+        </div>
+        <div class="process-map">
+          <div>
+            <Icon name="mail" />
+            <span>Enquiry arrives</span>
+            <small>Customer inbox</small>
+          </div>
+          <span class="map-connector" aria-hidden="true"></span>
+          <div>
+            <Icon name="file" />
+            <span>Quote goes out</span>
+            <small>Details copied to a sheet</small>
+          </div>
+          <span class="map-connector map-gap" aria-hidden="true"></span>
+          <div class="map-friction">
+            <Icon name="clock" />
+            <span>Follow-up waits</span>
+            <small>Someone has to remember</small>
+          </div>
+        </div>
+        <div class="process-note">
+          <span class="note-marker">?</span>
+          <div>
+            <strong>The question worth asking</strong>
+            <p>Can the quote record tell its owner when the next action is due?</p>
+          </div>
+        </div>
+      </>
+    )}
+    {kind === 'scope' && (
+      <>
+        <div class="process-card-header">
+          <span class="tile-icon">
+            <Icon name="sliders" />
+          </span>
+          <div>
+            <span class="ui-label">The first release</span>
+            <strong>A smaller scope. A clearer result.</strong>
+          </div>
+        </div>
+        <div class="scope-choice js-only" role="group" aria-label="Explore the agreed scope">
+          <button data-scope="included" aria-pressed="true">
+            Included now
+          </button>
+          <button data-scope="later" aria-pressed="false">
+            Discuss separately
+          </button>
+        </div>
+        <ul class="scope-list" data-scope-list>
+          <li>
+            <Icon name="check" size={17} />
+            Capture enquiry details
+          </li>
+          <li>
+            <Icon name="check" size={17} />
+            Show owner and quote status
+          </li>
+          <li>
+            <Icon name="check" size={17} />
+            Prepare a follow-up for review
+          </li>
+        </ul>
+        <div class="scope-boundary">
+          <span class="ui-label">Acceptance check</span>
+          <strong data-scope-check>A customer reply stops the reminder.</strong>
+          <p data-scope-note>
+            The quote stays with its owner. No message goes out without the agreed review step.
+          </p>
+        </div>
+        <div class="process-card-foot">
+          <Icon name="link" size={16} />
+          <span>Confirm account access & service costs</span>
+        </div>
+      </>
+    )}
+    {kind === 'review' && (
+      <>
+        <div class="process-card-header">
+          <span class="tile-icon">
+            <Icon name="grid" />
+          </span>
+          <div>
+            <span class="ui-label">A screen to review together</span>
+            <strong>Which quote needs attention?</strong>
+          </div>
+        </div>
+        <div class="review-board">
+          <div class="review-board-title">
+            <strong>Quote board</strong>
+            <span>3 open enquiries</span>
+          </div>
+          <div class="quote-row">
+            <span class="quote-id">1041</span>
+            <div>
+              <strong>Garden care</strong>
+              <small>Owner · Sam</small>
+            </div>
+            <span class="quote-state">New enquiry</span>
+          </div>
+          <div class="quote-row quote-focus">
+            <span class="quote-id">1042</span>
+            <div>
+              <strong>Website redesign</strong>
+              <small>Owner · Alex</small>
+            </div>
+            <span class="quote-state">Follow-up due</span>
+          </div>
+          <div class="quote-row">
+            <span class="quote-id">1043</span>
+            <div>
+              <strong>Office maintenance</strong>
+              <small>Owner · Sam</small>
+            </div>
+            <span class="quote-state">Reply received</span>
+          </div>
+        </div>
+        <div class="review-comment">
+          <span class="review-avatar">A</span>
+          <div>
+            <span class="ui-label">Review feedback</span>
+            <p>“Show why the follow-up is due, so I don’t have to open every record.”</p>
+          </div>
+        </div>
+        <div class="process-note">
+          <Icon name="check" size={18} />
+          <div>
+            <strong>Refinement to review</strong>
+            <p>Add the last-contact date beside the next action.</p>
+          </div>
+        </div>
+      </>
+    )}
+    {kind === 'checks' && (
+      <>
+        <div class="process-card-header">
+          <span class="tile-icon">
+            <Icon name="shield" />
+          </span>
+          <div>
+            <span class="ui-label">Check the next action</span>
+            <strong>Same workflow. Different conditions.</strong>
+          </div>
+        </div>
+        <div class="test-choice js-only" role="group" aria-label="Choose a workflow test">
+          <button data-process-test="waiting" aria-pressed="true">
+            No reply
+          </button>
+          <button data-process-test="replied" aria-pressed="false">
+            Reply arrives
+          </button>
+          <button data-process-test="missing" aria-pressed="false">
+            Email missing
+          </button>
+        </div>
+        <div class="test-record">
+          <span class="ui-label">Quote 1042 · Owner Alex</span>
+          <div>
+            <span>Customer email</span>
+            <strong data-test-email>Present</strong>
+          </div>
+          <div>
+            <span>Customer reply</span>
+            <strong data-test-reply>Not received</strong>
+          </div>
+          <div>
+            <span>Time since quote</span>
+            <strong>2 working days</strong>
+          </div>
+        </div>
+        <div class="test-outcome" role="status" aria-live="polite">
+          <span class="tile-icon">
+            <Icon name="workflow" />
+          </span>
+          <div>
+            <span class="ui-label">Expected next step</span>
+            <strong data-test-action>Prepare follow-up</strong>
+            <p data-test-reason>The owner reviews the message before it is sent.</p>
+          </div>
+        </div>
+        <div class="process-card-foot">
+          <Icon name="shield" size={16} />
+          <span>Check the rule against the record</span>
+        </div>
+      </>
+    )}
+    {kind === 'handover' && (
+      <>
+        <div class="process-card-header">
+          <span class="tile-icon">
+            <Icon name="box" />
+          </span>
+          <div>
+            <span class="ui-label">Ready for everyday use</span>
+            <strong>The build comes with context.</strong>
+          </div>
+        </div>
+        <div class="handover-files">
+          {[
+            {
+              icon: 'file',
+              title: 'Your working guide',
+              body: 'How to use the board, review a follow-up and resolve a held task.',
+            },
+            {
+              icon: 'link',
+              title: 'Accounts & dependencies',
+              body: 'Who owns the accounts, what access is required and which services have ongoing costs.',
+            },
+            {
+              icon: 'shield',
+              title: 'Maintenance & support',
+              body: 'What to monitor, how to report a problem and any separately agreed support arrangement.',
+            },
+          ].map((item) => (
+            <details>
+              <summary>
+                <span class="handover-file-icon">
+                  <Icon name={item.icon} size={20} />
+                </span>
+                <strong>{item.title}</strong>
+                <Icon name="plus" size={16} />
+              </summary>
+              <p>{item.body}</p>
+            </details>
+          ))}
+        </div>
+        <div class="handover-next">
+          <span class="ui-label">The next conversation</span>
+          <strong>
+            What is working?
+            <br />
+            What should improve next?
+          </strong>
+          <p>Further work follows a new agreed scope.</p>
+        </div>
+      </>
+    )}
+  </div>
+  {kind === 'overview' && (
+    <div class="process-floating physical-card">
+      <span class="decision-symbol">
+        <Icon name="check" size={20} />
+      </span>
+      <div>
+        <span class="ui-label">Every stage has an output</span>
+        <strong>Something clear to review.</strong>
+      </div>
+    </div>
+  )}
+</div>
+<script>
+  const scopes = {
+    included: {
+      items: [
+        'Capture enquiry details',
+        'Show owner and quote status',
+        'Prepare a follow-up for review',
+      ],
+      check: 'A customer reply stops the reminder.',
+      note: 'The quote stays with its owner. No message goes out without the agreed review step.',
+    },
+    later: {
+      items: [
+        'A full customer portal',
+        'Automatic quote pricing',
+        'A replacement accounting system',
+      ],
+      check: 'Additions need a separate scope.',
+      note: 'Discuss the purpose, dependencies and costs before adding them to the project.',
+    },
+  };
+  document.querySelectorAll<HTMLElement>('[data-process-scene="scope"]').forEach((card) =>
+    card.querySelectorAll<HTMLButtonElement>('[data-scope]').forEach((button) =>
+      button.addEventListener('click', () => {
+        const key = button.dataset.scope as keyof typeof scopes;
+        const data = scopes[key];
+        card
+          .querySelectorAll('[data-scope]')
+          .forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        const list = card.querySelector('[data-scope-list]')!;
+        list.replaceChildren(
+          ...data.items.map((text) => {
+            const li = document.createElement('li');
+            const marker = document.createElement('span');
+            marker.className = 'scope-marker';
+            marker.textContent = key === 'included' ? '✓' : '↗';
+            marker.setAttribute('aria-hidden', 'true');
+            li.append(marker, document.createTextNode(text));
+            return li;
+          }),
+        );
+        card.querySelector('[data-scope-check]')!.textContent = data.check;
+        card.querySelector('[data-scope-note]')!.textContent = data.note;
+      }),
+    ),
+  );
+  const checks = {
+    waiting: {
+      email: 'Present',
+      reply: 'Not received',
+      action: 'Prepare follow-up',
+      reason: 'The owner reviews the message before it is sent.',
+    },
+    replied: {
+      email: 'Present',
+      reply: 'Received',
+      action: 'Stop the reminder',
+      reason: 'Keep the conversation with Alex. A reply changes the next step.',
+    },
+    missing: {
+      email: 'Missing',
+      reply: 'Not received',
+      action: 'Hold for review',
+      reason: 'Ask the owner to resolve the missing address. Do not attempt to send.',
+    },
+  };
+  document.querySelectorAll<HTMLElement>('[data-process-scene="checks"]').forEach((card) =>
+    card.querySelectorAll<HTMLButtonElement>('[data-process-test]').forEach((button) =>
+      button.addEventListener('click', () => {
+        const key = button.dataset.processTest as keyof typeof checks;
+        const data = checks[key];
+        card
+          .querySelectorAll('[data-process-test]')
+          .forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        for (const field of ['email', 'reply', 'action', 'reason'] as const)
+          card.querySelector(`[data-test-${field}]`)!.textContent = data[field];
+        card.classList.toggle('test-held', key === 'missing');
+      }),
+    ),
+  );
+</script>

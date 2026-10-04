@@ -4,7 +4,7 @@ import CTA from '../components/CTA.astro';
 import FAQ from '../components/FAQ.astro';
 import core from '../data/core.json';
 export function getStaticPaths() {
-  return ['how-it-works', 'about'].map((key) => ({
+  return ['about'].map((key) => ({
     params: { page: key },
     props: { page: core[key as 'about' | 'how-it-works'], key },
   }));
