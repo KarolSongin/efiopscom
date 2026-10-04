@@ -103,7 +103,7 @@ test('preview sitemap is empty, robots blocks and headers noindex', () => {
 test('production is blocked on real unresolved owner fields', () => {
   const result = spawnSync('node', ['scripts/build.mjs', '--production'], { encoding: 'utf8' });
   assert.equal(result.status, 1);
-  assert.match(result.stderr, /legalController/);
+  assert.doesNotMatch(result.stderr, /Owner confirmation required: legalController/);
   assert.match(result.stderr, /contactVerified/);
   assert.match(result.stderr, /RESEND_API_KEY/);
 });

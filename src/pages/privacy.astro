@@ -5,13 +5,13 @@ import release from '../config/release.json';
 ---
 
 <Base
-  title="Privacy Notice | EFIops"
-  description="How EFIops handles website enquiries and information."
+  title="Privacy Notice | EfiOps"
+  description="How EfiOps handles website enquiries and information."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Privacy notice</p>
-      <h1>How EFIops handles your information.</h1>
+      <h1>How EfiOps handles your information.</h1>
     </div>
   </section>
   <div class="container legal">
@@ -24,8 +24,8 @@ import release from '../config/release.json';
     <section>
       <p>
         {production
-          ? `This notice explains how ${release.legalController}, trading as EFIops, handles personal information collected through this website. You can contact us at ${release.privacyContact}.`
-          : 'This preview has no active enquiry provider or optional analytics. Its legal notice is awaiting review against the final website configuration.'}
+          ? `This notice explains how ${release.legalController}, operated by Karol Songin, handles personal information collected through this website. You can contact us at ${release.privacyContact}.`
+          : `EfiOps is operated by Karol Songin. Privacy enquiries can be sent to ${release.privacyContact}. This is the review version of the notice.`}
       </p>
     </section>
     <section>
@@ -37,7 +37,7 @@ import release from '../config/release.json';
       </p>
       {!production && (
         <p>
-          The preview form does not send real enquiries. Emailing EFIops uses your own email
+          The preview form does not send real enquiries. Emailing EfiOps uses your own email
           service.
         </p>
       )}
@@ -52,26 +52,30 @@ import release from '../config/release.json';
     </section>
     <section>
       <h2>Why information is used</h2>
-      <p>
-        {production
-          ? release.legalBasis
-          : 'The purposes and appropriate legal bases for the final enquiry handling must be reviewed before launch.'}
-      </p>
+      <p>{production ? release.legalBasis : release.legalBasis}</p>
     </section>
     <section>
       <h2>Service providers</h2>
-      <p>
-        {production
-          ? release.transferArrangements
-          : 'Provider categories and any material processing or transfer arrangements will be documented after the host and enquiry provider are confirmed.'}
-      </p>
+      <p>{production ? release.transferArrangements : release.transferArrangements}</p>
     </section>
     <section>
       <h2>Keeping information</h2>
+      <p>{production ? release.retention : release.retention}</p>
+    </section>
+    <section>
+      <h2>Provider information</h2>
       <p>
-        {production
-          ? release.retention
-          : 'The actual retention period or criteria for keeping enquiries must be confirmed before launch.'}
+        Read the <a href="https://www.netlify.com/privacy/">Netlify privacy policy</a> and{' '}
+        <a href="https://supabase.com/privacy">Supabase privacy policy</a> for information about
+        their services. Provider backups have their own retention periods; deleting an enquiry from
+        the live database does not mean every backup copy disappears immediately.
+      </p>
+    </section>
+    <section>
+      <h2>Website enquiries and marketing</h2>
+      <p>
+        Website enquiries are saved in Supabase and reviewed by Karol. Submitting this form does not
+        add you to GoHighLevel or start an automated marketing campaign.
       </p>
     </section>
     <section>

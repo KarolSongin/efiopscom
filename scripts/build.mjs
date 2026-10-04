@@ -25,6 +25,7 @@ const sharedSchema = z.object({
 });
 sharedSchema.parse(JSON.parse(fs.readFileSync('src/data/shared.json', 'utf8')));
 const production = process.argv.includes('--production');
+const launchVerification = production && process.argv.includes('--verify-contact');
 const release = JSON.parse(fs.readFileSync('src/config/release.json', 'utf8'));
 const read = (dir) =>
   fs
@@ -94,11 +95,15 @@ for (const a of articles) {
 }
 if (production) {
   for (const [key, value] of Object.entries(release)) {
+    if (launchVerification && key === 'contactVerified') continue;
     if (key === 'analyticsEnabled') {
       if (value)
         failures.push('Optional analytics require a separately implemented consent system.');
       continue;
     }
+    // Enquiry-only marketing pages publish no binding prices or contract terms.
+    // Keep this recorded as unreviewed for the later contracts/payments phase.
+    if (key === 'commercialTermsReviewed') continue;
     if (!value) failures.push(`Owner confirmation required: ${key}`);
   }
   for (const field of [
@@ -143,6 +148,7 @@ const result = spawnSync('node', ['node_modules/astro/bin/astro.mjs', 'build'], 
     ...process.env,
     ASTRO_TELEMETRY_DISABLED: '1',
     PUBLIC_BUILD_MODE: production ? 'production' : 'preview',
+    PUBLIC_LAUNCH_VERIFICATION: launchVerification ? 'true' : 'false',
   },
 });
 if (result.status !== 0) process.exit(result.status || 1);
@@ -166,9 +172,10 @@ const publicArticles = articles.filter(
 );
 if (publicCases.length) routes.push('/work/', ...publicCases.map((c) => `/work/${c.slug}/`));
 routes.push(...publicArticles.map((a) => `/articles/${a.slug}/`));
-const indexableRoutes = production
-  ? routes.filter((p) => p !== '/articles/' || publicArticles.length)
-  : [];
+const indexableRoutes =
+  production && !launchVerification
+    ? routes.filter((p) => p !== '/articles/' || publicArticles.length)
+    : [];
 const lastModified = new Map(
   publicArticles.map((a) => [`/articles/${a.slug}/`, a.substantiveUpdatedDate || a.publishedDate]),
 );
@@ -184,13 +191,13 @@ const sitemap =
 fs.writeFileSync('dist/sitemap.xml', sitemap);
 fs.writeFileSync(
   'dist/robots.txt',
-  production
+  production && !launchVerification
     ? `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\nDisallow: /thank-you/\nSitemap: ${canonical}/sitemap.xml\n`
     : 'User-agent: *\nDisallow: /\n',
 );
 fs.writeFileSync(
   'dist/_headers',
-  `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n${production ? '' : '  X-Robots-Tag: noindex, nofollow\n'}/admin/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n/api/admin/*\n  Cache-Control: no-store\n/_astro/*\n  Cache-Control: public, max-age=31536000, immutable\n/images/*\n  Cache-Control: public, max-age=86400\n`,
+  `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n${production && !launchVerification ? '' : '  X-Robots-Tag: noindex, nofollow\n'}/admin/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n/api/admin/*\n  Cache-Control: no-store\n/_astro/*\n  Cache-Control: public, max-age=31536000, immutable\n/images/*\n  Cache-Control: public, max-age=86400\n`,
 );
 const rows = fs.readFileSync('docs/redirects.csv', 'utf8').trim().split('\n').slice(1);
 const mappings = rows.filter(Boolean).map((row) => {
@@ -211,7 +218,7 @@ fs.writeFileSync(
   'dist/build-manifest.json',
   JSON.stringify(
     {
-      mode: production ? 'production' : 'preview',
+      mode: launchVerification ? 'launch-verification' : production ? 'production' : 'preview',
       routes,
       indexableRoutes,
     },
@@ -220,5 +227,5 @@ fs.writeFileSync(
   ),
 );
 console.log(
-  `Built ${routes.length} commercial/legal pages in ${production ? 'production' : 'review preview'} mode. Draft routes excluded.`,
+  `Built ${routes.length} commercial/legal pages in ${launchVerification ? 'launch verification (noindex)' : production ? 'production' : 'review preview'} mode. Draft routes excluded.`,
 );

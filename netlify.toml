@@ -1,5 +1,5 @@
 [build]
-command = "npm run build"
+command = "npm run build:launch"
 publish = "dist"
 [functions]
 directory = "netlify/functions"
@@ -8,3 +8,8 @@ for = "/*"
 [headers.values]
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "strict-origin-when-cross-origin"
+
+[build.environment]
+# Public configuration values appear intentionally in code and generated URLs.
+# Supabase credentials remain covered by secret scanning.
+SECRETS_SCAN_OMIT_KEYS = "ADMIN_MODE,BUILD_MODE,ADMIN_EMAIL,ADMIN_ALLOWED_ORIGIN,CONTACT_ALLOWED_ORIGIN,CONTACT_STORAGE"

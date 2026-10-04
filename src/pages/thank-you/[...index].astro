@@ -3,7 +3,10 @@ import Base from '../../layouts/Base.astro';
 import { production } from '../../config/site';
 import release from '../../config/release.json';
 export function getStaticPaths() {
-  return production && release.contactVerified ? [{ params: { index: undefined } }] : [];
+  return production &&
+    (release.contactVerified || import.meta.env.PUBLIC_LAUNCH_VERIFICATION === 'true')
+    ? [{ params: { index: undefined } }]
+    : [];
 }
 ---
 

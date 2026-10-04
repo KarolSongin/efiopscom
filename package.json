@@ -10,7 +10,8 @@
     "preview": "node server/preview.mjs",
     "test": "node --test tests/*.test.mjs",
     "test:browser": "playwright test",
-    "verify": "npm run check && npm run build && npm test && npm run test:browser"
+    "verify": "npm run check && npm run build && npm test && npm run test:browser",
+    "build:launch": "node scripts/build.mjs --production --verify-contact"
   },
   "repository": {
     "type": "git",

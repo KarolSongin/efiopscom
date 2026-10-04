@@ -100,7 +100,14 @@ graph.push(...structuredData);
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content={!production || noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <meta
+      name="robots"
+      content={
+        !production || import.meta.env.PUBLIC_LAUNCH_VERIFICATION === 'true' || noindex
+          ? 'noindex, nofollow'
+          : 'index, follow'
+      }
+    />
     <link rel="canonical" href={canonical} />
     <link rel="preload" href={latoRegular} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={latoBold} as="font" type="font/woff2" crossorigin="anonymous" />

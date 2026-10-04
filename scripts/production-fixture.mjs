@@ -31,6 +31,38 @@ try {
     noticeReviewDate: '2026-10-04',
   });
   fs.writeFileSync(path.join(temp, 'src/config/release.json'), JSON.stringify(config));
+  config.contactVerified = false;
+  fs.writeFileSync(path.join(temp, 'src/config/release.json'), JSON.stringify(config));
+  const launch = spawnSync('node', ['scripts/build.mjs', '--production', '--verify-contact'], {
+    cwd: temp,
+    encoding: 'utf8',
+    env: {
+      ...process.env,
+      BUILD_MODE: 'production',
+      CONTACT_ALLOWED_ORIGIN: 'https://efiops.com',
+      CONTACT_FROM: 'fixture@example.com',
+      CONTACT_TO: 'fixture@example.com',
+      RESEND_API_KEY: 'fixture-only-not-a-real-credential',
+    },
+  });
+  assert.equal(launch.status, 0, launch.stderr + launch.stdout);
+  assert.match(
+    fs.readFileSync(path.join(temp, 'dist/index.html'), 'utf8'),
+    /name="robots" content="noindex, nofollow"/,
+  );
+  assert.match(
+    fs.readFileSync(path.join(temp, 'dist/_headers'), 'utf8').split('/admin/*')[0],
+    /noindex/,
+  );
+  assert.match(fs.readFileSync(path.join(temp, 'dist/robots.txt'), 'utf8'), /Disallow: \//);
+  assert.doesNotMatch(fs.readFileSync(path.join(temp, 'dist/sitemap.xml'), 'utf8'), /<loc>/);
+  assert.ok(fs.existsSync(path.join(temp, 'dist/thank-you/index.html')));
+  assert.ok(!fs.existsSync(path.join(temp, 'dist/articles/template-preview/index.html')));
+  config.contactVerified = true;
+  fs.writeFileSync(path.join(temp, 'src/config/release.json'), JSON.stringify(config));
+  console.log(
+    'PASS: launch-verification fixture enables the real-form pages while all three indexing controls remain blocked.',
+  );
   const result = spawnSync('node', ['scripts/build.mjs', '--production'], {
     cwd: temp,
     encoding: 'utf8',
