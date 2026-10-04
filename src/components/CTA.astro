@@ -1,5 +1,6 @@
 ---
 import shared from '../data/shared.json';
+import Icon from './Icon.astro';
 interface Props {
   heading?: string;
   text?: string;
@@ -15,17 +16,35 @@ const {
 ---
 
 <section class="cta-section">
+  <div class="cta-ring" aria-hidden="true"></div>
   <div class="container cta-inner">
     <div>
-      <p class="eyebrow">A useful next step</p>
+      <p class="eyebrow">The next useful conversation</p>
       <h2>{heading}</h2>
       <p>{text}</p>
+      <a class="button" href={'/contact/' + (service ? '?service=' + service : '')}>
+        {label}
+        <Icon name="arrow" size={19} />
+      </a>
     </div>
-    <a class="button" href={'/contact/' + (service ? '?service=' + service : '')}>
-      {label}
-      <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M5 19L19 5M5 5h14v14" />
-      </svg>
-    </a>
+    <div class="cta-prompt">
+      <span class="ui-label">Start with what needs to change</span>
+      <a href="/contact/?service=power-bi">
+        <span>A report I keep rebuilding</span>
+        <Icon name="arrow" size={18} />
+      </a>
+      <a href="/contact/?service=power-automate">
+        <span>A task I keep repeating</span>
+        <Icon name="arrow" size={18} />
+      </a>
+      <a href="/contact/?service=web-design-development">
+        <span>A website we’ve outgrown</span>
+        <Icon name="arrow" size={18} />
+      </a>
+      <a href="/contact/">
+        <span>Something else entirely</span>
+        <Icon name="arrow" size={18} />
+      </a>
+    </div>
   </div>
 </section>

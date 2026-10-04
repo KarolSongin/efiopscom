@@ -27,6 +27,7 @@ const service = defineCollection({
     faqs: z.array(z.object({ question: text, answer: text })).min(4),
     cta: z.object({ label: text, heading: text, text: text }),
     relatedServices: z.array(text).min(2),
+    useCases: z.array(z.object({ audience: text, title: text, body: text })).min(3),
     visualKey: text,
     primaryIntent: text,
     publicationState: state,

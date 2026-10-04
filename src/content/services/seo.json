@@ -3,9 +3,9 @@
   "title": "SEO",
   "seoTitle": "SEO Services in Maidstone & Kent | EFIops",
   "metaDescription": "Technical SEO, clearer service pages and practical local-search improvements. EFIops helps businesses in Maidstone, Kent and across the UK build stronger search foundations.",
-  "h1": "SEO built around what your customers need to know.",
-  "eyebrow": "Make the right pages easier to find",
-  "lead": "Help people find and understand the services your business offers. EFIops combines technical improvements, useful page content and local relevance with measurement that shows how search visibility develops.",
+  "h1": "Be easier to find. And easier to choose.",
+  "eyebrow": "SEO · Useful pages, stronger foundations",
+  "lead": "People search for a problem they want solved—not a list of technologies. Give each service a useful page, remove technical barriers and build local relevance around where your business really works.",
   "sections": [
     {
       "heading": "A good service needs a page that explains it properly.",
@@ -65,5 +65,22 @@
   "visualKey": "seo",
   "primaryIntent": "SEO services Maidstone; technical SEO consultant.",
   "publicationState": "published",
-  "summary": "Build a clearer structure and stronger content around how customers search."
+  "summary": "Help the right customers discover clear service pages through practical technical and on-page SEO.",
+  "useCases": [
+    {
+      "audience": "A Maidstone service business",
+      "title": "A useful answer to a local search.",
+      "body": "Build an accurate service page that explains the work and area served, rather than repeating the same page for every town."
+    },
+    {
+      "audience": "A business with several offers",
+      "title": "Give different needs different pages.",
+      "body": "Separate buyer questions, write the detail people need and connect related services where the relationship is useful."
+    },
+    {
+      "audience": "A site with little search visibility",
+      "title": "Find the barrier before adding more content.",
+      "body": "Review crawlability, indexing signals and available Search Console data. Prioritise useful gaps and measure how the picture develops."
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 # EFIops website
 
-Brand-preserving Astro + TypeScript marketing site for EFIops. The supplied logo is unchanged. All ten service pages and the supporting commercial pages use the build brief's full copy. Original HTML/SVG diagrams illustrate fictional workflows. Fonts are licensed, self-hosted Lato; optional tracking and external widgets are disabled.
+Brand-preserving Astro + TypeScript marketing site for EFIops. The supplied logo is unchanged. All ten service pages retain the brief’s detailed service scope and FAQs, with refreshed headlines and practical business use cases. Original interactive HTML/SVG scenes demonstrate sales margins, staffing capacity, follow-ups, support questions and connected workflows. Fonts are licensed, self-hosted Lato; optional tracking and external widgets are disabled.
 
 ## Run the review preview
 
@@ -19,6 +19,15 @@ Open `http://localhost:4321` on a machine with access to the running environment
 
 Preview does not send real enquiries. The default form returns an honest unavailable response and preserves input. `PREVIEW_CONTACT_MODE=success npm run preview` and `PREVIEW_CONTACT_MODE=failure npm run preview` enable clearly labelled local simulations; they are ignored in production. For a different port, set `PORT` and matching `CONTACT_ALLOWED_ORIGIN`.
 
+On Windows PowerShell, use `npm.cmd` to avoid the system’s blocked `npm.ps1` script:
+
+```powershell
+git pull origin main
+npm.cmd ci
+npm.cmd run build
+npm.cmd run preview
+```
+
 ## Verify
 
 ```sh
@@ -29,12 +38,16 @@ npm run test:browser
 node scripts/production-fixture.mjs
 ```
 
-Browser checks use `/usr/bin/chromium` with Playwright and include all public pages at five widths, navigation, JavaScript-disabled content, forms, 404s and representative axe checks. Configure `playwright.config.ts` for a different browser location. Screenshots and reports go into ignored `artifacts/`. `node scripts/social-preview.mjs` regenerates the original 1,200 × 630 social graphic using the unchanged supplied logo.
+Browser checks use `/usr/bin/chromium` with Playwright and include all public pages at five widths, navigation, JavaScript-disabled content, forms, 404s all ten interactive service scenarios, keyboard tabs, arithmetic consistency and axe checks across Home, every service, Contact and About. Configure `playwright.config.ts` for a different browser location. Screenshots and reports go into ignored `artifacts/`. `node scripts/social-preview.mjs` regenerates the original 1,200 × 630 social graphic using the unchanged supplied logo.
 
 ## Content and routes
 
 - `src/content/services/*.json`: complete validated service copy, FAQs, related services and focused CTAs.
 - `src/data/core.json`: editable home, services, process, about and contact copy.
+- `src/data/experience.json`: homepage feature stories and interactive scenario descriptions.
+- `src/data/scenarios.json`: reconciled sales, order and planning inputs for the interactive cards.
+- `src/lib/planning.mjs`: shared workload/capacity calculations.
+- `src/styles/experience.css`: visual refresh and responsive interactive compositions.
 - `src/config/site.ts`: navigation groups, confirmed public biography and canonical host candidate.
 - `src/config/release.json`: owner confirmations; unresolved fields block production.
 - `src/content/case-studies/` and `src/content/insights/`: private editorial drafts and validated contracts. Case publication requires both permission and evidence review. Insights require review, sources and real publication dates; the index releases after two articles. Internal evidence notes are never rendered.

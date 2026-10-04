@@ -1,0 +1,88 @@
+{
+  "features": [
+    {
+      "number": "01",
+      "label": "A clearer picture",
+      "heading": "Less time assembling. More time understanding.",
+      "body": "Which orders are making money? Where is the plan running out of room? Bring the records together, agree what the numbers mean and make the next question easier to answer.",
+      "benefits": [
+        "Sales beside costs—not just a bigger headline number",
+        "Capacity beside demand—not another isolated spreadsheet",
+        "Definitions your team can inspect and understand"
+      ],
+      "link": "Explore Power BI & reporting",
+      "href": "/services/power-bi/",
+      "kind": "power-bi"
+    },
+    {
+      "number": "02",
+      "label": "Work that keeps moving",
+      "heading": "The next step shouldn’t depend on a good memory.",
+      "body": "An enquiry arrives. A quote goes out. A reply changes the plan. Connect the steps with rules that know when to continue, when to stop and when someone needs to look.",
+      "benefits": [
+        "Follow-ups that respond to what actually happened",
+        "Approvals attached to the right record",
+        "Exceptions visible to the person who can resolve them"
+      ],
+      "link": "Explore workflow automation",
+      "href": "/services/power-automate/",
+      "kind": "power-automate"
+    },
+    {
+      "number": "03",
+      "label": "A stronger first impression",
+      "heading": "A website that makes the next conversation easier.",
+      "body": "Make the offer clear. Give each service room to explain itself. Build a site that feels like your business, works comfortably on a phone and gives visitors a useful next step.",
+      "benefits": [
+        "A message shaped around the customer’s question",
+        "Distinctive design with a purpose behind it",
+        "An enquiry journey checked from start to finish"
+      ],
+      "link": "Explore web design & development",
+      "href": "/services/web-design-development/",
+      "kind": "web-design-development"
+    }
+  ],
+  "playground": {
+    "heading": "What does a better working day look like?",
+    "body": "Change the plan. Follow the enquiry. Ask the question. Explore the small decisions a connected system can make easier.",
+    "tabs": [
+      {
+        "key": "planning",
+        "label": "A busy week",
+        "kind": "custom-business-apps",
+        "eyebrow": "Orders meet capacity",
+        "title": "Another order comes in. Can the team cover it?",
+        "body": "Move the weekly volume and change the people available. The workload updates from the handling time and staff hours, so you can see when the plan needs a different decision.",
+        "href": "/services/custom-business-apps/",
+        "link": "Planning tools built around your team"
+      },
+      {
+        "key": "followup",
+        "label": "An unanswered quote",
+        "kind": "power-automate",
+        "eyebrow": "The next step, connected",
+        "title": "Follow up when it’s useful. Stop when the customer replies.",
+        "body": "A reminder is only useful if it knows what happened since it was scheduled. Switch between a waiting quote and a received reply to see how the next action changes.",
+        "href": "/services/power-automate/",
+        "link": "Workflows with the exceptions considered"
+      },
+      {
+        "key": "questions",
+        "label": "A customer question",
+        "kind": "ai-assistants",
+        "eyebrow": "A question with somewhere to go",
+        "title": "Get the order update. Know when a person is needed.",
+        "body": "A delivery question can use an authorised record. An address change needs more detail and a review. Try both—the source and the next step stay visible.",
+        "href": "/services/ai-assistants/",
+        "link": "AI connected to useful information"
+      }
+    ]
+  },
+  "human": {
+    "eyebrow": "The person behind the systems",
+    "heading": "Business understanding. Hands-on building. One point of contact.",
+    "body": "I’m Karol Songin. My work brings together operations, data analysis and development—so we can talk about what’s happening in the business, not just what should happen on the screen.",
+    "second": "From planning applications and Power BI reporting to workflows, websites and AI integration, the starting point stays the same: understand the job, then build the improvement that fits."
+  }
+}

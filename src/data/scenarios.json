@@ -1,0 +1,107 @@
+{
+  "sales": {
+    "all": {
+      "label": "All channels",
+      "orders": 134,
+      "revenue": 42600,
+      "costs": 31850,
+      "daily": [7200, 9600, 7800, 10200, 7800]
+    },
+    "online": {
+      "label": "Online",
+      "orders": 76,
+      "revenue": 24320,
+      "costs": 18240,
+      "daily": [4320, 5600, 4200, 6200, 4000]
+    },
+    "store": {
+      "label": "In store",
+      "orders": 58,
+      "revenue": 18280,
+      "costs": 13610,
+      "daily": [2880, 4000, 3600, 4000, 3800]
+    }
+  },
+  "planning": {
+    "units": 1200,
+    "staff": 3,
+    "hoursPerPerson": 32,
+    "minutesPerUnit": 4,
+    "daily": [220, 240, 260, 240, 240],
+    "extraOrder": 300
+  },
+  "enquiry": {
+    "waiting": {
+      "title": "A follow-up, without the chasing.",
+      "status": "Follow-up ready",
+      "detail": "Two working days have passed without a reply. The next message is ready for review.",
+      "steps": ["Enquiry captured", "Quote sent", "No reply after 2 days", "Prepare follow-up"]
+    },
+    "replied": {
+      "title": "The reply changes the next step.",
+      "status": "Reminder stopped",
+      "detail": "A reply has arrived. Stop the scheduled reminder and keep the conversation with its owner.",
+      "steps": ["Enquiry captured", "Quote sent", "Customer replied", "Stop reminder"]
+    }
+  },
+  "assistant": {
+    "delivery": {
+      "question": "When will order 1042 arrive?",
+      "answer": "Order 1042 is scheduled for Friday. It contains 12 items and is awaiting dispatch.",
+      "source": "Order record · 1042",
+      "next": "Delivery status found"
+    },
+    "missing": {
+      "question": "Can you send it to the new address?",
+      "answer": "The record has no confirmed new address. I need the delivery details before requesting a change.",
+      "source": "Order record · 1042",
+      "next": "Collect details → human review"
+    }
+  },
+  "routing": {
+    "lookup": {
+      "request": "Where is item A17?",
+      "route": "Stock lookup",
+      "action": "Check access → retrieve location",
+      "note": "Read-only information request"
+    },
+    "change": {
+      "request": "Move A17 to bay B2.",
+      "route": "Stock movement",
+      "action": "Check permissions → request approval",
+      "note": "A change needs a separate action check"
+    },
+    "unclear": {
+      "request": "I need that for later.",
+      "route": "Clarification",
+      "action": "Ask which item and when it is needed",
+      "note": "Essential details are missing"
+    }
+  },
+  "websites": {
+    "trades": {
+      "label": "Trades",
+      "tag": "THE WORK, DONE PROPERLY",
+      "heading": "Make room for a better home.",
+      "body": "Thoughtful renovations, from the first conversation to the finishing touches.",
+      "service": "Home renovation",
+      "cta": "Tell us about your project"
+    },
+    "consulting": {
+      "label": "Consulting",
+      "tag": "CLARITY BEFORE THE NEXT DECISION",
+      "heading": "A clearer way forward.",
+      "body": "Practical advice for the decisions your business needs to make.",
+      "service": "Business consulting",
+      "cta": "Discuss your next step"
+    },
+    "local": {
+      "label": "Local services",
+      "tag": "A LITTLE MORE ROOM TO GROW",
+      "heading": "A garden worth coming home to.",
+      "body": "Garden design and maintenance shaped around your space and the way you use it.",
+      "service": "Garden care",
+      "cta": "Plan your garden"
+    }
+  }
+}

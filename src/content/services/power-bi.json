@@ -3,9 +3,9 @@
   "title": "Power BI",
   "seoTitle": "Power BI Consultant & Dashboard Development | EFIops",
   "metaDescription": "Power BI dashboards, data models and reporting improvements for clearer business decisions. Work directly with a Maidstone-based operations and data specialist.",
-  "h1": "Power BI dashboards that make the next decision clearer.",
-  "eyebrow": "Reporting that supports decisions",
-  "lead": "Bring your data into reporting that answers useful business questions. EFIops helps you define the measures, connect the sources and build dashboards your team can understand and use.",
+  "h1": "Stop rebuilding the same report.",
+  "eyebrow": "Power BI · Clarity from your data",
+  "lead": "When every number needs an explanation, a dashboard should help you find it. Bring sales, costs, capacity and performance into a reporting view that tells your team where to look next.",
   "sections": [
     {
       "heading": "The report should explain the work, not add to it.",
@@ -65,5 +65,22 @@
   "visualKey": "power-bi",
   "primaryIntent": "Power BI consultant; Power BI dashboard development.",
   "publicationState": "published",
-  "summary": "Make complex data easier to understand with reporting built around real decisions."
+  "summary": "Turn scattered records into useful answers, with measures your team can trust.",
+  "useCases": [
+    {
+      "audience": "A retailer",
+      "title": "Which channel is actually making money?",
+      "body": "Put sales beside costs and returns. Compare online and in-store performance without confusing revenue with profit."
+    },
+    {
+      "audience": "An operations team",
+      "title": "Can we deliver next week’s plan?",
+      "body": "Bring orders, staffing and capacity into one view. Spot a busy day before it becomes a missed commitment."
+    },
+    {
+      "audience": "A business owner",
+      "title": "Why is the headline number different?",
+      "body": "Agree the definitions behind each measure, trace the source and investigate differences instead of debating spreadsheets."
+    }
+  ]
 }

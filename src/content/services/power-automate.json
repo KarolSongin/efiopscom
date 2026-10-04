@@ -3,9 +3,9 @@
   "title": "Power Automate",
   "seoTitle": "Power Automate Consultant & Workflow Automation | EFIops",
   "metaDescription": "Automate reminders, approvals, alerts and recurring admin with Microsoft Power Automate. Practical workflows scoped around your business process.",
-  "h1": "Power Automate workflows that keep everyday work moving.",
-  "eyebrow": "Less chasing. Clearer next steps.",
-  "lead": "Replace repeated checks, copied details and forgotten reminders with a workflow built around your process. EFIops designs Microsoft Power Automate solutions with clear triggers, conditions and a way to handle exceptions.",
+  "h1": "Keep work moving. Lose the chasing.",
+  "eyebrow": "Power Automate · A dependable next step",
+  "lead": "A quote needs following up. An approval is waiting. A review is due. Turn the steps someone has to remember into workflows with clear rules—and a visible place for exceptions.",
   "sections": [
     {
       "heading": "Some work only happens because somebody remembers.",
@@ -65,5 +65,22 @@
   "visualKey": "power-automate",
   "primaryIntent": "Power Automate consultant; Microsoft workflow automation.",
   "publicationState": "published",
-  "summary": "Replace repetitive steps with workflows that know what should happen next."
+  "summary": "Keep reminders, approvals and recurring admin moving without the repeated checks.",
+  "useCases": [
+    {
+      "audience": "Sales follow-up",
+      "title": "The quote is sent. Then what?",
+      "body": "Prepare the next follow-up when no reply arrives, and stop the reminder when the conversation moves forward."
+    },
+    {
+      "audience": "People operations",
+      "title": "The review date shouldn’t be a surprise.",
+      "body": "Route due reviews to the right manager, with a clear fallback when a recipient or date is missing."
+    },
+    {
+      "audience": "Daily operations",
+      "title": "Tell me when the plan changes.",
+      "body": "Compare new forecasts with the agreed baseline and flag the changes that actually need attention."
+    }
+  ]
 }

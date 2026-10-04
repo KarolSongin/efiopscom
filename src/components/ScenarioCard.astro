@@ -1,0 +1,711 @@
+---
+import Icon from './Icon.astro';
+import scenarios from '../data/scenarios.json';
+interface Props {
+  kind: string;
+  compact?: boolean;
+}
+const { kind, compact = false } = Astro.props;
+const icon = (
+  {
+    'power-bi': 'chart',
+    'power-automate': 'workflow',
+    'ai-assistants': 'message',
+    'jev-ai-integration': 'sliders',
+    'custom-business-apps': 'grid',
+    'system-integrations': 'link',
+    'web-design-development': 'globe',
+    'website-optimisation': 'globe',
+    seo: 'search',
+    'computer-vision': 'camera',
+  } as Record<string, string>
+)[kind];
+const title = (
+  {
+    'power-bi': 'Sales, with the margin in view.',
+    'power-automate': 'The quote. The reply. The next step.',
+    'ai-assistants': 'A useful answer starts with a source.',
+    'jev-ai-integration': 'Different requests. Different routes.',
+    'custom-business-apps': 'Can the team cover the plan?',
+    'system-integrations': 'One order. Two connected systems.',
+    'web-design-development': 'A better first conversation.',
+    'website-optimisation': 'Make the next step easier to find.',
+    seo: 'A page that answers the search.',
+    'computer-vision': 'The image changes. The decision should too.',
+  } as Record<string, string>
+)[kind];
+---
+
+<div
+  class:list={['business-card', `scenario-${kind}`, { 'card-compact': compact }]}
+  data-business-card={kind}
+>
+  <div class="business-card-top">
+    <span class="tile-icon">
+      <Icon name={icon} />
+    </span>
+    <div>
+      <span class="ui-label">
+        {
+          (
+            {
+              'power-bi': 'Weekly sales overview',
+              'power-automate': 'Quote follow-up',
+              'ai-assistants': 'Order support',
+              'jev-ai-integration': 'Request routing',
+              'custom-business-apps': 'Capacity planner',
+              'system-integrations': 'Order connection',
+              'web-design-development': 'Enquiry journey',
+              'website-optimisation': 'Mobile usability',
+              seo: 'Search intent',
+              'computer-vision': 'Visual measurement',
+            } as Record<string, string>
+          )[kind]
+        }
+      </span>
+      <strong>{title}</strong>
+    </div>
+    <span class="card-corner" aria-hidden="true">
+      <Icon name="arrow" size={17} />
+    </span>
+  </div>
+  {kind === 'power-bi' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose sales channel">
+        <button data-channel="all" aria-pressed="true">
+          All channels
+        </button>
+        <button data-channel="online" aria-pressed="false">
+          Online
+        </button>
+        <button data-channel="store" aria-pressed="false">
+          In store
+        </button>
+      </div>
+      <div class="report-metrics">
+        <div>
+          <span>Sales</span>
+          <strong data-revenue>£42,600</strong>
+          <small>
+            <span data-orders>134</span> orders
+          </small>
+        </div>
+        <div>
+          <span>Gross profit</span>
+          <strong data-profit>£10,750</strong>
+          <small>Sales minus direct costs</small>
+        </div>
+      </div>
+      <div class="report-plot">
+        <div class="plot-grid" aria-hidden="true">
+          <span>£12k</span>
+          <span>£6k</span>
+          <span>£0</span>
+        </div>
+        <div
+          class="sales-bars"
+          role="img"
+          aria-label="Sales Monday £7,200, Tuesday £9,600, Wednesday £7,800, Thursday £10,200, Friday £7,800."
+        >
+          {scenarios.sales.all.daily.map((v, i) => (
+            <div>
+              <div class="sales-bar-track">
+                <span data-sales-bar style={`--sales-height:${(v / 12000) * 100}%`}></span>
+              </div>
+              <span>{['M', 'T', 'W', 'T', 'F'][i]}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="card-fact">
+        <span>Gross margin</span>
+        <strong>
+          <span data-margin>25.2</span>%
+        </strong>
+        <span class="muted">
+          Direct costs: <span data-costs>£31,850</span>
+        </span>
+      </div>
+    </>
+  )}
+  {kind === 'power-automate' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose enquiry response">
+        <button data-enquiry="waiting" aria-pressed="true">
+          No reply yet
+        </button>
+        <button data-enquiry="replied" aria-pressed="false">
+          Reply received
+        </button>
+      </div>
+      <div class="enquiry-mini">
+        <span class="contact-avatar">P</span>
+        <div>
+          <strong>Project enquiry · 1042</strong>
+          <span>Website redesign · quote sent</span>
+        </div>
+        <span class="tiny-status">2 days</span>
+      </div>
+      <ol class="connected-steps" data-enquiry-steps>
+        {scenarios.enquiry.waiting.steps.map((s, i) => (
+          <li>
+            <span>{i < 3 ? <Icon name="check" size={14} /> : <Icon name="clock" size={14} />}</span>
+            <strong>{s}</strong>
+          </li>
+        ))}
+      </ol>
+      <div class="business-outcome" role="status" aria-live="polite">
+        <Icon name="workflow" size={19} />
+        <div>
+          <strong data-enquiry-status>Follow-up ready</strong>
+          <p data-enquiry-detail>{scenarios.enquiry.waiting.detail}</p>
+        </div>
+      </div>
+    </>
+  )}
+  {kind === 'ai-assistants' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose a support question">
+        <button data-question="delivery" aria-pressed="true">
+          Delivery update
+        </button>
+        <button data-question="missing" aria-pressed="false">
+          Change the address
+        </button>
+      </div>
+      <div class="chat-exchange">
+        <div class="chat-question">
+          <span class="ui-label">The question</span>
+          <p data-chat-question>{scenarios.assistant.delivery.question}</p>
+        </div>
+        <div class="chat-answer">
+          <span class="chat-brand">
+            <Icon name="message" size={16} /> Connected assistant
+          </span>
+          <p data-chat-answer>{scenarios.assistant.delivery.answer}</p>
+          <span class="source-reference">
+            <Icon name="file" size={14} />
+            <span data-chat-source>{scenarios.assistant.delivery.source}</span>
+          </span>
+        </div>
+      </div>
+      <div class="card-fact">
+        <Icon name="shield" size={16} />
+        <strong data-chat-next>{scenarios.assistant.delivery.next}</strong>
+      </div>
+    </>
+  )}
+  {kind === 'jev-ai-integration' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose a request to route">
+        <button data-route="lookup" aria-pressed="true">
+          A question
+        </button>
+        <button data-route="change" aria-pressed="false">
+          An action
+        </button>
+        <button data-route="unclear" aria-pressed="false">
+          Unclear request
+        </button>
+      </div>
+      <div class="routing-request">
+        <span class="ui-label">The request</span>
+        <strong data-routing-request>“Where is item A17?”</strong>
+      </div>
+      <div class="route-link" aria-hidden="true">
+        <span></span>
+        <Icon name="down" size={20} />
+        <span></span>
+      </div>
+      <div class="typed-route">
+        <span class="route-type">Route</span>
+        <strong data-routing-result>Stock lookup</strong>
+        <span class="typed-badge">Defined outcome</span>
+      </div>
+      <div class="rule-check">
+        <Icon name="shield" size={18} />
+        <div>
+          <strong data-routing-action>{scenarios.routing.lookup.action}</strong>
+          <p data-routing-note>{scenarios.routing.lookup.note}</p>
+        </div>
+      </div>
+    </>
+  )}
+  {kind === 'custom-business-apps' && (
+    <>
+      <div class="planner-context">
+        <span>Weekly packing plan</span>
+        <span>4 min per unit · 32 h per person</span>
+      </div>
+      <div class="planner-control">
+        <label>
+          Units to deliver <output data-planner-volume>1,200</output>
+          <input
+            class="js-only"
+            type="range"
+            min="600"
+            max="2000"
+            step="100"
+            value="1200"
+            data-volume
+            aria-label="Weekly units to deliver"
+          />
+        </label>
+        <div class="range-ends">
+          <span>600 units</span>
+          <span>2,000 units</span>
+        </div>
+      </div>
+      <div class="people-control">
+        <span>People available</span>
+        <div>
+          <button class="js-only" data-staff-change="-1" aria-label="Remove one person">
+            −
+          </button>
+          <strong data-staff>3</strong>
+          <button class="js-only" data-staff-change="1" aria-label="Add one person">
+            +
+          </button>
+        </div>
+      </div>
+      <div class="planner-metrics">
+        <div>
+          <span>Hours required</span>
+          <strong>
+            <span data-required>80</span>
+            <small> h</small>
+          </strong>
+        </div>
+        <div>
+          <span>Hours available</span>
+          <strong>
+            <span data-available>96</span>
+            <small> h</small>
+          </strong>
+        </div>
+      </div>
+      <div
+        class="load-meter"
+        role="img"
+        aria-label="80 of 96 available hours required"
+        data-load-meter
+      >
+        <span data-load-fill style="width:83.33%"></span>
+      </div>
+      <div class="planner-decision" role="status" aria-live="polite">
+        <Icon name="check" size={19} />
+        <strong data-plan-balance>16 h spare</strong>
+        <span data-plan-action>The weekly plan fits.</span>
+      </div>
+    </>
+  )}
+  {kind === 'system-integrations' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose the record condition">
+        <button data-record="valid" aria-pressed="true">
+          Complete record
+        </button>
+        <button data-record="missing" aria-pressed="false">
+          Missing product code
+        </button>
+      </div>
+      <div class="mapping-head">
+        <span>Order system</span>
+        <Icon name="link" size={17} />
+        <span>Reporting record</span>
+      </div>
+      <div class="mapping-table">
+        <div>
+          <span>order_id</span>
+          <strong>1042</strong>
+          <Icon name="chevron" size={14} />
+          <span>externalOrderId</span>
+          <strong>1042</strong>
+        </div>
+        <div>
+          <span>item_sku</span>
+          <strong data-source-sku>SKU-014</strong>
+          <Icon name="chevron" size={14} />
+          <span>productCode</span>
+          <strong data-target-sku>SKU-014</strong>
+        </div>
+        <div>
+          <span>qty</span>
+          <strong>12</strong>
+          <Icon name="chevron" size={14} />
+          <span>quantity</span>
+          <strong>12</strong>
+        </div>
+      </div>
+      <div class="integration-status" role="status" aria-live="polite">
+        <Icon name="check" size={19} />
+        <div>
+          <strong data-record-status>Record ready to transfer</strong>
+          <p data-record-note>Identifiers and quantities match the agreed mapping.</p>
+        </div>
+      </div>
+    </>
+  )}
+  {kind === 'web-design-development' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose a business website">
+        <button data-website="trades" aria-pressed="true">
+          Trades
+        </button>
+        <button data-website="consulting" aria-pressed="false">
+          Consulting
+        </button>
+        <button data-website="local" aria-pressed="false">
+          Local services
+        </button>
+      </div>
+      <div class="website-preview">
+        <div class="website-browser">
+          <span class="browser-beads" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+          <span data-website-service>Home renovation</span>
+          <Icon name="globe" size={13} />
+        </div>
+        <div class="website-canvas">
+          <span class="website-overline" data-website-tag>
+            {scenarios.websites.trades.tag}
+          </span>
+          <strong data-website-heading>{scenarios.websites.trades.heading}</strong>
+          <p data-website-body>{scenarios.websites.trades.body}</p>
+          <span class="website-action">
+            <span data-website-cta>{scenarios.websites.trades.cta}</span>
+            <Icon name="arrow" size={12} />
+          </span>
+          <div class="website-sculpture" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="website-footer">
+          <span>Clear offer</span>
+          <Icon name="check" size={12} />
+          <span>Readable on mobile</span>
+          <Icon name="check" size={12} />
+        </div>
+      </div>
+    </>
+  )}
+  {kind === 'website-optimisation' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Compare website journeys">
+        <button data-journey="before" aria-pressed="false">
+          Hard to find
+        </button>
+        <button data-journey="after" aria-pressed="true">
+          A clear next step
+        </button>
+      </div>
+      <div class="journey-device">
+        <div class="device-notch" aria-hidden="true"></div>
+        <span class="ui-label">I need a quote for garden care.</span>
+        <div class="journey-screen">
+          <strong data-journey-heading>Garden care, without the guesswork.</strong>
+          <p data-journey-description>Explore the service. Know the next step.</p>
+          <span class="journey-action" data-journey-action>
+            Request a quote
+          </span>
+        </div>
+      </div>
+      <div class="journey-path" data-journey-path>
+        <span>Service page</span>
+        <Icon name="chevron" size={14} />
+        <span>Enquiry</span>
+      </div>
+      <div class="card-fact">
+        <strong data-journey-count>2 clear steps</strong>
+        <span data-journey-note>From understanding the offer to getting in touch.</span>
+      </div>
+    </>
+  )}
+  {kind === 'seo' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose search intent">
+        <button data-search="service" aria-pressed="true">
+          Find a service
+        </button>
+        <button data-search="question" aria-pressed="false">
+          Answer a question
+        </button>
+      </div>
+      <div class="search-query">
+        <Icon name="search" size={18} />
+        <span data-search-query>garden maintenance Maidstone</span>
+      </div>
+      <div class="search-result">
+        <div>
+          <span class="result-symbol">
+            <Icon name="globe" size={16} />
+          </span>
+          <span data-search-path>Services / Garden maintenance</span>
+        </div>
+        <strong data-search-title>Garden Maintenance in Maidstone</strong>
+        <p data-search-description>
+          Regular garden care, seasonal visits and one-off improvements. Explore what’s included and
+          discuss your garden.
+        </p>
+      </div>
+      <div class="intent-match">
+        <span>
+          <Icon name="file" size={16} /> Clear page purpose
+        </span>
+        <span>
+          <Icon name="link" size={16} /> Relevant next step
+        </span>
+      </div>
+    </>
+  )}
+  {kind === 'computer-vision' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose image conditions">
+        <button data-vision="clear" aria-pressed="true">
+          Stable lighting
+        </button>
+        <button data-vision="difficult" aria-pressed="false">
+          Low contrast
+        </button>
+      </div>
+      <div class="vision-lab">
+        <div class="camera-grid" aria-hidden="true"></div>
+        <span class="camera-label">
+          <Icon name="camera" size={14} /> Measurement view
+        </span>
+        <div class="vision-fruit fruit-left" aria-hidden="true"></div>
+        <div class="vision-fruit fruit-centre" aria-hidden="true"></div>
+        <div class="vision-fruit fruit-right" aria-hidden="true"></div>
+        <div class="vision-reticle">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+          <span data-vision-overlay>48 px across</span>
+        </div>
+        <span class="reference-scale">Reference scale · 5 px/mm</span>
+      </div>
+      <div class="vision-reading">
+        <div>
+          <span>Calculated width</span>
+          <strong data-vision-width>
+            9.6 <small>mm</small>
+          </strong>
+        </div>
+        <div>
+          <span>Next step</span>
+          <strong data-vision-action>Check against reference</strong>
+        </div>
+      </div>
+      <p class="measurement-note" data-vision-note>
+        48 pixels ÷ 5 pixels per millimetre. A real setup needs calibration and evaluation.
+      </p>
+    </>
+  )}
+</div>
+<script>
+  import scenarios from '../data/scenarios.json';
+  import { calculatePlan, formatHours } from '../lib/planning.mjs';
+  const currency = (v: number) =>
+    new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP',
+      maximumFractionDigits: 0,
+    }).format(v);
+  document.querySelectorAll<HTMLElement>('[data-business-card]').forEach((card) => {
+    const text = (selector: string, value: string) => {
+      const el = card.querySelector(selector);
+      if (el) el.textContent = value;
+    };
+    const choose = (attribute: string, fn: (value: string) => void) =>
+      card.querySelectorAll<HTMLButtonElement>(`[${attribute}]`).forEach((button) =>
+        button.addEventListener('click', () => {
+          card
+            .querySelectorAll(`[${attribute}]`)
+            .forEach((el) => el.setAttribute('aria-pressed', String(el === button)));
+          fn(button.getAttribute(attribute)!);
+        }),
+      );
+    choose('data-channel', (key) => {
+      const data = scenarios.sales[key as keyof typeof scenarios.sales];
+      text('[data-revenue]', currency(data.revenue));
+      text('[data-profit]', currency(data.revenue - data.costs));
+      text('[data-orders]', String(data.orders));
+      text('[data-margin]', (((data.revenue - data.costs) / data.revenue) * 100).toFixed(1));
+      text('[data-costs]', currency(data.costs));
+      card
+        .querySelectorAll<HTMLElement>('[data-sales-bar]')
+        .forEach((bar, i) =>
+          bar.style.setProperty('--sales-height', `${(data.daily[i] / 12000) * 100}%`),
+        );
+      card
+        .querySelector('.sales-bars')
+        ?.setAttribute(
+          'aria-label',
+          `${data.label}, daily sales Monday to Friday: ${data.daily.map(currency).join(', ')}.`,
+        );
+    });
+    choose('data-enquiry', (key) => {
+      const data = scenarios.enquiry[key as keyof typeof scenarios.enquiry];
+      text('[data-enquiry-status]', data.status);
+      text('[data-enquiry-detail]', data.detail);
+      card
+        .querySelectorAll('[data-enquiry-steps] li strong')
+        .forEach((el, i) => (el.textContent = data.steps[i]));
+      card.classList.toggle('reply-received', key === 'replied');
+    });
+    choose('data-question', (key) => {
+      const data = scenarios.assistant[key as keyof typeof scenarios.assistant];
+      text('[data-chat-question]', data.question);
+      text('[data-chat-answer]', data.answer);
+      text('[data-chat-source]', data.source);
+      text('[data-chat-next]', data.next);
+      card.classList.toggle('needs-review', key === 'missing');
+    });
+    choose('data-route', (key) => {
+      const data = scenarios.routing[key as keyof typeof scenarios.routing];
+      text('[data-routing-request]', `“${data.request}”`);
+      text('[data-routing-result]', data.route);
+      text('[data-routing-action]', data.action);
+      text('[data-routing-note]', data.note);
+      card.classList.toggle('needs-review', key !== 'lookup');
+    });
+    let staff = 3;
+    const volume = card.querySelector<HTMLInputElement>('[data-volume]');
+    const updatePlan = () => {
+      if (!volume) return;
+      const plan = calculatePlan(Number(volume.value), staff, 32, 4);
+      text('[data-planner-volume]', plan.units.toLocaleString('en-GB'));
+      text('[data-staff]', String(staff));
+      text('[data-required]', formatHours(plan.requiredHours));
+      text('[data-available]', formatHours(plan.availableHours));
+      text(
+        '[data-plan-balance]',
+        `${formatHours(Math.abs(plan.balance))} h ${plan.balance >= 0 ? 'spare' : 'to cover'}`,
+      );
+      text(
+        '[data-plan-action]',
+        plan.balance >= 0 ? 'The weekly plan fits.' : 'Review staffing or the delivery plan.',
+      );
+      card.querySelector<HTMLElement>('[data-load-fill]')!.style.width =
+        `${Math.min(100, plan.utilization)}%`;
+      card
+        .querySelector('[data-load-meter]')!
+        .setAttribute(
+          'aria-label',
+          `${formatHours(plan.requiredHours)} of ${formatHours(plan.availableHours)} available hours required`,
+        );
+      card.classList.toggle('needs-review', plan.balance < 0);
+      card
+        .querySelectorAll<HTMLButtonElement>('[data-staff-change]')
+        .forEach(
+          (b) =>
+            (b.disabled =
+              (staff === 1 && b.dataset.staffChange === '-1') ||
+              (staff === 6 && b.dataset.staffChange === '1')),
+        );
+    };
+    volume?.addEventListener('input', updatePlan);
+    card.querySelectorAll<HTMLButtonElement>('[data-staff-change]').forEach((button) =>
+      button.addEventListener('click', () => {
+        staff = Math.min(6, Math.max(1, staff + Number(button.dataset.staffChange)));
+        updatePlan();
+      }),
+    );
+    choose('data-record', (key) => {
+      const missing = key === 'missing';
+      text('[data-source-sku]', missing ? 'Missing' : 'SKU-014');
+      text('[data-target-sku]', missing ? 'Hold for review' : 'SKU-014');
+      text(
+        '[data-record-status]',
+        missing ? 'Transfer held for review' : 'Record ready to transfer',
+      );
+      text(
+        '[data-record-note]',
+        missing
+          ? 'Product code is required. Keep the source record and resolve the missing field.'
+          : 'Identifiers and quantities match the agreed mapping.',
+      );
+      card.classList.toggle('needs-review', missing);
+    });
+    choose('data-website', (key) => {
+      const data = scenarios.websites[key as keyof typeof scenarios.websites];
+      for (const field of ['tag', 'heading', 'body', 'service', 'cta'] as const)
+        text(`[data-website-${field}]`, data[field]);
+      card.dataset.websiteTheme = key;
+    });
+    choose('data-journey', (key) => {
+      const before = key === 'before';
+      text(
+        '[data-journey-heading]',
+        before ? 'Welcome to our website.' : 'Garden care, without the guesswork.',
+      );
+      text(
+        '[data-journey-description]',
+        before
+          ? 'Browse our pages to find out more about us.'
+          : 'Explore the service. Know the next step.',
+      );
+      text('[data-journey-action]', before ? 'More information' : 'Request a quote');
+      text('[data-journey-count]', before ? '4 steps to find contact' : '2 clear steps');
+      text(
+        '[data-journey-note]',
+        before
+          ? 'Menu → services → more information → contact.'
+          : 'From understanding the offer to getting in touch.',
+      );
+      const path = card.querySelector('[data-journey-path]')!;
+      path.replaceChildren(
+        ...(before
+          ? ['Menu', 'Services', 'More info', 'Contact']
+          : ['Service page', 'Enquiry']
+        ).map((label) => {
+          const span = document.createElement('span');
+          span.textContent = label;
+          return span;
+        }),
+      );
+      card.classList.toggle('journey-before', before);
+    });
+    choose('data-search', (key) => {
+      const question = key === 'question';
+      text(
+        '[data-search-query]',
+        question ? 'how often should a garden be maintained' : 'garden maintenance Maidstone',
+      );
+      text(
+        '[data-search-path]',
+        question ? 'Guidance / Planning garden care' : 'Services / Garden maintenance',
+      );
+      text(
+        '[data-search-title]',
+        question ? 'How Often Does a Garden Need Maintenance?' : 'Garden Maintenance in Maidstone',
+      );
+      text(
+        '[data-search-description]',
+        question
+          ? 'A useful answer depends on the garden, the season and what you want to maintain. Start with the tasks that need a regular plan.'
+          : 'Regular garden care, seasonal visits and one-off improvements. Explore what’s included and discuss your garden.',
+      );
+    });
+    choose('data-vision', (key) => {
+      const difficult = key === 'difficult';
+      card.classList.toggle('vision-difficult', difficult);
+      text('[data-vision-overlay]', difficult ? 'Edge needs review' : '48 px across');
+      const width = card.querySelector('[data-vision-width]')!;
+      width.textContent = difficult ? 'Not accepted' : '9.6 mm';
+      text('[data-vision-action]', difficult ? 'Review the image' : 'Check against reference');
+      text(
+        '[data-vision-note]',
+        difficult
+          ? 'When the boundary is unclear, hold the measurement for review. Lighting is part of the setup.'
+          : '48 pixels ÷ 5 pixels per millimetre. A real setup needs calibration and evaluation.',
+      );
+    });
+  });
+</script>

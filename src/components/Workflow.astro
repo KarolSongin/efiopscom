@@ -1,95 +1,93 @@
 ---
-import core from '../data/core.json';
+import experience from '../data/experience.json';
+import ScenarioCard from './ScenarioCard.astro';
+import Icon from './Icon.astro';
+const data = experience.playground;
 ---
 
-<section class="workflow-section">
-  <div class="container workflow-grid">
-    <div>
-      <p class="eyebrow">Connected work, in practice</p>
-      <h2>
-        See how the pieces
-        <br />
-        can work together.
-      </h2>
-      <p>{core.home.blocks['Interactive example'][0]}</p>
-      <p class="workflow-caption">Illustrative workflow using fictional data.</p>
+<section class="working-day" id="working-day">
+  <div class="working-day-glow" aria-hidden="true"></div>
+  <div class="container section">
+    <div class="working-day-heading">
+      <p class="eyebrow">Try a different way of working</p>
+      <h2>{data.heading}</h2>
+      <p>{data.body}</p>
     </div>
-    <div class="workflow-demo">
-      <div class="scenario-controls" role="group" aria-label="Choose an illustrative scenario">
-        <button aria-pressed="true" data-scenario="reporting">
-          Reporting
+    <div class="working-tabs js-only" role="tablist" aria-label="Explore a business situation">
+      {data.tabs.map((tab, i) => (
+        <button
+          id={`tab-${tab.key}`}
+          role="tab"
+          aria-controls={`panel-${tab.key}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          data-work-tab={tab.key}
+        >
+          <span>0{i + 1}</span>
+          {tab.label}
+          <Icon name="arrow" size={16} />
         </button>
-        <button aria-pressed="false" data-scenario="enquiry">
-          Enquiry follow-up
-        </button>
-        <button aria-pressed="false" data-scenario="ai">
-          AI request routing
-        </button>
-      </div>
-      <div class="scenario-panel" aria-live="polite">
-        <h3 id="scenario-title">Bring separate records into one reporting view.</h3>
-        <ol id="scenario-steps">
-          <li>
-            <span>01</span>Separate records
-          </li>
-          <li>
-            <span>02</span>Consistent definitions
-          </li>
-          <li>
-            <span>03</span>Reporting view
-          </li>
-          <li>
-            <span>04</span>Review differences
-          </li>
-        </ol>
-      </div>
-      <noscript>
-        <p>Enquiry follow-up: Capture the requirements and flag the next follow-up.</p>
-        <p>
-          AI request routing: Route a stock question to a defined lookup, or hand it to a person.
-        </p>
-      </noscript>
+      ))}
     </div>
+    {data.tabs.map((tab, i) => (
+      <div
+        class:list={['working-panel', { 'initial-panel': i === 0 }]}
+        id={`panel-${tab.key}`}
+        role="tabpanel"
+        aria-labelledby={`tab-${tab.key}`}
+        data-work-panel={tab.key}
+        tabindex="0"
+      >
+        <div class="working-story">
+          <p class="eyebrow">{tab.eyebrow}</p>
+          <h3>{tab.title}</h3>
+          <p>{tab.body}</p>
+          <a class="text-link" href={tab.href}>
+            {tab.link}
+            <Icon name="arrow" size={18} />
+          </a>
+          <div class="working-detail">
+            <span class="detail-line"></span>
+            <span>
+              A clearer input.
+              <br />A useful next decision.
+            </span>
+          </div>
+        </div>
+        <div class="working-visual">
+          <ScenarioCard kind={tab.kind} />
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 <script>
-  const scenarios = {
-    reporting: {
-      title: 'Bring separate records into one reporting view.',
-      steps: ['Separate records', 'Consistent definitions', 'Reporting view', 'Review differences'],
-    },
-    enquiry: {
-      title: 'Capture the requirements and flag the next follow-up.',
-      steps: ['Enquiry received', 'Details captured', 'Follow-up flagged', 'Person reviews'],
-    },
-    ai: {
-      title: 'Route a stock question to a defined lookup, or hand it to a person.',
-      steps: [
-        'Stock question',
-        'Application access check',
-        'Approved lookup',
-        'Answer or human review',
-      ],
-    },
-  };
-  document.querySelectorAll<HTMLButtonElement>('[data-scenario]').forEach((button) =>
-    button.addEventListener('click', () => {
-      const key = button.dataset.scenario as keyof typeof scenarios;
-      const data = scenarios[key];
-      document
-        .querySelectorAll('[data-scenario]')
-        .forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
-      document.querySelector('#scenario-title')!.textContent = data.title;
-      const list = document.querySelector('#scenario-steps')!;
-      list.replaceChildren(
-        ...data.steps.map((text, i) => {
-          const li = document.createElement('li');
-          const span = document.createElement('span');
-          span.textContent = '0' + (i + 1);
-          li.append(span, document.createTextNode(text));
-          return li;
-        }),
-      );
-    }),
-  );
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('[data-work-tab]')];
+  const panels = [...document.querySelectorAll<HTMLElement>('[data-work-panel]')];
+  function activate(tab: HTMLButtonElement) {
+    tabs.forEach((button) => {
+      const selected = button === tab;
+      button.setAttribute('aria-selected', String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+    panels.forEach((panel) => {
+      panel.classList.toggle('initial-panel', panel.dataset.workPanel === tab.dataset.workTab);
+      panel.hidden = panel.dataset.workPanel !== tab.dataset.workTab;
+    });
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => activate(tab));
+    tab.addEventListener('keydown', (e) => {
+      let index = i;
+      if (e.key === 'ArrowRight') index = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft') index = (i + tabs.length - 1) % tabs.length;
+      else if (e.key === 'Home') index = 0;
+      else if (e.key === 'End') index = tabs.length - 1;
+      else return;
+      e.preventDefault();
+      activate(tabs[index]);
+      tabs[index].focus();
+    });
+  });
+  if (tabs.length) activate(tabs[0]);
 </script>

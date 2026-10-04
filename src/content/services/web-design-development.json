@@ -3,9 +3,9 @@
   "title": "Web design and development",
   "seoTitle": "Web Design in Maidstone & Kent | EFIops",
   "metaDescription": "Distinctive business websites with clear content, thoughtful design and fast performance. Maidstone-based web development for businesses in Kent and across the UK.",
-  "h1": "Web design in Maidstone, built around your business.",
-  "eyebrow": "A website that does your business justice",
-  "lead": "Give people a clearer picture of what you do and a better reason to choose you. EFIops combines content, design and development to create business websites that feel distinctive and work well.",
+  "h1": "Make it easier to choose you.",
+  "eyebrow": "Web design · Maidstone, Kent & across the UK",
+  "lead": "Your website should make a good business easy to understand. Bring the offer, the design and the enquiry journey together in a distinctive site that feels right on every screen.",
   "sections": [
     {
       "heading": "Your business has moved forward. Has your website?",
@@ -64,5 +64,22 @@
   "visualKey": "web-design-development",
   "primaryIntent": "web design Maidstone; business website development.",
   "publicationState": "published",
-  "summary": "Give your business a clear, distinctive website built to be useful."
+  "summary": "Create a distinctive website that explains your offer and gives visitors a clear next step.",
+  "useCases": [
+    {
+      "audience": "A local service business",
+      "title": "From “what do you do?” to “can you help me?”",
+      "body": "Give each service a clear page, useful detail and a contact route that makes the first enquiry easier."
+    },
+    {
+      "audience": "A consultant or specialist",
+      "title": "Show the thinking behind the service.",
+      "body": "Explain the work, the fit and the approach. Let relevant expertise and approved evidence do more than generic sales claims."
+    },
+    {
+      "audience": "An established business",
+      "title": "The business has moved on. The site can too.",
+      "body": "Review what should stay, rebuild what is holding the experience back, and plan the transition around existing valuable URLs."
+    }
+  ]
 }

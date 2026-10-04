@@ -3,9 +3,9 @@
   "title": "Custom business apps",
   "seoTitle": "Custom Business Apps & Internal Tools | EFIops",
   "metaDescription": "Purpose-built planning tools, operational applications and portals. EFIops develops business software around your workflow, data and users.",
-  "h1": "Custom business apps for the way your team works.",
-  "eyebrow": "Software that fits the work",
-  "lead": "When the process has outgrown a spreadsheet and existing software doesn't fit, a focused application can bring the work into one useful place. EFIops builds planning tools, operational interfaces and portals around the people using them.",
+  "h1": "Your process deserves a better tool.",
+  "eyebrow": "Custom applications · Built around your team",
+  "lead": "If your working day depends on copied cells, extra tabs and knowing which file is current, there may be a better way. Build a focused planning tool, portal or operational screen that fits the job.",
   "sections": [
     {
       "heading": "You shouldn't need five workarounds to complete one job.",
@@ -65,5 +65,22 @@
   "visualKey": "custom-business-apps",
   "primaryIntent": "custom business application developer; internal tools development.",
   "publicationState": "published",
-  "summary": "Build the planning tools, portals and operational screens your business needs."
+  "summary": "Bring plans, records and actions into an application built for the way your team works.",
+  "useCases": [
+    {
+      "audience": "Planning and scheduling",
+      "title": "What happens if another order comes in?",
+      "body": "Change the volume, compare the hours required with available staffing, and see which part of the plan needs reviewing."
+    },
+    {
+      "audience": "Operations management",
+      "title": "One place for the current status.",
+      "body": "Give each role the records and actions it needs. Keep updates attached to the work instead of scattered across inboxes."
+    },
+    {
+      "audience": "Customer or supplier coordination",
+      "title": "A clearer way to exchange information.",
+      "body": "Scope a controlled portal for requests, documents or progress updates, with the access rules designed around the users."
+    }
+  ]
 }

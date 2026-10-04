@@ -3,9 +3,9 @@
   "title": "Computer vision",
   "seoTitle": "Computer Vision Prototypes & Edge AI | EFIops",
   "metaDescription": "Explore camera-based measurement and inspection with a focused computer vision prototype. Python, image processing and edge-device integration around a defined use case.",
-  "h1": "Computer vision prototypes for practical inspection and measurement.",
-  "eyebrow": "A focused test of what a camera can help you see",
-  "lead": "Explore whether image processing or AI can support a defined visual task. EFIops develops scoped prototypes that combine camera input, analysis and useful output for your workflow.",
+  "h1": "Turn a visual check into a useful signal.",
+  "eyebrow": "Computer vision · Test the practical fit",
+  "lead": "Can a camera help measure an object, spot a condition or create a record for review? Start with a defined task, representative images and a prototype that shows where the approach works—and where it needs help.",
   "sections": [
     {
       "heading": "Start with the observation you need to make.",
@@ -65,5 +65,22 @@
   "visualKey": "computer-vision",
   "primaryIntent": "computer vision prototype developer; edge AI proof of concept.",
   "publicationState": "published",
-  "summary": "Explore visual measurement and inspection with a focused prototype."
+  "summary": "Explore camera-based measurement and inspection through a focused, evaluated prototype.",
+  "useCases": [
+    {
+      "audience": "Visual measurement",
+      "title": "Can we make this check more repeatable?",
+      "body": "Set the camera, lighting and reference measurement, then assess how the result changes with the conditions."
+    },
+    {
+      "audience": "Inspection support",
+      "title": "Which images need a closer look?",
+      "body": "Test suitable processing against labelled material and route difficult cases to review. Do not assume the camera replaces an inspector."
+    },
+    {
+      "audience": "Reporting and record keeping",
+      "title": "Make the observation useful beyond the image.",
+      "body": "Connect a suitable measurement or review result to a record, dashboard or operational workflow."
+    }
+  ]
 }

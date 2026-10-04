@@ -3,9 +3,9 @@
   "title": "Website optimisation",
   "seoTitle": "Website Optimisation: Speed, UX & Conversion | EFIops",
   "metaDescription": "Improve an existing website's performance, usability and enquiry journey. EFIops identifies practical changes and checks their impact against a baseline.",
-  "h1": "A faster, clearer website with an easier next step.",
-  "eyebrow": "Make more of the website you have",
-  "lead": "Improve the parts of your website that create friction. EFIops reviews performance, usability, content and conversion paths, then implements focused changes based on what the site needs.",
+  "h1": "Make the website you have work harder.",
+  "eyebrow": "Website optimisation · Remove the friction",
+  "lead": "The useful change isn’t always a rebuild. Find the slow page, the awkward menu, the unclear offer or the form that asks too much—and improve the part standing between a visit and a useful enquiry.",
   "sections": [
     {
       "heading": "A useful improvement may be smaller than a rebuild.",
@@ -65,5 +65,22 @@
   "visualKey": "website-optimisation",
   "primaryIntent": "website optimisation services; website speed and conversion improvements.",
   "publicationState": "published",
-  "summary": "Improve speed, usability and the path from visit to enquiry."
+  "summary": "Improve speed, clarity and the journey from a visit to a useful enquiry.",
+  "useCases": [
+    {
+      "audience": "Mobile visitors",
+      "title": "Can I find the next step with one hand?",
+      "body": "Review the real navigation, text and controls on small screens. Put the useful action where people can find it."
+    },
+    {
+      "audience": "An existing enquiry form",
+      "title": "Which question is making people stop?",
+      "body": "Review required fields, error states and confirmation. Check the journey end to end rather than treating a button click as a lead."
+    },
+    {
+      "audience": "A slow page",
+      "title": "What is the browser waiting for?",
+      "body": "Measure the baseline, inspect assets and scripts, then check changes under the same conditions. Keep technical results separate from sales outcomes."
+    }
+  ]
 }

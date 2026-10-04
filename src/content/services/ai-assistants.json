@@ -3,9 +3,9 @@
   "title": "AI assistants",
   "seoTitle": "AI Assistants & Business System Integration | EFIops",
   "metaDescription": "Connect AI assistants to business knowledge, records and defined workflows. Scope a practical text or voice assistant with clear limits and human handover.",
-  "h1": "AI assistants connected to the systems your business uses.",
-  "eyebrow": "Conversation connected to useful work",
-  "lead": "Give people a simpler way to find information and start the right workflow. EFIops builds scoped assistants that can use authorised business data, ask for missing details and pass requests to a person when needed.",
+  "h1": "Ask a question. Get somewhere useful.",
+  "eyebrow": "AI assistants · Connected to the work",
+  "lead": "“When will this order arrive?” “Where is that procedure?” Give your team a more direct route to authorised information, with useful source references and a person to help when the answer needs a closer look.",
   "sections": [
     {
       "heading": "The useful answer often lives behind another screen.",
@@ -65,5 +65,22 @@
   "visualKey": "ai-assistants",
   "primaryIntent": "AI business assistant development; AI integration into existing systems.",
   "publicationState": "published",
-  "summary": "Connect conversation to the records, knowledge and workflows your team uses."
+  "summary": "Find information and start defined workflows through a connected text or voice assistant.",
+  "useCases": [
+    {
+      "audience": "Customer service",
+      "title": "Where is order 1042?",
+      "body": "Retrieve the authorised order record and delivery status. Pass a missing or conflicting answer to a person with the context attached."
+    },
+    {
+      "audience": "Internal knowledge",
+      "title": "Which procedure should I use?",
+      "body": "Find the relevant approved document and point back to the source, rather than asking colleagues to remember every detail."
+    },
+    {
+      "audience": "A busy operations team",
+      "title": "Can I ask instead of opening five screens?",
+      "body": "Explore a focused text or voice interface for a read-only lookup or a controlled request inside your existing application."
+    }
+  ]
 }

@@ -21,7 +21,7 @@ test('all 17 required commercial and legal pages are built with unique metadata'
     assert.ok(html.includes(`href="https://efiops.com${route}"`));
     assert.doesNotMatch(
       html,
-      /Evidence plan:|Primary intent:|PRIVATE_EVIDENCE_SENTINEL|PRIVATE_ARTICLE_SENTINEL|\[CONFIRMED/,
+      /Illustrative example|fictional data|Proposed workflow example|Evidence plan:|Primary intent:|PRIVATE_EVIDENCE_SENTINEL|PRIVATE_ARTICLE_SENTINEL|\[CONFIRMED/,
     );
     const graph = JSON.parse(
       html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1],
@@ -58,6 +58,7 @@ test('all ten distinct services retain complete supplied section and FAQ text', 
         ...(x.caption ? [x.caption] : []),
       ]),
       ...s.faqs.flatMap((x) => [x.question, x.answer]),
+      ...s.useCases.flatMap((x) => [x.audience, x.title, x.body]),
     ])
       assert.ok(visible.includes(clean(str)), `${s.slug}: missing ${str}`);
     for (const related of s.relatedServices) assert.ok(html.includes(`/services/${related}/`));

@@ -1,80 +1,189 @@
 ---
-const { compact = false } = Astro.props;
+import Icon from './Icon.astro';
+import scenarios from '../data/scenarios.json';
+const { daily } = scenarios.planning;
 ---
 
-<figure
-  class:list={['system-visual', { 'compact-visual': compact }]}
-  aria-label="Illustrative stock request: identify the route, check access, use an approved lookup, then return information or request review."
->
-  <div class="orb orb-one"></div>
-  <div class="orb orb-two"></div>
-  <div class="connector connector-one"></div>
-  <div class="connector connector-two"></div>
-  <div class="float-panel request-panel">
-    <span class="panel-icon">
-      <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M5 19L19 5M5 5h14v14" />
-      </svg>
+<div class="operations-scene" data-operations>
+  <div class="scene-grid" aria-hidden="true"></div>
+  <div class="scene-ring" aria-hidden="true"></div>
+  <div class="scene-sphere sphere-one" aria-hidden="true"></div>
+  <div class="scene-sphere sphere-two" aria-hidden="true"></div>
+  <svg class="scene-wires" viewBox="0 0 620 580" fill="none" aria-hidden="true">
+    <path
+      d="M125 95h190q25 0 25 25v70M445 420v45q0 25-25 25H240"
+      stroke="#188BF6"
+      stroke-width="2"
+      stroke-dasharray="5 7"
+    />
+    <circle cx="125" cy="95" r="5" fill="#188BF6" />
+    <circle cx="240" cy="490" r="5" fill="#188BF6" />
+  </svg>
+  <div class="order-float physical-card">
+    <span class="tile-icon">
+      <Icon name="box" />
     </span>
     <div>
-      <span class="micro">THE REQUEST</span>
-      <p>
-        Where is the material
-        <br />
-        for this job?
-      </p>
+      <span class="ui-label">An order comes in</span>
+      <strong>300 more units. Due Friday.</strong>
+      <span class="float-detail">What does that do to the plan?</span>
     </div>
+    <span class="order-plus">+300</span>
   </div>
-  <div class="main-panel">
-    <div class="panel-top">
-      <span class="panel-mark" aria-hidden="true">
-        E
+  <div class="operations-board physical-card">
+    <div class="board-top">
+      <span class="board-symbol">
+        <Icon name="grid" size={18} />
       </span>
-      <strong>Connected work</strong>
-      <span class="panel-dots" aria-hidden="true">
-        •••
-      </span>
+      <strong>Weekly operations</strong>
+      <span class="board-tag">Packing team</span>
     </div>
-    <div class="system-content">
-      <div class="system-sidebar" aria-hidden="true">
-        <span class="selected">▦</span>
-        <span>⇄</span>
-        <span>▤</span>
-        <span>⚙</span>
+    <div class="board-content">
+      <div class="board-sidebar" aria-hidden="true">
+        <span class="active">
+          <Icon name="chart" size={18} />
+        </span>
+        <span>
+          <Icon name="box" size={18} />
+        </span>
+        <span>
+          <Icon name="person" size={18} />
+        </span>
       </div>
-      <div class="system-main">
-        <span class="micro">REQUEST OVERVIEW</span>
-        <strong class="visual-title">A clear next step.</strong>
-        <div class="route-box">
-          <span class="route-symbol" aria-hidden="true">
-            ⇄
-          </span>
+      <div class="board-main">
+        <div class="board-title">
           <div>
-            <small>Route identified</small>
-            <strong>Stock information</strong>
+            <span class="ui-label">The week ahead</span>
+            <strong>A plan you can act on.</strong>
           </div>
-          <span aria-hidden="true">✓</span>
+          <span class="week-badge">Mon — Fri</span>
         </div>
-        <div class="lookup-row">
-          <span>Source</span>
-          <strong>Approved lookup</strong>
+        <div class="board-kpis">
+          <div>
+            <span>Units to deliver</span>
+            <strong data-plan-units>1,200</strong>
+            <small>Confirmed demand</small>
+          </div>
+          <div>
+            <span>Hours required</span>
+            <strong>
+              <span data-plan-hours>80</span>
+              <em> h</em>
+            </strong>
+            <small>4 min per unit</small>
+          </div>
+          <div>
+            <span>Team capacity</span>
+            <strong>
+              96<em> h</em>
+            </strong>
+            <small>3 people × 32 h</small>
+          </div>
         </div>
-        <div class="lookup-row">
-          <span>Access</span>
-          <strong>Application rules checked</strong>
+        <div class="chart-title">
+          <strong>Demand by day</strong>
+          <span>
+            <i></i>Capacity · 288 units/day
+          </span>
+        </div>
+        <div
+          class="demand-chart"
+          aria-label="Weekly demand: Monday 220, Tuesday 240, Wednesday 260, Thursday 240, Friday 240 units. Daily capacity 288 units."
+          data-demand-chart
+        >
+          <div class="capacity-line">
+            <span>288</span>
+          </div>
+          {daily.map((units, i) => (
+            <div class="demand-column">
+              <span class="bar-value" data-day-value>
+                {units}
+              </span>
+              <div class="bar-track">
+                <span data-day-bar style={`--bar-height:${(units / 600) * 100}%`}></span>
+              </div>
+              <span class="day-label">{['Mon', 'Tue', 'Wed', 'Thu', 'Fri'][i]}</span>
+            </div>
+          ))}
+        </div>
+        <div class="board-bottom">
+          <span class="board-health">
+            <Icon name="check" size={16} />
+            <span data-board-status>16 hours of room in the plan</span>
+          </span>
+          <strong>
+            <span data-plan-use>83</span>%<small> of capacity</small>
+          </strong>
         </div>
       </div>
     </div>
   </div>
-  <div class="float-panel outcome-panel">
-    <span class="outcome-icon" aria-hidden="true">
-      ✓
+  <div class="decision-float physical-card" role="status" aria-live="polite">
+    <span class="decision-symbol">
+      <Icon name="check" />
     </span>
     <div>
-      <span class="micro">THE NEXT STEP</span>
-      <p>Information found</p>
-      <small>Or hand over for review</small>
+      <span class="ui-label">The next decision</span>
+      <strong data-decision-title>The plan fits.</strong>
+      <span data-decision-detail>Room for 240 more units this week.</span>
     </div>
   </div>
-  <figcaption>Illustrative example · fictional data</figcaption>
-</figure>
+  <div class="scene-interaction js-only">
+    <button type="button" data-order-change aria-pressed="false">
+      <span class="interaction-dot"></span>
+      <span data-order-label>Add the new order</span>
+      <Icon name="arrow" size={16} />
+    </button>
+    <span>See the numbers change.</span>
+  </div>
+</div>
+<script>
+  import scenarios from '../data/scenarios.json';
+  import { calculatePlan, formatHours } from '../lib/planning.mjs';
+  document.querySelectorAll<HTMLElement>('[data-operations]').forEach((scene) => {
+    const button = scene.querySelector<HTMLButtonElement>('[data-order-change]')!;
+    button.addEventListener('click', () => {
+      const added = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(added));
+      scene.classList.toggle('order-added', added);
+      const base = scenarios.planning;
+      const units = base.units + (added ? base.extraOrder : 0);
+      const plan = calculatePlan(units, base.staff, base.hoursPerPerson, base.minutesPerUnit);
+      const set = (selector: string, value: string) =>
+        (scene.querySelector(selector)!.textContent = value);
+      set('[data-plan-units]', units.toLocaleString('en-GB'));
+      set('[data-plan-hours]', formatHours(plan.requiredHours));
+      set('[data-plan-use]', String(Math.round(plan.utilization)));
+      set(
+        '[data-board-status]',
+        plan.balance >= 0
+          ? `${formatHours(plan.balance)} hours of room in the plan`
+          : `${formatHours(-plan.balance)} hours need covering`,
+      );
+      set(
+        '[data-decision-title]',
+        plan.balance >= 0 ? 'The plan fits.' : 'Review Friday’s capacity.',
+      );
+      set(
+        '[data-decision-detail]',
+        plan.balance >= 0
+          ? `Room for ${Math.round((plan.balance * 60) / base.minutesPerUnit)} more units this week.`
+          : `The weekly total needs ${formatHours(-plan.balance)} more staff hours.`,
+      );
+      set('[data-order-label]', added ? 'Back to the original plan' : 'Add the new order');
+      const daily = base.daily.map((v, i) => v + (added && i === 4 ? base.extraOrder : 0));
+      scene
+        .querySelectorAll<HTMLElement>('[data-day-bar]')
+        .forEach((bar, i) => bar.style.setProperty('--bar-height', `${(daily[i] / 600) * 100}%`));
+      scene
+        .querySelectorAll('[data-day-value]')
+        .forEach((label, i) => (label.textContent = String(daily[i])));
+      scene
+        .querySelector('[data-demand-chart]')!
+        .setAttribute(
+          'aria-label',
+          `Daily demand, Monday to Friday: ${daily.join(', ')} units. Daily capacity 288 units.`,
+        );
+    });
+  });
+</script>

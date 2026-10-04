@@ -2,20 +2,20 @@
   "home": {
     "seoTitle": "Websites, Power BI & Business Automation | EFIops",
     "metaDescription": "EFIops builds business websites, Power BI dashboards, workflow automation and AI integrations. Based in Maidstone, working with businesses across the UK.",
-    "h1": "Make your business work better.",
-    "lead": "Business websites, dashboards and automation built around the way you work. EFIops connects your online presence, your data and your everyday processes—so the next step is easier to see and easier to take.",
-    "eyebrow": "Websites • Data • Automation • AI",
+    "h1": "Good business. Better systems.",
+    "lead": "Make it easier to buy from you. Get answers from your data. Give repeated work a dependable next step. Websites, dashboards, automation and AI—built around the way your business actually works.",
+    "eyebrow": "Business understood. Technology connected.",
     "sections": [
       {
-        "heading": "Where is work getting stuck?",
+        "heading": "Sound familiar?",
         "paragraphs": [
-          "You can't see the whole picture. Reports live in separate spreadsheets. Different teams use different numbers. You spend time assembling information before you can act on it.",
-          "Too much depends on manual work. Someone has to copy the details, send the reminder, check the status or chase the next step. Important work moves only when somebody remembers.",
-          "Your website isn't doing the business justice. Visitors struggle to understand the offer, find what they need or get in touch. The site needs clearer structure, stronger content or better performance."
+          "The report takes longer than the decision. Six spreadsheets, three exports and another Friday spent checking the numbers.",
+          "The next step lives in someone’s head. The reminder, the copied details, the follow-up. Work moves when someone remembers.",
+          "A good business. An underwhelming website. People land on the page, but the offer is unclear and the enquiry is harder than it needs to be."
         ]
       },
       {
-        "heading": "Clearer information. Smoother work. A stronger website.",
+        "heading": "Make the everyday work better.",
         "paragraphs": [
           "See what is happening. Power BI dashboards and custom business tools bring the information you need into a view your team can use.",
           "Connect the next step. Workflow automation, system integrations and AI assistance help move work between the tools you already rely on.",
@@ -101,8 +101,8 @@
   "services": {
     "seoTitle": "Business Automation, Data & Website Services | EFIops",
     "metaDescription": "Explore EFIops services: Power BI, Power Automate, AI and Jev integration, custom apps, system connections, web design, optimisation, SEO and computer vision.",
-    "h1": "Find the right starting point.",
-    "lead": "A business problem rarely arrives with a technology label. Start with what needs to improve, then explore the service that fits.",
+    "h1": "Start with the problem. Find your next step.",
+    "lead": "Better information. Less repetitive work. A website that does the business justice. Explore the services by the improvement you want to make—not just the technology behind it.",
     "eyebrow": "",
     "sections": [],
     "faqs": []

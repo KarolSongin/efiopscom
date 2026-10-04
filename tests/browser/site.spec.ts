@@ -16,6 +16,13 @@ for (const width of [360, 390, 768, 1024, 1440])
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         route,
       ).toBe(true);
+      for (const selector of ['.hero-copy', '.service-hero .hero-lead']) {
+        const element = page.locator(selector);
+        if (await element.count()) {
+          const box = await element.boundingBox();
+          expect(box!.x + box!.width, route + ' readable hero copy').toBeLessThanOrEqual(width + 1);
+        }
+      }
       expect(await page.locator('meta[name=robots]').getAttribute('content')).toBe(
         'noindex, nofollow',
       );
@@ -68,9 +75,11 @@ test('native menu, Escape, mobile navigation and workflow controls', async ({ pa
   await page.keyboard.press('Escape');
   await expect(page.locator('.mega')).not.toBeVisible();
   await expect(page.locator('.services-menu > summary')).toBeFocused();
-  await page.getByRole('button', { name: 'AI request routing', exact: true }).click();
-  await expect(page.locator('#scenario-title')).toContainText('Route a stock question');
-  await expect(page.locator('#scenario-steps')).toContainText('Application access check');
+  await page.getByRole('tab', { name: /A customer question/ }).click();
+  await expect(page.locator('#panel-questions')).toBeVisible();
+  await page.keyboard.press('Home');
+  await expect(page.getByRole('tab', { name: /A busy week/ })).toBeFocused();
+  await expect(page.locator('#panel-planning')).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Menu' }).click();
   await expect(page.locator('#navigation')).toBeVisible();
@@ -163,6 +172,14 @@ for (const route of [
   '/',
   '/services/power-bi/',
   '/services/jev-ai-integration/',
+  '/services/power-automate/',
+  '/services/ai-assistants/',
+  '/services/custom-business-apps/',
+  '/services/system-integrations/',
+  '/services/web-design-development/',
+  '/services/website-optimisation/',
+  '/services/seo/',
+  '/services/computer-vision/',
   '/contact/',
   '/about/',
 ])

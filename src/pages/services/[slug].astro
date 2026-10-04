@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import CTA from '../../components/CTA.astro';
 import FAQ from '../../components/FAQ.astro';
 import ServiceVisual from '../../components/ServiceVisual.astro';
+import Icon from '../../components/Icon.astro';
 import { services, cases } from '../../data/content';
 export async function getStaticPaths() {
   return (await services()).map((entry) => ({
@@ -42,6 +43,30 @@ const split = (text: string) => {
           </a>
         </div>
         <ServiceVisual kind={page.visualKey} />
+      </div>
+    </div>
+  </section>
+  <section class="usecase-section">
+    <div class="container section">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Put it in the context of your work</p>
+          <h2>Picture this in your business.</h2>
+        </div>
+        <p>Different businesses. Familiar problems. Here are a few useful places to start.</p>
+      </div>
+      <div class="usecase-grid">
+        {page.useCases.map((use, i) => (
+          <article>
+            <div class="usecase-top">
+              <span>0{i + 1}</span>
+              <Icon name={i === 0 ? 'chart' : i === 1 ? 'workflow' : 'person'} size={20} />
+            </div>
+            <p class="usecase-audience">{use.audience}</p>
+            <h3>{use.title}</h3>
+            <p>{use.body}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>

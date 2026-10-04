@@ -3,9 +3,9 @@
   "title": "System integrations",
   "seoTitle": "API, SQL & Business System Integration | EFIops",
   "metaDescription": "Connect business applications, APIs and databases. EFIops builds focused integrations for data exchange, reporting and more dependable workflows.",
-  "h1": "Business system integrations that reduce the work between tools.",
-  "eyebrow": "Connect the tools. Improve the flow.",
-  "lead": "Make information easier to move, combine and use. EFIops connects suitable applications, APIs and databases so your team spends less effort transferring the same details by hand.",
+  "h1": "Close the gaps between your systems.",
+  "eyebrow": "System integrations · Information that travels",
+  "lead": "When one system finishes, another person shouldn’t have to start copying. Connect the records your applications, reports and workflows need—with validation, ownership and somewhere for failed transfers to go.",
   "sections": [
     {
       "heading": "The gap between two systems becomes somebody's job.",
@@ -65,5 +65,22 @@
   "visualKey": "system-integrations",
   "primaryIntent": "business system integration; API integration developer; SQL integration.",
   "publicationState": "published",
-  "summary": "Connect applications, APIs and databases so information moves more reliably."
+  "summary": "Move information between APIs, databases and applications with fewer manual handoffs.",
+  "useCases": [
+    {
+      "audience": "Enquiries to CRM",
+      "title": "A form shouldn’t need retyping.",
+      "body": "Map the useful details into the right record, track the transfer and make incomplete requests visible."
+    },
+    {
+      "audience": "Orders to reporting",
+      "title": "Use the same order in both places.",
+      "body": "Connect the source of truth to reporting, keeping identifiers and definitions consistent across the handoff."
+    },
+    {
+      "audience": "Machine or supplier exports",
+      "title": "Different format. Same useful record.",
+      "body": "Normalise agreed files and fields, handle repeats, and hold incomplete rows for review instead of silently dropping them."
+    }
+  ]
 }

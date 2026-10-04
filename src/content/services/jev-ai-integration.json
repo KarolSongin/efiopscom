@@ -3,9 +3,9 @@
   "title": "Jev integration",
   "seoTitle": "Jev AI Integration for Business Workflows | EFIops",
   "metaDescription": "Integrate TypeSafe's Jev into applications for intent routing and structured decisions. Define workflows, evaluate uncertain cases and keep action rules in your code.",
-  "h1": "Put Jev to work inside your business workflows.",
-  "eyebrow": "Structured decisions inside your software",
-  "lead": "EFIops helps you explore where TypeSafe's Jev can support a defined decision: identifying an intent, routing a request or evaluating a candidate against clear criteria. The result connects to application logic you can inspect and test.",
+  "h1": "Turn a request into the right next step.",
+  "eyebrow": "Jev integration · Decisions with structure",
+  "lead": "A question, an action and an unclear request need different responses. Use TypeSafe’s Jev to help choose a defined route, then let your application check access, apply the rules and handle what comes next.",
   "sections": [
     {
       "heading": "Give each part of the system a clear job.",
@@ -33,7 +33,7 @@
         "A team member asks where to find material for a job. The system identifies the request, checks the user's access and runs an approved lookup. It presents the retrieved information or sends the unresolved request to a person."
       ],
       "items": [],
-      "caption": "Proposed workflow example. This is not a claim of a completed client deployment."
+      "caption": ""
     },
     {
       "heading": "A pilot built around your own examples.",
@@ -72,5 +72,22 @@
   "visualKey": "jev-ai-integration",
   "primaryIntent": "Jev integration; TypeSafe AI developer; structured AI workflow decisions.",
   "publicationState": "published",
-  "summary": "Add structured AI decisions to software and route requests into defined workflows."
+  "summary": "Route requests into defined outcomes, with permission and action rules kept in your application.",
+  "useCases": [
+    {
+      "audience": "Stock enquiries",
+      "title": "A lookup or a stock movement?",
+      "body": "Distinguish a question about availability from an action that changes a record. Apply a separate permission check before any change."
+    },
+    {
+      "audience": "Service requests",
+      "title": "Who needs to deal with this?",
+      "body": "Map a supported request to a team or workflow, and ask for clarification when essential context is missing."
+    },
+    {
+      "audience": "Decision support",
+      "title": "Which option fits the criteria?",
+      "body": "Evaluate candidates against explicit requirements, then test the routes against ordinary and difficult cases before expanding the pilot."
+    }
+  ]
 }
