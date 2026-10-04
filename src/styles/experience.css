@@ -33,11 +33,17 @@ html {
   min-height: 88px;
 }
 .logo {
-  width: 150px;
+  width: 172.5px;
 }
 .header nav {
   gap: 32px;
-  font-size: 14px;
+  font-size: 16.1px;
+}
+.header nav .button.compact {
+  font-size: 14.95px;
+}
+.header .menu-toggle {
+  font-size: 16.1px;
 }
 .button {
   border-radius: 10px;
@@ -3399,7 +3405,7 @@ html:not(.js) .working-panel + .working-panel {
     min-height: 76px;
   }
   .logo {
-    width: 129px;
+    width: 148.35px;
   }
   .header nav {
     gap: 0;
