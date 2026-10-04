@@ -72,7 +72,11 @@ try {
       CONTACT_ALLOWED_ORIGIN: 'https://efiops.com',
       CONTACT_FROM: 'fixture@example.com',
       CONTACT_TO: 'fixture@example.com',
-      RESEND_API_KEY: 'fixture-only-not-a-real-credential',
+      CONTACT_STORAGE: 'supabase',
+      SUPABASE_URL: 'https://fixture.supabase.co',
+      SUPABASE_PUBLISHABLE_KEY: 'sb_publishable_fixture',
+      SUPABASE_SECRET_KEY: 'sb_secret_fixture',
+      ADMIN_EMAIL: 'fixture@example.com',
     },
   });
   assert.equal(result.status, 0, result.stderr + '\n' + result.stdout);

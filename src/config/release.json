@@ -11,7 +11,7 @@
   "noticeReviewDate": "2026-10-04",
   "privacyApproved": true,
   "cookieNoticeApproved": true,
-  "contactVerified": false,
+  "contactVerified": true,
   "hostingApproved": true,
   "legacyInventoryReviewed": true,
   "commercialTermsReviewed": false,

@@ -100,11 +100,11 @@ test('preview sitemap is empty, robots blocks and headers noindex', () => {
   assert.match(fs.readFileSync('dist/_headers', 'utf8'), /X-Robots-Tag: noindex, nofollow/);
   assert.ok(fs.existsSync('dist/404.html'));
 });
-test('production is blocked on real unresolved owner fields', () => {
+test('production requires deployment environment and provider configuration', () => {
   const result = spawnSync('node', ['scripts/build.mjs', '--production'], { encoding: 'utf8' });
   assert.equal(result.status, 1);
   assert.doesNotMatch(result.stderr, /Owner confirmation required: legalController/);
-  assert.match(result.stderr, /contactVerified/);
+  assert.match(result.stderr, /BUILD_MODE=production/);
   assert.match(result.stderr, /RESEND_API_KEY/);
 });
 test('current logo is preserved byte for byte', () => {

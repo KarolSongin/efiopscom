@@ -18,7 +18,7 @@ This hourly job permanently deletes records and their cascading activity only wh
 
 ## Deploy and test the real form
 
-`netlify.toml` now builds `npm run build:launch`. Set these Netlify variables, retaining the Supabase credentials already configured:
+`netlify.toml` now builds `npm run build:production`, following the owner’s successful live Supabase enquiry test. The earlier `npm run build:launch` mode remains available for future controlled verification. Set these Netlify variables, retaining the Supabase credentials already configured:
 
 ```dotenv
 BUILD_MODE=production
@@ -28,11 +28,11 @@ ADMIN_ALLOWED_ORIGIN=https://efiops.com
 CONTACT_ALLOWED_ORIGIN=https://efiops.com
 ```
 
-Redeploy. Launch verification renders real production copy and the thank-you page and enables the production Supabase intake, while metadata, HTTP headers and robots still block indexing. This permits a real public-form test before confirming acceptance. Submit your own test enquiry, check that it appears once at Opportunity, open its message and verify dashboard persistence. This saves a real record; it sends no email or GoHighLevel event. Report any error before marking acceptance verified.
+During the earlier launch-verification phase, that build renders real production copy and the thank-you page and enables the production Supabase intake, while metadata, HTTP headers and robots still block indexing. This permits a real public-form test before confirming acceptance. Submit your own test enquiry, check that it appears once at Opportunity, open its message and verify dashboard persistence. This saves a real record; it sends no email or GoHighLevel event. Report any error before marking acceptance verified.
 
 ## Enable indexing after the test
 
-After the owner confirms real form acceptance, set `contactVerified` true and switch the committed Netlify build command to `npm run build:production`. A normal production build continues to block while contact verification is false. Deployment uses the command in netlify.toml; changing only the Netlify UI may not override it.
+The owner confirmed that correcting the server secret key made the real enquiry form work. `contactVerified` is now true and the committed Netlify build command is `npm run build:production`. A normal production build continues to block while contact verification is false. Deployment uses the command in netlify.toml; changing only the Netlify UI may not override it.
 
 Verify homepage meta is `index, follow`, homepage response has no noindex X-Robots-Tag, robots permits crawling and sitemap contains published URLs. Admin, thank-you, drafts and the empty Articles library remain nonindexable as appropriate. Re-run Lighthouse against efiops.com, not the netlify.app alias. Netlify should redirect www and the default project alias to the primary efiops.com domain; check this without changing the preserved email DNS records.
 
