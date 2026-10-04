@@ -82,5 +82,93 @@
       "title": "Find the barrier before adding more content.",
       "body": "Review crawlability, indexing signals and available Search Console data. Prioritise useful gaps and measure how the picture develops."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From a search question to a page with a clear purpose.",
+    "example": "A garden-maintenance business wants pages that match local service searches and customer questions.",
+    "sources": ["Service locations", "Customer questions", "Existing pages"],
+    "question": "Does the page answer what the searcher needs?",
+    "scope": [
+      "A focused local service page",
+      "Useful maintenance guidance",
+      "Clear internal links and crawl checks"
+    ],
+    "boundary": "Paid ads and guaranteed positions are not part of this SEO scope.",
+    "build": [
+      "Search · garden maintenance Maidstone",
+      "Page · Garden Maintenance in Maidstone",
+      "Next step · Discuss your garden"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Understand the service and the search intent.",
+        "body": "We review the offer, genuine service area, customer questions and existing site structure. Available search data helps distinguish people looking for a service from people looking for an answer.",
+        "output": "An intent map and a baseline of relevant site issues."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Give each page a useful job.",
+        "body": "We agree which pages need improving or creating, what they should answer and how they connect. Technical priorities, content responsibilities and access to relevant tools form part of the scope.",
+        "output": "A page/content plan and agreed technical priorities."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Build the structure around the question.",
+        "body": "The local service page explains the offer and location clearly. Guidance answers a separate maintenance question and links naturally to the service where relevant, rather than repeating the same phrase across pages.",
+        "output": "Reviewable pages, metadata and internal links."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Check clarity, crawling and the next step.",
+        "body": "We check page purpose, headings, metadata, link destinations and relevant indexability settings. Pages should be useful to people as well as discoverable; an implementation check is not a promise of a ranking.",
+        "output": "Content and technical checks with a measurement baseline."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Review the evidence as it becomes available.",
+        "body": "The handover records page purpose, published changes and what to monitor. Search visibility and enquiries need observation over time, with further work based on what the available data shows.",
+        "output": "A change record, monitoring approach and content priorities."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Find a service",
+        "input": "garden maintenance Maidstone",
+        "result": "Local service page",
+        "reason": "Explain the real service area, work offered and route to an enquiry."
+      },
+      {
+        "label": "Ask a question",
+        "input": "how often should a garden be maintained",
+        "result": "Useful guidance page",
+        "reason": "Answer the question and link to relevant service information."
+      },
+      {
+        "label": "Broken link",
+        "input": "Guidance links to an absent page",
+        "result": "Resolve before release",
+        "reason": "A relevant link must lead to an available destination."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Page purpose",
+        "body": "Target intent, content responsibilities and relationships between pages."
+      },
+      {
+        "title": "Technical baseline",
+        "body": "Crawl/indexability settings, metadata and relevant tool ownership."
+      },
+      {
+        "title": "Ongoing review",
+        "body": "Available search and enquiry signals, limitations and next content priorities."
+      }
+    ]
+  }
 }

@@ -44,6 +44,10 @@ test('all ten distinct services retain complete supplied section and FAQ text', 
   assert.equal(files.length, 10);
   for (const file of files) {
     const s = JSON.parse(fs.readFileSync('src/content/services/' + file));
+    assert.deepEqual(
+      s.journey.stages.map((x) => x.id),
+      ['understand', 'agree', 'build', 'test', 'handover'],
+    );
     const html = output('/services/' + s.slug + '/');
     const visible = strip(html);
     for (const str of [
@@ -59,6 +63,10 @@ test('all ten distinct services retain complete supplied section and FAQ text', 
       ]),
       ...s.faqs.flatMap((x) => [x.question, x.answer]),
       ...s.useCases.flatMap((x) => [x.audience, x.title, x.body]),
+      s.journey.heading,
+      s.journey.example,
+      ...s.journey.stages.flatMap((x) => [x.title, x.body, x.output]),
+      ...s.journey.handover.flatMap((x) => [x.title, x.body]),
     ])
       assert.ok(visible.includes(clean(str)), `${s.slug}: missing ${str}`);
     for (const related of s.relatedServices) assert.ok(html.includes(`/services/${related}/`));

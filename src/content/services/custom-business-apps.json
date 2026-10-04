@@ -82,5 +82,89 @@
       "title": "A clearer way to exchange information.",
       "body": "Scope a controlled portal for requests, documents or progress updates, with the access rules designed around the users."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From an awkward spreadsheet to a plan the team can act on.",
+    "example": "A packing team needs to see whether next week’s orders fit its available hours.",
+    "sources": ["Weekly orders", "Handling time", "Available staff hours"],
+    "question": "Can the team cover the workload?",
+    "scope": [
+      "Weekly units and staffing inputs",
+      "Required and available hours",
+      "Visible capacity gap"
+    ],
+    "boundary": "Payroll, shift scheduling and stock control need their own agreed scope.",
+    "build": ["Demand · 1,200 units", "Required · 80 hours", "Available · 96 hours"],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Watch how the plan is made today.",
+        "body": "We follow the spreadsheet, the copied inputs and the decisions made from it. We ask who edits the plan, which values change and where a missing or outdated input can mislead the team.",
+        "output": "A workflow map, input inventory and user roles."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Agree the calculation and the first screen.",
+        "body": "The first planner uses units, handling time and actual available hours. Four minutes per unit and 32 hours per person make the workload visible. We agree validation, account access and the delivery scope.",
+        "output": "A focused screen specification and calculation rules."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Build around the decision the team makes.",
+        "body": "The team reviews a working planner with editable demand and staffing. Required hours and capacity update together, making it easier to discuss the gap instead of rebuilding the spreadsheet.",
+        "output": "A reviewable planning screen and validated inputs."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Check the numbers at the edges as well as the centre.",
+        "body": "We verify known workloads, demand above capacity, input limits and relevant access controls. A useful planner should explain a shortfall clearly and keep invalid inputs out of the calculation.",
+        "output": "Calculation checks, input validation and user-flow results."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Hand over the tool and the assumptions.",
+        "body": "The team learns how to enter the plan, interpret the result and update agreed assumptions. The handover covers hosting, accounts, data ownership and any ongoing support arrangement.",
+        "output": "A user guide, assumption record and ownership plan."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Current plan",
+        "input": "1,200 units · 3 people",
+        "result": "16 hours spare",
+        "reason": "1,200 × 4 ÷ 60 = 80 hours required; 3 × 32 = 96 available."
+      },
+      {
+        "label": "Higher demand",
+        "input": "1,800 units · 3 people",
+        "result": "24 hours to cover",
+        "reason": "120 hours are required against 96 available."
+      },
+      {
+        "label": "Another person",
+        "input": "1,800 units · 4 people",
+        "result": "8 hours spare",
+        "reason": "Capacity becomes 128 hours; workload stays at 120."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Everyday tasks",
+        "body": "Entering demand, updating staffing and interpreting the capacity result."
+      },
+      {
+        "title": "Assumptions & data",
+        "body": "Handling time, available hours, input ownership and storage requirements."
+      },
+      {
+        "title": "Running the application",
+        "body": "Hosting, access, maintenance and the separately agreed support route."
+      }
+    ]
+  }
 }

@@ -82,5 +82,93 @@
       "title": "Make the observation useful beyond the image.",
       "body": "Connect a suitable measurement or review result to a record, dashboard or operational workflow."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From a visual task to a measurement worth reviewing.",
+    "example": "A team wants to explore measuring fruit width from a camera image.",
+    "sources": ["Camera images", "Reference measurements", "Lighting conditions"],
+    "question": "Can the object boundary be measured consistently?",
+    "scope": [
+      "A focused width-measurement prototype",
+      "Reference scale and capture conditions",
+      "Review when the edge is unclear"
+    ],
+    "boundary": "Production grading and automatic rejection need separate validation and scope.",
+    "build": [
+      "Object width · 48 source pixels",
+      "Reference scale · 5 pixels/mm",
+      "Calculated width · 9.6 mm"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Define the visual task and collect the right examples.",
+        "body": "We discuss what needs measuring or identifying, inspect representative images and review how reference results are obtained. Camera position, scale, lighting and variation are part of the problem.",
+        "output": "A task definition, image set and reference approach."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Agree the prototype and what it must prove.",
+        "body": "The first scope explores width measurement under defined capture conditions. We agree calibration, relevant evaluation criteria and what happens when a measurement cannot be accepted.",
+        "output": "A prototype scope, capture requirements and evaluation plan."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Make the calculation and overlay inspectable.",
+        "body": "A reviewable view shows the detected boundary and how a pixel measurement is converted using the reference scale. You can inspect the image and result together before considering a wider deployment.",
+        "output": "A focused prototype with traceable measurements."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Compare with references and vary the conditions.",
+        "body": "We check representative images against reference measurements and inspect failure cases. Low contrast, occlusion or a changed scale must not silently produce a measurement presented as dependable.",
+        "output": "Evaluation results, observed limitations and review rules."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Document what the setup can—and cannot—support.",
+        "body": "The handover covers capture conditions, calibration, evaluation evidence and maintenance needs. A production decision follows the results and any further work required, rather than the appearance of a convincing overlay.",
+        "output": "A setup guide, evaluation record and deployment decision inputs."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Stable scale",
+        "input": "48 pixels ÷ 5 pixels/mm",
+        "result": "9.6 mm calculated width",
+        "reason": "This is the conversion to check against the reference measurement."
+      },
+      {
+        "label": "Low contrast",
+        "input": "Object edge cannot be resolved",
+        "result": "Hold measurement for review",
+        "reason": "Improve capture conditions or inspect the image before accepting a result."
+      },
+      {
+        "label": "Scale changes",
+        "input": "Camera or reference position changes",
+        "result": "Recalibrate the setup",
+        "reason": "The previous pixel-to-millimetre scale should not be reused without a check."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Capture & calibration",
+        "body": "Camera position, lighting, scale reference and calibration procedure."
+      },
+      {
+        "title": "Evaluation & limitations",
+        "body": "Reference measurements, tested conditions and known failure cases."
+      },
+      {
+        "title": "Next deployment decision",
+        "body": "Review workflow, maintenance needs and further validation before wider use."
+      }
+    ]
+  }
 }

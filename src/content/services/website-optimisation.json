@@ -82,5 +82,93 @@
       "title": "What is the browser waiting for?",
       "body": "Measure the baseline, inspect assets and scripts, then check changes under the same conditions. Keep technical results separate from sales outcomes."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From a hard-to-find contact page to a clearer next step.",
+    "example": "A garden-care business wants mobile visitors to find the enquiry step more easily.",
+    "sources": ["Current website", "Mobile visitor journey", "Available performance data"],
+    "question": "Where does a visitor lose the next step?",
+    "scope": [
+      "Improve the service-page structure",
+      "Make the enquiry action visible",
+      "Check the changed mobile journey"
+    ],
+    "boundary": "A full rebrand and a replacement booking platform need a separate scope.",
+    "build": [
+      "Service · Garden maintenance",
+      "Visible action · Request a quote",
+      "Journey · Service page → enquiry"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Review the journey before changing the page.",
+        "body": "We follow the site as a visitor would, especially on a phone. Available analytics and performance measurements help identify issues, while navigation and form checks show where the next step becomes unclear.",
+        "output": "A findings list with a clear starting point."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Choose the changes worth making first.",
+        "body": "We agree priorities based on the visible problem and available evidence. The first scope might improve a service page, enquiry route or slow asset without assuming the whole website needs rebuilding.",
+        "output": "A prioritised change plan and a measurement approach."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Improve the existing site in reviewable steps.",
+        "body": "You see the updated structure, copy and enquiry action before release. We retain useful parts of the current site and check how the change fits its existing platform and content.",
+        "output": "A reviewable improvement with a documented change set."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Compare the journey and check the behaviour.",
+        "body": "We verify the changed navigation and form, and repeat relevant performance measurements under comparable conditions. A shorter click path is a design change; any claimed business improvement needs real usage evidence.",
+        "output": "Before/after checks and a plan for observing real use."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Keep the improvement visible after release.",
+        "body": "The handover explains what changed and what to monitor. Relevant field data can inform the next decision once available, rather than treating a single lab run as a business result.",
+        "output": "A change summary, monitoring plan and next-step priorities."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Previous route",
+        "input": "Menu → services → more info → contact",
+        "result": "4 steps to find contact",
+        "reason": "A longer path makes the enquiry action harder to discover."
+      },
+      {
+        "label": "Changed route",
+        "input": "Service page → enquiry",
+        "result": "2 clear steps",
+        "reason": "The service explains the offer and exposes the next action."
+      },
+      {
+        "label": "Check the form",
+        "input": "Required email is empty",
+        "result": "Keep input; show the error",
+        "reason": "A visible action is useful only when the journey works through to submission."
+      }
+    ],
+    "handover": [
+      {
+        "title": "What changed",
+        "body": "The affected pages, structure, content and behaviour."
+      },
+      {
+        "title": "What to monitor",
+        "body": "Comparable lab checks and relevant field or enquiry data when available."
+      },
+      {
+        "title": "Next priorities",
+        "body": "Unresolved findings, maintenance needs and separately scoped improvements."
+      }
+    ]
+  }
 }

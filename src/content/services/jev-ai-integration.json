@@ -89,5 +89,93 @@
       "title": "Which option fits the criteria?",
       "body": "Evaluate candidates against explicit requirements, then test the routes against ordinary and difficult cases before expanding the pilot."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From a natural-language request to a defined application route.",
+    "example": "An operational application needs to separate stock questions from stock changes.",
+    "sources": ["User request", "Application context", "Access rules"],
+    "question": "A lookup, an action or a question to clarify?",
+    "scope": [
+      "Route a stock-location question",
+      "Separate stock-movement requests",
+      "Ask for missing item details"
+    ],
+    "boundary": "A route never replaces the application’s permission and action checks.",
+    "build": [
+      "Request · Where is item A17?",
+      "Defined route · Stock lookup",
+      "Application · Check access, retrieve location"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Map the requests and the existing application.",
+        "body": "We inspect the workflows, available context and application rules. A question about an item and a request to move it may sound similar, but they need different routes and different permissions.",
+        "output": "A request catalogue and an application-boundary map."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Define the routes before connecting the model.",
+        "body": "We agree the supported request types, expected structured outputs and what happens when details are missing. Access checks and state changes remain in application code, with the exact integration reviewed against Jev’s current interface.",
+        "output": "A route contract, integration scope and validation rules."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Build the connection inside the workflow.",
+        "body": "A reviewable slice turns a request into a defined route and passes the validated result to the application. You can inspect the context, route and next action while the integration is being developed.",
+        "output": "A reviewable integration with explicit application handling."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Try ambiguous, unsupported and action requests.",
+        "body": "We test representative requests against the expected routes. Malformed outputs, missing identifiers and disallowed actions need a visible fallback rather than a guessed or unchecked operation.",
+        "output": "Routing checks, output validation and fallback behaviour."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Document the contract and its dependencies.",
+        "body": "The handover explains routes, context, provider configuration and the application checks around each action. Changes to the route set or model integration need review and regression checks.",
+        "output": "A route guide, dependency inventory and maintenance plan."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Stock question",
+        "input": "Where is item A17?",
+        "result": "Stock lookup",
+        "reason": "The application checks access before retrieving location."
+      },
+      {
+        "label": "Stock change",
+        "input": "Move A17 to bay B2.",
+        "result": "Stock movement → approval",
+        "reason": "The application validates permissions before any state change."
+      },
+      {
+        "label": "Missing details",
+        "input": "I need that for later.",
+        "result": "Clarification",
+        "reason": "Ask which item and when it is needed."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Route contract",
+        "body": "Supported requests, required fields and the application handler for each route."
+      },
+      {
+        "title": "Application checks",
+        "body": "Where permissions, validation and approval are enforced around actions."
+      },
+      {
+        "title": "Dependencies & review",
+        "body": "Integration configuration, supported interfaces and checks after a route or provider change."
+      }
+    ]
+  }
 }

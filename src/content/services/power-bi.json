@@ -82,5 +82,89 @@
       "title": "Why is the headline number different?",
       "body": "Agree the definitions behind each measure, trace the source and investigate differences instead of debating spreadsheets."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From separate exports to a margin you can explain.",
+    "example": "A retailer wants to compare online and in-store margin.",
+    "sources": ["Online orders", "Till export", "Direct costs"],
+    "question": "Which channel is making money?",
+    "scope": [
+      "Revenue and direct costs by channel",
+      "Five-day sales view",
+      "Agreed gross-margin definition"
+    ],
+    "boundary": "Stock valuation and cash-flow forecasting are separate questions.",
+    "build": ["All channels · £42,600 sales", "Direct costs · £31,850", "Gross profit · £10,750"],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Follow the number back to its source.",
+        "body": "We inspect order exports, cost records and the report you use today. We agree how returns, dates and channel names are recorded before deciding which measures belong in the dashboard.",
+        "output": "A source inventory and a clear reporting question."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Agree what the measures mean.",
+        "body": "For the first view, revenue minus direct costs is gross profit. Gross margin is gross profit divided by revenue. We agree the date range, filters and exclusions, alongside access and Microsoft sharing requirements.",
+        "output": "A reporting scope, measure definitions and sharing requirements."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Build a view your team can investigate.",
+        "body": "A first report puts sales beside costs, then lets the team compare channels. You review the layout with the questions you ask in a real meeting, rather than approving charts in isolation.",
+        "output": "A reviewable report and an agreed data model."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Reconcile the view with the records.",
+        "body": "We check totals, channel filters and refresh behaviour against known inputs. Missing costs should be visible; they should not quietly become zero and make the margin look better.",
+        "output": "Reconciliation checks and visible data-quality exceptions."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Explain the numbers and the refresh.",
+        "body": "The handover covers measure definitions, source limitations, refresh ownership and access. The team can see where a number comes from and what to check when an input changes.",
+        "output": "A definitions guide, refresh instructions and clear ownership."
+      }
+    ],
+    "tests": [
+      {
+        "label": "All channels",
+        "input": "£42,600 − £31,850",
+        "result": "£10,750 gross profit",
+        "reason": "Both channel totals reconcile to the combined view."
+      },
+      {
+        "label": "Online only",
+        "input": "£24,320 − £18,240",
+        "result": "£6,080 gross profit",
+        "reason": "The filter changes the source records and the displayed totals."
+      },
+      {
+        "label": "Missing cost",
+        "input": "A cost record is absent",
+        "result": "Flag incomplete margin",
+        "reason": "Review the missing input before treating the profit as dependable."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Measure dictionary",
+        "body": "Revenue, direct costs, gross profit and margin, with the agreed exclusions."
+      },
+      {
+        "title": "Refresh & access",
+        "body": "Source locations, refresh ownership, permissions and licensing requirements."
+      },
+      {
+        "title": "A change in the data",
+        "body": "How to identify a failed refresh or a changed source column and raise it for review."
+      }
+    ]
+  }
 }

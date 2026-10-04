@@ -42,7 +42,7 @@ Browser checks use `/usr/bin/chromium` with Playwright and include all public pa
 
 ## Content and routes
 
-- `src/content/services/*.json`: complete validated service copy, FAQs, related services and focused CTAs.
+- `src/content/services/*.json`: complete validated service copy, FAQs, related services, focused CTAs and each service’s five-stage illustrated project example.
 - `src/data/core.json`: editable home, services, process, about and contact copy.
 - `src/data/process.json`: How it works stories, five illustrated stages, clear outputs and preparation guidance.
 - `src/styles/process.css`: responsive process-page compositions.
@@ -53,7 +53,7 @@ Browser checks use `/usr/bin/chromium` with Playwright and include all public pa
 - `src/config/site.ts`: navigation groups, confirmed public biography and canonical host candidate.
 - `src/config/release.json`: owner confirmations; unresolved fields block production.
 - `src/content/case-studies/` and `src/content/insights/`: private editorial drafts and validated contracts. Case publication requires both permission and evidence review. Insights require review, sources and real publication dates; the index releases after two articles. Internal evidence notes are never rendered.
-- `src/components/`: layout elements and original diagrams. No model APIs run in public examples.
+- `src/components/`: layout elements and original diagrams; `ServiceJourney.astro` renders the tailored stages and interactive test conditions. No model APIs run in public examples.
 - `server/contact.mjs`: shared validated contact relay; `netlify/functions/contact.mjs` adapts it to the optional Netlify host.
 
 The review build includes Home, Services, all ten services, How it works, About, Contact, draft Privacy, Cookies and a genuine 404. Work, Insights and Thank you remain absent until their release conditions are met. No empty indexes or fictional case studies are published.

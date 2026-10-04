@@ -82,5 +82,93 @@
       "title": "Different format. Same useful record.",
       "body": "Normalise agreed files and fields, handle repeats, and hold incomplete rows for review instead of silently dropping them."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From two disconnected records to one agreed mapping.",
+    "example": "A business wants order records to reach reporting without being retyped.",
+    "sources": ["Order system", "Product identifiers", "Reporting destination"],
+    "question": "Can this record transfer without losing its meaning?",
+    "scope": [
+      "Map order ID, product code and quantity",
+      "Validate required fields",
+      "Hold incomplete records for review"
+    ],
+    "boundary": "Historical cleanup and additional connected systems are separate scope decisions.",
+    "build": [
+      "order_id 1042 → externalOrderId 1042",
+      "item_sku SKU-014 → productCode SKU-014",
+      "qty 12 → quantity 12"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Follow a record between the systems.",
+        "body": "We inspect the source and destination, identifiers, update timing and available interfaces. The first task is to understand what the record means in each system and what currently gets copied by hand.",
+        "output": "A system inventory and an agreed record lifecycle."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Agree the mapping and the failure rules.",
+        "body": "We define field mappings, required values, access and transfer timing. The scope covers how to recognise repeat records and what to do when a destination or source is unavailable.",
+        "output": "A mapping specification, access requirements and exception policy."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Connect one useful record path.",
+        "body": "A reviewable slice validates the order and transforms its fields for the destination. The team can inspect the source values, mapped output and record status before expanding the connection.",
+        "output": "A working record path and inspectable mapping."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Check missing fields, retries and interruptions.",
+        "body": "We test complete records, absent identifiers and repeated transfer attempts. Failed records need to remain traceable, and retry behaviour must match the agreed destination and duplicate-handling rules.",
+        "output": "Validation, interruption and duplicate-handling checks."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Make the connection maintainable.",
+        "body": "The handover documents credentials ownership, field mappings, monitoring and how to resolve held records. A source schema or API change needs review before it affects the downstream data.",
+        "output": "A mapping guide, exception queue and maintenance responsibilities."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Complete record",
+        "input": "Order 1042 · SKU-014 · quantity 12",
+        "result": "Ready to transfer",
+        "reason": "Required fields map to the agreed destination fields."
+      },
+      {
+        "label": "Missing code",
+        "input": "Order 1042 · no product code",
+        "result": "Hold for review",
+        "reason": "Keep the source record and resolve the required identifier."
+      },
+      {
+        "label": "Repeat record",
+        "input": "Order 1042 arrives again",
+        "result": "Apply the duplicate rule",
+        "reason": "Match the external identifier; follow the agreed update or skip policy."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Field mapping",
+        "body": "Source and destination fields, identifiers, transformations and required values."
+      },
+      {
+        "title": "Monitoring & retries",
+        "body": "Transfer status, held records and the agreed recovery and duplicate rules."
+      },
+      {
+        "title": "Access & dependencies",
+        "body": "Credential ownership, APIs, service costs and what to review when an interface changes."
+      }
+    ]
+  }
 }

@@ -81,5 +81,93 @@
       "title": "The business has moved on. The site can too.",
       "body": "Review what should stay, rebuild what is holding the experience back, and plan the transition around existing valuable URLs."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From “what do you do?” to a useful project enquiry.",
+    "example": "A renovation business wants visitors to understand its services and enquire comfortably.",
+    "sources": ["Customer questions", "Service information", "Brand assets"],
+    "question": "What does a visitor need before asking for a quote?",
+    "scope": [
+      "Clear renovation service pages",
+      "Readable mobile enquiry journey",
+      "Working form and handover"
+    ],
+    "boundary": "Bookings, payments and customer accounts require a separate brief.",
+    "build": [
+      "Offer · Home renovation",
+      "Next step · Tell us about your project",
+      "Enquiry · Project, location, contact details"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Start with the visitor and the offer.",
+        "body": "We discuss the services, customers and questions that come before an enquiry. Existing brand assets and content help shape a site that represents the business and explains why someone should get in touch.",
+        "output": "A visitor journey, content inventory and design direction."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Agree the pages and the next step.",
+        "body": "We define the page structure, content responsibilities and enquiry flow. Hosting, domain access, third-party services and launch requirements are identified alongside the project scope and costs.",
+        "output": "A page plan, content brief and launch dependencies."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Make the design concrete early.",
+        "body": "You review the visual direction, service copy and key screens before the full site is finished. We check the design on a phone as well as a desktop and keep each page connected to the visitor’s next question.",
+        "output": "A reviewable website with approved direction and content."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Follow the enquiry from start to finish.",
+        "body": "We check navigation, mobile layouts, keyboard use, form validation and the configured enquiry route. Error states should preserve the visitor’s input; a success message must reflect real acceptance.",
+        "output": "A checked visitor journey and clear launch decisions."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Give the business a site it can run.",
+        "body": "The handover covers content updates, domain and hosting ownership, form routing and maintenance. Launch follows the agreed configuration and checks, with ongoing support scoped separately where useful.",
+        "output": "An editing guide, account ownership record and launch plan."
+      }
+    ],
+    "tests": [
+      {
+        "label": "A visitor on mobile",
+        "input": "Service page → project enquiry",
+        "result": "Clear route to contact",
+        "reason": "The offer and next action remain readable on a narrow screen."
+      },
+      {
+        "label": "Missing email",
+        "input": "Required contact field is empty",
+        "result": "Show an associated error",
+        "reason": "Keep the project description so the visitor can correct the form."
+      },
+      {
+        "label": "Delivery unavailable",
+        "input": "Enquiry provider does not accept",
+        "result": "Show an honest failure",
+        "reason": "Preserve input and avoid claiming that a message was received."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Content updates",
+        "body": "How to update service information, imagery and contact details."
+      },
+      {
+        "title": "Accounts & enquiry route",
+        "body": "Domain, hosting and provider ownership; where accepted enquiries go."
+      },
+      {
+        "title": "Launch & upkeep",
+        "body": "Release checks, dependencies, backups where relevant and support options."
+      }
+    ]
+  }
 }

@@ -82,5 +82,93 @@
       "title": "Tell me when the plan changes.",
       "body": "Compare new forecasts with the agreed baseline and flag the changes that actually need attention."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From a sent quote to a follow-up that knows when to stop.",
+    "example": "A service business wants every quote to have a clear next step.",
+    "sources": ["Enquiry inbox", "Quote record", "Customer replies"],
+    "question": "Who follows up, and when?",
+    "scope": [
+      "Capture the enquiry and owner",
+      "Prepare follow-up after two working days",
+      "Stop the reminder when a reply arrives"
+    ],
+    "boundary": "Automatic pricing and a full customer portal are outside this first workflow.",
+    "build": [
+      "Quote 1042 · Owner Alex",
+      "No reply · 2 working days",
+      "Next action · Review follow-up"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Follow one enquiry through the business.",
+        "body": "We trace how an enquiry is captured, where the quote is recorded and who owns the conversation. The important gaps are often between tools, where someone has to copy details or remember a reminder.",
+        "output": "A process map, system inventory and named task owners."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Define the rule—and the stopping rule.",
+        "body": "The first scope prepares a follow-up after two working days without a reply. We agree review and approval steps, account access and service costs. A customer reply must change the scheduled next action.",
+        "output": "An agreed trigger, approval rule and exception path."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Connect the steps and review the record.",
+        "body": "The team sees the enquiry, quote status, owner and next action together. We review the message and the condition that prepares it before enabling any agreed sending behaviour.",
+        "output": "A reviewable workflow with visible status and ownership."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Try the cases that change the next step.",
+        "body": "We check waiting quotes, received replies, missing email addresses and repeat triggers. A run history should explain what happened and leave failed or held work with someone who can resolve it.",
+        "output": "Checks for normal runs, duplicates and held tasks."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Make the workflow understandable to its owner.",
+        "body": "The handover explains the triggers, connections and review queue. We identify who maintains account permissions, monitors failed runs and approves any future rule changes.",
+        "output": "A run guide, connection inventory and monitoring responsibilities."
+      }
+    ],
+    "tests": [
+      {
+        "label": "No reply",
+        "input": "Two working days have passed",
+        "result": "Prepare follow-up",
+        "reason": "The owner reviews the message before sending."
+      },
+      {
+        "label": "Reply arrives",
+        "input": "The customer has responded",
+        "result": "Stop the reminder",
+        "reason": "Keep the conversation with its owner."
+      },
+      {
+        "label": "Email missing",
+        "input": "No confirmed customer address",
+        "result": "Hold for review",
+        "reason": "Do not attempt to send; show the missing field to the owner."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Workflow rules",
+        "body": "Triggers, delays, stopping conditions and approval steps."
+      },
+      {
+        "title": "Connections & ownership",
+        "body": "Accounts, permissions, third-party costs and the person responsible for failed runs."
+      },
+      {
+        "title": "Exception guide",
+        "body": "How to review held records, correct a missing field and retry without duplication."
+      }
+    ]
+  }
 }

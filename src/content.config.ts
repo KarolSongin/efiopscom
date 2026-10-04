@@ -28,6 +28,28 @@ const service = defineCollection({
     cta: z.object({ label: text, heading: text, text: text }),
     relatedServices: z.array(text).min(2),
     useCases: z.array(z.object({ audience: text, title: text, body: text })).min(3),
+    journey: z.object({
+      heading: text,
+      example: text,
+      sources: z.array(text).length(3),
+      question: text,
+      scope: z.array(text).length(3),
+      boundary: text,
+      build: z.array(text).length(3),
+      stages: z
+        .array(
+          z.object({
+            id: z.enum(['understand', 'agree', 'build', 'test', 'handover']),
+            label: text,
+            title: text,
+            body: text,
+            output: text,
+          }),
+        )
+        .length(5),
+      tests: z.array(z.object({ label: text, input: text, result: text, reason: text })).length(3),
+      handover: z.array(z.object({ title: text, body: text })).length(3),
+    }),
     visualKey: text,
     primaryIntent: text,
     publicationState: state,

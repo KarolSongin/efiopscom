@@ -4,6 +4,7 @@ import CTA from '../../components/CTA.astro';
 import FAQ from '../../components/FAQ.astro';
 import ServiceVisual from '../../components/ServiceVisual.astro';
 import Icon from '../../components/Icon.astro';
+import ServiceJourney from '../../components/ServiceJourney.astro';
 import { services, cases } from '../../data/content';
 export async function getStaticPaths() {
   return (await services()).map((entry) => ({
@@ -101,6 +102,7 @@ const split = (text: string) => {
       </section>
     ))}
   </div>
+  <ServiceJourney journey={page.journey} service={page.slug} />
   {evidence.length > 0 && (
     <section class="container section">
       <h2>Related work, with evidence.</h2>

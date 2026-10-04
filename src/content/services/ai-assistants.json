@@ -82,5 +82,93 @@
       "title": "Can I ask instead of opening five screens?",
       "body": "Explore a focused text or voice interface for a read-only lookup or a controlled request inside your existing application."
     }
-  ]
+  ],
+  "journey": {
+    "heading": "From a customer question to an answer with a source.",
+    "example": "A support team wants delivery answers from authorised order records.",
+    "sources": ["Customer question", "Order record", "Support guidance"],
+    "question": "Can we answer this—or should a person help?",
+    "scope": [
+      "Read authorised order status",
+      "Show the information source",
+      "Route unsupported changes to a person"
+    ],
+    "boundary": "Payment decisions and unapproved record changes are outside the assistant’s role.",
+    "build": [
+      "Question · When will order 1042 arrive?",
+      "Source · Order record 1042",
+      "Answer · Friday; awaiting dispatch"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Start with the questions people actually ask.",
+        "body": "We review recurring support questions, the information needed to answer them and the requests that need a person. We inspect where the records live and how access is controlled.",
+        "output": "A question set, source inventory and boundaries for the assistant."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Agree what the assistant may answer or do.",
+        "body": "The first pilot reads delivery status from authorised order records. It shows the source and asks for help when information is missing. We agree data access, provider dependencies and the escalation route.",
+        "output": "A focused pilot scope and clear answer/action limits."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Connect the conversation to useful information.",
+        "body": "You review the answer alongside its source record. We refine the wording, missing-information prompts and handoff so the assistant fits the team’s actual support process.",
+        "output": "A reviewable assistant connected to the agreed sources."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Test useful answers and sensible limits.",
+        "body": "Representative questions include delivery updates, missing orders and address changes. We check that the assistant uses the right record, respects access and does not fill an information gap with a confident guess.",
+        "output": "An evaluation set, documented limitations and an escalation path."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Give the team a way to keep answers current.",
+        "body": "The handover explains source ownership, provider configuration and how to review poor answers. New knowledge or actions need a controlled update and another round of relevant checks.",
+        "output": "A source-maintenance guide and a review process for assistant behaviour."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Delivery update",
+        "input": "Order 1042 · Friday · awaiting dispatch",
+        "result": "Answer with the order source",
+        "reason": "The response uses the authorised record, not an invented tracking update."
+      },
+      {
+        "label": "Change address",
+        "input": "No confirmed new address",
+        "result": "Collect details → human review",
+        "reason": "A request to change data needs a separate authorised action."
+      },
+      {
+        "label": "Order not found",
+        "input": "No matching authorised record",
+        "result": "Ask for clarification",
+        "reason": "Do not invent an order or expose another customer’s details."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Sources & permissions",
+        "body": "The records and guidance the assistant can access, and who keeps them current."
+      },
+      {
+        "title": "Limits & escalation",
+        "body": "Unsupported requests, missing information and the handoff to the support team."
+      },
+      {
+        "title": "Review & improvement",
+        "body": "A question set, evaluation approach and a way to report answers that need attention."
+      }
+    ]
+  }
 }
