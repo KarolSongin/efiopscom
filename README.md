@@ -58,11 +58,13 @@ Browser checks use `/usr/bin/chromium` with Playwright and include all public pa
 - `src/styles/experience.css`: visual refresh and responsive interactive compositions.
 - `src/config/site.ts`: navigation groups, confirmed public biography and canonical host candidate.
 - `src/config/release.json`: owner confirmations; unresolved fields block production.
-- `src/content/case-studies/` and `src/content/insights/`: private editorial drafts and validated contracts. Case publication requires both permission and evidence review. Insights require review, sources and real publication dates; the index releases after two articles. Internal evidence notes are never rendered.
+- `src/content/case-studies/`: private case drafts; publication requires permission and evidence review. Internal evidence notes are never rendered.
+- `src/content/articles/*.json`: code-managed articles with review, sources and real publication dates. See [article writing guide](docs/articles.md) and `templates/article.json`.
+- `src/layouts/Article.astro`: reusable article layout, contents, examples, tables, sources and SEO metadata.
 - `src/components/`: layout elements and original diagrams; `ServiceJourney.astro` renders the tailored stages and interactive test conditions. No model APIs run in public examples.
 - `server/contact.mjs`: shared validated contact relay; `netlify/functions/contact.mjs` adapts it to the optional Netlify host.
 
-The review build includes Home, Services, all ten services, How it works, About, Contact, draft Privacy, Cookies and a genuine 404. Work, Insights and Thank you remain absent until their release conditions are met. No empty indexes or fictional case studies are published.
+The review build includes Home, Services, all ten services, How it works, About, Articles, Contact, draft Privacy, Cookies and a genuine 404. Articles has a coming-soon state until a reviewed article is published. The article template preview is available only in review builds at `/articles/template-preview/`. Work and Thank you remain absent until their release conditions are met. No empty indexes or fictional case studies are published.
 
 ## Production is a separate step
 

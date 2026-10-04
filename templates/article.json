@@ -1,0 +1,78 @@
+{
+  "slug": "template-preview",
+  "title": "Start with the decision. Then build the dashboard.",
+  "description": "A practical way to turn a reporting request into a clear business question, a useful measure and a dashboard someone can act on.",
+  "author": "Karol Songin",
+  "category": "Data & reporting",
+  "takeaway": "A useful dashboard connects a number to a decision, an owner and a next step.",
+  "publishedDate": null,
+  "substantiveUpdatedDate": null,
+  "publicationState": "draft",
+  "reviewed": false,
+  "relatedServices": [
+    "power-bi",
+    "system-integrations"
+  ],
+  "sources": [
+    {
+      "label": "Microsoft: dashboard design tips in Power BI",
+      "url": "https://learn.microsoft.com/en-us/power-bi/create-reports/service-dashboards-design-tips"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "What decision should the report help you make?",
+      "body": "Imagine a team reviewing its open customer enquiries. A total enquiry count shows how much work exists, but it does not tell the team which customer needs a response today. Start by asking what someone should do differently after reading the report.",
+      "bullets": [
+        "Name the person who will use the information.",
+        "Write down the decision they need to make.",
+        "Agree how often the information needs to change."
+      ],
+      "callout": {
+        "title": "A question worth answering",
+        "body": "Which enquiries have been waiting more than two working days, and who is responsible for the next response?"
+      }
+    },
+    {
+      "heading": "Turn a broad request into a useful measure",
+      "body": "A request such as ‘show our enquiries’ needs a little more definition before anyone builds a visual. Agree what counts, how dates are handled and what action follows. The same approach works for orders, outstanding invoices or delayed jobs.",
+      "table": {
+        "columns": [
+          "Define this",
+          "For an enquiry dashboard"
+        ],
+        "rows": [
+          [
+            "The question",
+            "Which customers need a response today?"
+          ],
+          [
+            "The measure",
+            "Open enquiries without a response for two working days"
+          ],
+          [
+            "The owner",
+            "The person assigned to the enquiry"
+          ],
+          [
+            "The next step",
+            "Review the enquiry and contact the customer"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Check the numbers before you trust the chart",
+      "body": "Pick a small set of records from the source system and trace them through the calculation. Check an enquiry opened before a weekend, one that has already been answered and one without an assigned owner. Write down the expected result before checking the dashboard.",
+      "callout": {
+        "title": "Keep the check repeatable",
+        "body": "A clear definition and a few agreed test records make future changes easier to verify."
+      }
+    },
+    {
+      "heading": "Give the reader a clear next step",
+      "body": "Keep the important decision visible. Put enquiries needing attention next to their owner and last response date. Let the reader move from a summary to the underlying records, so they can investigate and act without hunting through another spreadsheet."
+    }
+  ],
+  "seoTitle": "Planning a Business Dashboard: Questions to Ask"
+}

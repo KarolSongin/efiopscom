@@ -5116,3 +5116,10 @@ html:not(.js) .working-panel + .working-panel {
     bottom: 0;
   }
 }
+
+/* Keep the enlarged navigation comfortable with the Articles link. */
+@media (min-width:801px) and (max-width:1100px) {
+  .header-inner { gap:16px; }
+  #navigation { gap:12px; }
+  .header .button.compact { font-size:13px; padding:12px; }
+}

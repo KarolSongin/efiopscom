@@ -33,7 +33,7 @@ const read = (dir) =>
     .map((x) => JSON.parse(fs.readFileSync(path.join(dir, x), 'utf8')));
 const services = read('src/content/services');
 const cases = read('src/content/case-studies');
-const articles = read('src/content/insights');
+const articles = read('src/content/articles');
 const required = [
   'power-bi',
   'power-automate',
@@ -63,9 +63,35 @@ for (const entries of [services, cases, articles]) {
 for (const c of cases)
   if (c.publicationState === 'published' && (!c.permissionConfirmed || !c.evidenceReviewed))
     failures.push(`Published case lacks evidence or permission: ${c.slug}`);
-for (const a of articles)
+for (const a of articles) {
+  const validDate = (value) =>
+    /^\d{4}-\d{2}-\d{2}$/.test(value || '') &&
+    !Number.isNaN(Date.parse(value)) &&
+    new Date(value).toISOString().slice(0, 10) === value;
+  if (a.slug === 'template-preview') failures.push('Reserved article slug: template-preview');
+  if (
+    a.publicationState === 'published' &&
+    (!validDate(a.publishedDate) || a.publishedDate > new Date().toISOString().slice(0, 10))
+  )
+    failures.push(`Invalid or future publication date: ${a.slug}`);
+  if (
+    a.substantiveUpdatedDate &&
+    (!validDate(a.substantiveUpdatedDate) ||
+      a.substantiveUpdatedDate < a.publishedDate ||
+      a.substantiveUpdatedDate > new Date().toISOString().slice(0, 10))
+  )
+    failures.push(`Invalid article update date: ${a.slug}`);
+  if (
+    a.sections.some(
+      (section) =>
+        section.table &&
+        section.table.rows.some((row) => row.length !== section.table.columns.length),
+    )
+  )
+    failures.push(`Article table columns do not match rows: ${a.slug}`);
   if (a.publicationState === 'published' && (!a.reviewed || !a.publishedDate || !a.sources.length))
     failures.push(`Published article lacks review, date or sources: ${a.slug}`);
+}
 if (production) {
   for (const [key, value] of Object.entries(release)) {
     if (key === 'analyticsEnabled') {
@@ -127,6 +153,7 @@ const routes = [
   ...required.map((s) => `/services/${s}/`),
   '/how-it-works/',
   '/about/',
+  '/articles/',
   '/contact/',
   '/privacy/',
   '/cookies/',
@@ -138,11 +165,21 @@ const publicArticles = articles.filter(
   (a) => a.publicationState === 'published' && a.reviewed && a.publishedDate,
 );
 if (publicCases.length) routes.push('/work/', ...publicCases.map((c) => `/work/${c.slug}/`));
-if (publicArticles.length >= 2)
-  routes.push('/insights/', ...publicArticles.map((a) => `/insights/${a.slug}/`));
+routes.push(...publicArticles.map((a) => `/articles/${a.slug}/`));
+const indexableRoutes = production
+  ? routes.filter((p) => p !== '/articles/' || publicArticles.length)
+  : [];
+const lastModified = new Map(
+  publicArticles.map((a) => [`/articles/${a.slug}/`, a.substantiveUpdatedDate || a.publishedDate]),
+);
 const sitemap =
   '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' +
-  (production ? routes.map((p) => `<url><loc>${canonical + p}</loc></url>`).join('') : '') +
+  indexableRoutes
+    .map(
+      (p) =>
+        `<url><loc>${canonical + p}</loc>${lastModified.has(p) ? `<lastmod>${lastModified.get(p)}</lastmod>` : ''}</url>`,
+    )
+    .join('') +
   '</urlset>\n';
 fs.writeFileSync('dist/sitemap.xml', sitemap);
 fs.writeFileSync(
@@ -176,7 +213,7 @@ fs.writeFileSync(
     {
       mode: production ? 'production' : 'preview',
       routes,
-      indexableRoutes: production ? routes : [],
+      indexableRoutes,
     },
     null,
     2,

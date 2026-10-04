@@ -88,12 +88,17 @@ const cases = defineCollection({
     sections: z.array(z.object({ heading: text, body: text })).min(7),
   }),
 });
-const insights = defineCollection({
-  loader: glob({ pattern: '*.json', base: './src/content/insights' }),
+const articleCollection = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/articles' }),
   schema: z.object({
     slug: text,
     title: text,
+    seoTitle: text.optional(),
     description: text,
+    category: z
+      .enum(['Data & reporting', 'Automation & AI', 'Websites & SEO', 'Business systems'])
+      .default('Data & reporting'),
+    takeaway: text.optional(),
     author: z.literal('Karol Songin'),
     publishedDate: z.string().nullable(),
     substantiveUpdatedDate: z.string().nullable(),
@@ -101,7 +106,23 @@ const insights = defineCollection({
     publicationState: state,
     reviewed: z.boolean(),
     sources: z.array(z.object({ label: text, url: z.url() })),
-    sections: z.array(z.object({ heading: text, body: text })).min(2),
+    sections: z
+      .array(
+        z.object({
+          heading: text,
+          body: text,
+          bullets: z.array(text).optional(),
+          callout: z.object({ title: text, body: text }).optional(),
+          table: z
+            .object({ columns: z.array(text).min(2), rows: z.array(z.array(text)) })
+            .optional(),
+        }),
+      )
+      .min(2),
   }),
 });
-export const collections = { services: service, 'case-studies': cases, insights };
+export const collections = {
+  services: service,
+  'case-studies': cases,
+  articles: articleCollection,
+};

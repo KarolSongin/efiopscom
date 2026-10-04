@@ -1,0 +1,303 @@
+---
+import Icon from '../components/Icon.astro';
+import Base from './Base.astro';
+import '../styles/articles.css';
+import { site } from '../config/site';
+import { services } from '../data/content';
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  page: CollectionEntry<'articles'>['data'];
+  preview?: boolean;
+}
+const { page, preview = false } = Astro.props;
+const all = await services();
+const related = all.filter((s) => page.relatedServices.includes(s.data.slug));
+const words = [
+  page.description,
+  ...page.sections.flatMap((s) => [
+    s.heading,
+    s.body,
+    ...(s.bullets || []),
+    s.callout?.body || '',
+    ...(s.table?.rows.flat() || []),
+  ]),
+]
+  .join(' ')
+  .split(/\s+/).length;
+const minutes = Math.max(1, Math.ceil(words / 200));
+const date = (value: string) =>
+  new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(value));
+const canonical = `${site.url}/articles/${page.slug}/`;
+const article = preview
+  ? undefined
+  : {
+      '@type': 'Article',
+      '@id': canonical + '#article',
+      headline: page.title,
+      description: page.description,
+      author: { '@id': site.url + '/#karol' },
+      publisher: { '@id': site.url + '/#organization' },
+      datePublished: page.publishedDate,
+      dateModified: page.substantiveUpdatedDate || page.publishedDate,
+      image: [site.url + '/images/social-preview.png'],
+      inLanguage: 'en-GB',
+      articleSection: page.category,
+      wordCount: words,
+      mainEntityOfPage: { '@id': canonical + '#page' },
+      url: canonical,
+    };
+---
+
+<Base
+  title={`${page.seoTitle || page.title} | EFIops`}
+  description={page.description}
+  article={article}
+  noindex={preview}
+>
+  <div class="reading-progress" aria-hidden="true">
+    <span></span>
+  </div>
+  <section class="article-masthead">
+    <div class="container">
+      <nav class="article-crumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/articles/">Articles</a>
+        <span>/</span>
+        <span>{preview ? 'Template preview' : page.category}</span>
+      </nav>
+      {preview && <p class="template-notice">Article template preview · unpublished</p>}
+      <div class="article-heading-grid">
+        <div>
+          <p class="eyebrow">
+            {page.category} <span class="article-dot">·</span> {minutes} min read
+          </p>
+          <h1>{page.title}</h1>
+          <p class="article-deck">{page.description}</p>
+          <div class="article-byline">
+            <a class="author-monogram" href="/about/" aria-label="About Karol Songin">
+              KS
+            </a>
+            <div>
+              <a href="/about/">Karol Songin</a>
+              <span>EFIops · Business systems, data & automation</span>
+            </div>
+          </div>
+          {page.publishedDate && (
+            <p class="article-dates">
+              Published <time datetime={page.publishedDate}>{date(page.publishedDate)}</time>
+              {page.substantiveUpdatedDate && (
+                <>
+                  {' '}
+                  · Updated{' '}
+                  <time datetime={page.substantiveUpdatedDate}>
+                    {date(page.substantiveUpdatedDate)}
+                  </time>
+                </>
+              )}
+            </p>
+          )}
+        </div>
+        <div class="article-cover" aria-hidden="true">
+          <div class="cover-top">
+            <span>THE USEFUL QUESTION</span>
+            <span>
+              <Icon size={18} />
+            </span>
+          </div>
+          <p>
+            Information.
+            <br />
+            Decision.
+            <br />
+            <em>Action.</em>
+          </p>
+          <div class="cover-route">
+            <span>01 Understand</span>
+            <span>02 Define</span>
+            <strong>
+              03 Act <Icon size={18} />
+            </strong>
+          </div>
+          <div class="cover-note">A clearer next step starts here.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container article-reading-grid">
+    <aside class="article-sidebar">
+      <nav aria-label="Article contents">
+        <p class="small-label">In this article</p>
+        <ol>
+          {page.sections.map((section, i) => (
+            <li>
+              <a href={`#section-${i + 1}`}>
+                <span>{String(i + 1).padStart(2, '0')}</span>
+                {section.heading}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <a class="article-back" href="/articles/">
+        ← All articles
+      </a>
+    </aside>
+    <article class="article-prose">
+      {page.takeaway && (
+        <div class="article-takeaway">
+          <p class="small-label">The useful takeaway</p>
+          <p>{page.takeaway}</p>
+        </div>
+      )}
+      {page.sections.map((section, i) => (
+        <section id={`section-${i + 1}`} class="article-section">
+          <span class="section-number">{String(i + 1).padStart(2, '0')}</span>
+          <h2>{section.heading}</h2>
+          {section.body.split('\n\n').map((p) => (
+            <p>{p}</p>
+          ))}
+          {section.bullets && (
+            <ul>
+              {section.bullets.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          )}
+          {section.callout && (
+            <aside class="article-callout">
+              <strong>{section.callout.title}</strong>
+              <p>{section.callout.body}</p>
+            </aside>
+          )}
+          {section.table && (
+            <div
+              class="article-table-scroll"
+              role="region"
+              aria-label={`${section.heading}: comparison`}
+              tabindex="0"
+            >
+              <table>
+                <caption>{section.heading}</caption>
+                <thead>
+                  <tr>
+                    {section.table.columns.map((column) => (
+                      <th scope="col">{column}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.table.rows.map((row) => (
+                    <tr>
+                      {row.map((cell, j) =>
+                        j === 0 ? <th scope="row">{cell}</th> : <td>{cell}</td>,
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+      ))}
+      {page.sources.length > 0 && (
+        <section class="article-sources">
+          <h2>Sources & further reading</h2>
+          <ul>
+            {page.sources.map((source) => (
+              <li>
+                <a href={source.url}>
+                  {source.label} <Icon size={18} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <div class="article-author-card">
+        <span class="author-monogram">KS</span>
+        <div>
+          <p class="small-label">Written by Karol Songin</p>
+          <p>
+            I help businesses turn scattered information and repetitive work into practical
+            dashboards, websites and systems.
+          </p>
+          <a href="/about/">
+            Meet the person behind EFIops <Icon size={18} />
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>
+  {related.length > 0 && (
+    <section class="container article-related">
+      <p class="eyebrow">Put the idea to work</p>
+      <h2>Useful reading. Practical support.</h2>
+      <div class="article-related-grid">
+        {related.map((s) => (
+          <a href={`/services/${s.data.slug}/`}>
+            <span class="small-label">
+              Explore the service <Icon size={18} />
+            </span>
+            <h3>{s.data.title}</h3>
+            <p>{s.data.summary}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+  <section class="container article-cta">
+    <div>
+      <p class="eyebrow">Your next step</p>
+      <h2>Got a question about your own business?</h2>
+      <p>Tell me what is slowing you down. We can work out whether a focused change would help.</p>
+    </div>
+    <a class="button" href="/contact/">
+      Talk through your project <Icon size={18} />
+    </a>
+  </section>
+</Base>
+<script>
+  const bar = document.querySelector<HTMLElement>('.reading-progress span');
+  const sections = [...document.querySelectorAll<HTMLElement>('.article-section')];
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.article-sidebar nav a')];
+  let pending = false;
+  function update() {
+    const body = document.querySelector('.article-prose');
+    if (body && bar) {
+      const top = body.getBoundingClientRect().top + scrollY;
+      const distance = Math.max(1, body.getBoundingClientRect().height - innerHeight * 0.5);
+      bar.style.transform = `scaleX(${Math.min(1, Math.max(0, (scrollY - top + innerHeight * 0.3) / distance))})`;
+    }
+    let active = 0;
+    const threshold =
+      parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) +
+      parseFloat(getComputedStyle(sections[0]).scrollMarginTop) +
+      20;
+    sections.forEach((section, i) => {
+      if (section.getBoundingClientRect().top <= threshold) active = i;
+    });
+    links.forEach((link, i) => {
+      if (i === active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    pending = false;
+  }
+  addEventListener(
+    'scroll',
+    () => {
+      if (!pending) {
+        pending = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  addEventListener('resize', update);
+  update();
+</script>

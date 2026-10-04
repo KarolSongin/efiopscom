@@ -93,3 +93,9 @@ Admin screenshots were reviewed at desktop and mobile widths. No existing logo o
 - No legacy redirects exist yet: the reviewed CSV is deliberately empty. The build validates future reviewed mappings but no real migration mapping can be tested until the inventory exists.
 - No public case or article is approved. The template checks used fictional approvals only in temporary copies; real draft flags remain private and unchanged.
 - Environment `install_script` and `start_skill` were saved as a confirmed configuration draft. They reproduce dependency installation/build and restart the preview. Saving did not publish a new environment snapshot or deploy the website.
+
+## Articles foundation — 4 October 2026
+
+Added `/articles/`, the reusable `Article.astro` layout and the review-only `/articles/template-preview/`. Content is static JSON with a copyable starter and writing guide. The existing private article draft stays unpublished. The empty library remains outside the production sitemap; reviewed articles receive canonical URLs, Article metadata and real sitemap dates. The production fixture checks CollectionPage/Article schema, indexing, canonical URLs, dates and absence of the preview template. Responsive checks cover both new layouts at seven widths, axe accessibility, contents highlighting and JavaScript-disabled reading.
+
+Validation: Astro check returned zero errors/warnings; review build passed; all 30 unit/static/database tests and all 66 browser tests passed. The isolated production/approved-article fixtures also passed. Existing EFIops logo bytes remain unchanged. No production deployment or real owner confirmation changes were made.

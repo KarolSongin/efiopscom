@@ -76,7 +76,7 @@ try {
   fs.writeFileSync(casePath, JSON.stringify(fixtureCase));
   const articlePath = path.join(
     temp,
-    'src/content/insights/before-building-a-power-bi-dashboard.json',
+    'src/content/articles/before-building-a-power-bi-dashboard.json',
   );
   const fixtureArticle = JSON.parse(fs.readFileSync(articlePath));
   Object.assign(fixtureArticle, {
@@ -98,7 +98,7 @@ try {
   });
   fs.writeFileSync(articlePath, JSON.stringify(fixtureArticle));
   fs.writeFileSync(
-    path.join(temp, 'src/content/insights/second-fixture.json'),
+    path.join(temp, 'src/content/articles/second-fixture.json'),
     JSON.stringify({
       ...fixtureArticle,
       slug: 'second-fixture',
@@ -125,19 +125,32 @@ try {
   assert.match(caseHtml, /Fixture reviewed project/);
   assert.doesNotMatch(caseHtml, /PRIVATE_EVIDENCE_SENTINEL|internalEvidenceNotes/);
   const articleHtml = fs.readFileSync(
-    path.join(temp, 'dist/insights/second-fixture/index.html'),
+    path.join(temp, 'dist/articles/second-fixture/index.html'),
     'utf8',
   );
   assert.match(articleHtml, /@type":"Article"/);
   assert.match(articleHtml, /Second fixture reviewed article/);
   assert.ok(fs.existsSync(path.join(temp, 'dist/work/index.html')));
-  assert.ok(fs.existsSync(path.join(temp, 'dist/insights/index.html')));
+  assert.ok(fs.existsSync(path.join(temp, 'dist/articles/index.html')));
+  assert.ok(!fs.existsSync(path.join(temp, 'dist/articles/template-preview/index.html')));
+  assert.match(articleHtml, /article:published_time/);
+  assert.match(articleHtml, /name="robots" content="index, follow"/);
+  assert.match(articleHtml, /href="https:\/\/efiops.com\/articles\/second-fixture\/"/);
+  assert.match(articleHtml, /"publisher":/);
+  assert.match(
+    fs.readFileSync(path.join(temp, 'dist/articles/index.html'), 'utf8'),
+    /"@type":"CollectionPage"/,
+  );
+  assert.match(
+    fs.readFileSync(path.join(temp, 'dist/sitemap.xml'), 'utf8'),
+    /<lastmod>2026-10-04<\/lastmod>/,
+  );
   assert.equal(
     (fs.readFileSync(path.join(temp, 'dist/sitemap.xml'), 'utf8').match(/<loc>/g) || []).length,
     22,
   );
   console.log(
-    'PASS: isolated approved-content fixtures; work and insight indexes, case and Article templates render, private evidence notes stay excluded. No draft approval flags changed in the real checkout.',
+    'PASS: isolated approved-content fixtures; work and article indexes, case and Article templates render, private evidence notes stay excluded. No draft approval flags changed in the real checkout.',
   );
 
   const child = spawn('node', [path.join(root, 'server/preview.mjs')], {

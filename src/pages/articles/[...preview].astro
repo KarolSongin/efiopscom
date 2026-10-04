@@ -1,0 +1,12 @@
+---
+import Article from '../../layouts/Article.astro';
+import template from '../../data/article-template.json';
+import type { CollectionEntry } from 'astro:content';
+export function getStaticPaths() {
+  return import.meta.env.PUBLIC_BUILD_MODE === 'production'
+    ? []
+    : [{ params: { preview: 'template-preview' } }];
+}
+---
+
+<Article page={template as CollectionEntry<'articles'>['data']} preview />

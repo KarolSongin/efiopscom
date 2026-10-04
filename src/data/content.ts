@@ -9,8 +9,9 @@ export const cases = async () =>
       x.data.evidenceReviewed,
   );
 export const articles = async () =>
-  (await getCollection('insights')).filter(
-    (x) => x.data.publicationState === 'published' && x.data.reviewed && x.data.publishedDate,
-  );
+  (await getCollection('articles'))
+    .filter(
+      (x) => x.data.publicationState === 'published' && x.data.reviewed && x.data.publishedDate,
+    )
+    .sort((a, b) => (b.data.publishedDate || '').localeCompare(a.data.publishedDate || ''));
 export const workReleased = async () => (await cases()).length >= 1;
-export const insightsReleased = async () => (await articles()).length >= 2;

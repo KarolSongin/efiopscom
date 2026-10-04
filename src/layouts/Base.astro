@@ -4,18 +4,28 @@ import '../styles/experience.css';
 import latoRegular from '@fontsource/lato/files/lato-latin-400-normal.woff2?url';
 import latoBold from '@fontsource/lato/files/lato-latin-700-normal.woff2?url';
 import { site, production, groups } from '../config/site';
-import { services, workReleased, insightsReleased } from '../data/content';
+import { services, workReleased } from '../data/content';
 interface Props {
   title: string;
   description: string;
   service?: { title: string; lead: string };
   noindex?: boolean;
+  pageType?: 'WebPage' | 'CollectionPage';
+  structuredData?: Record<string, unknown>[];
   article?: Record<string, unknown>;
 }
-const { title, description, service, noindex = false, article } = Astro.props;
+const {
+  title,
+  description,
+  service,
+  noindex = false,
+  article,
+  pageType = 'WebPage',
+  structuredData = [],
+} = Astro.props;
 const all = await services();
 const work = await workReleased();
-const insights = await insightsReleased();
+
 const path = Astro.url.pathname;
 const canonical = new URL(path, site.url).href;
 const crumbs = path.split('/').filter(Boolean);
@@ -43,7 +53,7 @@ const graph: Record<string, unknown>[] = [
     publisher: { '@id': site.url + '/#organization' },
   },
   {
-    '@type': 'WebPage',
+    '@type': pageType,
     '@id': canonical + '#page',
     url: canonical,
     name: title,
@@ -77,6 +87,7 @@ if (crumbs.length)
     ],
   });
 if (article) graph.push(article);
+graph.push(...structuredData);
 ---
 
 <!doctype html>
@@ -99,6 +110,16 @@ if (article) graph.push(article);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={site.url + '/images/social-preview.png'} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="EFIops" />
+    <meta property="og:image:alt" content="EFIops — business websites, data and automation" />
+    {article && <meta property="article:author" content={site.url + '/about/'} />}
+    {article?.datePublished && (
+      <meta property="article:published_time" content={String(article.datePublished)} />
+    )}
+    {article?.dateModified && (
+      <meta property="article:modified_time" content={String(article.dateModified)} />
+    )}
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
     <script
@@ -158,7 +179,9 @@ if (article) graph.push(article);
             About
           </a>
           {work && <a href="/work/">Work</a>}
-          {insights && <a href="/insights/">Insights</a>}
+          <a href="/articles/" aria-current={path.startsWith('/articles/') ? 'page' : undefined}>
+            Articles
+          </a>
           <a class="button compact" href="/contact/">
             Talk through your project{' '}
             <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -202,6 +225,7 @@ if (article) graph.push(article);
             <p class="small-label">Let's talk</p>
             <a href="/contact/">Talk through your project ↗</a>
             <a href="/about/">Meet Karol</a>
+            <a href="/articles/">Read the articles</a>
             <a href="/how-it-works/">How projects work</a>
           </div>
         </div>

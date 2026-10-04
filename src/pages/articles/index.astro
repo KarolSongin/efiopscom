@@ -1,0 +1,201 @@
+---
+import Icon from '../../components/Icon.astro';
+import Base from '../../layouts/Base.astro';
+import '../../styles/articles.css';
+import { articles } from '../../data/content';
+const entries = await articles();
+const topics = [
+  {
+    number: '01',
+    title: 'Data that answers a question.',
+    description: 'Reporting, Power BI and the decisions behind the numbers.',
+    href: '/services/power-bi/',
+    label: 'Data & reporting',
+  },
+  {
+    number: '02',
+    title: 'Less chasing. Better flow.',
+    description: 'Automation and AI applied to the work your team actually does.',
+    href: '/services/power-automate/',
+    label: 'Automation & AI',
+  },
+  {
+    number: '03',
+    title: 'A website that earns its place.',
+    description: 'Clearer websites, better user journeys and search visibility.',
+    href: '/services/seo/',
+    label: 'Websites & SEO',
+  },
+  {
+    number: '04',
+    title: 'Systems that work together.',
+    description: 'Practical business tools and connections between your systems.',
+    href: '/services/system-integrations/',
+    label: 'Business systems',
+  },
+];
+const date = (value: string) =>
+  new Intl.DateTimeFormat('en-GB', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(value));
+---
+
+<Base
+  title="Articles on Business Systems, Data & SEO | EFIops"
+  description="Practical guides to business reporting, automation, websites and SEO. Clear explanations to help you decide what your business needs next."
+  noindex={!entries.length}
+  pageType="CollectionPage"
+  structuredData={
+    entries.length
+      ? [
+          {
+            '@type': 'ItemList',
+            itemListElement: entries.map((entry, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              url: `https://efiops.com/articles/${entry.data.slug}/`,
+              name: entry.data.title,
+            })),
+          },
+        ]
+      : []
+  }
+>
+  <section class="articles-hero">
+    <div class="container">
+      <p class="eyebrow">EFIops articles · Practical thinking</p>
+      <h1>
+        Good questions.
+        <br />
+        Clearer <em>next steps.</em>
+      </h1>
+      <div class="articles-hero-bottom">
+        <p>
+          Understand the options before you invest. Practical guides to the data, websites and
+          systems that help a business work better.
+        </p>
+        <a href="#all-articles" class="articles-jump">
+          Explore the articles <span>↓</span>
+        </a>
+      </div>
+      <div class="articles-hero-line">
+        <span>Understand the problem</span>
+        <span>Explore the options</span>
+        <span>
+          Make a useful change <Icon size={18} />
+        </span>
+      </div>
+    </div>
+  </section>
+  <section id="all-articles" class="container articles-library">
+    <div class="articles-library-heading">
+      <div>
+        <p class="eyebrow">The reading room</p>
+        <h2>Ideas you can put to work.</h2>
+      </div>
+      {entries.length > 0 && (
+        <span class="article-count">
+          {entries.length} {entries.length === 1 ? 'article' : 'articles'}
+        </span>
+      )}
+    </div>
+    {entries.length ? (
+      <div class="article-card-grid">
+        {entries.map((entry, i) => (
+          <a
+            class={`article-card ${i === 0 ? 'article-card-featured' : ''}`}
+            href={`/articles/${entry.data.slug}/`}
+          >
+            <div class="article-card-art" aria-hidden="true">
+              <span>{entry.data.category}</span>
+              <p>
+                {['Ask a better question.', 'Make work flow.', 'Find the useful next step.'][i % 3]}
+              </p>
+              <div class="card-art-lines">
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+              <b>
+                <Icon size={18} />
+              </b>
+            </div>
+            <div class="article-card-copy">
+              <p class="small-label">{entry.data.category}</p>
+              <h3>{entry.data.title}</h3>
+              <p>{entry.data.description}</p>
+              <div class="article-card-meta">
+                <span>Karol Songin · {date(entry.data.publishedDate!)}</span>
+                <span>
+                  Read article <Icon size={18} />
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="articles-empty">
+        <div class="empty-editorial-mark" aria-hidden="true">
+          <span>EFIops</span>
+          <p>
+            A little clarity
+            <br />
+            goes a long way.
+          </p>
+          <div>
+            FIELD NOTES{' '}
+            <b>
+              <Icon size={18} />
+            </b>
+          </div>
+        </div>
+        <div>
+          <p class="small-label">Coming next</p>
+          <h3>Practical guides are on the way.</h3>
+          <p>
+            We’re preparing articles that start with a real business question and work towards a
+            useful answer. In the meantime, explore the services below or tell me what you’re trying
+            to improve.
+          </p>
+          <a href="/contact/">
+            Talk through your question <Icon size={18} />
+          </a>
+        </div>
+      </div>
+    )}
+  </section>
+  <section class="container articles-topics">
+    <p class="eyebrow">Where would you like more clarity?</p>
+    <h2>Start with what matters to your business.</h2>
+    <div class="article-topic-grid">
+      {topics.map((topic) => (
+        <a href={topic.href}>
+          <div>
+            <span>{topic.number}</span>
+            <span>
+              <Icon size={18} />
+            </span>
+          </div>
+          <p class="small-label">{topic.label}</p>
+          <h3>{topic.title}</h3>
+          <p>{topic.description}</p>
+          <strong>Explore the service</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section class="container article-cta">
+    <div>
+      <p class="eyebrow">From reading to doing</p>
+      <h2>Have a question a guide can’t answer?</h2>
+      <p>Tell me a little about your business and what you want to change.</p>
+    </div>
+    <a class="button" href="/contact/">
+      Talk through your project <Icon size={18} />
+    </a>
+  </section>
+</Base>
