@@ -74,6 +74,16 @@ export async function saveContactToSupabase(env, data, requestKey, fingerprint, 
     throw intakeFailure('invalid_configuration');
   }
   if (!config?.secretKey) throw intakeFailure('missing_configuration');
+  // Intake must use a server key; a publishable/anon key authenticates as anon.
+  // Validate locally so permission failures cannot obscure this configuration mistake.
+  if (!config.secretKey.startsWith('sb_secret_')) {
+    let role;
+    try {
+      role = JSON.parse(Buffer.from(config.secretKey.split('.')[1], 'base64url').toString()).role;
+    } catch {}
+    if (!config.secretKey.startsWith('eyJ') || role !== 'service_role')
+      throw intakeFailure('wrong_server_key_type');
+  }
   let result;
   try {
     result = await supabaseRequest(config, '/rest/v1/rpc/intake_enquiry', {

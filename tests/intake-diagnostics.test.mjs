@@ -40,3 +40,24 @@ test('intake diagnostics expose only safe status/code and distinguish missing co
     },
   );
 });
+
+test('publishable and anon keys cannot be used for server intake', async () => {
+  const anon =
+    'eyJ0eXAiOiJKV1QifQ.' +
+    Buffer.from(JSON.stringify({ role: 'anon' })).toString('base64url') +
+    '.test';
+  for (const key of ['sb_publishable_wrong', anon]) {
+    await assert.rejects(
+      saveContactToSupabase(
+        { ...env, SUPABASE_SECRET_KEY: key },
+        {},
+        'request-id',
+        'fingerprint',
+        () => {
+          throw Error('Must not call provider');
+        },
+      ),
+      (error) => error.intakeDiagnostic.reason === 'wrong_server_key_type',
+    );
+  }
+});
