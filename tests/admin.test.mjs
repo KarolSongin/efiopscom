@@ -134,6 +134,7 @@ test('Supabase sign-in checks confirmed email and database membership; customer 
       });
     if (url.endsWith('/user')) return Response.json(user);
     if (url.includes('/rpc/efiops_is_admin')) return Response.json(allowed);
+    if (opts.method === 'DELETE') return Response.json([{ id: user.id }]);
     if (url.includes('/enquiries?')) return Response.json([]);
     return Response.json({});
   };
@@ -147,6 +148,15 @@ test('Supabase sign-in checks confirmed email and database membership; customer 
   assert.equal((await h(request('enquiries', 'GET', undefined, cookie))).status, 200);
   assert.equal(
     calls.find((c) => c.url.includes('/enquiries?')).opts.headers.Authorization,
+    'Bearer user-access-token',
+  );
+  assert.equal(
+    (await h(request(`enquiries/${user.id}`, 'DELETE', { version: 1, confirmed: true }, cookie)))
+      .status,
+    200,
+  );
+  assert.equal(
+    calls.find((c) => c.opts.method === 'DELETE').opts.headers.Authorization,
     'Bearer user-access-token',
   );
   allowed = false;

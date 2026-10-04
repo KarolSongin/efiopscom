@@ -1,5 +1,5 @@
 export const site = {
-  name: 'EFIops',
+  name: 'EfiOps',
   url: 'https://efiops.com',
   person: 'Karol Songin',
   email: 'karol@efiops.com',
@@ -26,8 +26,8 @@ export const groups = [
   },
   {
     title: 'Build a stronger online presence.',
-    nav: 'Websites and search',
-    text: 'Create a distinctive website, improve the one you have or make important services easier to find in search.',
-    slugs: ['web-design-development', 'website-optimisation', 'seo'],
+    nav: 'Websites, search and social',
+    text: 'Build a distinctive website, improve search visibility and organise useful social content around your business.',
+    slugs: ['web-design-development', 'website-optimisation', 'seo', 'social-media'],
   },
 ];

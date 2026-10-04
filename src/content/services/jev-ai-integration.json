@@ -1,7 +1,7 @@
 {
   "slug": "jev-ai-integration",
   "title": "Jev integration",
-  "seoTitle": "Jev AI Integration for Business Workflows | EFIops",
+  "seoTitle": "Jev AI Integration for Business Workflows | EfiOps",
   "metaDescription": "Integrate TypeSafe's Jev into applications for intent routing and structured decisions. Define workflows, evaluate uncertain cases and keep action rules in your code.",
   "h1": "Turn a request into the right next step.",
   "eyebrow": "Jev integration · Decisions with structure",
@@ -60,7 +60,7 @@
     },
     {
       "question": "Are you an official TypeSafe partner?",
-      "answer": "EFIops is an independent integration provider. No official partnership or endorsement is claimed."
+      "answer": "EfiOps is an independent integration provider. No official partnership or endorsement is claimed."
     }
   ],
   "cta": {

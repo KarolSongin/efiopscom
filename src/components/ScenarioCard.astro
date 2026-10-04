@@ -18,6 +18,7 @@ const icon = (
     'website-optimisation': 'globe',
     seo: 'search',
     'computer-vision': 'camera',
+    'social-media': 'message',
   } as Record<string, string>
 )[kind];
 const title = (
@@ -32,6 +33,7 @@ const title = (
     'website-optimisation': 'Make the next step easier to find.',
     seo: 'A page that answers the search.',
     'computer-vision': 'The image changes. The decision should too.',
+    'social-media': 'A useful week, ready for review.',
   } as Record<string, string>
 )[kind];
 ---
@@ -59,6 +61,7 @@ const title = (
               'website-optimisation': 'Mobile usability',
               seo: 'Search intent',
               'computer-vision': 'Visual measurement',
+              'social-media': 'Content & approval calendar',
             } as Record<string, string>
           )[kind]
         }
@@ -463,6 +466,43 @@ const title = (
       </div>
     </>
   )}
+  {kind === 'social-media' && (
+    <>
+      <div class="card-choice js-only" role="group" aria-label="Choose publishing condition">
+        <button data-social="approved" aria-pressed="true">
+          Approved
+        </button>
+        <button data-social="draft" aria-pressed="false">
+          Awaiting approval
+        </button>
+        <button data-social="reply" aria-pressed="false">
+          Needs a reply
+        </button>
+      </div>
+      <div class="social-calendar">
+        <div>
+          <span>MON · CUSTOMER QUESTION</span>
+          <strong>When should a garden get its next visit?</strong>
+          <small>Practical advice → service page</small>
+        </div>
+        <div>
+          <span>WED · PROJECT UPDATE</span>
+          <strong>A tidy finish, with permission to share.</strong>
+          <small>Reviewed photo + useful context</small>
+        </div>
+        <div>
+          <span>FRI · SEASONAL TIP</span>
+          <strong>Three jobs to plan before winter.</strong>
+          <small>A clear next step → enquiry</small>
+        </div>
+      </div>
+      <div class="social-decision" role="status" aria-live="polite">
+        <span class="ui-label">Next step</span>
+        <strong data-social-result>Ready to schedule</strong>
+        <p data-social-reason>The reviewer has approved the content, image and destination.</p>
+      </div>
+    </>
+  )}
   {kind === 'computer-vision' && (
     <>
       <div class="card-choice js-only" role="group" aria-label="Choose image conditions">
@@ -692,6 +732,25 @@ const title = (
           ? 'A useful answer depends on the garden, the season and what you want to maintain. Start with the tasks that need a regular plan.'
           : 'Regular garden care, seasonal visits and one-off improvements. Explore what’s included and discuss your garden.',
       );
+    });
+    choose('data-social', (key) => {
+      const outcomes = {
+        approved: [
+          'Ready to schedule',
+          'The reviewer has approved the content, image and destination.',
+        ],
+        draft: [
+          'Keep as draft',
+          'Missing sign-off: this post stays unpublished until it is approved.',
+        ],
+        reply: [
+          'Escalate to the owner',
+          'A sensitive customer comment needs human judgement before a reply.',
+        ],
+      };
+      const result = outcomes[key as keyof typeof outcomes];
+      text('[data-social-result]', result[0]);
+      text('[data-social-reason]', result[1]);
     });
     choose('data-vision', (key) => {
       const difficult = key === 'difficult';

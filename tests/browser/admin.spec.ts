@@ -165,3 +165,54 @@ test('an expired session clears customer data and returns to the access screen',
   await expect(page.locator('.customer-card')).toHaveCount(0);
   await expect(page.locator('#login-status')).toContainText('session expired');
 });
+
+test('contact deletion requires confirmation, preserves cancelled/failed records, and removes all history', async ({
+  page,
+}) => {
+  await enter(page);
+  await page.getByRole('button', { name: 'Add enquiry', exact: false }).click();
+  const dialog = page.getByRole('dialog');
+  const name = 'Delete test ' + Date.now();
+  await dialog.locator('[name=name]').fill(name);
+  await dialog.locator('[name=email]').fill('delete@example.com');
+  await dialog.locator('[name=message]').fill('A contact created to verify confirmed deletion.');
+  await dialog.getByRole('button', { name: 'Create opportunity' }).click();
+  await expect(dialog.getByRole('button', { name: 'Delete contact', exact: true })).toBeVisible();
+  await dialog.locator('#note-form textarea').fill('This note must be removed with the contact.');
+  await dialog.getByRole('button', { name: 'Add note', exact: true }).click();
+  await expect(dialog.locator('#note-status')).toContainText('Note added');
+  let deletionRequests = 0;
+  page.on('request', (r) => {
+    if (r.method() === 'DELETE') deletionRequests++;
+  });
+  page.once('dialog', async (popup) => {
+    expect(popup.message()).toContain(name);
+    expect(popup.message()).toContain('cannot be undone');
+    await popup.dismiss();
+  });
+  await dialog.getByRole('button', { name: 'Delete contact', exact: true }).click();
+  expect(deletionRequests).toBe(0);
+  await expect(dialog).toBeVisible();
+  await page.route('**/api/admin/enquiries/*', async (route) => {
+    if (route.request().method() === 'DELETE')
+      await route.fulfill({
+        status: 502,
+        json: { message: 'Deletion could not be completed. Try again.' },
+      });
+    else await route.continue();
+  });
+  page.once('dialog', (popup) => popup.accept());
+  await dialog.getByRole('button', { name: 'Delete contact', exact: true }).click();
+  await expect(dialog.locator('#record-status')).toContainText('Deletion could not');
+  await expect(dialog.locator('[name=name]')).toHaveValue(name);
+  await page.unroute('**/api/admin/enquiries/*');
+  let recordUrl = '';
+  page.on('request', (r) => {
+    if (r.method() === 'DELETE') recordUrl = r.url();
+  });
+  page.once('dialog', (popup) => popup.accept());
+  await dialog.getByRole('button', { name: 'Delete contact', exact: true }).click();
+  await expect(dialog).not.toBeVisible();
+  await expect(page.locator('#admin-status')).toContainText('permanently deleted');
+  expect((await page.request.get(recordUrl)).status()).toBe(404);
+});

@@ -1,7 +1,7 @@
 {
   "name": "efiopscom",
   "version": "1.0.0",
-  "description": "EFIops business websites, data and automation",
+  "description": "EfiOps business websites, data and automation",
   "scripts": {
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev --host 0.0.0.0",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",

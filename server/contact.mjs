@@ -12,6 +12,7 @@ export const serviceSlugs = [
   'website-optimisation',
   'seo',
   'computer-vision',
+  'social-media',
 ];
 const escape = (s) =>
   String(s).replace(
@@ -114,7 +115,7 @@ export function createContactHandler({
       if (type.includes('application/json')) return json(status, body);
       if (body.accepted === true && body.preview !== true) {
         return new Response(
-          '<!doctype html><html lang="en-GB"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Thanks for getting in touch | EFIops</title><body style="font-family:Arial;max-width:700px;margin:40px auto;padding:20px;color:#082f49"><h1>Thanks for getting in touch.</h1><p>Your enquiry has been received. In the meantime, you can explore the services or read more about how projects work.</p><p><a href="/services/">Explore the services</a> · <a href="/how-it-works/">How projects work</a></p></body></html>',
+          '<!doctype html><html lang="en-GB"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Thanks for getting in touch | EfiOps</title><body style="font-family:Arial;max-width:700px;margin:40px auto;padding:20px;color:#082f49"><h1>Thanks for getting in touch.</h1><p>Your enquiry has been received. In the meantime, you can explore the services or read more about how projects work.</p><p><a href="/services/">Explore the services</a> · <a href="/how-it-works/">How projects work</a></p></body></html>',
           {
             status: 200,
             headers: {
@@ -127,7 +128,7 @@ export function createContactHandler({
       }
 
       const fields = ['name', 'email', 'organisation', 'service', 'website', 'message'];
-      const html = `<!doctype html><html lang="en-GB"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Enquiry status | EFIops</title><body style="font-family:Arial;max-width:700px;margin:40px auto;padding:20px;color:#082f49"><h1>${escape(body.message)}</h1><p>Your details are retained below. <a href="mailto:karol@efiops.com">Prefer email?</a></p><form action="/api/contact" method="post">${fields.map((key) => `<p><label for="${key}">${escape({ name: 'Your name', email: 'Email address', organisation: 'Business or organisation', service: 'Service', website: 'Website or relevant link', message: 'What would you like to improve?' }[key])}</label><br>${key === 'message' ? `<textarea id="${key}" aria-describedby="${key}-error" name="${key}" rows="8" cols="40">${escape(data[key] || '')}</textarea>` : `<input id="${key}" aria-describedby="${key}-error" name="${key}" value="${escape(data[key] || '')}" ${key === 'email' ? 'type="email"' : ''}>`}${errors[key] ? `<br><span id="${key}-error">${escape(errors[key])}</span>` : ''}</p>`).join('')}<input type="hidden" name="requestId" value="${escape(data.requestId || '')}"><button>Send your enquiry</button></form><p><a href="/contact/">Return to the contact page</a></p></body></html>`;
+      const html = `<!doctype html><html lang="en-GB"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Enquiry status | EfiOps</title><body style="font-family:Arial;max-width:700px;margin:40px auto;padding:20px;color:#082f49"><h1>${escape(body.message)}</h1><p>Your details are retained below. <a href="mailto:karol@efiops.com">Prefer email?</a></p><form action="/api/contact" method="post">${fields.map((key) => `<p><label for="${key}">${escape({ name: 'Your name', email: 'Email address', organisation: 'Business or organisation', service: 'Service', website: 'Website or relevant link', message: 'What would you like to improve?' }[key])}</label><br>${key === 'message' ? `<textarea id="${key}" aria-describedby="${key}-error" name="${key}" rows="8" cols="40">${escape(data[key] || '')}</textarea>` : `<input id="${key}" aria-describedby="${key}-error" name="${key}" value="${escape(data[key] || '')}" ${key === 'email' ? 'type="email"' : ''}>`}${errors[key] ? `<br><span id="${key}-error">${escape(errors[key])}</span>` : ''}</p>`).join('')}<input type="hidden" name="requestId" value="${escape(data.requestId || '')}"><button>Send your enquiry</button></form><p><a href="/contact/">Return to the contact page</a></p></body></html>`;
       return new Response(html, {
         status,
         headers: {
@@ -212,7 +213,7 @@ export function createContactHandler({
             from: env.CONTACT_FROM,
             to: [env.CONTACT_TO],
             reply_to: data.email,
-            subject: `EFIops enquiry: ${data.service || 'Not sure yet'}`,
+            subject: `EfiOps enquiry: ${data.service || 'Not sure yet'}`,
             text: [
               `Name: ${data.name}`,
               `Email: ${data.email}`,

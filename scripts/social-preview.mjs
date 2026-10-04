@@ -11,14 +11,14 @@ try {
   });
   let svg = fs
     .readFileSync('public/images/social-preview.svg', 'utf8')
-    .replace('EFIops · Websites', 'Websites')
+    .replace('EfiOps · Websites', 'Websites')
     .replaceAll('Arial,sans-serif', 'Lato,Arial,sans-serif');
   const font = fs
     .readFileSync('node_modules/@fontsource/lato/files/lato-latin-700-normal.woff2')
     .toString('base64');
   const logo = fs.readFileSync('public/images/efiops-logo-current.png').toString('base64');
   await page.setContent(
-    `<style>@font-face{font-family:Lato;src:url(data:font/woff2;base64,${font});font-weight:400 700}body{margin:0}svg{display:block}.logo{position:absolute;top:24px;left:70px;width:165px;background:white;padding:8px 15px;border-radius:5px;box-sizing:border-box}</style>${svg}<img class="logo" src="data:image/png;base64,${logo}" alt="EFIops">`,
+    `<style>@font-face{font-family:Lato;src:url(data:font/woff2;base64,${font});font-weight:400 700}body{margin:0}svg{display:block}.logo{position:absolute;top:24px;left:70px;width:165px;background:white;padding:8px 15px;border-radius:5px;box-sizing:border-box}</style>${svg}<img class="logo" src="data:image/png;base64,${logo}" alt="EfiOps">`,
   );
   await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: 'public/images/social-preview.png' });

@@ -180,6 +180,15 @@ export function createDemoStore(file = path.resolve('.local/admin-demo.json')) {
           db.activity.push(event(id, 'details_updated', 'Enquiry details updated.'));
         return enquiry;
       }),
+    remove: (id, version) =>
+      run((db) => {
+        const enquiry = db.enquiries.find((e) => e.id === id);
+        if (!enquiry) return null;
+        if (enquiry.version !== version) return { conflict: true };
+        db.enquiries = db.enquiries.filter((e) => e.id !== id);
+        db.activity = db.activity.filter((a) => a.enquiry_id !== id);
+        return { deleted: true };
+      }),
     note: (id, body) =>
       run((db) => {
         if (!db.enquiries.some((e) => e.id === id)) return null;

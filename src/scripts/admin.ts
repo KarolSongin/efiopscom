@@ -38,6 +38,7 @@ const services = [
   ['website-optimisation', 'Website optimisation'],
   ['seo', 'SEO'],
   ['computer-vision', 'Computer vision'],
+  ['social-media', 'Social media'],
 ];
 const statuses = [
   ['active', 'Active'],
@@ -257,7 +258,7 @@ function dialogContent(record: Enquiry | null, activity: Activity[] = []) {
         ['high', 'High'],
       ],
       e.priority,
-    )}</select></label></div><p id="record-status" class="record-status" role="status"></p><div class="record-save"><button class="admin-button" type="submit">${record ? 'Save changes' : 'Create opportunity'}</button>${record ? '<button class="admin-secondary" type="button" id="reload-record">Reload record</button>' : ''}</div></form><aside class="record-history"><h3>Conversation & activity</h3>${record ? `<form id="note-form"><label>Add a private note<textarea name="body" rows="3" required maxlength="5000" placeholder="A conversation, a decision or something to remember…"></textarea></label><button class="admin-secondary" type="submit">Add note</button><p id="note-status" role="status"></p></form><ol class="activity-list">${activity.map((a) => `<li class="activity-${esc(a.type)}"><span>${a.type === 'note_added' ? 'Private note' : a.type === 'created' ? 'Enquiry received' : a.type === 'stage_changed' ? 'Stage changed' : a.type === 'status_changed' ? 'Status changed' : 'Details updated'}</span><p>${esc(a.body)}</p><time datetime="${esc(a.created_at)}">${esc(date(a.created_at))}</time></li>`).join('') || '<li>No activity yet.</li>'}</ol>` : '<p>The activity history starts when you create the enquiry. Notes and stage changes stay with the record.</p>'}</aside></div>`;
+    )}</select></label></div><p id="record-status" class="record-status" role="status"></p><div class="record-save"><button class="admin-button" type="submit">${record ? 'Save changes' : 'Create opportunity'}</button>${record ? '<button class="admin-secondary" type="button" id="reload-record">Reload record</button>' : ''}</div>${record ? '<section class="record-delete"><h3>Delete this contact</h3><p>Permanently remove this enquiry, its private notes and all activity. This cannot be undone.</p><button class="admin-danger" type="button" id="delete-contact">Delete contact</button></section>' : ''}</form><aside class="record-history"><h3>Conversation & activity</h3>${record ? `<form id="note-form"><label>Add a private note<textarea name="body" rows="3" required maxlength="5000" placeholder="A conversation, a decision or something to remember…"></textarea></label><button class="admin-secondary" type="submit">Add note</button><p id="note-status" role="status"></p></form><ol class="activity-list">${activity.map((a) => `<li class="activity-${esc(a.type)}"><span>${a.type === 'note_added' ? 'Private note' : a.type === 'created' ? 'Enquiry received' : a.type === 'stage_changed' ? 'Stage changed' : a.type === 'status_changed' ? 'Status changed' : 'Details updated'}</span><p>${esc(a.body)}</p><time datetime="${esc(a.created_at)}">${esc(date(a.created_at))}</time></li>`).join('') || '<li>No activity yet.</li>'}</ol>` : '<p>The activity history starts when you create the enquiry. Notes and stage changes stay with the record.</p>'}</aside></div>`;
   el<HTMLFormElement>('enquiry-editor').addEventListener('submit', async (event) => {
     event.preventDefault();
     if (busy) return;
@@ -299,6 +300,32 @@ function dialogContent(record: Enquiry | null, activity: Activity[] = []) {
     }
   });
   if (record) {
+    el('delete-contact').addEventListener('click', async () => {
+      if (
+        busy ||
+        !confirm(
+          `Permanently delete ${record.name} (${record.email})?\n\nThis removes the enquiry, every private note and its entire activity history. It cannot be undone.`,
+        )
+      )
+        return;
+      busy = true;
+      lockDialog(true);
+      el('record-status').textContent = 'Deleting contact…';
+      try {
+        await api(`enquiries/${record.id}`, 'DELETE', { version: record.version, confirmed: true });
+        el<HTMLDialogElement>('enquiry-dialog').close();
+        records = records.filter((item) => item.id !== record.id);
+        render();
+        showStatus('Contact and all its notes and activity permanently deleted.');
+        el('add-enquiry').focus();
+      } catch (error) {
+        const status = document.getElementById('record-status');
+        if (status) status.textContent = (error as Error).message;
+      } finally {
+        busy = false;
+        lockDialog(false);
+      }
+    });
     el('reload-record').addEventListener('click', () =>
       pending(el<HTMLButtonElement>('reload-record'), async () => {
         if (confirm('Reload this record? Unsaved edits will be discarded.'))
@@ -409,7 +436,7 @@ async function init() {
       config.mode === 'demo'
         ? 'Try the customer flow before connecting your database.'
         : config.mode === 'supabase'
-          ? 'Sign in with your authorised EFIops account.'
+          ? 'Sign in with your authorised EfiOps account.'
           : 'Dashboard setup is required.';
     if (config.mode !== 'unconfigured') {
       try {

@@ -83,9 +83,9 @@ try {
   assert.equal(result.status, 0, result.stderr + '\n' + result.stdout);
   const manifest = JSON.parse(fs.readFileSync(path.join(temp, 'dist/build-manifest.json')));
   assert.equal(manifest.mode, 'production');
-  assert.equal(manifest.indexableRoutes.length, 17);
+  assert.equal(manifest.indexableRoutes.length, 18);
   const sitemap = fs.readFileSync(path.join(temp, 'dist/sitemap.xml'), 'utf8');
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 17);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 18);
   assert.doesNotMatch(sitemap, /thank-you|\/work\/|\/insights\//);
   const home = fs.readFileSync(path.join(temp, 'dist/index.html'), 'utf8');
   assert.match(home, /name="robots" content="index, follow"/);
@@ -97,7 +97,7 @@ try {
   assert.match(confirmation, /noindex, nofollow/);
   assert.match(fs.readFileSync(path.join(temp, 'dist/robots.txt'), 'utf8'), /Allow: \//);
   console.log(
-    'PASS: isolated production fixture; 17 indexable URLs, correct robots and headers, no draft or confirmation sitemap entries. No real release fields changed; no provider calls.',
+    'PASS: isolated production fixture; 18 indexable URLs, correct robots and headers, no draft or confirmation sitemap entries. No real release fields changed; no provider calls.',
   );
 
   const casePath = path.join(temp, 'src/content/case-studies/loma-yamato-reporting.json');
@@ -184,7 +184,7 @@ try {
   );
   assert.equal(
     (fs.readFileSync(path.join(temp, 'dist/sitemap.xml'), 'utf8').match(/<loc>/g) || []).length,
-    22,
+    23,
   );
   console.log(
     'PASS: isolated approved-content fixtures; work and article indexes, case and Article templates render, private evidence notes stay excluded. No draft approval flags changed in the real checkout.',

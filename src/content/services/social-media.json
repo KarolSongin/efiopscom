@@ -1,0 +1,186 @@
+{
+  "slug": "social-media",
+  "title": "Social media setup, automation & management",
+  "seoTitle": "Social Media Setup & Management in Kent | EfiOps",
+  "metaDescription": "Social media profiles, content planning, approval workflows and practical publishing automation. EfiOps helps businesses in Kent and across the UK stay consistent.",
+  "h1": "Show up consistently. Make every post useful.",
+  "eyebrow": "Social media · A presence with a plan",
+  "lead": "Your customers should be able to see what you do, recognise your business and know how to get in touch. Set up the right profiles, build a practical content plan and keep publishing organised—with human review where it matters.",
+  "sections": [
+    {
+      "heading": "A clear presence starts before the first post.",
+      "paragraphs": [
+        "Outdated contact details, inconsistent branding and an account nobody owns make social media harder than it needs to be. We review where your customers spend time, what your profiles say and how a visitor moves from a post to an enquiry.",
+        "We agree which channels deserve attention and build a sustainable routine around your available time, content and business goals."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "From account setup to a manageable publishing routine.",
+      "paragraphs": [],
+      "items": [
+        "Profile setup and optimisation. Consistent business details, bios, branding, links and account ownership.",
+        "Content planning. Useful topics, formats and a calendar built around your services and customer questions.",
+        "Publishing automation. Approved posts scheduled through suitable platform tools or supported integrations.",
+        "Ongoing management. An agreed scope for preparing posts, monitoring comments and messages, and reviewing performance.",
+        "Approval and escalation. Clear responsibilities for sign-off, sensitive replies and situations needing your attention."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Useful content. Clear ownership. A rhythm you can maintain.",
+      "paragraphs": [
+        "For a local service business, a week might include an answer to a common customer question, an approved project update and a practical seasonal tip. Each post has a purpose and a relevant route to the website.",
+        "We review available platform signals and website enquiries to understand what is useful. Reach and engagement are context, not guarantees of customers; recommendations follow what the evidence supports."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can you set up accounts as well as manage existing ones?",
+      "answer": "Yes. We can review existing profiles or set up suitable accounts, including consistent details, branding, ownership and an agreed content workflow. You retain ownership of your accounts."
+    },
+    {
+      "question": "Can you automate every post and reply?",
+      "answer": "Approved publishing can often be scheduled. Platform capabilities and permissions vary. Sensitive replies, complaints and claims about your business need human judgement; we agree what stays manual."
+    },
+    {
+      "question": "What does ongoing management include?",
+      "answer": "We agree the channels, content responsibilities, publishing frequency, approval process, monitoring windows and reporting. Photography, video production, paid advertising and round-the-clock replies are separate unless explicitly included."
+    },
+    {
+      "question": "Can we approve posts before they go live?",
+      "answer": "Yes. Approval is part of the workflow. Drafts stay unpublished until the agreed reviewer signs them off, and we test the rules for changes and missing approvals."
+    },
+    {
+      "question": "Do you guarantee followers or sales?",
+      "answer": "No. We focus on a credible presence, relevant content and a practical process. Results depend on the offer, audience, consistency and platform conditions."
+    }
+  ],
+  "cta": {
+    "label": "Discuss your social media",
+    "heading": "What would make social media easier to keep up with?",
+    "text": "Share your profiles, the services you want to promote and what currently gets in the way. We can agree a useful starting point."
+  },
+  "relatedServices": [
+    "web-design-development",
+    "seo",
+    "power-automate"
+  ],
+  "visualKey": "social-media",
+  "primaryIntent": "social media setup automation and management",
+  "publicationState": "published",
+  "summary": "Set up your profiles, plan useful content and organise publishing, approvals and ongoing management.",
+  "useCases": [
+    {
+      "audience": "A local service business",
+      "title": "Turn everyday expertise into useful posts.",
+      "body": "Plan customer answers, seasonal advice and approved project updates, linking each to the relevant service or enquiry page."
+    },
+    {
+      "audience": "A small team with several accounts",
+      "title": "Know what is ready—and who approves it.",
+      "body": "Use one calendar to separate ideas, drafts and approved posts. Make account access and final sign-off clear before scheduling."
+    },
+    {
+      "audience": "A business restarting its online presence",
+      "title": "Fix the foundations before posting more.",
+      "body": "Bring bios, contact details and branding up to date. Choose a realistic publishing routine and a sensible way to review enquiries and platform signals."
+    }
+  ],
+  "journey": {
+    "heading": "From scattered ideas to a week of approved posts.",
+    "example": "A garden-care business wants consistent posts that answer customer questions and lead to relevant service enquiries.",
+    "sources": [
+      "Existing social profiles",
+      "Common customer questions",
+      "Approved photos and service details"
+    ],
+    "question": "Is this post approved and ready to publish?",
+    "scope": [
+      "Two agreed social channels",
+      "A weekly content and approval calendar",
+      "Supported scheduling and enquiry links"
+    ],
+    "boundary": "Paid ads, new photo/video shoots and out-of-hours replies are separately agreed.",
+    "build": [
+      "Monday · Customer question",
+      "Wednesday · Approved project update",
+      "Friday · Seasonal advice"
+    ],
+    "stages": [
+      {
+        "id": "understand",
+        "label": "Understand",
+        "title": "Start with your customers and your current presence.",
+        "body": "We review profile details, content, account ownership and how customers contact you. We identify which questions and services deserve attention.",
+        "output": "A channel review and a practical content direction."
+      },
+      {
+        "id": "agree",
+        "label": "Agree",
+        "title": "Give the calendar clear responsibilities.",
+        "body": "We agree channels, content formats, publishing frequency, approval ownership and response boundaries. Platform tools, access and recurring costs are identified before setup.",
+        "output": "A scope, content calendar and approval rules."
+      },
+      {
+        "id": "build",
+        "label": "Build",
+        "title": "Prepare a repeatable publishing workflow.",
+        "body": "Profiles are updated, initial content is prepared and supported scheduling is connected. Each post has a destination and an approval status; drafts are not automatically published.",
+        "output": "Reviewable profiles, post drafts and a scheduling workflow."
+      },
+      {
+        "id": "test",
+        "label": "Test",
+        "title": "Check approval, links and platform behaviour.",
+        "body": "We test an approved post, a draft without sign-off and an edited scheduled post. We check previews, destinations, access permissions and what happens when a platform rejects a request.",
+        "output": "A checked workflow with clear exception handling."
+      },
+      {
+        "id": "handover",
+        "label": "Hand over",
+        "title": "Keep ownership—and know what to review.",
+        "body": "You receive access details, the calendar, approval instructions and an agreed review routine. Continuing management has a defined scope and escalation route.",
+        "output": "An owned account setup and sustainable publishing routine."
+      }
+    ],
+    "tests": [
+      {
+        "label": "Approved post",
+        "input": "Seasonal tip · reviewer approved",
+        "result": "Ready to schedule",
+        "reason": "The content, image and destination have been checked and signed off."
+      },
+      {
+        "label": "Missing sign-off",
+        "input": "Project update · approval pending",
+        "result": "Keep as draft",
+        "reason": "An automation must not publish unapproved content."
+      },
+      {
+        "label": "Customer complaint",
+        "input": "A public comment needs a sensitive reply",
+        "result": "Escalate to the owner",
+        "reason": "Human judgement is needed before a response is sent."
+      }
+    ],
+    "handover": [
+      {
+        "title": "Account ownership",
+        "body": "Your account access, roles, connected tools and recovery details."
+      },
+      {
+        "title": "Content routine",
+        "body": "Topics, templates, approval responsibilities and scheduling steps."
+      },
+      {
+        "title": "Management scope",
+        "body": "Monitoring windows, escalation rules, reporting and any ongoing support."
+      }
+    ]
+  }
+}

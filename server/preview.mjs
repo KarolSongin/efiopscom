@@ -126,6 +126,6 @@ http
   })
   .listen(port, host, () =>
     console.log(
-      `EFIops preview on port ${port}. Admin: /admin/. Demo data is local; no outgoing enquiries in preview.`,
+      `EfiOps preview on port ${port}. Admin: /admin/. Demo data is local; no outgoing enquiries in preview.`,
     ),
   );

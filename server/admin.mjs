@@ -41,7 +41,7 @@ export function createAdminHandler({
         headers.append('Set-Cookie', cookie(key, '', 0));
     };
     const path = new URL(request.url).pathname.replace(/^\/api\/admin\/?/, '');
-    if (!['GET', 'POST', 'PATCH'].includes(request.method))
+    if (!['GET', 'POST', 'PATCH', 'DELETE'].includes(request.method))
       return json(405, { message: 'Method not allowed.' });
     if (request.method !== 'GET' && request.headers.get('origin') !== origin)
       return json(403, { message: 'This request origin is not allowed.' });
@@ -231,6 +231,36 @@ export function createAdminHandler({
         );
         if (!activity.ok) throw Error();
         return json(200, { enquiry: record.data[0], activity: activity.data });
+      }
+      if (!action && request.method === 'DELETE') {
+        const parsed = z
+          .object({ version: z.number().int().positive(), confirmed: z.literal(true) })
+          .strict()
+          .safeParse(await parse());
+        if (!parsed.success)
+          return json(400, { message: 'Confirm deletion of this contact before continuing.' });
+        if (demo) {
+          const result = await store.remove(id, parsed.data.version);
+          return !result
+            ? json(404, { message: 'Contact not found.' })
+            : result.conflict
+              ? json(409, { message: 'This contact changed. Reload it before deleting.' })
+              : json(200, result);
+        }
+        const result = await call(
+          `/rest/v1/enquiries?id=eq.${id}&version=eq.${parsed.data.version}&select=id`,
+          {
+            token,
+            method: 'DELETE',
+            headers: { Prefer: 'return=representation' },
+          },
+        );
+        if (!result.ok) throw Error();
+        if (!result.data?.[0])
+          return json(409, {
+            message: 'This contact changed or is no longer available. Reload it before deleting.',
+          });
+        return json(200, { deleted: true });
       }
       if (!action && request.method === 'PATCH') {
         const parsed = patchSchema.safeParse(await parse());

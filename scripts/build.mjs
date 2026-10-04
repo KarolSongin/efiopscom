@@ -47,6 +47,7 @@ const required = [
   'website-optimisation',
   'seo',
   'computer-vision',
+  'social-media',
 ];
 const failures = [];
 for (const slug of required)

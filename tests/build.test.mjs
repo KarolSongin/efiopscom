@@ -6,8 +6,8 @@ import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 const manifest = JSON.parse(fs.readFileSync('dist/build-manifest.json'));
 const output = (route) => fs.readFileSync(path.join('dist', route, 'index.html'), 'utf8');
-test('all 18 required commercial and legal pages are built with unique metadata', () => {
-  assert.equal(manifest.routes.length, 18);
+test('all 19 required commercial and legal pages are built with unique metadata', () => {
+  assert.equal(manifest.routes.length, 19);
   const titles = new Set();
   for (const route of manifest.routes) {
     const html = output(route);
@@ -19,6 +19,7 @@ test('all 18 required commercial and legal pages are built with unique metadata'
     assert.match(html, /name="description" content="[^"]+"/);
     assert.match(html, /name="robots" content="noindex, nofollow"/);
     assert.ok(html.includes(`href="https://efiops.com${route}"`));
+    assert.doesNotMatch(html, /EFIops|Efiops/, 'Brand spelling: ' + route);
     assert.doesNotMatch(
       html,
       /Illustrative example|fictional data|Proposed workflow example|Evidence plan:|Primary intent:|PRIVATE_EVIDENCE_SENTINEL|PRIVATE_ARTICLE_SENTINEL|\[CONFIRMED/,
@@ -30,7 +31,7 @@ test('all 18 required commercial and legal pages are built with unique metadata'
     assert.ok(graph['@graph'].some((x) => x['@type'] === 'Organization'));
   }
 });
-test('all ten distinct services retain complete supplied section and FAQ text', () => {
+test('all eleven distinct services retain complete supplied section and FAQ text', () => {
   const strip = (html) =>
     html
       .replace(/<[^>]*>/g, ' ')
@@ -41,7 +42,7 @@ test('all ten distinct services retain complete supplied section and FAQ text', 
       .trim();
   const clean = (s) => s.replace(/\s+/g, ' ').trim();
   const files = fs.readdirSync('src/content/services');
-  assert.equal(files.length, 10);
+  assert.equal(files.length, 11);
   for (const file of files) {
     const s = JSON.parse(fs.readFileSync('src/content/services/' + file));
     assert.deepEqual(

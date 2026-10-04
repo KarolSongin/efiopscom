@@ -1182,3 +1182,10 @@ dialog::backdrop {
 .dialog-heading h2 {
   overflow-wrap: anywhere;
 }
+
+.record-delete { margin-top:30px; padding:22px; border:1px solid #efc2c2; border-radius:12px; background:#fff8f8; }
+.record-delete h3 { margin-top:0; color:#862222; }
+.record-delete p { font-size:14px; line-height:1.6; }
+.admin-danger { border:1px solid #a02d2d; border-radius:8px; padding:11px 16px; background:#fff; color:#862222; font:inherit; font-weight:700; cursor:pointer; }
+.admin-danger:hover { background:#ffeaea; }
+.admin-danger:disabled { opacity:.6; cursor:wait; }

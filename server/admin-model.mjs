@@ -12,6 +12,7 @@ export const services = [
   'website-optimisation',
   'seo',
   'computer-vision',
+  'social-media',
 ];
 const date = z
   .string()
