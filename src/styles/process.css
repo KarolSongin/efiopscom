@@ -504,9 +504,7 @@
   background: #f4f8fe;
   color: #526779;
   cursor: pointer;
-  transition:
-    background 0.2s,
-    color 0.2s;
+  transition: none;
 }
 .scope-choice button[aria-pressed='true'],
 .test-choice button[aria-pressed='true'] {

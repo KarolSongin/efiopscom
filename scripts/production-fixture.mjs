@@ -53,7 +53,9 @@ try {
   const home = fs.readFileSync(path.join(temp, 'dist/index.html'), 'utf8');
   assert.match(home, /name="robots" content="index, follow"/);
   const headers = fs.readFileSync(path.join(temp, 'dist/_headers'), 'utf8');
-  assert.doesNotMatch(headers, /noindex/);
+  assert.doesNotMatch(headers.split('/admin/*')[0], /noindex/);
+  assert.match(headers, /\/admin\/\*\n  X-Robots-Tag: noindex, nofollow/);
+  assert.doesNotMatch(sitemap, /\/admin\//);
   const confirmation = fs.readFileSync(path.join(temp, 'dist/thank-you/index.html'), 'utf8');
   assert.match(confirmation, /noindex, nofollow/);
   assert.match(fs.readFileSync(path.join(temp, 'dist/robots.txt'), 'utf8'), /Allow: \//);

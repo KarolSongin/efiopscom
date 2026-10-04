@@ -1,4 +1,6 @@
 import { createHash } from 'node:crypto';
+import { saveContactToSupabase } from './supabase.mjs';
+import { contactRecord } from './admin-model.mjs';
 export const serviceSlugs = [
   'power-bi',
   'power-automate',
@@ -58,6 +60,7 @@ export function createContactHandler({
   env = process.env,
   fetchImpl = fetch,
   now = Date.now,
+  demoStore,
 } = {}) {
   const requests = new Map();
   const rates = new Map();
@@ -153,7 +156,13 @@ export function createContactHandler({
         preview: true,
         message: 'Preview test only: the simulated enquiry was accepted. No enquiry was sent.',
       });
-    if (!production || !env.RESEND_API_KEY || !env.CONTACT_FROM || !env.CONTACT_TO)
+    const database = production && env.CONTACT_STORAGE === 'supabase';
+    const demoDatabase = !production && env.PREVIEW_CONTACT_MODE === 'dashboard' && demoStore;
+    if (
+      !database &&
+      !demoDatabase &&
+      (!production || !env.RESEND_API_KEY || !env.CONTACT_FROM || !env.CONTACT_TO)
+    )
       return respond(503, {
         message: 'The enquiry service is unavailable. Please use the email link below.',
       });
@@ -171,6 +180,26 @@ export function createContactHandler({
     }
     const promise = (async () => {
       try {
+        if (database || demoDatabase) {
+          const saved = demoDatabase
+            ? await demoStore.intake(contactRecord(data), key, fingerprint)
+            : await saveContactToSupabase(env, contactRecord(data), key, fingerprint, fetchImpl);
+          if (saved.conflict)
+            return [
+              409,
+              { message: 'This request identifier has already been used. Please reload the form.' },
+            ];
+          return [
+            200,
+            {
+              accepted: true,
+              ...(demoDatabase ? { preview: true, savedToDashboard: true } : {}),
+              message: demoDatabase
+                ? 'Demo enquiry saved to the local dashboard. No email was sent.'
+                : 'Thank you. Your enquiry has been received.',
+            },
+          ];
+        }
         const response = await fetchImpl('https://api.resend.com/emails', {
           method: 'POST',
           headers: {

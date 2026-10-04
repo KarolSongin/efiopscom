@@ -203,8 +203,9 @@ const all = await services();
       const body = await response.json();
       if (response.ok && body.accepted === true) {
         if (body.preview === true) {
-          status.textContent =
-            'Preview test only: the simulated enquiry was accepted. No enquiry was sent.';
+          status.textContent = body.savedToDashboard
+            ? 'Demo enquiry saved to the local dashboard. No email was sent.'
+            : 'Preview test only: the simulated enquiry was accepted. No enquiry was sent.';
           status.dataset.error = 'false';
           requestId.value = crypto.randomUUID();
         } else {

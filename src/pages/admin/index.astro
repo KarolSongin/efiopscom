@@ -1,0 +1,219 @@
+---
+import '@fontsource/lato/400.css';
+import '@fontsource/lato/700.css';
+import '../../styles/admin.css';
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Customer dashboard | EFIops</title>
+    <link rel="icon" href="/images/favicon.svg" />
+  </head>
+  <body>
+    <a class="admin-skip" href="#admin-main">
+      Skip to dashboard
+    </a>
+    <div id="login-view" class="login-shell">
+      <div class="login-story">
+        <a href="/">
+          <img src="/images/efiops-logo-current.png" width="180" alt="EFIops" />
+        </a>
+        <span class="admin-eyebrow">Your customer workspace</span>
+        <h1>
+          A clear next step.
+          <br />
+          For every customer.
+        </h1>
+        <p>
+          Keep the enquiry, the conversation and the project stage together. From the first hello to
+          a useful handover.
+        </p>
+        <ol class="login-route">
+          <li>Opportunity</li>
+          <li>Understand</li>
+          <li>Agree</li>
+          <li>Build</li>
+          <li>Test</li>
+          <li>Hand over</li>
+        </ol>
+        <a href="/" class="back-site">
+          ← Back to the website
+        </a>
+      </div>
+      <div class="login-panel">
+        <div class="login-card">
+          <span class="admin-eyebrow">EFIops admin</span>
+          <h2>Welcome back.</h2>
+          <p id="login-description">Checking dashboard configuration…</p>
+          <form id="login-form" hidden>
+            <label>
+              Email address
+              <input name="email" type="email" autocomplete="username" required maxlength="254" />
+            </label>
+            <label>
+              Password
+              <input
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                maxlength="1024"
+              />
+            </label>
+            <button class="admin-button" type="submit">
+              Sign in
+            </button>
+          </form>
+          <div id="demo-access" hidden>
+            <div class="demo-intro">
+              <strong>Local demo workspace</strong>
+              <p>
+                Sample customers. Saved on this machine. Explore the flow before connecting your
+                Supabase project.
+              </p>
+            </div>
+            <button class="admin-button" id="open-demo">
+              Open demo dashboard →
+            </button>
+          </div>
+          <div id="setup-needed" hidden>
+            <p>
+              Follow the Supabase setup guide in <code>docs/admin-setup.md</code>, then restart the
+              server. No customer data is available here until sign-in is configured.
+            </p>
+          </div>
+          <p id="login-status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+    <div id="dashboard-view" class="dashboard-shell" hidden>
+      <aside class="admin-sidebar">
+        <a href="/" class="admin-brand">
+          <img src="/images/efiops-logo-current.png" width="170" alt="EFIops" />
+        </a>
+        <span class="admin-eyebrow">Business workspace</span>
+        <a href="/admin/" class="sidebar-current" aria-current="page">
+          ◈ Customer pipeline
+        </a>
+        <div class="sidebar-later">
+          <span>Invoices & contracts</span>
+          <small>Planned for a later phase</small>
+        </div>
+        <div class="sidebar-bottom">
+          <a href="/" target="_blank" rel="noopener">
+            View website ↗
+          </a>
+          <span id="admin-identity"></span>
+          <button id="sign-out">Sign out</button>
+        </div>
+      </aside>
+      <main id="admin-main" tabindex="-1">
+        <div id="demo-banner" class="demo-banner" hidden>
+          <strong>Demo workspace</strong>
+          <span>Sample data, saved locally. This is not your live customer database.</span>
+        </div>
+        <header class="admin-heading">
+          <div>
+            <p class="admin-eyebrow">Every conversation has somewhere to go</p>
+            <h1>Customer pipeline.</h1>
+            <p>Know where the work stands—and what needs you next.</p>
+          </div>
+          <button class="admin-button" id="new-enquiry">
+            + Add enquiry
+          </button>
+        </header>
+        <div class="admin-metrics" id="pipeline-metrics"></div>
+        <section class="pipeline-workspace" aria-labelledby="pipeline-heading">
+          <div class="workspace-heading">
+            <div>
+              <h2 id="pipeline-heading">The work ahead.</h2>
+              <p id="result-count"></p>
+            </div>
+            <div class="view-switch" role="group" aria-label="Pipeline view">
+              <button id="board-view" aria-pressed="true">
+                Board
+              </button>
+              <button id="list-view" aria-pressed="false">
+                List
+              </button>
+            </div>
+          </div>
+          <div class="pipeline-filters">
+            <label class="search-label">
+              <span>Search customers</span>
+              <input
+                id="customer-search"
+                type="search"
+                placeholder="Name, business, email or message…"
+              />
+            </label>
+            <label>
+              <span>Service</span>
+              <select id="service-filter">
+                <option value="">All services</option>
+              </select>
+            </label>
+            <label>
+              <span>Customer status</span>
+              <select id="status-filter">
+                <option value="open">Active & on hold</option>
+                <option value="active">Active</option>
+                <option value="on_hold">On hold</option>
+                <option value="completed">Completed</option>
+                <option value="not_proceeding">Not proceeding</option>
+                <option value="all">All customers</option>
+              </select>
+            </label>
+            <label>
+              <span>Follow-up</span>
+              <select id="followup-filter">
+                <option value="all">Any date</option>
+                <option value="due">Due today or overdue</option>
+                <option value="none">No follow-up date</option>
+              </select>
+            </label>
+          </div>
+          <div id="pipeline-content" aria-live="polite"></div>
+          <div class="workspace-footer">
+            <button id="refresh-enquiries" class="admin-secondary">
+              Refresh enquiries
+            </button>
+            <button id="load-more" class="admin-secondary" hidden>
+              Load more enquiries
+            </button>
+            <span>
+              Stages follow your project process. Open an enquiry to move it or add a note.
+            </span>
+          </div>
+        </section>
+        <p id="admin-status" class="admin-status" role="status" aria-live="polite"></p>
+      </main>
+    </div>
+    <dialog id="enquiry-dialog" aria-labelledby="enquiry-dialog-title">
+      <div class="dialog-heading">
+        <div>
+          <p class="admin-eyebrow">Customer record</p>
+          <h2 id="enquiry-dialog-title">Enquiry details</h2>
+        </div>
+        <button class="icon-button" id="close-enquiry" aria-label="Close enquiry">
+          ×
+        </button>
+      </div>
+      <div id="enquiry-dialog-body"></div>
+    </dialog>
+    <noscript>
+      <p class="noscript-message">
+        This dashboard needs JavaScript to sign in and manage enquiries. Customer data is available
+        only through the authenticated API.
+      </p>
+    </noscript>
+    <script>
+      import '../../scripts/admin';
+    </script>
+  </body>
+</html>

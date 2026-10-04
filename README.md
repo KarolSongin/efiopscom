@@ -28,6 +28,12 @@ npm.cmd run build
 npm.cmd run preview
 ```
 
+## Customer dashboard
+
+Open **http://localhost:4321/admin/** after starting the built preview. Choose **Open demo dashboard** to manage persistent sample customers through Opportunity → Understand → Agree → Build → Test → Hand over. Board/list views, contact details, stage history, private notes, priorities and follow-up dates are included.
+
+For the single-owner Supabase email/password setup, database migration, private access rules and optional local contact-form demo flow, see [the admin setup guide](docs/admin-setup.md). Real Supabase credentials have not been configured. Invoices, contracts and Stripe are reserved for a later phase.
+
 ## Verify
 
 ```sh

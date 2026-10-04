@@ -4,10 +4,28 @@ import path from 'node:path';
 import { Readable } from 'node:stream';
 import { brotliCompressSync, gzipSync } from 'node:zlib';
 import { createContactHandler } from './contact.mjs';
+import { createAdminHandler } from './admin.mjs';
+import { createDemoStore } from './admin-store.mjs';
+try {
+  process.loadEnvFile('.env');
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+}
 const root = path.resolve('dist');
 const port = Number(process.env.PORT || 4321);
 const host = process.env.HOST || '0.0.0.0';
+const demoStore = createDemoStore(process.env.ADMIN_DEMO_FILE);
+const admin = createAdminHandler({
+  env: {
+    ...process.env,
+    BUILD_MODE: process.env.BUILD_MODE === 'production' ? 'production' : 'preview',
+    ADMIN_ALLOWED_ORIGIN: process.env.ADMIN_ALLOWED_ORIGIN || `http://localhost:${port}`,
+  },
+  allowDemo: true,
+  store: demoStore,
+});
 const contact = createContactHandler({
+  demoStore,
   env: {
     ...process.env,
     BUILD_MODE: 'preview',
@@ -32,7 +50,7 @@ http
       res.setHeader('X-Robots-Tag', 'noindex, nofollow');
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-      if (url.pathname === '/api/contact') {
+      if (url.pathname === '/api/contact' || url.pathname.startsWith('/api/admin/')) {
         const request = new Request(url, {
           method: req.method,
           headers: req.headers,
@@ -40,8 +58,14 @@ http
             ? { body: Readable.toWeb(req), duplex: 'half' }
             : {}),
         });
-        const response = await contact(request, { clientAddress: req.socket.remoteAddress });
-        res.writeHead(response.status, Object.fromEntries(response.headers));
+        const response = await (url.pathname === '/api/contact' ? contact : admin)(request, {
+          clientAddress: req.socket.remoteAddress,
+        });
+        const responseHeaders = Object.fromEntries(response.headers);
+        delete responseHeaders['set-cookie'];
+        const setCookies = response.headers.getSetCookie();
+        if (setCookies.length) res.setHeader('Set-Cookie', setCookies);
+        res.writeHead(response.status, responseHeaders);
         res.end(Buffer.from(await response.arrayBuffer()));
         return;
       }
@@ -101,5 +125,7 @@ http
     }
   })
   .listen(port, host, () =>
-    console.log(`EFIops review preview listening on port ${port}; no real outgoing enquiries.`),
+    console.log(
+      `EFIops preview on port ${port}. Admin: /admin/. Demo data is local; no outgoing enquiries in preview.`,
+    ),
   );

@@ -91,7 +91,18 @@ if (production) {
     failures.push('Notice review date must be a real ISO date.');
   if (process.env.BUILD_MODE !== 'production')
     failures.push('Production host requires BUILD_MODE=production.');
-  for (const key of ['RESEND_API_KEY', 'CONTACT_FROM', 'CONTACT_TO'])
+  for (const key of process.env.CONTACT_STORAGE === 'supabase'
+    ? [
+        'SUPABASE_URL',
+        'ADMIN_EMAIL',
+        ...(process.env.SUPABASE_PUBLISHABLE_KEY
+          ? ['SUPABASE_PUBLISHABLE_KEY']
+          : ['SUPABASE_ANON_KEY']),
+        ...(process.env.SUPABASE_SECRET_KEY
+          ? ['SUPABASE_SECRET_KEY']
+          : ['SUPABASE_SERVICE_ROLE_KEY']),
+      ]
+    : ['RESEND_API_KEY', 'CONTACT_FROM', 'CONTACT_TO'])
     if (!process.env[key]) failures.push(`Production enquiry configuration required: ${key}`);
   if (process.env.CONTACT_ALLOWED_ORIGIN !== 'https://efiops.com')
     failures.push('Confirm canonical production contact origin.');
@@ -137,12 +148,12 @@ fs.writeFileSync('dist/sitemap.xml', sitemap);
 fs.writeFileSync(
   'dist/robots.txt',
   production
-    ? `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /thank-you/\nSitemap: ${canonical}/sitemap.xml\n`
+    ? `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\nDisallow: /thank-you/\nSitemap: ${canonical}/sitemap.xml\n`
     : 'User-agent: *\nDisallow: /\n',
 );
 fs.writeFileSync(
   'dist/_headers',
-  `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n${production ? '' : '  X-Robots-Tag: noindex, nofollow\n'}/_astro/*\n  Cache-Control: public, max-age=31536000, immutable\n/images/*\n  Cache-Control: public, max-age=86400\n`,
+  `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n${production ? '' : '  X-Robots-Tag: noindex, nofollow\n'}/admin/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n/api/admin/*\n  Cache-Control: no-store\n/_astro/*\n  Cache-Control: public, max-age=31536000, immutable\n/images/*\n  Cache-Control: public, max-age=86400\n`,
 );
 const rows = fs.readFileSync('docs/redirects.csv', 'utf8').trim().split('\n').slice(1);
 const mappings = rows.filter(Boolean).map((row) => {
