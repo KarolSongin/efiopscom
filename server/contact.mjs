@@ -242,7 +242,16 @@ export function createContactHandler({
             },
           ];
         return [200, { accepted: true, message: 'Thank you. Your enquiry has been received.' }];
-      } catch {
+      } catch (error) {
+        if (database)
+          console.warn(
+            JSON.stringify(
+              error?.intakeDiagnostic || {
+                event: 'efiops_contact_storage_failed',
+                reason: 'unexpected_failure',
+              },
+            ),
+          );
         return [
           502,
           {

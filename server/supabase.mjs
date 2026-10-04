@@ -56,16 +56,37 @@ export async function supabaseRequest(
   } catch {}
   return { ok: response.ok, status: response.status, data };
 }
+function intakeFailure(reason, status, code) {
+  const error = new Error('Enquiry storage did not confirm acceptance.');
+  error.intakeDiagnostic = {
+    event: 'efiops_contact_storage_failed',
+    reason,
+    ...(Number.isInteger(status) ? { status } : {}),
+    ...(typeof code === 'string' && /^[A-Z0-9]{3,16}$/.test(code) ? { code } : {}),
+  };
+  return error;
+}
 export async function saveContactToSupabase(env, data, requestKey, fingerprint, fetchImpl = fetch) {
-  const config = supabaseConfig(env);
-  if (!config?.secretKey) throw Error('Enquiry database is not configured.');
-  const result = await supabaseRequest(config, '/rest/v1/rpc/intake_enquiry', {
-    secret: true,
-    method: 'POST',
-    body: { payload: data, submission_key: requestKey, submission_fingerprint: fingerprint },
-    fetchImpl,
-  });
+  let config;
+  try {
+    config = supabaseConfig(env);
+  } catch {
+    throw intakeFailure('invalid_configuration');
+  }
+  if (!config?.secretKey) throw intakeFailure('missing_configuration');
+  let result;
+  try {
+    result = await supabaseRequest(config, '/rest/v1/rpc/intake_enquiry', {
+      secret: true,
+      method: 'POST',
+      body: { payload: data, submission_key: requestKey, submission_fingerprint: fingerprint },
+      fetchImpl,
+    });
+  } catch {
+    throw intakeFailure('network_or_timeout');
+  }
   if (result.status === 409 || result.data?.code === '23505') return { conflict: true };
-  if (!result.ok || !result.data?.id) throw Error('Enquiry storage did not confirm acceptance.');
+  if (!result.ok || !result.data?.id)
+    throw intakeFailure('provider_rejected_or_unconfirmed', result.status, result.data?.code);
   return result.data;
 }
