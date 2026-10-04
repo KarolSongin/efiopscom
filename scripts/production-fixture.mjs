@@ -4,6 +4,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync, spawn } from 'node:child_process';
 import { chromium } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 import assert from 'node:assert/strict';
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'efiops-production-fixture-'));
 const root = process.cwd();
@@ -189,6 +190,31 @@ try {
     'PASS: isolated approved-content fixtures; work and article indexes, case and Article templates render, private evidence notes stay excluded. No draft approval flags changed in the real checkout.',
   );
 
+  config.analyticsEnabled = true;
+  fs.writeFileSync(path.join(temp, 'src/config/release.json'), JSON.stringify(config));
+  const analyticsBuild = spawnSync('node', ['scripts/build.mjs', '--production'], {
+    cwd: temp,
+    encoding: 'utf8',
+    env: {
+      ...process.env,
+      BUILD_MODE: 'production',
+      CONTACT_ALLOWED_ORIGIN: 'https://efiops.com',
+      CONTACT_FROM: 'fixture@example.com',
+      CONTACT_TO: 'fixture@example.com',
+      RESEND_API_KEY: 'fixture-only-not-a-real-credential',
+      PUBLIC_GA_MEASUREMENT_ID: 'G-FIXTURE123',
+      PUBLIC_GOOGLE_SITE_VERIFICATION: 'fixture-verification-token',
+    },
+  });
+  assert.equal(analyticsBuild.status, 0, analyticsBuild.stderr + analyticsBuild.stdout);
+  assert.match(
+    fs.readFileSync(path.join(temp, 'dist/index.html'), 'utf8'),
+    /name="google-site-verification" content="fixture-verification-token"/,
+  );
+  assert.doesNotMatch(
+    fs.readFileSync(path.join(temp, 'dist/admin/index.html'), 'utf8'),
+    /googletagmanager|data-measurement-id/,
+  );
   const child = spawn('node', [path.join(root, 'server/preview.mjs')], {
     cwd: temp,
     env: { ...process.env, PORT: '4322', HOST: '127.0.0.1' },
@@ -209,7 +235,95 @@ try {
       executablePath: '/usr/bin/chromium',
       args: ['--no-sandbox'],
     });
-    const page = await browser.newPage();
+    const browserContext = await browser.newContext();
+    const page = await browserContext.newPage();
+    const googleRequests = [];
+    await page.route('https://www.googletagmanager.com/**', (route) => {
+      googleRequests.push(route.request().url());
+      return route.fulfill({
+        contentType: 'application/javascript',
+        body: 'window.__gaFixtureLoaded=true;',
+      });
+    });
+    await page.goto('http://localhost:4322/?email=private@example.com');
+    await page.waitForSelector('#cookie-preferences:not([hidden])');
+    assert.equal(googleRequests.length, 0);
+    const accessibility = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .analyze();
+    assert.deepEqual(
+      accessibility.violations.map((v) => ({ id: v.id, targets: v.nodes.map((n) => n.target) })),
+      [],
+    );
+    for (const width of [360, 390, 768, 1440]) {
+      await page.setViewportSize({ width, height: 950 });
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    }
+    await page.getByRole('button', { name: 'Reject analytics', exact: true }).click();
+    await page.reload();
+    assert.ok(await page.locator('#cookie-preferences').isHidden());
+    assert.equal(googleRequests.length, 0);
+    await page.evaluate(() =>
+      localStorage.setItem(
+        'efiops_cookie_preferences_v1',
+        JSON.stringify({
+          version: 1,
+          analytics: true,
+          updatedAt: Date.now() - 181 * 24 * 60 * 60 * 1000,
+        }),
+      ),
+    );
+    await page.reload();
+    assert.ok(await page.locator('#cookie-preferences').isVisible());
+    assert.equal(googleRequests.length, 0);
+    await page.getByRole('button', { name: 'Accept analytics', exact: true }).click();
+    await page.waitForFunction(() => window.__gaFixtureLoaded === true);
+    assert.equal(googleRequests.length, 1);
+    const events = await page.evaluate(() => window.dataLayer.map((args) => Array.from(args)));
+    assert.equal(events.filter((args) => args[0] === 'event' && args[1] === 'page_view').length, 1);
+    assert.doesNotMatch(JSON.stringify(events), /private@example/);
+    await page.evaluate(() => dispatchEvent(new Event('efiops:enquiry-accepted')));
+    assert.equal(
+      await page.evaluate(
+        () =>
+          window.dataLayer.filter((args) => args[0] === 'event' && args[1] === 'generate_lead')
+            .length,
+      ),
+      1,
+    );
+    await page.evaluate(() => {
+      document.cookie = '_ga=fixture; Path=/';
+      document.cookie = '_ga_FIXTURE123=fixture; Path=/';
+      document.cookie = 'essential_control=retained; Path=/';
+    });
+    await page.getByRole('button', { name: 'Cookie settings', exact: true }).click();
+    await page.getByRole('button', { name: 'Reject analytics', exact: true }).click();
+    await page.waitForFunction(
+      () => !window.__gaFixtureLoaded && document.querySelector('#cookie-preferences')?.hidden,
+    );
+    assert.equal(googleRequests.length, 1);
+    assert.doesNotMatch(await page.evaluate(() => document.cookie), /_ga/);
+    assert.match(await page.evaluate(() => document.cookie), /essential_control=retained/);
+    const blocked = await browser.newContext();
+    await blocked.addInitScript(() => {
+      Storage.prototype.setItem = function () {
+        throw new Error('Storage blocked');
+      };
+    });
+    const blockedPage = await blocked.newPage();
+    let blockedRequests = 0;
+    await blockedPage.route('https://www.googletagmanager.com/**', (route) => {
+      blockedRequests++;
+      return route.abort();
+    });
+    await blockedPage.goto('http://localhost:4322/');
+    await blockedPage.getByRole('button', { name: 'Accept analytics', exact: true }).click();
+    assert.ok(await blockedPage.locator('.cookie-storage-error').isVisible());
+    assert.equal(blockedRequests, 0);
+    await blocked.close();
+    console.log(
+      'PASS: analytics consent fixture; no Google request before consent or after rejection/withdrawal, one page view after acceptance, query-free events, essential cookies preserved, blocked storage fails closed, accessible responsive controls. All Google requests intercepted.',
+    );
     await page.goto('http://localhost:4322/thank-you/');
     assert.ok(
       (await page.locator('#confirmation').textContent()).includes('If you have not submitted one'),

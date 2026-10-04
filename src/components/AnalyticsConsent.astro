@@ -1,0 +1,37 @@
+---
+import '../styles/analytics-consent.css';
+interface Props {
+  measurementId: string;
+}
+const { measurementId } = Astro.props;
+---
+
+<section
+  id="cookie-preferences"
+  class="cookie-preferences"
+  aria-labelledby="cookie-preferences-title"
+  data-measurement-id={measurementId}
+  hidden
+>
+  <div>
+    <h2 id="cookie-preferences-title">Your privacy, your choice.</h2>
+    <p>
+      With your permission, Google Analytics helps EfiOps understand which pages are useful. You can
+      use the whole website without analytics. <a href="/cookies/">Read about cookies</a>.
+    </p>
+  </div>
+  <div class="cookie-actions">
+    <button type="button" class="cookie-choice" data-consent="reject">
+      Reject analytics
+    </button>
+    <button type="button" class="cookie-choice" data-consent="accept">
+      Accept analytics
+    </button>
+  </div>
+  <p class="cookie-storage-error" role="status" hidden>
+    Your browser could not save this choice. Analytics will stay off.
+  </p>
+</section>
+<script>
+  import '../scripts/analytics-consent';
+</script>

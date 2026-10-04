@@ -73,3 +73,7 @@ The review build includes Home, Services, all ten services, How it works, About,
 Netlify is an implementation option, **not a selected live host**. The provided `netlify.toml` defaults to a noindex review build. A separately authorised production deployment must use the production command, `BUILD_MODE=production`, a confirmed HTTPS origin and secure contact variables. Resend is an optional configurable fallback, not an existing verified EFIops lead receiver. No hosting, DNS, live website or real lead route has been changed.
 
 See [verification](docs/verification.md), [maintenance](docs/maintenance.md), [SEO baseline](docs/seo-baseline.md) and [evidence register](docs/evidence-register.md).
+
+## Google Analytics and Search Console
+
+The existing GA4 stream is connected behind visitor consent. See [Google setup and sitemap submission](docs/google-setup.md) for Realtime checks, recommended stream settings and use of the existing verified Search Console Domain property. The website loads no Google Analytics tag before acceptance.

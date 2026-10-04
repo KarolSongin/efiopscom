@@ -27,6 +27,7 @@ sharedSchema.parse(JSON.parse(fs.readFileSync('src/data/shared.json', 'utf8')));
 const production = process.argv.includes('--production');
 const launchVerification = production && process.argv.includes('--verify-contact');
 const release = JSON.parse(fs.readFileSync('src/config/release.json', 'utf8'));
+const analytics = JSON.parse(fs.readFileSync('src/config/analytics.json', 'utf8'));
 const read = (dir) =>
   fs
     .readdirSync(dir)
@@ -97,8 +98,11 @@ if (production) {
   for (const [key, value] of Object.entries(release)) {
     if (launchVerification && key === 'contactVerified') continue;
     if (key === 'analyticsEnabled') {
-      if (value)
-        failures.push('Optional analytics require a separately implemented consent system.');
+      if (
+        value &&
+        !/^G-[A-Z0-9]+$/.test(process.env.PUBLIC_GA_MEASUREMENT_ID || analytics.measurementId)
+      )
+        failures.push('Google Analytics requires a valid PUBLIC_GA_MEASUREMENT_ID.');
       continue;
     }
     // Enquiry-only marketing pages publish no binding prices or contract terms.

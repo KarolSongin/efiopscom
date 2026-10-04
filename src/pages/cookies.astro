@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { production } from '../config/site';
+import release from '../config/release.json';
 ---
 
 <Base
@@ -22,9 +23,27 @@ import { production } from '../config/site';
     <section>
       <h2>The website as built</h2>
       <p>
-        The website does not set cookies or use local storage for analytics, advertising or
-        personalisation. Fonts, the logo and illustrations are served with the website. Optional
-        analytics, advertising pixels, booking widgets and external media embeds are disabled.
+        Fonts, the logo and illustrations are served with the website. Advertising pixels, booking
+        widgets and external media embeds are disabled.
+        {production && release.analyticsEnabled
+          ? 'Google Analytics is optional. Its script is loaded only after you choose Accept analytics. Rejecting it does not affect your ability to use the website.'
+          : 'Google Analytics is not loaded in this review build.'}
+      </p>
+    </section>
+    <section>
+      <h2>Analytics choices and cookies</h2>
+      <p>
+        Your accept/reject choice is remembered in your browser’s local storage for up to 180 days.
+        You can change it through Cookie settings in the footer. If you accept, Google Analytics may
+        set first-party cookies such as _ga and _ga_P6T446WBEN, typically lasting up to two years
+        depending on the stream settings. We use analytics to understand page use and count accepted
+        website enquiries. We do not send form names, email addresses or message text as analytics
+        event parameters. Advertising consent remains denied.
+      </p>
+      <p>
+        Rejecting analytics prevents its script from loading. Withdrawing consent removes accessible
+        Analytics cookies and reloads the page to stop the running script. It does not delete
+        information already received by Google; contact karol@efiops.com about information requests.
       </p>
     </section>
     <section>

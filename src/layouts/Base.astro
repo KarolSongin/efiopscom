@@ -1,4 +1,7 @@
 ---
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
+import release from '../config/release.json';
+import analytics from '../config/analytics.json';
 import '../styles/global.css';
 import '../styles/experience.css';
 import latoRegular from '@fontsource/lato/files/lato-latin-400-normal.woff2?url';
@@ -27,6 +30,13 @@ const all = await services();
 const work = await workReleased();
 
 const path = Astro.url.pathname;
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || analytics.measurementId;
+const analyticsActive =
+  production &&
+  import.meta.env.PUBLIC_LAUNCH_VERIFICATION !== 'true' &&
+  release.analyticsEnabled &&
+  /^G-[A-Z0-9]+$/.test(measurementId);
+const verificationToken = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 const canonical = new URL(path, site.url).href;
 const crumbs = path.split('/').filter(Boolean);
 const graph: Record<string, unknown>[] = [
@@ -111,6 +121,9 @@ graph.push(...structuredData);
     <link rel="canonical" href={canonical} />
     <link rel="preload" href={latoRegular} as="font" type="font/woff2" crossorigin="anonymous" />
     <link rel="preload" href={latoBold} as="font" type="font/woff2" crossorigin="anonymous" />
+    {production && verificationToken && (
+      <meta name="google-site-verification" content={verificationToken} />
+    )}
     <meta name="theme-color" content="#CCE2FF" />
     <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:title" content={title} />
@@ -241,11 +254,23 @@ graph.push(...structuredData);
           <div>
             <a href="/privacy/">Privacy</a>
             <a href="/cookies/">Cookies & storage</a>
+            {analyticsActive && (
+              <button
+                type="button"
+                class="cookie-settings"
+                data-cookie-settings
+                aria-controls="cookie-preferences"
+                hidden
+              >
+                Cookie settings
+              </button>
+            )}
           </div>
           <span>Clearer information. Less repetitive work.</span>
         </div>
       </div>
     </footer>
+    {analyticsActive && <AnalyticsConsent measurementId={measurementId} />}
     <script>
       const mobileQuery = matchMedia('(max-width:800px)');
       const setGroups = () =>

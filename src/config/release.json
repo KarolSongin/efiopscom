@@ -15,5 +15,5 @@
   "hostingApproved": true,
   "legacyInventoryReviewed": true,
   "commercialTermsReviewed": false,
-  "analyticsEnabled": false
+  "analyticsEnabled": true
 }
