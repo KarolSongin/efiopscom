@@ -1,0 +1,69 @@
+{
+  "slug": "power-bi",
+  "title": "Power BI",
+  "seoTitle": "Power BI Consultant & Dashboard Development | EFIops",
+  "metaDescription": "Power BI dashboards, data models and reporting improvements for clearer business decisions. Work directly with a Maidstone-based operations and data specialist.",
+  "h1": "Power BI dashboards that make the next decision clearer.",
+  "eyebrow": "Reporting that supports decisions",
+  "lead": "Bring your data into reporting that answers useful business questions. EFIops helps you define the measures, connect the sources and build dashboards your team can understand and use.",
+  "sections": [
+    {
+      "heading": "The report should explain the work, not add to it.",
+      "paragraphs": [
+        "If every meeting starts with rebuilding a spreadsheet, the reporting process needs attention. If two reports show different totals, the definitions need attention. And if a dashboard looks impressive but nobody acts on it, the questions need attention.",
+        "We start with what you need to know: what changed, where performance differs, what is causing the difference and what should happen next."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "From raw records to a useful reporting view.",
+      "paragraphs": [],
+      "items": [
+        "Data preparation and modelling. Organise source data, relationships and calculations around consistent definitions.",
+        "Dashboard design. Build clear views of the measures that matter, with filters and comparisons that help people investigate.",
+        "Existing report improvements. Review confusing visuals, unreliable measures, slow models and repetitive preparation.",
+        "Operational reporting. Explore forecasts, capacity, staffing, production performance, quality checks and other business measures.",
+        "Refresh and handover. Plan how data reaches the report, how access works and how the team maintains it."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "A reporting project starts with a question.",
+      "paragraphs": [
+        "We agree the decisions the report should support, inspect the available data and define the measures. A first reporting view is then checked against known records before the layout and interactions are refined.",
+        "The handover explains the definitions, source limitations and refresh process. Microsoft licensing and sharing requirements are reviewed as part of the scope."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can you improve an existing Power BI report?",
+      "answer": "Yes. We can review its model, calculations, usability and refresh process, then agree which changes will be most useful."
+    },
+    {
+      "question": "Can you work with SQL and spreadsheets?",
+      "answer": "Yes. Those are familiar starting points. The exact connection and refresh approach depends on where the data lives and how access is provided."
+    },
+    {
+      "question": "What if our data is inconsistent?",
+      "answer": "We identify the gaps before presenting the report as dependable. Some projects need source cleanup or clearer definitions before dashboard development."
+    },
+    {
+      "question": "Will the dashboard replace our planning application?",
+      "answer": "A dashboard is designed to analyse information. If your team needs to enter plans, assign work or manage records, a custom business application may be the better fit."
+    }
+  ],
+  "cta": {
+    "label": "Discuss your reporting",
+    "heading": "What would you like your reporting to explain?",
+    "text": "Tell us which questions are difficult to answer and where the data currently lives."
+  },
+  "relatedServices": ["custom-business-apps", "system-integrations", "power-automate"],
+  "visualKey": "power-bi",
+  "primaryIntent": "Power BI consultant; Power BI dashboard development.",
+  "publicationState": "published",
+  "summary": "Make complex data easier to understand with reporting built around real decisions."
+}

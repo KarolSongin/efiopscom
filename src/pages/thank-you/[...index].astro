@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import { production } from '../../config/site';
+import release from '../../config/release.json';
+export function getStaticPaths() {
+  return production && release.contactVerified ? [{ params: { index: undefined } }] : [];
+}
+---
+
+<Base
+  title="Thanks for Getting in Touch | EFIops"
+  description="What happens after an accepted EFIops enquiry."
+  noindex
+>
+  <section class="error-page">
+    <h1>Thanks for getting in touch.</h1>
+    <p id="confirmation">
+      This page is shown after an accepted enquiry. If you have not submitted one, please use the
+      contact page.
+    </p>
+    <div class="hero-buttons" style="justify-content:center">
+      <a class="button" href="/services/">
+        Explore the services
+      </a>
+      <a class="button secondary" href="/how-it-works/">
+        How projects work
+      </a>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const acceptedAt = Number(sessionStorage.getItem('efiopsAcceptedAt'));
+  sessionStorage.removeItem('efiopsAcceptedAt');
+  if (acceptedAt > 0 && Date.now() - acceptedAt < 60000)
+    document.querySelector('#confirmation')!.textContent =
+      'Your enquiry has been received. In the meantime, you can explore the services or read more about how projects work.';
+</script>

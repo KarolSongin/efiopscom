@@ -1,0 +1,69 @@
+{
+  "slug": "power-automate",
+  "title": "Power Automate",
+  "seoTitle": "Power Automate Consultant & Workflow Automation | EFIops",
+  "metaDescription": "Automate reminders, approvals, alerts and recurring admin with Microsoft Power Automate. Practical workflows scoped around your business process.",
+  "h1": "Power Automate workflows that keep everyday work moving.",
+  "eyebrow": "Less chasing. Clearer next steps.",
+  "lead": "Replace repeated checks, copied details and forgotten reminders with a workflow built around your process. EFIops designs Microsoft Power Automate solutions with clear triggers, conditions and a way to handle exceptions.",
+  "sections": [
+    {
+      "heading": "Some work only happens because somebody remembers.",
+      "paragraphs": [
+        "A review becomes due. A forecast changes. An approval is waiting. Someone opens a spreadsheet, checks the dates and sends the same message again.",
+        "That routine is a good place to look for automation—provided the rules are clear and somebody can see when an exception needs attention."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "Useful automation starts with a dependable process.",
+      "paragraphs": [],
+      "items": [
+        "Scheduled reminders. Trigger the next step from dates, status changes or defined business rules.",
+        "Approvals and routing. Send requests to the right person and keep the decision attached to the record.",
+        "Change alerts. Compare information and notify people when an agreed threshold or condition is met.",
+        "Connected admin. Move suitable information between Microsoft tools, databases, forms and supported services.",
+        "Existing flow repairs. Investigate failed conditions, missing values, duplicate actions and unreliable runs."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Built for the ordinary day—and the awkward one.",
+      "paragraphs": [
+        "We define the trigger, the records involved, the people responsible and what should happen when information is missing. The workflow is then tested with ordinary cases, date boundaries, repeated runs and exceptions.",
+        "You receive a clear explanation of the flow and its dependencies. Any licensing or connector requirements are checked before the implementation is agreed."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can you fix a flow we already use?",
+      "answer": "Yes. We can inspect the intended process, reproduce the issue where access allows and propose a focused repair."
+    },
+    {
+      "question": "Can reminders be sent to different managers?",
+      "answer": "Yes. Routing can follow defined data and rules, with an agreed fallback when the usual recipient is missing."
+    },
+    {
+      "question": "Can a workflow connect to SQL?",
+      "answer": "It can be scoped around supported connections and appropriate permissions. Access, hosting and licensing need to be checked for the particular database."
+    },
+    {
+      "question": "How do we avoid sending the same notification twice?",
+      "answer": "The design should track what has already happened and test repeated runs. The exact method depends on the workflow and its record system."
+    }
+  ],
+  "cta": {
+    "label": "Discuss a workflow",
+    "heading": "Which repeated task would you like to stop chasing?",
+    "text": "Describe the trigger, the steps and the tools involved. We can work out whether the process is ready to automate."
+  },
+  "relatedServices": ["system-integrations", "power-bi", "ai-assistants"],
+  "visualKey": "power-automate",
+  "primaryIntent": "Power Automate consultant; Microsoft workflow automation.",
+  "publicationState": "published",
+  "summary": "Replace repetitive steps with workflows that know what should happen next."
+}

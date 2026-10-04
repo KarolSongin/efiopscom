@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import { articles, insightsReleased } from '../../data/content';
+export async function getStaticPaths() {
+  return (await insightsReleased())
+    ? [{ params: { index: undefined }, props: { entries: await articles() } }]
+    : [];
+}
+const { entries } = Astro.props;
+---
+
+<Base
+  title="Practical Business Systems Insights | EFIops"
+  description="Practical, reviewed articles from Karol Songin about business reporting, workflows, applications and websites."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Practical knowledge</p>
+      <h1>Understand the work behind the technology.</h1>
+      <p>Reviewed articles from Karol Songin, grounded in original work and useful questions.</p>
+    </div>
+  </section>
+  <section class="container section publication-list">
+    {entries.map((e) => (
+      <a href={`/insights/${e.data.slug}/`}>
+        <p class="eyebrow">
+          {e.data.author} · {e.data.publishedDate}
+        </p>
+        <h2>{e.data.title}</h2>
+        <p>{e.data.description}</p>
+      </a>
+    ))}
+  </section>
+</Base>

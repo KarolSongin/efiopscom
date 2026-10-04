@@ -1,0 +1,31 @@
+---
+import shared from '../data/shared.json';
+interface Props {
+  heading?: string;
+  text?: string;
+  label?: string;
+  service?: string;
+}
+const {
+  heading = shared.finalCTA.heading,
+  text = shared.finalCTA.text,
+  label = shared.primaryCTA,
+  service,
+} = Astro.props;
+---
+
+<section class="cta-section">
+  <div class="container cta-inner">
+    <div>
+      <p class="eyebrow">A useful next step</p>
+      <h2>{heading}</h2>
+      <p>{text}</p>
+    </div>
+    <a class="button" href={'/contact/' + (service ? '?service=' + service : '')}>
+      {label}
+      <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 19L19 5M5 5h14v14" />
+      </svg>
+    </a>
+  </div>
+</section>

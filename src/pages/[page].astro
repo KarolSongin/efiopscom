@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import core from '../data/core.json';
+export function getStaticPaths() {
+  return ['how-it-works', 'about'].map((key) => ({
+    params: { page: key },
+    props: { page: core[key as 'about' | 'how-it-works'], key },
+  }));
+}
+const { page, key } = Astro.props;
+---
+
+<Base title={page.seoTitle} description={page.metaDescription}>
+  <section class="page-hero">
+    <div class:list={['container', { 'about-hero': key === 'about' }]}>
+      <div>
+        <p class="eyebrow">
+          {key === 'about' ? 'The person behind EFIops' : 'Understand · Build · Make it useful'}
+        </p>
+        <h1>{page.h1}</h1>
+        <p>{page.lead}</p>
+      </div>
+      {key === 'about' && (
+        <div class="person-tile">
+          <span class="initials">KS.</span>
+          <h3>Karol Songin</h3>
+          <p>
+            Operations & data analyst.
+            <br />
+            Hands-on developer.
+            <br />
+            Maidstone, Kent.
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+  <div class="container">
+    {page.sections.map((s) => (
+      <section class="content-row">
+        <h2>{s.heading}</h2>
+        <div>
+          {s.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+  <FAQ items={page.faqs} />
+  <CTA label={key === 'about' ? 'Tell me about your project' : 'Talk through your project'} />
+</Base>

@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import CTA from '../../components/CTA.astro';
+import FAQ from '../../components/FAQ.astro';
+import ServiceVisual from '../../components/ServiceVisual.astro';
+import { services, cases } from '../../data/content';
+export async function getStaticPaths() {
+  return (await services()).map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { page: entry.data },
+  }));
+}
+const { page } = Astro.props;
+const all = await services();
+const evidence = (await cases()).filter((x) => x.data.relatedServices.includes(page.slug));
+const split = (text: string) => {
+  const i = text.indexOf('. ');
+  return i < 0 ? [text, ''] : [text.slice(0, i + 1), text.slice(i + 2)];
+};
+---
+
+<Base title={page.seoTitle} description={page.metaDescription} service={page}>
+  <section class="service-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/services/">Services</a>
+        <span aria-hidden="true">/</span>
+        <span>{page.title}</span>
+      </nav>
+      <div class="service-hero-grid">
+        <div>
+          <p class="eyebrow">{page.eyebrow}</p>
+          <h1>{page.h1}</h1>
+          <p class="hero-lead">{page.lead}</p>
+          <a class="button" href={`/contact/?service=${page.slug}`}>
+            {page.cta.label}
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19L19 5M5 5h14v14" />
+            </svg>
+          </a>
+        </div>
+        <ServiceVisual kind={page.visualKey} />
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    {page.sections.map((s, i) => (
+      <section class="content-row">
+        <div>
+          <p class="eyebrow">
+            {['The problem', 'What we can build', 'How it works', 'A useful next step'][i] ||
+              'The approach'}
+          </p>
+          <h2>{s.heading}</h2>
+        </div>
+        <div>
+          {s.paragraphs.map((p) => (
+            <p>{p}</p>
+          ))}
+          {s.items.length > 0 && (
+            <ul>
+              {s.items.map((item) => {
+                const [title, body] = split(item);
+                return (
+                  <li>
+                    <span class="item-title">{title}</span> {body}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          {s.caption && <p class="diagram-note">{s.caption}</p>}
+        </div>
+      </section>
+    ))}
+  </div>
+  {evidence.length > 0 && (
+    <section class="container section">
+      <h2>Related work, with evidence.</h2>
+      <div class="publication-list">
+        {evidence.map((e) => (
+          <a href={`/work/${e.data.slug}/`}>{e.data.title}</a>
+        ))}
+      </div>
+    </section>
+  )}
+  <FAQ items={page.faqs} />
+  <section class="related">
+    <div class="container section">
+      <p class="eyebrow">Where the pieces meet</p>
+      <h2>Related services.</h2>
+      <div class="related-grid">
+        {page.relatedServices.map((slug) => {
+          const s = all.find((x) => x.data.slug === slug)!;
+          return (
+            <a href={`/services/${slug}/`}>
+              {s.data.title}
+              <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 19L19 5M5 5h14v14" />
+              </svg>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+  <CTA heading={page.cta.heading} text={page.cta.text} label={page.cta.label} service={page.slug} />
+</Base>

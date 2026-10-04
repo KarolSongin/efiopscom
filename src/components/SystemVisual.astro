@@ -1,0 +1,80 @@
+---
+const { compact = false } = Astro.props;
+---
+
+<figure
+  class:list={['system-visual', { 'compact-visual': compact }]}
+  aria-label="Illustrative stock request: identify the route, check access, use an approved lookup, then return information or request review."
+>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+  <div class="connector connector-one"></div>
+  <div class="connector connector-two"></div>
+  <div class="float-panel request-panel">
+    <span class="panel-icon">
+      <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 19L19 5M5 5h14v14" />
+      </svg>
+    </span>
+    <div>
+      <span class="micro">THE REQUEST</span>
+      <p>
+        Where is the material
+        <br />
+        for this job?
+      </p>
+    </div>
+  </div>
+  <div class="main-panel">
+    <div class="panel-top">
+      <span class="panel-mark" aria-hidden="true">
+        E
+      </span>
+      <strong>Connected work</strong>
+      <span class="panel-dots" aria-hidden="true">
+        •••
+      </span>
+    </div>
+    <div class="system-content">
+      <div class="system-sidebar" aria-hidden="true">
+        <span class="selected">▦</span>
+        <span>⇄</span>
+        <span>▤</span>
+        <span>⚙</span>
+      </div>
+      <div class="system-main">
+        <span class="micro">REQUEST OVERVIEW</span>
+        <strong class="visual-title">A clear next step.</strong>
+        <div class="route-box">
+          <span class="route-symbol" aria-hidden="true">
+            ⇄
+          </span>
+          <div>
+            <small>Route identified</small>
+            <strong>Stock information</strong>
+          </div>
+          <span aria-hidden="true">✓</span>
+        </div>
+        <div class="lookup-row">
+          <span>Source</span>
+          <strong>Approved lookup</strong>
+        </div>
+        <div class="lookup-row">
+          <span>Access</span>
+          <strong>Application rules checked</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="float-panel outcome-panel">
+    <span class="outcome-icon" aria-hidden="true">
+      ✓
+    </span>
+    <div>
+      <span class="micro">THE NEXT STEP</span>
+      <p>Information found</p>
+      <small>Or hand over for review</small>
+    </div>
+  </div>
+  <figcaption>Illustrative example · fictional data</figcaption>
+</figure>

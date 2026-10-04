@@ -1,0 +1,22 @@
+{
+  "slug": "before-building-a-power-bi-dashboard",
+  "title": "What to define before building a Power BI dashboard \u2014 editorial draft",
+  "description": "Private editorial assignment, awaiting original examples and review.",
+  "author": "Karol Songin",
+  "publishedDate": null,
+  "substantiveUpdatedDate": null,
+  "relatedServices": ["power-bi"],
+  "publicationState": "draft",
+  "reviewed": false,
+  "sources": [],
+  "sections": [
+    {
+      "heading": "The decision comes first",
+      "body": "PRIVATE_ARTICLE_SENTINEL: assemble original questions and a suitable owned dataset."
+    },
+    {
+      "heading": "Definitions and verification",
+      "body": "Write substantive guidance with reviewed measure definitions and reconciliation examples before publication."
+    }
+  ]
+}

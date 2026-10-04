@@ -1,0 +1,69 @@
+{
+  "slug": "custom-business-apps",
+  "title": "Custom business apps",
+  "seoTitle": "Custom Business Apps & Internal Tools | EFIops",
+  "metaDescription": "Purpose-built planning tools, operational applications and portals. EFIops develops business software around your workflow, data and users.",
+  "h1": "Custom business apps for the way your team works.",
+  "eyebrow": "Software that fits the work",
+  "lead": "When the process has outgrown a spreadsheet and existing software doesn't fit, a focused application can bring the work into one useful place. EFIops builds planning tools, operational interfaces and portals around the people using them.",
+  "sections": [
+    {
+      "heading": "You shouldn't need five workarounds to complete one job.",
+      "paragraphs": [
+        "A plan lives in one spreadsheet. Actual results come from another system. Staff requirements are calculated elsewhere. People copy the same information between tools and lose track of which version is current.",
+        "A custom application can connect the relevant information and give each person a clear view of the work they need to do."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "Build the tool your workflow is missing.",
+      "paragraphs": [],
+      "items": [
+        "Planning and scheduling tools. Work with forecasts, capacity, staffing and operational requirements.",
+        "Internal portals. Give teams a clearer way to enter, review and manage information.",
+        "Operational dashboards. Combine current status with the actions people need to take.",
+        "Customer or supplier interfaces. Scope a controlled portal for an agreed exchange of information.",
+        "Existing app improvements. Add a missing feature, improve usability or connect an application to another system."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Prove the important workflow first.",
+      "paragraphs": [
+        "We map the users, the information and the steps the application needs to support. A first version focuses on the core workflow, with access rules and data handling included in the design.",
+        "Testing uses realistic tasks rather than only checking whether the screens look right. The handover covers the application, its dependencies and options for maintaining it."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can you work on an existing React application?",
+      "answer": "Yes. React and JavaScript are part of Karol's practical development experience. We inspect the codebase and current architecture before agreeing changes."
+    },
+    {
+      "question": "Can the app use our existing database?",
+      "answer": "Often, through a suitable API or integration. Access, performance and the data's structure need to be considered."
+    },
+    {
+      "question": "Should we build an app or use an existing product?",
+      "answer": "That is a discovery question. If a suitable existing product solves the problem well, custom development may not be necessary."
+    },
+    {
+      "question": "Can we add AI later?",
+      "answer": "Potentially. A clear data model, permission system and API make it easier to evaluate a useful AI feature without rebuilding the whole application."
+    }
+  ],
+  "cta": {
+    "label": "Discuss your application",
+    "heading": "What is your team working around?",
+    "text": "Show us the spreadsheets, screens or steps that make the job harder than it needs to be."
+  },
+  "relatedServices": ["power-bi", "system-integrations", "ai-assistants"],
+  "visualKey": "custom-business-apps",
+  "primaryIntent": "custom business application developer; internal tools development.",
+  "publicationState": "published",
+  "summary": "Build the planning tools, portals and operational screens your business needs."
+}

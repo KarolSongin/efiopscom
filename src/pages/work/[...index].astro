@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import CTA from '../../components/CTA.astro';
+import { cases } from '../../data/content';
+export async function getStaticPaths() {
+  const entries = await cases();
+  return entries.length ? [{ params: { index: undefined }, props: { entries } }] : [];
+}
+const { entries } = Astro.props;
+---
+
+<Base
+  title="Business Systems & Website Projects | EFIops"
+  description="Explore documented EFIops and Karol Songin projects across reporting, automation, applications and websites, with clear scope, evidence and project status."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">The work, explained</p>
+      <h1>The problem, the build and the evidence.</h1>
+      <p>
+        Useful project stories explain what needed to change, what was built and how the result was
+        checked. Explore the work by service and see the status of each project.
+      </p>
+    </div>
+  </section>
+  <section class="container section">
+    <div class="scenario-controls work-filters" role="group" aria-label="Filter projects">
+      {['All work', 'Data and reporting', 'Automation', 'Applications and AI', 'Websites'].map(
+        (label, i) => (
+          <button data-filter={i} aria-pressed={i === 0 ? 'true' : 'false'}>
+            {label}
+          </button>
+        ),
+      )}
+    </div>
+    <div class="publication-list">
+      {entries.map((e) => (
+        <a data-services={e.data.relatedServices.join(',')} href={`/work/${e.data.slug}/`}>
+          <p class="eyebrow">
+            {e.data.projectType} · {e.data.projectStatus}
+          </p>
+          <h2>{e.data.title}</h2>
+          <p>{e.data.description}</p>
+        </a>
+      ))}
+    </div>
+    <p id="filter-empty" hidden>
+      No approved projects in this category yet. Explore the other categories.
+    </p>
+  </section>
+  <CTA
+    heading="Have a similar problem?"
+    text="Tell us how the work happens in your business, and we can discuss a useful next step."
+  />
+</Base>
+<script>
+  const groups = [
+    [],
+    ['power-bi'],
+    ['power-automate', 'system-integrations'],
+    ['custom-business-apps', 'ai-assistants', 'jev-ai-integration', 'computer-vision'],
+    ['web-design-development', 'website-optimisation', 'seo'],
+  ];
+  document.querySelectorAll<HTMLButtonElement>('[data-filter]').forEach((button) =>
+    button.addEventListener('click', () => {
+      const i = Number(button.dataset.filter);
+      document
+        .querySelectorAll('[data-filter]')
+        .forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+      let count = 0;
+      document.querySelectorAll<HTMLElement>('[data-services]').forEach((card) => {
+        card.hidden =
+          i !== 0 && !groups[i].some((s) => card.dataset.services?.split(',').includes(s));
+        if (!card.hidden) count++;
+      });
+      document.querySelector<HTMLElement>('#filter-empty')!.hidden = count > 0;
+    }),
+  );
+</script>

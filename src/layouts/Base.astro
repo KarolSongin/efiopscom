@@ -1,0 +1,256 @@
+---
+import '../styles/global.css';
+import latoRegular from '@fontsource/lato/files/lato-latin-400-normal.woff2?url';
+import latoBold from '@fontsource/lato/files/lato-latin-700-normal.woff2?url';
+import { site, production, groups } from '../config/site';
+import { services, workReleased, insightsReleased } from '../data/content';
+interface Props {
+  title: string;
+  description: string;
+  service?: { title: string; lead: string };
+  noindex?: boolean;
+  article?: Record<string, unknown>;
+}
+const { title, description, service, noindex = false, article } = Astro.props;
+const all = await services();
+const work = await workReleased();
+const insights = await insightsReleased();
+const path = Astro.url.pathname;
+const canonical = new URL(path, site.url).href;
+const crumbs = path.split('/').filter(Boolean);
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization',
+    '@id': site.url + '/#organization',
+    name: site.name,
+    url: site.url,
+    logo: site.url + '/images/efiops-logo-current.png',
+    founder: { '@id': site.url + '/#karol' },
+  },
+  {
+    '@type': 'Person',
+    '@id': site.url + '/#karol',
+    name: site.person,
+    url: site.url + '/about/',
+    description: 'Operations and data analyst and hands-on developer based in Maidstone.',
+  },
+  {
+    '@type': 'WebSite',
+    '@id': site.url + '/#website',
+    url: site.url,
+    name: site.name,
+    publisher: { '@id': site.url + '/#organization' },
+  },
+  {
+    '@type': 'WebPage',
+    '@id': canonical + '#page',
+    url: canonical,
+    name: title,
+    description,
+    isPartOf: { '@id': site.url + '/#website' },
+  },
+];
+if (service)
+  graph.push({
+    '@type': 'Service',
+    '@id': canonical + '#service',
+    name: service.title,
+    description: service.lead,
+    url: canonical,
+    provider: { '@id': site.url + '/#organization' },
+  });
+if (crumbs.length)
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: site.url + '/' },
+      ...crumbs.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 2,
+        name:
+          i === crumbs.length - 1
+            ? service?.title || title.split('|')[0].trim()
+            : c[0].toUpperCase() + c.slice(1),
+        item: site.url + '/' + crumbs.slice(0, i + 1).join('/') + '/',
+      })),
+    ],
+  });
+if (article) graph.push(article);
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={!production || noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preload" href={latoRegular} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={latoBold} as="font" type="font/woff2" crossorigin="anonymous" />
+    <meta name="theme-color" content="#CCE2FF" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={site.url + '/images/social-preview.png'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(
+        /</g,
+        '\\u003c',
+      )}
+    />
+  </head>
+  <body>
+    <a class="skip" href="#main">
+      Skip to content
+    </a>
+    <header class="header">
+      <div class="container header-inner">
+        <a href="/" aria-label="EFIops home" class="logo">
+          <img src="/images/efiops-logo-current.png" width="544" height="180" alt="EFIops" />
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" hidden>
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="navigation" aria-label="Main navigation">
+          <details class="services-menu">
+            <summary>
+              Services <span aria-hidden="true">⌄</span>
+            </summary>
+            <div class="mega">
+              <a class="all-services" href="/services/">
+                Explore all services{' '}
+                <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19L19 5M5 5h14v14" />
+                </svg>
+              </a>
+              <div class="mega-groups">
+                {groups.map((g) => (
+                  <details class="menu-group" open>
+                    <summary class="small-label">{g.nav}</summary>
+                    {g.slugs.map((slug) => {
+                      const s = all.find((x) => x.data.slug === slug)!.data;
+                      return (
+                        <a href={`/services/${slug}/`}>
+                          <strong>{s.title}</strong>
+                          <span>{s.summary}</span>
+                        </a>
+                      );
+                    })}
+                  </details>
+                ))}
+              </div>
+            </div>
+          </details>
+          <a href="/how-it-works/" aria-current={path === '/how-it-works/' ? 'page' : undefined}>
+            How it works
+          </a>
+          <a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>
+            About
+          </a>
+          {work && <a href="/work/">Work</a>}
+          {insights && <a href="/insights/">Insights</a>}
+          <a class="button compact" href="/contact/">
+            Talk through your project{' '}
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 19L19 5M5 5h14v14" />
+            </svg>
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <a href="/" class="footer-logo">
+              <img
+                src="/images/efiops-logo-current.png"
+                width="544"
+                height="180"
+                alt="EFIops home"
+              />
+            </a>
+            <p class="footer-position">
+              Business websites, dashboards and automation built around how your business works.
+            </p>
+            <p>
+              Based in Maidstone, Kent.
+              <br />
+              Working with businesses across the UK.
+            </p>
+          </div>
+          <div class="footer-services">
+            <p class="small-label">Explore the services</p>
+            {all.map((s) => (
+              <a href={`/services/${s.data.slug}/`}>{s.data.title}</a>
+            ))}
+          </div>
+          <div>
+            <p class="small-label">Let's talk</p>
+            <a href="/contact/">Talk through your project ↗</a>
+            <a href="/about/">Meet Karol</a>
+            <a href="/how-it-works/">How projects work</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© {new Date().getFullYear()} EFIops</span>
+          <div>
+            <a href="/privacy/">Privacy</a>
+            <a href="/cookies/">Cookies & storage</a>
+          </div>
+          <span>Clearer information. Less repetitive work.</span>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const mobileQuery = matchMedia('(max-width:800px)');
+      const setGroups = () =>
+        document
+          .querySelectorAll<HTMLDetailsElement>('.menu-group')
+          .forEach((group) => (group.open = !mobileQuery.matches));
+      setGroups();
+      mobileQuery.addEventListener('change', setGroups);
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector<HTMLElement>('#navigation');
+      if (toggle && nav) {
+        toggle.hidden = false;
+        nav.classList.add('enhanced');
+        toggle.addEventListener('click', () => {
+          const open = toggle.getAttribute('aria-expanded') !== 'true';
+          toggle.setAttribute('aria-expanded', String(open));
+          nav.classList.toggle('open', open);
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            const active = document.activeElement;
+            const open = document.querySelector<HTMLDetailsElement>('.services-menu[open]');
+            if (open) {
+              open.open = false;
+              (open.querySelector('summary') as HTMLElement)?.focus();
+            } else if (toggle.getAttribute('aria-expanded') === 'true') {
+              toggle.setAttribute('aria-expanded', 'false');
+              nav.classList.remove('open');
+              if (nav.contains(active)) toggle.focus();
+            }
+          }
+        });
+        document.addEventListener('click', (e) => {
+          const menu = document.querySelector<HTMLDetailsElement>('.services-menu');
+          if (menu?.open && !menu.contains(e.target as Node)) menu.open = false;
+        });
+      }
+    </script>
+  </body>
+</html>

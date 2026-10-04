@@ -1,0 +1,69 @@
+{
+  "slug": "website-optimisation",
+  "title": "Website optimisation",
+  "seoTitle": "Website Optimisation: Speed, UX & Conversion | EFIops",
+  "metaDescription": "Improve an existing website's performance, usability and enquiry journey. EFIops identifies practical changes and checks their impact against a baseline.",
+  "h1": "A faster, clearer website with an easier next step.",
+  "eyebrow": "Make more of the website you have",
+  "lead": "Improve the parts of your website that create friction. EFIops reviews performance, usability, content and conversion paths, then implements focused changes based on what the site needs.",
+  "sections": [
+    {
+      "heading": "A useful improvement may be smaller than a rebuild.",
+      "paragraphs": [
+        "Visitors may struggle to read the page on mobile, understand the offer, find the contact button or finish the form. The site may load more slowly than it should.",
+        "We look for the specific problem before deciding whether to improve the existing site or recommend a larger change."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "Find the friction. Improve the experience.",
+      "paragraphs": [],
+      "items": [
+        "Performance work. Investigate heavy assets, unnecessary scripts and other causes of slow loading or interaction.",
+        "Mobile usability. Improve readability, navigation, controls and forms on smaller screens.",
+        "Conversion paths. Review the steps between arriving, understanding the offer and making an enquiry.",
+        "Content clarity. Improve headings, service explanations and calls to action.",
+        "Measurement. Establish a baseline and choose meaningful checks for the change."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Measure the starting point, then improve it.",
+      "paragraphs": [
+        "We review the current experience and any available analytics, agree the priority changes and implement them in a reviewable version. Technical checks show whether performance and usability have improved.",
+        "When traffic and tracking support it, enquiries or other conversions can be compared over a suitable period. Small samples and changes in traffic quality are considered when interpreting the result."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do we need a new website?",
+      "answer": "Not always. The review should establish whether focused improvements are practical or whether the current platform is limiting the work."
+    },
+    {
+      "question": "Can you guarantee more enquiries?",
+      "answer": "No. We can improve the experience and measure available outcomes, but traffic quality, the offer and customer demand also affect enquiries."
+    },
+    {
+      "question": "Is website optimisation the same as SEO?",
+      "answer": "They overlap, but this service focuses on the visitor's experience and the site's performance. SEO work also considers search discovery, page intent and content relevance."
+    },
+    {
+      "question": "Can you work with our existing platform?",
+      "answer": "We first check access, the platform and any limitations. The scope depends on what can be changed safely and effectively."
+    }
+  ],
+  "cta": {
+    "label": "Discuss website improvements",
+    "heading": "Where does your website make things harder?",
+    "text": "Share the URL and the part of the experience you want to improve."
+  },
+  "relatedServices": ["seo", "web-design-development", "system-integrations"],
+  "visualKey": "website-optimisation",
+  "primaryIntent": "website optimisation services; website speed and conversion improvements.",
+  "publicationState": "published",
+  "summary": "Improve speed, usability and the path from visit to enquiry."
+}

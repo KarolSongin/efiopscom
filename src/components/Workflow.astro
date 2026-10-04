@@ -1,0 +1,95 @@
+---
+import core from '../data/core.json';
+---
+
+<section class="workflow-section">
+  <div class="container workflow-grid">
+    <div>
+      <p class="eyebrow">Connected work, in practice</p>
+      <h2>
+        See how the pieces
+        <br />
+        can work together.
+      </h2>
+      <p>{core.home.blocks['Interactive example'][0]}</p>
+      <p class="workflow-caption">Illustrative workflow using fictional data.</p>
+    </div>
+    <div class="workflow-demo">
+      <div class="scenario-controls" role="group" aria-label="Choose an illustrative scenario">
+        <button aria-pressed="true" data-scenario="reporting">
+          Reporting
+        </button>
+        <button aria-pressed="false" data-scenario="enquiry">
+          Enquiry follow-up
+        </button>
+        <button aria-pressed="false" data-scenario="ai">
+          AI request routing
+        </button>
+      </div>
+      <div class="scenario-panel" aria-live="polite">
+        <h3 id="scenario-title">Bring separate records into one reporting view.</h3>
+        <ol id="scenario-steps">
+          <li>
+            <span>01</span>Separate records
+          </li>
+          <li>
+            <span>02</span>Consistent definitions
+          </li>
+          <li>
+            <span>03</span>Reporting view
+          </li>
+          <li>
+            <span>04</span>Review differences
+          </li>
+        </ol>
+      </div>
+      <noscript>
+        <p>Enquiry follow-up: Capture the requirements and flag the next follow-up.</p>
+        <p>
+          AI request routing: Route a stock question to a defined lookup, or hand it to a person.
+        </p>
+      </noscript>
+    </div>
+  </div>
+</section>
+<script>
+  const scenarios = {
+    reporting: {
+      title: 'Bring separate records into one reporting view.',
+      steps: ['Separate records', 'Consistent definitions', 'Reporting view', 'Review differences'],
+    },
+    enquiry: {
+      title: 'Capture the requirements and flag the next follow-up.',
+      steps: ['Enquiry received', 'Details captured', 'Follow-up flagged', 'Person reviews'],
+    },
+    ai: {
+      title: 'Route a stock question to a defined lookup, or hand it to a person.',
+      steps: [
+        'Stock question',
+        'Application access check',
+        'Approved lookup',
+        'Answer or human review',
+      ],
+    },
+  };
+  document.querySelectorAll<HTMLButtonElement>('[data-scenario]').forEach((button) =>
+    button.addEventListener('click', () => {
+      const key = button.dataset.scenario as keyof typeof scenarios;
+      const data = scenarios[key];
+      document
+        .querySelectorAll('[data-scenario]')
+        .forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+      document.querySelector('#scenario-title')!.textContent = data.title;
+      const list = document.querySelector('#scenario-steps')!;
+      list.replaceChildren(
+        ...data.steps.map((text, i) => {
+          const li = document.createElement('li');
+          const span = document.createElement('span');
+          span.textContent = '0' + (i + 1);
+          li.append(span, document.createTextNode(text));
+          return li;
+        }),
+      );
+    }),
+  );
+</script>

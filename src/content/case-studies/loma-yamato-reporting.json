@@ -1,0 +1,46 @@
+{
+  "slug": "loma-yamato-reporting",
+  "title": "Loma versus Yamato reporting \u2014 editorial draft",
+  "description": "Private evidence collection template; no public outcomes approved.",
+  "projectType": "Internal project",
+  "projectStatus": "In progress",
+  "publicationState": "draft",
+  "permissionConfirmed": false,
+  "evidenceReviewed": false,
+  "role": "Confirm the exact reporting and modelling work Karol performed.",
+  "dates": "Confirm actual implementation and observation dates.",
+  "relatedServices": ["power-bi", "system-integrations"],
+  "images": [],
+  "metrics": [],
+  "internalEvidenceNotes": "PRIVATE_EVIDENCE_SENTINEL: publication permission and reconciliation records required.",
+  "sections": [
+    {
+      "heading": "Problem and context",
+      "body": "Collect an approved description of the comparison question."
+    },
+    {
+      "heading": "Role and scope",
+      "body": "Confirm Karol\u2019s exact role and the parts implemented."
+    },
+    {
+      "heading": "Starting workflow",
+      "body": "Document the original records and measure definitions."
+    },
+    {
+      "heading": "Solution",
+      "body": "Describe the data preparation and reporting model."
+    },
+    {
+      "heading": "Verification",
+      "body": "Record reconciliation checks, sample size and limitations."
+    },
+    {
+      "heading": "Outcomes",
+      "body": "No public outcome has been measured or approved in this draft."
+    },
+    {
+      "heading": "Limitations and next step",
+      "body": "Refresh current status; obtain affirmative publication permission."
+    }
+  ]
+}

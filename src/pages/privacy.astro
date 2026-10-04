@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import { production } from '../config/site';
+import release from '../config/release.json';
+---
+
+<Base
+  title="Privacy Notice | EFIops"
+  description="How EFIops handles website enquiries and information."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Privacy notice</p>
+      <h1>How EFIops handles your information.</h1>
+    </div>
+  </section>
+  <div class="container legal">
+    {!production && (
+      <p class="preview-note">
+        Draft notice for review. The controller identity, processing arrangements, legal basis and
+        retention practice must be confirmed before this website is released.
+      </p>
+    )}
+    <section>
+      <p>
+        {production
+          ? `This notice explains how ${release.legalController}, trading as EFIops, handles personal information collected through this website. You can contact us at ${release.privacyContact}.`
+          : 'This preview has no active enquiry provider or optional analytics. Its legal notice is awaiting review against the final website configuration.'}
+      </p>
+    </section>
+    <section>
+      <h2>Enquiries</h2>
+      <p>
+        When you contact us, we receive the details you submit, such as your name, email address,
+        organisation and message. We use them to understand your enquiry, reply and discuss a
+        possible project.
+      </p>
+      {!production && (
+        <p>
+          The preview form does not send real enquiries. Emailing EFIops uses your own email
+          service.
+        </p>
+      )}
+    </section>
+    <section>
+      <h2>How the website works</h2>
+      <p>
+        {production
+          ? `The website is hosted by ${release.host}. Enquiries are processed through ${release.formProvider}. These services process technical information needed to deliver pages, protect the service and handle enquiries.`
+          : 'The local preview serves pages and validates form input. Optional analytics, advertising, booking widgets and external media embeds are disabled.'}
+      </p>
+    </section>
+    <section>
+      <h2>Why information is used</h2>
+      <p>
+        {production
+          ? release.legalBasis
+          : 'The purposes and appropriate legal bases for the final enquiry handling must be reviewed before launch.'}
+      </p>
+    </section>
+    <section>
+      <h2>Service providers</h2>
+      <p>
+        {production
+          ? release.transferArrangements
+          : 'Provider categories and any material processing or transfer arrangements will be documented after the host and enquiry provider are confirmed.'}
+      </p>
+    </section>
+    <section>
+      <h2>Keeping information</h2>
+      <p>
+        {production
+          ? release.retention
+          : 'The actual retention period or criteria for keeping enquiries must be confirmed before launch.'}
+      </p>
+    </section>
+    <section>
+      <h2>Your rights</h2>
+      <p>
+        You may have rights to access, correct, delete or restrict the use of your personal
+        information, depending on the circumstances.{' '}
+        {production
+          ? `Contact ${release.privacyContact} to ask about your information.`
+          : 'A confirmed privacy contact will be included in the reviewed notice.'}{' '}
+        You can also raise a concern with the{' '}
+        <a href="https://ico.org.uk/">Information Commissioner's Office</a>.
+      </p>
+    </section>
+    <section>
+      <h2>Changes</h2>
+      <p>
+        {production
+          ? `This notice was last reviewed on ${release.noticeReviewDate}. We update it when our use of information changes.`
+          : 'This draft is awaiting its first legal review. The published notice will include the actual review date.'}
+      </p>
+    </section>
+  </div>
+</Base>

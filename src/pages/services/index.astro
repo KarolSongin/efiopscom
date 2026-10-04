@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import Directory from '../../components/Directory.astro';
+import CTA from '../../components/CTA.astro';
+import core from '../../data/core.json';
+const page = core.services;
+---
+
+<Base title={page.seoTitle} description={page.metaDescription}>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <span>Services</span>
+      </div>
+      <p class="eyebrow">Websites · Data · Automation · AI</p>
+      <h1>{page.h1}</h1>
+      <p>{page.lead}</p>
+    </div>
+  </section>
+  <section class="container section">
+    <Directory />
+  </section>
+  <CTA
+    heading="Not sure which service you need?"
+    text="Describe the problem in your own words. We can work out whether the first step is a report, a workflow, a website or something else."
+  />
+</Base>

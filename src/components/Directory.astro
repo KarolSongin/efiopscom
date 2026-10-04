@@ -1,0 +1,35 @@
+---
+import { groups } from '../config/site';
+import { services } from '../data/content';
+const all = await services();
+---
+
+<div class="directory">
+  {groups.map((g, i) => (
+    <section class="directory-group">
+      <div class="directory-intro">
+        <span class="index">0{i + 1}</span>
+        <h3>{g.title}</h3>
+        <p>{g.text}</p>
+      </div>
+      <div class="directory-links">
+        {g.slugs.map((slug) => {
+          const s = all.find((x) => x.data.slug === slug)!.data;
+          return (
+            <a href={`/services/${slug}/`}>
+              <div>
+                <h4>{s.title}</h4>
+                <p>{s.summary}</p>
+              </div>
+              <span class="arrow">
+                <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 19L19 5M5 5h14v14" />
+                </svg>
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  ))}
+</div>

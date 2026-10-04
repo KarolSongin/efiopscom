@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import { production } from '../config/site';
+---
+
+<Base
+  title="Cookies & Website Storage | EFIops"
+  description="Cookies and similar technologies used by the EFIops website."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Website storage</p>
+      <h1>Cookies and similar technologies.</h1>
+    </div>
+  </section>
+  <div class="container legal">
+    {!production && (
+      <p class="preview-note">
+        Review notice: the final host and any additional services must be checked before launch.
+      </p>
+    )}
+    <section>
+      <h2>The website as built</h2>
+      <p>
+        The website does not set cookies or use local storage for analytics, advertising or
+        personalisation. Fonts, the logo and illustrations are served with the website. Optional
+        analytics, advertising pixels, booking widgets and external media embeds are disabled.
+      </p>
+    </section>
+    <section>
+      <h2>Your enquiry</h2>
+      <p>
+        The form uses a random request identifier to help prevent duplicate submissions. It is held
+        in the page while it is open, rather than stored in a cookie or local storage. After an
+        accepted enquiry, a temporary acceptance timestamp in session storage allows the
+        confirmation page to show the received message. That timestamp contains no enquiry details
+        and is removed when the confirmation page loads.
+      </p>
+    </section>
+    <section>
+      <h2>If optional services change</h2>
+      <p>
+        Before enabling optional tracking or embedded services, EFIops must review their storage,
+        purposes and provider arrangements, update this notice and provide appropriate controls.
+      </p>
+    </section>
+    <section>
+      <h2>Questions about information</h2>
+      <p>
+        <a href="/privacy/">Read how EFIops handles your information.</a>
+      </p>
+    </section>
+  </div>
+</Base>

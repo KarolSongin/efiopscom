@@ -1,0 +1,76 @@
+{
+  "slug": "jev-ai-integration",
+  "title": "Jev integration",
+  "seoTitle": "Jev AI Integration for Business Workflows | EFIops",
+  "metaDescription": "Integrate TypeSafe's Jev into applications for intent routing and structured decisions. Define workflows, evaluate uncertain cases and keep action rules in your code.",
+  "h1": "Put Jev to work inside your business workflows.",
+  "eyebrow": "Structured decisions inside your software",
+  "lead": "EFIops helps you explore where TypeSafe's Jev can support a defined decision: identifying an intent, routing a request or evaluating a candidate against clear criteria. The result connects to application logic you can inspect and test.",
+  "sections": [
+    {
+      "heading": "Give each part of the system a clear job.",
+      "paragraphs": [
+        "Jev is designed to return structured decisions from a supplied state and typed questions. In an assistant, a conversational model can handle dialogue while Jev helps identify a route. The application then checks permissions, retrieves the relevant information and decides which workflow may run."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "Where a Jev integration may fit.",
+      "paragraphs": [],
+      "items": [
+        "Intent classification. Distinguish a request for information from a request for action or human help.",
+        "Workflow routing. Map a supported intent to a defined next step.",
+        "Candidate evaluation. Explore scoring or selection against explicit criteria, with business rules applied separately.",
+        "Review handling. Use uncertainty signals alongside validation and permission checks to decide when a person should look.",
+        "Application integration. Connect the decision layer to an existing interface, API and monitoring view."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "One request. A defined route.",
+      "paragraphs": [
+        "A team member asks where to find material for a job. The system identifies the request, checks the user's access and runs an approved lookup. It presents the retrieved information or sends the unresolved request to a person."
+      ],
+      "items": [],
+      "caption": "Proposed workflow example. This is not a claim of a completed client deployment."
+    },
+    {
+      "heading": "A pilot built around your own examples.",
+      "paragraphs": [
+        "We define the supported routes, assemble representative requests and test both clear and ambiguous cases. The pilot records what route was chosen, whether the result was useful and when human review was needed.",
+        "Thresholds are selected from evaluation results and the consequences of a mistake. A confidence value does not replace access control or establish that a decision is correct."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do we need to replace our conversational AI?",
+      "answer": "Not necessarily. A structured decision layer can be evaluated alongside an existing conversational interface."
+    },
+    {
+      "question": "Can Jev directly authorise an action?",
+      "answer": "Authorisation belongs in your application. A model output may suggest a route; the software must still check whether the user and workflow are allowed to take it."
+    },
+    {
+      "question": "What happens when a request is ambiguous?",
+      "answer": "The application can ask for clarification, collect more context or hand the request to a person."
+    },
+    {
+      "question": "Are you an official TypeSafe partner?",
+      "answer": "EFIops is an independent integration provider. No official partnership or endorsement is claimed."
+    }
+  ],
+  "cta": {
+    "label": "Discuss a Jev integration",
+    "heading": "What decision would your software benefit from making?",
+    "text": "Bring a few real examples and the possible outcomes. We can evaluate whether Jev is a useful fit."
+  },
+  "relatedServices": ["ai-assistants", "system-integrations", "custom-business-apps"],
+  "visualKey": "jev-ai-integration",
+  "primaryIntent": "Jev integration; TypeSafe AI developer; structured AI workflow decisions.",
+  "publicationState": "published",
+  "summary": "Add structured AI decisions to software and route requests into defined workflows."
+}

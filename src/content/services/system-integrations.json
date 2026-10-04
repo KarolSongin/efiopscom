@@ -1,0 +1,69 @@
+{
+  "slug": "system-integrations",
+  "title": "System integrations",
+  "seoTitle": "API, SQL & Business System Integration | EFIops",
+  "metaDescription": "Connect business applications, APIs and databases. EFIops builds focused integrations for data exchange, reporting and more dependable workflows.",
+  "h1": "Business system integrations that reduce the work between tools.",
+  "eyebrow": "Connect the tools. Improve the flow.",
+  "lead": "Make information easier to move, combine and use. EFIops connects suitable applications, APIs and databases so your team spends less effort transferring the same details by hand.",
+  "sections": [
+    {
+      "heading": "The gap between two systems becomes somebody's job.",
+      "paragraphs": [
+        "Orders arrive in one place. Reporting needs them somewhere else. Machine exports have a different format. Another spreadsheet joins it all together.",
+        "We examine the handoff: what data is needed, which system is responsible for it and what should happen when a transfer is delayed or incomplete."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "Useful connections, with clear ownership.",
+      "paragraphs": [],
+      "items": [
+        "API integrations. Exchange suitable information between applications and supported services.",
+        "Database connections. Provide controlled access to the records a report or application needs.",
+        "Data preparation pipelines. Consolidate exports, normalise formats and prepare records for analysis.",
+        "Event and workflow connections. Connect an agreed change in one system to the next step in another.",
+        "Integration repairs. Investigate mismatched records, failed transfers and repetitive manual fixes."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Build for the transfer and the exception.",
+      "paragraphs": [
+        "We agree the source of truth, the mapping and the direction of each connection. The implementation includes appropriate validation, error handling and a way to identify failed work.",
+        "Testing covers missing values, repeated requests, format changes and interrupted transfers. The handover explains what is connected and how the integration is monitored."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do both systems need an API?",
+      "answer": "An API is often useful, but some projects work with database access or structured exports. We review the options and their limitations first."
+    },
+    {
+      "question": "Can you combine machine exports for reporting?",
+      "answer": "Yes. Industrial data processing is part of Karol's experience. The source format and required output define the scope."
+    },
+    {
+      "question": "Will this replace our existing systems?",
+      "answer": "The first question is whether they can be connected effectively. A focused integration may be enough to improve the handoff."
+    },
+    {
+      "question": "What happens if a provider changes its API?",
+      "answer": "Integrations need maintenance. Monitoring and support can be scoped so failures are visible and changes can be addressed."
+    }
+  ],
+  "cta": {
+    "label": "Discuss your systems",
+    "heading": "Where are people moving the same information twice?",
+    "text": "Tell us which systems are involved, which records need to move and what currently happens between them."
+  },
+  "relatedServices": ["power-automate", "custom-business-apps", "power-bi"],
+  "visualKey": "system-integrations",
+  "primaryIntent": "business system integration; API integration developer; SQL integration.",
+  "publicationState": "published",
+  "summary": "Connect applications, APIs and databases so information moves more reliably."
+}

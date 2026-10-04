@@ -1,0 +1,69 @@
+{
+  "slug": "computer-vision",
+  "title": "Computer vision",
+  "seoTitle": "Computer Vision Prototypes & Edge AI | EFIops",
+  "metaDescription": "Explore camera-based measurement and inspection with a focused computer vision prototype. Python, image processing and edge-device integration around a defined use case.",
+  "h1": "Computer vision prototypes for practical inspection and measurement.",
+  "eyebrow": "A focused test of what a camera can help you see",
+  "lead": "Explore whether image processing or AI can support a defined visual task. EFIops develops scoped prototypes that combine camera input, analysis and useful output for your workflow.",
+  "sections": [
+    {
+      "heading": "Start with the observation you need to make.",
+      "paragraphs": [
+        "A visual task might involve measuring an object, identifying a defect or turning images into records that can be reviewed. The right approach depends on the material, lighting, camera position and the consequences of a wrong result.",
+        "A prototype establishes what is practical before a larger deployment is considered."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "From sample images to a useful feasibility test.",
+      "paragraphs": [],
+      "items": [
+        "Visual measurement. Explore repeatable measurements under defined conditions.",
+        "Defect identification. Test image processing or a suitable model against labelled examples.",
+        "Edge processing. Evaluate local analysis on an appropriate device, including Raspberry Pi where it fits.",
+        "Workflow output. Connect the result to a review screen, record or reporting process.",
+        "Evaluation. Record successful cases, difficult conditions and the limitations of the prototype."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Test the conditions, not only the demonstration.",
+      "paragraphs": [
+        "We define the task, gather representative images and establish a reference for checking results. The prototype is evaluated against variation in the conditions that matter to the use case.",
+        "The next step depends on that evidence. Production reliability, maintenance and any sector-specific validation need their own scope."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Have you worked on a real production-related vision project?",
+      "answer": "Karol's experience includes a Python and Raspberry Pi application for blueberry size analysis and defect identification. Publication of project materials depends on permission and a clear description of its scope."
+    },
+    {
+      "question": "Can a prototype be deployed straight into production?",
+      "answer": "A prototype establishes feasibility. A live deployment may need additional engineering, evaluation and operational checks."
+    },
+    {
+      "question": "Will it replace a quality inspector?",
+      "answer": "That is not a default assumption. A scoped system may support measurement or review; its appropriate role follows from evaluation and the process requirements."
+    },
+    {
+      "question": "Can it connect to reporting or another application?",
+      "answer": "A suitable output can be designed as part of the prototype so the result is useful beyond the camera view."
+    }
+  ],
+  "cta": {
+    "label": "Discuss a vision prototype",
+    "heading": "What do you need the camera to recognise or measure?",
+    "text": "Describe the material, the environment and what the result would be used for."
+  },
+  "relatedServices": ["system-integrations", "power-bi", "custom-business-apps"],
+  "visualKey": "computer-vision",
+  "primaryIntent": "computer vision prototype developer; edge AI proof of concept.",
+  "publicationState": "published",
+  "summary": "Explore visual measurement and inspection with a focused prototype."
+}

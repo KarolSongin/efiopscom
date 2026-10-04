@@ -1,0 +1,69 @@
+{
+  "slug": "ai-assistants",
+  "title": "AI assistants",
+  "seoTitle": "AI Assistants & Business System Integration | EFIops",
+  "metaDescription": "Connect AI assistants to business knowledge, records and defined workflows. Scope a practical text or voice assistant with clear limits and human handover.",
+  "h1": "AI assistants connected to the systems your business uses.",
+  "eyebrow": "Conversation connected to useful work",
+  "lead": "Give people a simpler way to find information and start the right workflow. EFIops builds scoped assistants that can use authorised business data, ask for missing details and pass requests to a person when needed.",
+  "sections": [
+    {
+      "heading": "The useful answer often lives behind another screen.",
+      "paragraphs": [
+        "Someone needs a stock location, a job update, a procedure or the next person to contact. The information exists, but finding it means switching tools, asking colleagues or waiting for a reply.",
+        "An assistant can provide a more convenient starting point when its knowledge, permissions and actions are carefully defined."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "Start with a task worth making easier.",
+      "paragraphs": [],
+      "items": [
+        "Business-data assistants. Retrieve approved records through defined queries and APIs.",
+        "Knowledge assistants. Help people find relevant procedures and documents, with references where the source supports them.",
+        "Request routing. Collect the required details and send a request into the appropriate workflow or queue.",
+        "Text and voice interfaces. Explore an interface inside an existing application, or a focused voice pilot.",
+        "Human review dashboards. Show unresolved requests, conversation summaries and work that needs attention."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Clear access. Defined actions. A visible handover.",
+      "paragraphs": [
+        "We agree the assistant's job, identify the sources it may use and define the actions it may request. Access checks and workflow rules stay in the application. Important actions can require review, and uncertain requests can be handed to a person with the relevant context.",
+        "A pilot is tested on representative questions, incomplete requests and cases outside its scope. That establishes what works before the assistant is expanded."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can an assistant use our SQL data?",
+      "answer": "Yes, through a suitable integration. The application should expose authorised lookups rather than give a model unrestricted database access."
+    },
+    {
+      "question": "Can it work inside an application we already have?",
+      "answer": "That is often the best starting point. We review the application's architecture and available APIs before choosing the integration."
+    },
+    {
+      "question": "Can it make changes as well as answer questions?",
+      "answer": "Potentially. Each action needs a defined scope, permission checks and an appropriate confirmation or review step."
+    },
+    {
+      "question": "Can you build an AI phone assistant?",
+      "answer": "A scoped phone or voice pilot is a possible project. Call handling, provider costs, consent requirements and human escalation need to be agreed before it becomes a live service."
+    }
+  ],
+  "cta": {
+    "label": "Explore an AI use case",
+    "heading": "Which question or request keeps interrupting your team?",
+    "text": "Tell us what people ask, where the answer lives and what should happen after the conversation."
+  },
+  "relatedServices": ["jev-ai-integration", "system-integrations", "custom-business-apps"],
+  "visualKey": "ai-assistants",
+  "primaryIntent": "AI business assistant development; AI integration into existing systems.",
+  "publicationState": "published",
+  "summary": "Connect conversation to the records, knowledge and workflows your team uses."
+}

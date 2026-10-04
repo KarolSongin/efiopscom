@@ -1,0 +1,69 @@
+{
+  "slug": "seo",
+  "title": "SEO",
+  "seoTitle": "SEO Services in Maidstone & Kent | EFIops",
+  "metaDescription": "Technical SEO, clearer service pages and practical local-search improvements. EFIops helps businesses in Maidstone, Kent and across the UK build stronger search foundations.",
+  "h1": "SEO built around what your customers need to know.",
+  "eyebrow": "Make the right pages easier to find",
+  "lead": "Help people find and understand the services your business offers. EFIops combines technical improvements, useful page content and local relevance with measurement that shows how search visibility develops.",
+  "sections": [
+    {
+      "heading": "A good service needs a page that explains it properly.",
+      "paragraphs": [
+        "Your website may describe several services on one short page, miss the questions customers ask or make important content difficult to find. Technical issues may also prevent the right version of a page from being discovered and understood.",
+        "We review the site and the available search data before agreeing the next useful improvement."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "A stronger foundation for search.",
+      "paragraphs": [],
+      "items": [
+        "Technical review. Examine crawlability, indexing signals, page structure and important errors.",
+        "Service-page strategy. Give different customer needs clear, useful pages without duplicating the same offer.",
+        "On-page improvements. Refine titles, descriptions, headings, internal links and relevant content.",
+        "Local relevance. Improve accurate business information and the pages supporting local customers.",
+        "Search measurement. Use available Search Console data to review visibility, queries and page performance."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Start with evidence. Build useful pages. Keep learning.",
+      "paragraphs": [
+        "We look at the current site, its search performance and the terms people use to describe the problem. The first work addresses technical barriers and important gaps in the service content.",
+        "As data becomes available, we review which pages attract relevant searches and which questions still need a better answer. Original case studies and practical articles can then strengthen the site."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can you help a Maidstone business appear in local searches?",
+      "answer": "We can improve the website's local relevance and review accurate business information. Results depend on the market and the site's current position."
+    },
+    {
+      "question": "How long does SEO take?",
+      "answer": "It varies with the starting point, the changes and the competition. We review progress against agreed measures rather than promising a fixed ranking date."
+    },
+    {
+      "question": "Do we need a separate page for every town?",
+      "answer": "Usually a page needs a distinct purpose and useful content. Repeating the same service page with different place names is not a sound content plan."
+    },
+    {
+      "question": "Do you guarantee first place on Google?",
+      "answer": "No. We explain the work, measure what can be measured and avoid ranking guarantees."
+    }
+  ],
+  "cta": {
+    "label": "Discuss your search visibility",
+    "heading": "Which services are difficult for customers to find?",
+    "text": "Share your website, the services you want to grow and any search data you already have."
+  },
+  "relatedServices": ["web-design-development", "website-optimisation"],
+  "visualKey": "seo",
+  "primaryIntent": "SEO services Maidstone; technical SEO consultant.",
+  "publicationState": "published",
+  "summary": "Build a clearer structure and stronger content around how customers search."
+}

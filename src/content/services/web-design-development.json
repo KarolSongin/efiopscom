@@ -1,0 +1,68 @@
+{
+  "slug": "web-design-development",
+  "title": "Web design and development",
+  "seoTitle": "Web Design in Maidstone & Kent | EFIops",
+  "metaDescription": "Distinctive business websites with clear content, thoughtful design and fast performance. Maidstone-based web development for businesses in Kent and across the UK.",
+  "h1": "Web design in Maidstone, built around your business.",
+  "eyebrow": "A website that does your business justice",
+  "lead": "Give people a clearer picture of what you do and a better reason to choose you. EFIops combines content, design and development to create business websites that feel distinctive and work well.",
+  "sections": [
+    {
+      "heading": "Your business has moved forward. Has your website?",
+      "paragraphs": [
+        "An outdated layout, unclear offer or difficult mobile experience can make a good business harder to understand. A rebuild is a chance to organise the message, improve the experience and create a stronger foundation for search and enquiries."
+      ],
+      "items": [],
+      "caption": ""
+    },
+    {
+      "heading": "A complete website, with the important details considered.",
+      "paragraphs": [],
+      "items": [
+        "Structure and content. Give each page a clear purpose and help visitors find the right information.",
+        "Distinctive design. Create a considered visual identity and layouts that fit the business.",
+        "Responsive development. Build an experience that works across phones, tablets and desktop screens.",
+        "Technical foundations. Include sensible metadata, crawlable content, accessibility and performance work.",
+        "Useful connections. Scope forms, booking tools, CRM connections or other appropriate integrations."
+      ],
+      "caption": ""
+    },
+    {
+      "heading": "Design and development should agree on the same goal.",
+      "paragraphs": [
+        "We start with the offer, the audience and the actions people should be able to take. The page structure and copy shape the design. The build is then checked for content, usability, links, forms and performance.",
+        "For a replacement website, existing URLs and valuable content are reviewed before launch so the transition can be planned properly."
+      ],
+      "items": [],
+      "caption": ""
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Do you work only with Maidstone businesses?",
+      "answer": "EFIops is based in Maidstone and works with businesses across the UK. Remote collaboration is available where it fits the project."
+    },
+    {
+      "question": "Can you rebuild our current website?",
+      "answer": "Yes. We review the existing site, its content and its technical setup before recommending the approach."
+    },
+    {
+      "question": "Can you help with the words as well as the design?",
+      "answer": "Content structure and copy can be included in the scope, with your business facts and claims reviewed before publication."
+    },
+    {
+      "question": "Will the new website rank immediately?",
+      "answer": "A well-built site provides a useful foundation. Search visibility also depends on content, competition, authority and ongoing work; a rebuild alone does not establish a ranking result."
+    }
+  ],
+  "cta": {
+    "label": "Discuss your website",
+    "heading": "What should people understand when they visit your website?",
+    "text": "Tell us about the business, the current site and what the next version needs to achieve."
+  },
+  "relatedServices": ["website-optimisation", "seo", "system-integrations"],
+  "visualKey": "web-design-development",
+  "primaryIntent": "web design Maidstone; business website development.",
+  "publicationState": "published",
+  "summary": "Give your business a clear, distinctive website built to be useful."
+}

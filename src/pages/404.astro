@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Page Not Found | EFIops"
+  description="This page could not be found. Explore EFIops services or return home."
+  noindex
+>
+  <section class="error-page">
+    <p class="eyebrow">404 · Page not found</p>
+    <h1>
+      A different
+      <br />
+      starting point.
+    </h1>
+    <p>
+      We couldn't find that page. Explore the services or return to the homepage to find what you
+      need.
+    </p>
+    <a class="button" href="/services/">
+      Explore the services{' '}
+      <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 19L19 5M5 5h14v14" />
+      </svg>
+    </a>
+  </section>
+</Base>

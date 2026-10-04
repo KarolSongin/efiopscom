@@ -1,0 +1,246 @@
+---
+import Base from '../layouts/Base.astro';
+import shared from '../data/shared.json';
+import core from '../data/core.json';
+import { services } from '../data/content';
+import { production } from '../config/site';
+const page = core.contact;
+const all = await services();
+---
+
+<Base title={page.seoTitle} description={page.metaDescription}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">A practical first conversation</p>
+      <h1>{page.h1}</h1>
+      <p>{page.lead}</p>
+    </div>
+  </section>
+  <section class="container section contact-grid">
+    <div>
+      {!production && (
+        <p class="preview-note">
+          Review preview: the form does not send real enquiries. A configured and verified enquiry
+          service is required before launch.
+        </p>
+      )}
+      <form class="contact-form" action="/api/contact" method="post">
+        <div class="field">
+          <label for="name">
+            Your name <span>Required</span>
+          </label>
+          <input
+            id="name"
+            name="name"
+            autocomplete="name"
+            required
+            maxlength="120"
+            aria-describedby="name-error"
+          />
+          <span class="field-error" id="name-error"></span>
+        </div>
+        <div class="field">
+          <label for="email">
+            Email address <span>Required</span>
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            maxlength="254"
+            aria-describedby="email-error"
+          />
+          <span class="field-error" id="email-error"></span>
+        </div>
+        <div class="field">
+          <label for="organisation">
+            Business or organisation <span>Optional</span>
+          </label>
+          <input
+            id="organisation"
+            name="organisation"
+            autocomplete="organization"
+            maxlength="160"
+            aria-describedby="organisation-error"
+          />
+          <span class="field-error" id="organisation-error"></span>
+        </div>
+        <div class="field">
+          <label for="service">
+            What would you like help with? <span>Optional</span>
+          </label>
+          <select id="service" name="service" aria-describedby="service-error">
+            <option value="">Not sure yet</option>
+            {all.map((s) => (
+              <option value={s.data.slug}>{s.data.title}</option>
+            ))}
+          </select>
+          <span class="field-error" id="service-error"></span>
+        </div>
+        <div class="field full">
+          <label for="website">
+            Website or relevant link <span>Optional</span>
+          </label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            placeholder="https://"
+            maxlength="500"
+            aria-describedby="website-error"
+          />
+          <span class="field-error" id="website-error"></span>
+        </div>
+        <div class="field full">
+          <label for="message">
+            What is happening now, and what would you like to improve? <span>Required</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            minlength="10"
+            maxlength="5000"
+            aria-describedby="message-error"
+            placeholder="For example: we rebuild the same report every week, and we'd like a clearer view of staffing and capacity."
+          ></textarea>
+          <span class="field-error" id="message-error"></span>
+        </div>
+        <div class="honeypot" aria-hidden="true">
+          <label for="companyfax">Leave this empty</label>
+          <input id="companyfax" name="companyfax" tabindex="-1" autocomplete="off" />
+        </div>
+        <input type="hidden" name="requestId" id="request-id" />
+        <div class="form-support">
+          <p>
+            Please leave out passwords, personal records and other sensitive information. We can
+            agree a suitable way to share project materials later.
+          </p>
+          <a href="/privacy/">Read how EFIops handles your enquiry.</a>
+        </div>
+        <button class="button" type="submit">
+          Send your enquiry{' '}
+          <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 19L19 5M5 5h14v14" />
+          </svg>
+        </button>
+        <div class="form-status" role="status" aria-live="polite" tabindex="-1"></div>
+        <noscript>
+          <p class="form-support">
+            The form can submit without JavaScript, but this review preview cannot send enquiries.
+            You can use the email link instead.
+          </p>
+        </noscript>
+      </form>
+    </div>
+    <aside class="contact-aside">
+      <p class="eyebrow">Prefer email?</p>
+      <h2>
+        A direct way to
+        <br />
+        start the conversation.
+      </h2>
+      <a href="mailto:karol@efiops.com">karol@efiops.com</a>
+      {!production && <p>The public email destination is awaiting confirmation before launch.</p>}
+      <p>{shared.contactSupport}</p>
+      <h2 style="margin-top:40px">What happens next?</h2>
+      <p>{shared.contactNext}</p>
+      <p>Based in Maidstone, Kent. Working with businesses across the UK.</p>
+    </aside>
+  </section>
+</Base>
+<script>
+  const form = document.querySelector<HTMLFormElement>('.contact-form')!;
+  const select = form.querySelector<HTMLSelectElement>('#service')!;
+  const requested = new URLSearchParams(location.search).get('service');
+  if (requested && [...select.options].some((o) => o.value === requested)) select.value = requested;
+  const requestId = form.querySelector<HTMLInputElement>('#request-id')!;
+  requestId.value = crypto.randomUUID();
+  form.noValidate = true;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = form.querySelector<HTMLElement>('.form-status')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    form.querySelectorAll('.field-error').forEach((x) => (x.textContent = ''));
+    form.querySelectorAll('[aria-invalid]').forEach((x) => x.removeAttribute('aria-invalid'));
+    let first: HTMLElement | null = null;
+    for (const control of form.querySelectorAll<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >('.field input,.field textarea,.field select')) {
+      if (!control.checkValidity() || (control.required && !control.value.trim())) {
+        control.setAttribute('aria-invalid', 'true');
+        const error = document.getElementById(control.id + '-error');
+        if (error)
+          error.textContent =
+            control.validity.valueMissing || !control.value.trim()
+              ? 'Please complete this field.'
+              : control.type === 'email'
+                ? 'Please enter a valid email address.'
+                : control.type === 'url'
+                  ? 'Please enter a full website address.'
+                  : 'Please check this field (message: 10–5,000 characters).';
+        first ??= control;
+      }
+    }
+    if (first) {
+      status.textContent = 'Please check the highlighted fields.';
+      status.dataset.error = 'true';
+      first.focus();
+      return;
+    }
+    button.disabled = true;
+    button.textContent = 'Sending your enquiry…';
+    status.textContent = '';
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        signal: AbortSignal.timeout(15000),
+      });
+      const body = await response.json();
+      if (response.ok && body.accepted === true) {
+        if (body.preview === true) {
+          status.textContent =
+            'Preview test only: the simulated enquiry was accepted. No enquiry was sent.';
+          status.dataset.error = 'false';
+          requestId.value = crypto.randomUUID();
+        } else {
+          status.textContent = 'Thank you. Your enquiry has been received.';
+          status.dataset.error = 'false';
+          try {
+            sessionStorage.setItem('efiopsAcceptedAt', String(Date.now()));
+            location.assign('/thank-you/');
+          } catch {
+            form.reset();
+            requestId.value = crypto.randomUUID();
+          }
+        }
+      } else {
+        if (body.errors)
+          for (const [key, message] of Object.entries(body.errors)) {
+            const field = form.elements.namedItem(key) as HTMLInputElement | null;
+            if (field) {
+              field.setAttribute('aria-invalid', 'true');
+              const error = document.getElementById(key + '-error');
+              if (error) error.textContent = String(message);
+            }
+          }
+        status.textContent =
+          body.message ||
+          'Your enquiry could not be sent. Please try again or use the email link below.';
+        status.dataset.error = 'true';
+      }
+    } catch {
+      status.textContent =
+        'Your enquiry could not be sent. Please try again or use the email link below.';
+      status.dataset.error = 'true';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Send your enquiry';
+      status.focus();
+    }
+  });
+</script>

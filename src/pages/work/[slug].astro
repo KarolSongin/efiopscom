@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import CTA from '../../components/CTA.astro';
+import { cases } from '../../data/content';
+export async function getStaticPaths() {
+  return (await cases()).map((e) => ({ params: { slug: e.data.slug }, props: { page: e.data } }));
+}
+const { page } = Astro.props;
+---
+
+<Base title={page.title + ' | EFIops'} description={page.description}>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/work/">Work</a>
+      </nav>
+      <p class="eyebrow">
+        {page.projectType} · {page.projectStatus}
+      </p>
+      <h1>{page.title}</h1>
+      <p>{page.description}</p>
+      <p>
+        Role: {page.role}
+        <br />
+        Project dates: {page.dates}
+      </p>
+    </div>
+  </section>
+  <div class="container article-body">
+    {page.sections.map((s) => (
+      <section>
+        <h2>{s.heading}</h2>
+        <p>{s.body}</p>
+      </section>
+    ))}
+    {page.images.map((img) => (
+      <figure>
+        <img src={img.src} alt={img.alt} loading="lazy" />
+        <figcaption>{img.caption}</figcaption>
+      </figure>
+    ))}
+    {page.metrics.map((m) => (
+      <section>
+        <h2>
+          {m.label}: {m.value}
+        </h2>
+        <p>
+          {m.method} · {m.sampleSize} observations · {m.observationPeriod}
+        </p>
+      </section>
+    ))}
+    <h2>Related services</h2>
+    {page.relatedServices.map((s) => (
+      <a class="text-link" href={`/services/${s}/`}>
+        {s.replaceAll('-', ' ')} ↗
+      </a>
+    ))}
+  </div>
+  <CTA
+    heading="Have a similar problem?"
+    text="Tell us how the work happens in your business, and we can discuss a useful next step."
+  />
+</Base>
