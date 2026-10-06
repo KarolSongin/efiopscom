@@ -1,0 +1,135 @@
+{
+  "slug": "small-business-automation-where-to-start",
+  "title": "Small business automation: what should you automate first?",
+  "seoTitle": "Small Business Automation: Where to Start",
+  "description": "Choose your first business automation with practical examples for enquiries, job handovers and reporting, plus a checklist for avoiding costly mistakes.",
+  "author": "Karol Songin",
+  "category": "Automation & AI",
+  "takeaway": "Start with a repeatable task that has clear rules, a named owner and a visible cost when it gets missed. Automate the routine steps; keep judgement with a person.",
+  "publishedDate": "2026-10-06",
+  "substantiveUpdatedDate": null,
+  "publicationState": "published",
+  "reviewed": true,
+  "relatedServices": [
+    "power-automate",
+    "system-integrations",
+    "custom-business-apps"
+  ],
+  "sources": [
+    {
+      "label": "Microsoft Learn: types of flows in Power Automate",
+      "url": "https://learn.microsoft.com/en-us/power-automate/flow-types"
+    },
+    {
+      "label": "Microsoft Learn: handle errors in cloud flows",
+      "url": "https://learn.microsoft.com/en-us/power-automate/error-handling"
+    },
+    {
+      "label": "Microsoft Learn: data loss prevention policies",
+      "url": "https://learn.microsoft.com/en-us/power-platform/admin/wp-data-loss-prevention"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Start with the work you keep repeating",
+      "body": "A customer fills in your enquiry form. You copy their details into a spreadsheet, send an acknowledgement and remind yourself to follow up. Later, you search your inbox to work out whether anyone replied. None of these steps is especially difficult. Together, they create a process that depends on someone remembering every detail.\n\nThat is a useful starting point for small business automation. Look for the repeated movement of information: copying a name, creating a task, checking a status or sending the same internal reminder. The first project should solve a specific problem you can recognise in your working week.",
+      "bullets": [
+        "Which task do you repeat most days or every week?",
+        "Where do you enter the same information twice?",
+        "What gets forgotten when the business becomes busy?",
+        "Which delay creates a real problem for a customer or colleague?"
+      ],
+      "callout": {
+        "title": "Write the problem in one sentence",
+        "body": "“Enquiries arrive in three places, and we cannot reliably see who needs a reply.” That gives a project a clearer purpose than “we need more automation.”"
+      }
+    },
+    {
+      "heading": "Choose a process with clear rules",
+      "body": "A good first automation has a predictable trigger and an outcome you can check. For example: when a valid website enquiry arrives, create an opportunity, assign its owner and set a follow-up task. You can test each step without asking a system to decide whether the customer is a good fit.\n\nBe more cautious with work that requires negotiation, unusual exceptions or sensitive decisions. Preparing a draft quote may help; sending a binding quote without checking its scope and price may create a problem. If a process changes every time you do it, agree a workable routine before building software around it.",
+      "callout": {
+        "title": "Automation does not have to mean AI",
+        "body": "A fixed rule is often enough to move a record, set a reminder or request an approval. Consider AI when the task needs interpretation of text or other unstructured information, with an appropriate review step."
+      }
+    },
+    {
+      "heading": "Three practical first projects",
+      "body": "The right starting point depends on where your business loses time or visibility. These examples show how a focused workflow can support a small team without replacing its judgement.",
+      "table": {
+        "columns": [
+          "Process",
+          "What can happen automatically",
+          "What stays with a person"
+        ],
+        "rows": [
+          [
+            "New customer enquiries",
+            "Create a record, assign an owner and set a follow-up task.",
+            "Decide whether the work is a fit and discuss the customer’s needs."
+          ],
+          [
+            "Job handovers",
+            "Create a checklist and notify the next person when a job reaches an agreed stage.",
+            "Approve readiness and resolve missing information."
+          ],
+          [
+            "Weekly reporting",
+            "Collect agreed data and prepare a consistent summary.",
+            "Check exceptions, interpret the figures and decide what to change."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Work through an enquiry example",
+      "body": "Consider a local installation business that receives enquiries through its website and shared inbox. The useful goal is to keep each new enquiry visible until someone takes responsibility for it.\n\nThe website form creates a record containing the customer’s details, the requested service and the original message. The workflow assigns an owner and creates a follow-up task. If the business sends an acknowledgement, its wording should describe what will happen next without promising a response time the team cannot meet.\n\nThe owner reviews the enquiry, contacts the customer and records the next action. If an enquiry still has no owner or response after an agreed interval, an internal alert asks someone to investigate. Define that interval in working hours or working days if weekends and holidays matter.\n\nThere is also an exception path. A missing email address should flag the record for review. A repeated form submission should not silently create several opportunities. If the destination system is unavailable, the workflow needs a recoverable failure and an alert to the person responsible.",
+      "callout": {
+        "title": "What success looks like",
+        "body": "The team can answer “Who needs a reply, who owns it, and what happens next?” without searching several inboxes. Track that outcome alongside the time spent processing each enquiry."
+      }
+    },
+    {
+      "heading": "Estimate the value before choosing a tool",
+      "body": "Measure a few normal runs of the task. Include time spent checking, correcting and chasing, rather than counting only the initial data entry. Then estimate how much of that work the proposed automation can remove.\n\nFor example, a task repeated 20 times a week at six minutes per run takes two hours. If the new process still requires two minutes of human review per run, the potential reduction is 80 minutes a week. These are planning inputs, not promised savings: actual results depend on volume, exceptions and maintenance.\n\nCompare that benefit with setup work, ongoing licences and the effort needed to support the workflow. A smaller project that prevents missed enquiries may be more valuable than a complicated system designed to save a few clicks.",
+      "bullets": [
+        "Record the current volume and time per task.",
+        "Define the human review that will remain.",
+        "Include exceptions, subscriptions and support costs.",
+        "Agree a measure to compare before and after the change."
+      ]
+    },
+    {
+      "heading": "Connect your existing tools before adding another",
+      "body": "You may already have much of what you need in your email, calendar, CRM or Microsoft 365 setup. Power Automate can support scheduled, event-driven and manually triggered workflows. Whether it fits your project depends on the systems involved, available connectors, permissions and licensing.\n\nCheck what each system can actually read and write. Can a workflow create the correct record, identify duplicates and update its status? Does the connection require an additional licence? Who owns the account and what happens if that person leaves?\n\nA direct integration can be the simplest answer when two systems have a clear exchange to make. A custom business app becomes useful when the team needs its own shared screen, workflow rules or approval process. Choose the approach around the work people need to do."
+    },
+    {
+      "heading": "Test the awkward cases, not just the happy path",
+      "body": "A workflow is not ready because it worked once. Test the situations that are likely to happen during an ordinary busy week. Agree the expected result before running each test, and check both the destination record and any message or task it creates.\n\nGive someone responsibility for monitoring failures. An automation that stops quietly can leave the team believing work has been done when it has not. Keep a manual fallback so a customer enquiry can still be handled while a connection is being fixed.",
+      "bullets": [
+        "Submit the same enquiry twice and check for unwanted duplicates.",
+        "Leave out a required value and check that someone can resolve it.",
+        "Test an unavailable connection and confirm the failure is visible.",
+        "Check who can access the customer data in every connected system.",
+        "Try the workflow across a weekend or outside working hours.",
+        "Confirm that a retry does not send the same customer message twice."
+      ]
+    },
+    {
+      "heading": "Your checklist for a useful first automation",
+      "body": "Choose one process and answer the questions below. If several answers are unclear, the next step is to define the process with the people who use it. You do not need to buy a platform before doing that work.",
+      "bullets": [
+        "Problem: what specifically is slow, repeated or being missed?",
+        "Trigger: what starts the workflow?",
+        "Inputs: where does the information come from, and which fields are required?",
+        "Rules: what can happen automatically, and what needs approval?",
+        "Owner: who handles exceptions and maintains the workflow?",
+        "Outcome: what visible result should each run produce?",
+        "Measure: how will you know the change helped?"
+      ],
+      "callout": {
+        "title": "How EfiOps can help",
+        "body": "Bring one repeated task and the tools you currently use. I can help map the steps, agree a focused scope, build and test the workflow, and hand it over with clear ownership and a practical guide."
+      }
+    }
+  ]
+}

@@ -6,8 +6,8 @@ import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 const manifest = JSON.parse(fs.readFileSync('dist/build-manifest.json'));
 const output = (route) => fs.readFileSync(path.join('dist', route, 'index.html'), 'utf8');
-test('all 19 required commercial and legal pages are built with unique metadata', () => {
-  assert.equal(manifest.routes.length, 19);
+test('all 20 published commercial, legal and article pages are built with unique metadata', () => {
+  assert.equal(manifest.routes.length, 20);
   const titles = new Set();
   for (const route of manifest.routes) {
     const html = output(route);
