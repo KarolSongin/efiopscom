@@ -129,3 +129,9 @@ Validation: Astro check returned zero errors/warnings; review build passed; all 
 Published “Small business automation: what should you automate first?” using the reusable static article template. It includes practical workflow examples, a comparison table, a time/value estimate, exception tests, a planning checklist and Microsoft documentation references. Related service links connect to automation, integrations and custom business apps. The article library is now populated and indexable in production; the new URL and actual publication date enter the sitemap. Existing private drafts remain unpublished.
 
 Validation: Astro check returned no errors/warnings; review build passed. All 35 unit/static/database checks passed after updating the expected published-route count and rerunning the affected build tests. All four article browser tests passed, including seven viewport widths, axe accessibility and reading without JavaScript. Isolated production checks verified the new URL, index/follow, Article metadata and publication date; production/approved-content/analytics/confirmation fixtures passed.
+
+## Second published article — 8 October 2026
+
+Added “How to manage website enquiries without losing leads”. Practical guidance covers ownership, next actions, meaningful stages, an enquiry-to-booking example, automation boundaries, measurement and data minimisation/retention, with ICO references and relevant service links. Publication uses the existing static article template and actual publication date; private drafts remain unpublished.
+
+Validation: Astro check returned zero errors/warnings; review build and all 35 unit/static/database tests passed. Production fixtures passed including the new sitemap URL/date, indexing, approved-content rendering, analytics consent and enquiry confirmation. Article browser checks cover the library, both published articles and private template at seven widths, axe accessibility and reading without JavaScript.

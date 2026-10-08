@@ -1,0 +1,135 @@
+{
+  "slug": "manage-website-enquiries-without-losing-leads",
+  "title": "How to manage website enquiries without losing leads",
+  "seoTitle": "How to Manage Website Enquiries Without Losing Leads",
+  "description": "Build a clear enquiry process for your small business: assign owners, track next actions, follow up consistently and measure where opportunities get stuck.",
+  "author": "Karol Songin",
+  "category": "Business systems",
+  "takeaway": "Every open enquiry needs an owner, a clear stage and a dated next action. A pipeline only helps when it tells you what to do next.",
+  "publishedDate": "2026-10-08",
+  "substantiveUpdatedDate": null,
+  "publicationState": "published",
+  "reviewed": true,
+  "relatedServices": [
+    "custom-business-apps",
+    "system-integrations",
+    "web-design-development",
+    "power-bi"
+  ],
+  "sources": [
+    {
+      "label": "ICO: principle (c) — data minimisation",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/data-minimisation/"
+    },
+    {
+      "label": "ICO: principle (e) — storage limitation",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/storage-limitation/"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "An enquiry form is the start of the process",
+      "body": "A potential customer has read your website, decided you might be able to help and sent a message. Then the enquiry lands in a shared inbox, between a supplier invoice and a calendar notification. Someone intends to reply later. By the next morning, nobody is quite sure who is dealing with it.\n\nThis is a process problem a small business can address without starting with an expensive CRM. You need a reliable way to capture the enquiry, give someone responsibility and record what should happen next. More website traffic will not fix a follow-up process that loses track of the people already contacting you.\n\nStart by tracing a recent enquiry from submission to outcome. Where did its details go? Who replied? Where was the next action recorded? Any step that depends on memory is worth examining."
+    },
+    {
+      "heading": "Capture useful information, not every possible detail",
+      "body": "The first form should collect enough information to understand the request and respond. For a service business, that might mean a name, email address, service of interest and a short description of the work. Ask for a phone number or location when it has a clear purpose in your process, rather than making every possible field compulsory.\n\nStore the original message alongside the contact details. If someone says they need help before a particular date, that context matters more than a generic label such as “new lead”. Keep the source and received date too, so the team can distinguish a website enquiry from a referral or a conversation entered manually.\n\nThe form should only show a successful submission after the enquiry has been accepted by the destination system. If storage fails, show a useful error and another way to contact you. A reassuring success screen is not enough if no record exists.",
+      "callout": {
+        "title": "Acknowledge receipt clearly",
+        "body": "An acknowledgement can confirm that the message arrived and explain the next step. Keep any promised response time realistic, and do not treat an automated acknowledgement as a personal response."
+      }
+    },
+    {
+      "heading": "Give every open enquiry an owner and a next action",
+      "body": "An owner is the person responsible for moving the enquiry forward. It does not mean they do every task themselves. It means someone can answer what is happening and notice when progress stops. In a one-person business, naming the owner still helps build a consistent routine.\n\nThe next action should be specific enough to complete. “Follow up” is vague. “Email Sam to confirm the installation postcode by Thursday” gives you a task, a person and a date. When the task is completed, record the outcome and set the next action, or close the opportunity if no further work is needed.",
+      "bullets": [
+        "Owner: who is responsible for this enquiry?",
+        "Stage: where is it in your process?",
+        "Next action: what needs to happen next?",
+        "Due date: when should that action happen?",
+        "Last meaningful contact: when did a person last speak or write to the customer?"
+      ],
+      "callout": {
+        "title": "Keep the next action separate from the notes",
+        "body": "A note explains what happened. A next action tells someone what to do. Keeping both makes a record easier to scan during a busy day."
+      }
+    },
+    {
+      "heading": "Use stages that describe real progress",
+      "body": "A useful pipeline describes the work rather than decorating the dashboard. For a local service business, a short set of stages might run from a new enquiry through a discussion and quote to an agreed job. Your stages should match the way you actually sell and deliver the service.\n\nAgree what has to be true before a record moves to the next stage. Sending a quote is different from the customer accepting it. Similarly, sending a request for more information does not mean you already understand the scope.\n\nKeep status separate from stage where it helps. An opportunity can be paused while awaiting a customer decision, or marked “not proceeding” at the quote stage. That preserves useful context without leaving closed opportunities mixed into today’s work.",
+      "table": {
+        "columns": [
+          "Stage",
+          "What it means",
+          "Example next action"
+        ],
+        "rows": [
+          [
+            "New enquiry",
+            "The request has been received but not yet reviewed.",
+            "Read the message and assign an owner."
+          ],
+          [
+            "Understanding the request",
+            "You are clarifying the work, timing and fit.",
+            "Confirm the scope and arrange a call."
+          ],
+          [
+            "Quote or proposal sent",
+            "The customer has the information needed to decide.",
+            "Check whether they have questions on the agreed date."
+          ],
+          [
+            "Agreed",
+            "The customer has accepted the agreed scope.",
+            "Arrange the start date and hand over the job details."
+          ],
+          [
+            "Delivery and handover",
+            "The agreed work is underway or ready to hand over.",
+            "Confirm completion and provide the agreed guidance."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "A practical example: from request to booked work",
+      "body": "Consider a garden maintenance business receiving a website enquiry about regular visits. The form creates an opportunity containing the customer’s message and contact details. The owner reviews it and sets a next action to confirm the location, garden size and preferred frequency.\n\nAfter the conversation, the owner records the relevant details and prepares a quote. The opportunity moves to “Quote sent”, with a follow-up date agreed during the conversation. If the customer asks to wait until next month, the owner records that request and changes the next action rather than sending repeated generic reminders.\n\nWhen the quote is accepted, the next step becomes arranging the first visit. The handover contains the agreed work, access arrangements and anything the person doing the job needs to know. If the customer declines, the opportunity is closed with a brief, useful reason.\n\nThe value is visibility: the owner can see which requests need a reply, which quotes await a decision and which jobs need preparation. No one has to reconstruct the whole story from an inbox."
+    },
+    {
+      "heading": "Automate the reminders and handovers",
+      "body": "Once the process is clear, automation can reduce the routine work. A website submission can create the opportunity. A stage change can create a checklist. An overdue next action can appear in a daily internal summary. These rules support the person responsible rather than making promises on their behalf.\n\nStart with internal reminders before automating customer follow-ups. Decide which messages need approval, what should happen after a reply and when reminders should stop. An automated sequence should not keep chasing someone who has declined or asked you to wait.\n\nTest duplicates, missing fields and unavailable connections. Assign someone to monitor failures, and keep a manual way to record and handle an enquiry if the integration stops. If you connect several tools, decide which one owns each field so updates do not overwrite one another."
+    },
+    {
+      "heading": "Review the pipeline with useful measures",
+      "body": "A long list of opportunities can look healthy while important requests sit untouched. A short daily review should focus on overdue actions and unassigned enquiries. A weekly review can look at opportunities waiting in the same stage, quotes without an agreed next step and recurring reasons customers decide not to proceed.\n\nUseful reporting starts with consistent definitions. If you measure response time, decide whether you mean the first personal response or the automated acknowledgement, and whether you count working hours. If you measure conversion, define the enquiries included and allow time for customers to decide. Comparing this week’s new enquiries with this week’s booked jobs can mix different groups of customers.",
+      "bullets": [
+        "Unassigned enquiries: which records still need an owner?",
+        "Overdue next actions: what should already have happened?",
+        "Time in stage: which opportunities may need attention?",
+        "Quote outcomes: what happened to the quotes sent in a defined period?",
+        "Closed reasons: is there a repeated issue with fit, price, timing or scope?"
+      ]
+    },
+    {
+      "heading": "Keep customer information manageable",
+      "body": "Collect and keep information that serves a clear purpose. Restrict access to the people who need it and avoid putting unnecessary personal details in internal notes. The ICO’s data minimisation guidance explains the principle of holding data that is adequate, relevant and limited to what is necessary.\n\nAgree a retention approach for unsuccessful enquiries instead of keeping every record indefinitely. The appropriate period depends on your purpose and obligations; a short-lived sales enquiry and records needed for an ongoing customer relationship may need different treatment. The ICO’s storage limitation guidance explains why retention should be justified and reviewed.\n\nMake sure deletion covers the places where the information lives. Removing a contact from a dashboard may leave copies in an inbox, connected CRM or provider backup. Map those systems and their retention arrangements so the process is understood."
+    },
+    {
+      "heading": "Your starting checklist",
+      "body": "You can begin with a well-kept spreadsheet if the volume is small and access is controlled. A CRM or custom dashboard becomes useful when several people need shared ownership, reliable permissions, linked records or automatic handovers. The process should guide the choice of tool.",
+      "bullets": [
+        "Choose one place to track every open enquiry.",
+        "Write down a short set of stages and their entry rules.",
+        "Require an owner and dated next action for each open record.",
+        "Review overdue work regularly and close finished opportunities.",
+        "Test the form, destination storage and failure handling together.",
+        "Agree access, retention and responsibilities before connecting more tools."
+      ],
+      "callout": {
+        "title": "Build a flow that fits your business",
+        "body": "EfiOps can help connect your website to a practical enquiry dashboard, link existing systems and create reporting around the actions your team needs to take. Bring an example of how an enquiry moves through your business today, and we can identify a focused first improvement."
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-for (const route of ['/articles/', '/articles/template-preview/', '/articles/small-business-automation-where-to-start/']) {
+for (const route of ['/articles/', '/articles/template-preview/', '/articles/small-business-automation-where-to-start/', '/articles/manage-website-enquiries-without-losing-leads/']) {
   test(`article layout is accessible and responsive: ${route}`, async ({ page }) => {
     for (const width of [360, 390, 768, 801, 900, 1024, 1440]) {
       await page.setViewportSize({ width, height: 950 });
@@ -19,7 +19,7 @@ for (const route of ['/articles/', '/articles/template-preview/', '/articles/sma
       results.violations.map((v) => ({ id: v.id, targets: v.nodes.map((n) => n.target) })),
     ).toEqual([]);
     await page.screenshot({
-      path: `artifacts/screenshots/${route.includes('template') ? 'article-template' : route === '/articles/' ? 'articles' : 'first-article'}-1440.png`,
+      path: `artifacts/screenshots/${route.includes('template') ? 'article-template' : route === '/articles/' ? 'articles' : route.split('/').filter(Boolean).at(-1)}-1440.png`,
       fullPage: true,
     });
   });

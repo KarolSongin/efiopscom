@@ -83,11 +83,13 @@ try {
   assert.equal(result.status, 0, result.stderr + '\n' + result.stdout);
   const manifest = JSON.parse(fs.readFileSync(path.join(temp, 'dist/build-manifest.json')));
   assert.equal(manifest.mode, 'production');
-  assert.equal(manifest.indexableRoutes.length, 20);
+  assert.equal(manifest.indexableRoutes.length, 21);
   const sitemap = fs.readFileSync(path.join(temp, 'dist/sitemap.xml'), 'utf8');
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 20);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 21);
   assert.match(sitemap, /https:\/\/efiops.com\/articles\/small-business-automation-where-to-start\//);
   assert.match(sitemap, /<lastmod>2026-10-06<\/lastmod>/);
+  assert.match(sitemap, /https:\/\/efiops.com\/articles\/manage-website-enquiries-without-losing-leads\//);
+  assert.match(sitemap, /<lastmod>2026-10-08<\/lastmod>/);
   const firstArticle = fs.readFileSync(path.join(temp, 'dist/articles/small-business-automation-where-to-start/index.html'), 'utf8');
   assert.match(firstArticle, /name="robots" content="index, follow"/);
   assert.match(firstArticle, /"@type":"Article"/);
@@ -103,7 +105,7 @@ try {
   assert.match(confirmation, /noindex, nofollow/);
   assert.match(fs.readFileSync(path.join(temp, 'dist/robots.txt'), 'utf8'), /Allow: \//);
   console.log(
-    'PASS: isolated production fixture; 20 indexable URLs, correct robots and headers, no draft or confirmation sitemap entries. No real release fields changed; no provider calls.',
+    'PASS: isolated production fixture; 21 indexable URLs, correct robots and headers, no draft or confirmation sitemap entries. No real release fields changed; no provider calls.',
   );
 
   const casePath = path.join(temp, 'src/content/case-studies/loma-yamato-reporting.json');
@@ -190,7 +192,7 @@ try {
   );
   assert.equal(
     (fs.readFileSync(path.join(temp, 'dist/sitemap.xml'), 'utf8').match(/<loc>/g) || []).length,
-    24,
+    25,
   );
   console.log(
     'PASS: isolated approved-content fixtures; work and article indexes, case and Article templates render, private evidence notes stay excluded. No draft approval flags changed in the real checkout.',
