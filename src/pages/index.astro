@@ -7,6 +7,8 @@ import ScenarioCard from '../components/ScenarioCard.astro';
 import Workflow from '../components/Workflow.astro';
 import Icon from '../components/Icon.astro';
 import core from '../data/core.json';
+import { articles } from '../data/content';
+const latestArticles = (await articles()).slice(0, 2);
 import experience from '../data/experience.json';
 const page = core.home;
 const problems = page.sections[0];
@@ -62,6 +64,25 @@ const split = (text: string) => {
           <i></i>
           <a href="/services/ai-assistants/">AI in your systems</a>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="outcome-band" aria-label="What better systems make possible">
+    <div class="container outcome-grid">
+      <div>
+        <span class="outcome-index">01 / Clarity</span>
+        <p>Know what needs your attention.</p>
+        <Icon name="chart" size={23} />
+      </div>
+      <div>
+        <span class="outcome-index">02 / Flow</span>
+        <p>Give good work a clear next step.</p>
+        <Icon name="workflow" size={23} />
+      </div>
+      <div>
+        <span class="outcome-index">03 / Confidence</span>
+        <p>Make it easier to choose your business.</p>
+        <Icon name="globe" size={23} />
       </div>
     </div>
   </section>
@@ -256,5 +277,36 @@ const split = (text: string) => {
       </div>
     </div>
   </section>
+  {latestArticles.length > 0 && (
+    <section class="container section home-reading">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Ideas you can put to work</p>
+          <h2>
+            A little clarity.
+            <br />A better next move.
+          </h2>
+        </div>
+        <a class="text-link" href="/articles/">
+          Visit the reading room <Icon name="arrow" size={18} />
+        </a>
+      </div>
+      <div class="home-reading-grid">
+        {latestArticles.map((entry, i) => (
+          <a class="reading-card" href={`/articles/${entry.data.slug}/`}>
+            <div class="reading-card-top">
+              <span>{entry.data.category}</span>
+              <Icon name={i === 0 ? 'workflow' : 'chart'} size={32} />
+            </div>
+            <h3>{entry.data.title}</h3>
+            <p>{entry.data.description}</p>
+            <span class="reading-card-link">
+              Read the article <Icon name="arrow" size={18} />
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
   <CTA />
 </Base>

@@ -4,6 +4,7 @@ import release from '../config/release.json';
 import analytics from '../config/analytics.json';
 import '../styles/global.css';
 import '../styles/experience.css';
+import '../styles/refinement.css';
 import latoRegular from '@fontsource/lato/files/lato-latin-400-normal.woff2?url';
 import latoBold from '@fontsource/lato/files/lato-latin-700-normal.woff2?url';
 import { site, production, groups } from '../config/site';
@@ -150,7 +151,7 @@ graph.push(...structuredData);
       )}
     />
   </head>
-  <body>
+  <body class:list={{ 'public-site': !Astro.url.pathname.startsWith('/admin/') }}>
     <a class="skip" href="#main">
       Skip to content
     </a>

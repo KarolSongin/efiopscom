@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { groups } from '../config/site';
 import { services } from '../data/content';
 const all = await services();
@@ -8,7 +9,10 @@ const all = await services();
   {groups.map((g, i) => (
     <section class="directory-group">
       <div class="directory-intro">
-        <span class="index">0{i + 1}</span>
+        <div class="directory-heading">
+          <span class="index">0{i + 1}</span>
+          <Icon name={['chart', 'workflow', 'message', 'globe'][i]} size={28} />
+        </div>
         <h3>{g.title}</h3>
         <p>{g.text}</p>
       </div>
