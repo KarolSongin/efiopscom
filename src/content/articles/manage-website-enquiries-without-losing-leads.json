@@ -7,7 +7,7 @@
   "category": "Business systems",
   "takeaway": "Every open enquiry needs an owner, a clear stage and a dated next action. A pipeline only helps when it tells you what to do next.",
   "publishedDate": "2026-10-08",
-  "substantiveUpdatedDate": null,
+  "substantiveUpdatedDate": "2026-10-14",
   "publicationState": "published",
   "reviewed": true,
   "relatedServices": [
@@ -116,6 +116,10 @@
       "body": "Collect and keep information that serves a clear purpose. Restrict access to the people who need it and avoid putting unnecessary personal details in internal notes. The ICO’s data minimisation guidance explains the principle of holding data that is adequate, relevant and limited to what is necessary.\n\nAgree a retention approach for unsuccessful enquiries instead of keeping every record indefinitely. The appropriate period depends on your purpose and obligations; a short-lived sales enquiry and records needed for an ongoing customer relationship may need different treatment. The ICO’s storage limitation guidance explains why retention should be justified and reviewed.\n\nMake sure deletion covers the places where the information lives. Removing a contact from a dashboard may leave copies in an inbox, connected CRM or provider backup. Map those systems and their retention arrangements so the process is understood."
     },
     {
+      "heading": "Connect the enquiry process to the rest of the business",
+      "body": "The pipeline is only one part of the operation. When work is agreed, the customer details, scope and commitments need a reliable route into delivery. Look at that handover during the business review rather than treating the website form as an isolated feature.\n\nA first build might connect the public website to a private opportunity dashboard. Later phases can address job tasks, a customer portal or reporting if those are justified. Existing CRM and operational tools may already cover some of the work.\n\nEfiOps helps map that journey and choose the right approach. The starting point is one real enquiry and the tools involved, not a requirement to replace every system."
+    },
+    {
       "heading": "Your starting checklist",
       "body": "You can begin with a well-kept spreadsheet if the volume is small and access is controlled. A CRM or custom dashboard becomes useful when several people need shared ownership, reliable permissions, linked records or automatic handovers. The process should guide the choice of tool.",
       "bullets": [
@@ -131,5 +135,15 @@
         "body": "EfiOps can help connect your website to a practical enquiry dashboard, link existing systems and create reporting around the actions your team needs to take. Bring an example of how an enquiry moves through your business today, and we can identify a focused first improvement."
       }
     }
+  ],
+  "cta": {
+    "heading": "Your business needs a better flow. Start there.",
+    "body": "We look at how your business works, identify the bottlenecks and define a first improvement. Then we build the website, dashboard or automation the work actually needs.",
+    "label": "Explore the business review and build approach",
+    "href": "/services/custom-business-apps/"
+  },
+  "relatedArticles": [
+    "website-with-admin-dashboard",
+    "crm-off-the-shelf-or-custom-business-app"
   ]
 }

@@ -1,4 +1,4 @@
-# Writing EFIops articles
+# Writing EfiOps articles
 
 Articles are static, code-managed content. No CMS, database or dashboard is needed.
 
@@ -39,3 +39,9 @@ Publication and update dates are validated; impossible and future dates fail the
 Server-rendered text and links; one H1; unique titles/descriptions; canonical HTTPS URLs; breadcrumbs; Article schema with author, publisher, image, language and dates; Open Graph and Twitter previews; actual article dates in the sitemap; author bio and relevant service links; responsive tables; accessible contents navigation; reading progress; no JavaScript dependency for reading or navigation. Published entries sort newest first. No pretend article titles or fake publication dates are added to the public library.
 
 The reusable preview is deliberately unpublished and separate from the content collection. Editing an article draft does not make it visible. Existing release checks still apply before a real production launch.
+
+## Connected business systems series
+
+The main offer lives at `/services/custom-business-apps/`. The six published guides cover outgrowing spreadsheets, choosing software, connected websites/admin dashboards, AI, automation and enquiry management. The two original URLs/publication dates are retained; their substantive updates are dated 14 October 2026.
+
+Optional `relatedArticles` contains published article slugs for the further-reading cards; the build rejects missing, draft or self-references. Optional `cta` contains `heading`, `body`, `label` and an internal `href`. This series uses the main offer as its CTA destination. Article related-service links follow the order in `relatedServices`, so place the primary offer first.

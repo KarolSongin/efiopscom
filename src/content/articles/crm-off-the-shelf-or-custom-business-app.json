@@ -1,0 +1,108 @@
+{
+  "slug": "crm-off-the-shelf-or-custom-business-app",
+  "title": "CRM, off-the-shelf software or a custom business app: what does your business actually need?",
+  "seoTitle": "CRM vs Off-the-Shelf Software vs Custom Business App",
+  "description": "Compare a CRM, existing business software, integrations and a custom app. Choose around your workflow, total costs and the problem you need to solve.",
+  "author": "Karol Songin",
+  "category": "Business systems",
+  "takeaway": "Choose the system that fits the important workflow, not the longest feature list. A custom build makes sense when its value justifies the development and ongoing responsibility.",
+  "publishedDate": "2026-10-14",
+  "substantiveUpdatedDate": null,
+  "publicationState": "published",
+  "reviewed": true,
+  "relatedServices": [
+    "custom-business-apps",
+    "system-integrations",
+    "power-automate"
+  ],
+  "relatedArticles": [
+    "has-your-business-outgrown-spreadsheets",
+    "website-with-admin-dashboard"
+  ],
+  "cta": {
+    "heading": "Your business needs a better flow. Start there.",
+    "body": "We look at how your business works, identify the bottlenecks and define a first improvement. Then we build the website, dashboard or automation the work actually needs.",
+    "label": "Explore the business review and build approach",
+    "href": "/services/custom-business-apps/"
+  },
+  "sources": [
+    {
+      "label": "Microsoft Learn: types of flows in Power Automate",
+      "url": "https://learn.microsoft.com/en-us/power-automate/flow-types"
+    },
+    {
+      "label": "ICO: data protection by design and default",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/accountability-and-governance/data-protection-by-design-and-default/"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Start with the job, not the product demo",
+      "body": "A good sales demo makes a platform look like the answer. The more useful question is whether your team can complete its everyday work with it. A customer record is only one piece of the journey: the enquiry may become a quote, a job, a handover and a customer update.\n\nBefore comparing tools, map one recent example. Name who handled it, the information they needed and the points where work was copied or delayed. That gives you a basis for judging a product, rather than choosing from a list of attractive features."
+    },
+    {
+      "heading": "The four options worth comparing",
+      "body": "A CRM, an off-the-shelf operational product, an integration and a custom app can each solve different parts of the problem. They are not always competing choices. Your final setup might combine a standard CRM with a focused custom dashboard.",
+      "table": {
+        "columns": [
+          "Approach",
+          "Strong fit",
+          "Watch for"
+        ],
+        "rows": [
+          [
+            "CRM",
+            "Enquiries, customer relationships, pipeline stages and follow-up activity.",
+            "How job delivery, permissions and reporting work beyond the sales pipeline."
+          ],
+          [
+            "Off-the-shelf business software",
+            "A repeatable workflow well supported by an established product.",
+            "Workarounds for exceptions, per-user costs and access to your data."
+          ],
+          [
+            "Integration",
+            "Existing tools work, but records need to move between them.",
+            "API access, conflicting updates, connection failures and licence requirements."
+          ],
+          [
+            "Custom business app",
+            "A specific workflow, portal or working screen has a valuable gap.",
+            "Development scope, maintenance, hosting and clear ownership."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "When a CRM may be enough",
+      "body": "If your main problem is tracking enquiries and remembering follow-ups, start by checking whether a suitable CRM can do that well. You may need a clear process, sensible configuration and a connection from the website rather than new software.\n\nTest a complete example: create an enquiry, assign an owner, record a conversation, set a next action and mark the outcome. Ask how duplicate records, exports and permissions are handled. If the product supports the core work comfortably, custom development may add cost without enough benefit."
+    },
+    {
+      "heading": "When a custom app earns its place",
+      "body": "Custom development becomes useful when the missing workflow is important enough to justify building and maintaining it. Perhaps the team needs a planning screen that combines job commitments with capacity. Perhaps customers need controlled access to documents and actions tied to an internal record.\n\nDescribe the gap precisely. “Our current tools cannot show whether accepted work fits next week’s available hours” is a stronger reason than “we want our own app”.\n\nA custom app does not need to replace everything. A first version can read agreed data, show one useful view and capture a limited set of actions. Existing accounting, email or scheduling tools may continue doing their jobs."
+    },
+    {
+      "heading": "Compare the cost of running it, not just buying it",
+      "body": "Ask what happens after the first month. Subscription fees, users, additional modules, hosting, backups, support and maintenance can all affect the decision. Include the work of moving records, training the team and checking the result.\n\nFor custom development, identify what is included in the initial build and what is separately agreed. Account access, source code arrangements, deployment, handover and maintenance responsibilities should be explicit.\n\nFor an existing product, check whether the integration or permission feature you need sits in a higher plan. A low headline price is less useful if the practical workflow depends on add-ons.",
+      "bullets": [
+        "Initial configuration or development.",
+        "Migration and cleanup of existing records.",
+        "Recurring licences, hosting and usage-based services.",
+        "Training, support and maintenance responsibilities.",
+        "Data export, account ownership and the effort needed to move later."
+      ]
+    },
+    {
+      "heading": "Run a realistic trial before committing",
+      "body": "Choose a handful of representative records, including an awkward case. Work through the process with the person who actually does the job. Record where the system helps and where they still need another spreadsheet.\n\nCheck access as a restricted user, not only as the administrator. Check the customer-facing flow too, if one exists. A polished dashboard tells you little about how permissions and exceptions behave.\n\nAvoid importing every live customer record into a trial before access and data handling are understood. Use an appropriate test dataset and share only the information needed for the evaluation."
+    },
+    {
+      "heading": "A decision you can explain",
+      "body": "Write a short decision note: the problem, the options considered, the reason for choosing one and the limits of the first phase. If you cannot explain why a custom build is needed, discovery is not finished.",
+      "callout": {
+        "title": "What EfiOps does first",
+        "body": "We look at the business workflow and compare realistic options. The recommendation might be configuration, an integration or a custom build. Development starts with a defined scope and acceptance checks, rather than a promise to solve everything at once."
+      }
+    }
+  ]
+}

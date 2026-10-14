@@ -3,7 +3,7 @@ import Icon from '../components/Icon.astro';
 import Base from './Base.astro';
 import '../styles/articles.css';
 import { site } from '../config/site';
-import { services } from '../data/content';
+import { services, articles } from '../data/content';
 import type { CollectionEntry } from 'astro:content';
 interface Props {
   page: CollectionEntry<'articles'>['data'];
@@ -11,7 +11,12 @@ interface Props {
 }
 const { page, preview = false } = Astro.props;
 const all = await services();
-const related = all.filter((s) => page.relatedServices.includes(s.data.slug));
+const further = (await articles()).filter((entry) =>
+  (page.relatedArticles || []).includes(entry.data.slug),
+);
+const related = page.relatedServices
+  .map((slug) => all.find((s) => s.data.slug === slug))
+  .filter((entry) => entry !== undefined);
 const words = [
   page.description,
   ...page.sections.flatMap((s) => [
@@ -234,6 +239,24 @@ const article = preview
       </div>
     </article>
   </div>
+  {further.length > 0 && (
+    <section class="container article-next-guides">
+      <p class="eyebrow">Keep making the right decisions</p>
+      <h2>Explore the next question.</h2>
+      <div class="business-reading-grid">
+        {further.map((entry) => (
+          <a href={`/articles/${entry.data.slug}/`}>
+            <span>{entry.data.category}</span>
+            <h3>{entry.data.title}</h3>
+            <p>{entry.data.description}</p>
+            <strong>
+              Read the guide <Icon name="arrow" size={17} />
+            </strong>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
   {related.length > 0 && (
     <section class="container article-related">
       <p class="eyebrow">Put the idea to work</p>
@@ -254,11 +277,14 @@ const article = preview
   <section class="container article-cta">
     <div>
       <p class="eyebrow">Your next step</p>
-      <h2>Got a question about your own business?</h2>
-      <p>Tell me what is slowing you down. We can work out whether a focused change would help.</p>
+      <h2>{page.cta?.heading || 'Got a question about your own business?'}</h2>
+      <p>
+        {page.cta?.body ||
+          'Tell me what is slowing you down. We can work out whether a focused change would help.'}
+      </p>
     </div>
-    <a class="button" href="/contact/">
-      Talk through your project <Icon size={18} />
+    <a class="button" href={page.cta?.href || '/contact/'}>
+      {page.cta?.label || 'Talk through your project'} <Icon size={18} />
     </a>
   </section>
 </Base>

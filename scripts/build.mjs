@@ -175,6 +175,17 @@ const publicCases = cases.filter(
 const publicArticles = articles.filter(
   (a) => a.publicationState === 'published' && a.reviewed && a.publishedDate,
 );
+for (const article of publicArticles) {
+  for (const slug of article.relatedArticles || [])
+    if (slug === article.slug || !publicArticles.some((entry) => entry.slug === slug))
+      throw Error(`Invalid published related article in ${article.slug}: ${slug}`);
+  if (
+    article.cta &&
+    !routes.includes(article.cta.href) &&
+    !publicArticles.some((entry) => `/articles/${entry.slug}/` === article.cta.href)
+  )
+    throw Error(`Unknown article CTA destination in ${article.slug}`);
+}
 if (publicCases.length) routes.push('/work/', ...publicCases.map((c) => `/work/${c.slug}/`));
 routes.push(...publicArticles.map((a) => `/articles/${a.slug}/`));
 const indexableRoutes =

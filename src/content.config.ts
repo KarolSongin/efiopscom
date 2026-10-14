@@ -103,6 +103,15 @@ const articleCollection = defineCollection({
     publishedDate: z.string().nullable(),
     substantiveUpdatedDate: z.string().nullable(),
     relatedServices: z.array(text),
+    relatedArticles: z.array(text).optional(),
+    cta: z
+      .object({
+        heading: text,
+        body: text,
+        label: text,
+        href: z.string().regex(/^\/[a-z0-9/-]+\/$/),
+      })
+      .optional(),
     publicationState: state,
     reviewed: z.boolean(),
     sources: z.array(z.object({ label: text, url: z.url() })),

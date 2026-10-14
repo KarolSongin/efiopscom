@@ -7,13 +7,13 @@
   "category": "Automation & AI",
   "takeaway": "Start with a repeatable task that has clear rules, a named owner and a visible cost when it gets missed. Automate the routine steps; keep judgement with a person.",
   "publishedDate": "2026-10-06",
-  "substantiveUpdatedDate": null,
+  "substantiveUpdatedDate": "2026-10-14",
   "publicationState": "published",
   "reviewed": true,
   "relatedServices": [
+    "custom-business-apps",
     "power-automate",
-    "system-integrations",
-    "custom-business-apps"
+    "system-integrations"
   ],
   "sources": [
     {
@@ -32,7 +32,7 @@
   "sections": [
     {
       "heading": "Start with the work you keep repeating",
-      "body": "A customer fills in your enquiry form. You copy their details into a spreadsheet, send an acknowledgement and remind yourself to follow up. Later, you search your inbox to work out whether anyone replied. None of these steps is especially difficult. Together, they create a process that depends on someone remembering every detail.\n\nThat is a useful starting point for small business automation. Look for the repeated movement of information: copying a name, creating a task, checking a status or sending the same internal reminder. The first project should solve a specific problem you can recognise in your working week.",
+      "body": "The same details copied twice. A quote chased from memory. A weekly report assembled before anyone can use it. Each task looks small, but together they take attention away from the work customers are paying you to do.\n\nA useful automation project starts by finding that repeated friction. Before choosing software, walk through how your business handles an enquiry, delivers a job and checks what needs attention. The aim is to identify the rule or connection that could remove avoidable work, rather than automate every step you currently have.\n\nLook for repeated movement of information: copying a name, creating a task, checking a status or sending the same internal reminder. Choose a first project with a specific outcome you can recognise in your working week.",
       "bullets": [
         "Which task do you repeat most days or every week?",
         "Where do you enter the same information twice?",
@@ -43,6 +43,10 @@
         "title": "Write the problem in one sentence",
         "body": "“Enquiries arrive in three places, and we cannot reliably see who needs a reply.” That gives a project a clearer purpose than “we need more automation.”"
       }
+    },
+    {
+      "heading": "Review the business before automating the task",
+      "body": "A task may be slow because it is unnecessary, poorly defined or disconnected from another system. Automating it unchanged can make the wrong process happen faster.\n\nMap the trigger, information, people and decisions. Ask what can be removed, what needs a clearer rule and which existing tools should stay. If AI is proposed, identify the judgement it is helping with and who will check the result.\n\nA first conversation can establish the problem and fit. Detailed mapping and a written improvement plan are separate discovery work where needed. Define the first scope, cost and acceptance checks before development."
     },
     {
       "heading": "Choose a process with clear rules",
@@ -131,5 +135,15 @@
         "body": "Bring one repeated task and the tools you currently use. I can help map the steps, agree a focused scope, build and test the workflow, and hand it over with clear ownership and a practical guide."
       }
     }
+  ],
+  "cta": {
+    "heading": "Your business needs a better flow. Start there.",
+    "body": "We look at how your business works, identify the bottlenecks and define a first improvement. Then we build the website, dashboard or automation the work actually needs.",
+    "label": "Explore the business review and build approach",
+    "href": "/services/custom-business-apps/"
+  },
+  "relatedArticles": [
+    "has-your-business-outgrown-spreadsheets",
+    "where-ai-can-help-small-business"
   ]
 }

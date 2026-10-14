@@ -11,8 +11,8 @@ test('new order changes capacity and resets without changing other cards', async
   await expect(scene.locator('[data-plan-units]')).toHaveText('1,200');
 });
 test('planner updates workload and capacity independently', async ({ page }) => {
-  await page.goto('/services/custom-business-apps/');
-  const card = page.locator('[data-business-card]');
+  await page.goto('/#working-day');
+  const card = page.locator('[data-business-card="custom-business-apps"]');
   await card.locator('[data-volume]').fill('1800');
   await expect(card.locator('[data-required]')).toHaveText('120');
   await expect(card.locator('[data-plan-balance]')).toHaveText('24 h to cover');

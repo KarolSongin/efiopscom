@@ -5,6 +5,8 @@ import FAQ from '../../components/FAQ.astro';
 import ServiceVisual from '../../components/ServiceVisual.astro';
 import Icon from '../../components/Icon.astro';
 import ServiceJourney from '../../components/ServiceJourney.astro';
+import BusinessSystemHero from '../../components/BusinessSystemHero.astro';
+import { articles } from '../../data/content';
 import { services, cases } from '../../data/content';
 export async function getStaticPaths() {
   return (await services()).map((entry) => ({
@@ -14,6 +16,10 @@ export async function getStaticPaths() {
 }
 const { page } = Astro.props;
 const all = await services();
+const isMainOffer = page.slug === 'custom-business-apps';
+const reading = isMainOffer
+  ? (await articles()).filter((entry) => entry.data.relatedServices.includes(page.slug))
+  : [];
 const evidence = (await cases()).filter((x) => x.data.relatedServices.includes(page.slug));
 const split = (text: string) => {
   const i = text.indexOf('. ');
@@ -22,34 +28,38 @@ const split = (text: string) => {
 ---
 
 <Base title={page.seoTitle} description={page.metaDescription} service={page}>
-  <section class="service-hero">
-    <div class="container">
-      <nav class="breadcrumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span aria-hidden="true">/</span>
-        <a href="/services/">Services</a>
-        <span aria-hidden="true">/</span>
-        <span>{page.title}</span>
-      </nav>
-      <div class="service-hero-grid">
-        <div>
-          <p class="eyebrow">{page.eyebrow}</p>
-          <h1>{page.h1}</h1>
-          <p class="hero-lead">{page.lead}</p>
-          <a class="button" href={`/contact/?service=${page.slug}`}>
-            {page.cta.label}
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 19L19 5M5 5h14v14" />
-            </svg>
-          </a>
-          <p class="service-assurance">
-            Clear scope before development. Direct contact with Karol.
-          </p>
+  {isMainOffer ? (
+    <BusinessSystemHero page={page} />
+  ) : (
+    <section class="service-hero">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="/services/">Services</a>
+          <span aria-hidden="true">/</span>
+          <span>{page.title}</span>
+        </nav>
+        <div class="service-hero-grid">
+          <div>
+            <p class="eyebrow">{page.eyebrow}</p>
+            <h1>{page.h1}</h1>
+            <p class="hero-lead">{page.lead}</p>
+            <a class="button" href={`/contact/?service=${page.slug}`}>
+              {page.cta.label}
+              <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 19L19 5M5 5h14v14" />
+              </svg>
+            </a>
+            <p class="service-assurance">
+              Clear scope before development. Direct contact with Karol.
+            </p>
+          </div>
+          <ServiceVisual kind={page.visualKey} />
         </div>
-        <ServiceVisual kind={page.visualKey} />
       </div>
-    </div>
-  </section>
+    </section>
+  )}
   <section class="usecase-section">
     <div class="container section">
       <div class="section-title">
@@ -138,6 +148,33 @@ const split = (text: string) => {
       ))}
     </div>
   </section>
+  {reading.length > 0 && (
+    <section class="container section business-reading">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Before you invest</p>
+          <h2>
+            Know the options.
+            <br />
+            Choose with confidence.
+          </h2>
+        </div>
+        <p>Practical guides to recognising the problem and choosing the right first project.</p>
+      </div>
+      <div class="business-reading-grid">
+        {reading.map((entry) => (
+          <a href={`/articles/${entry.data.slug}/`}>
+            <span>{entry.data.category}</span>
+            <h3>{entry.data.title}</h3>
+            <p>{entry.data.description}</p>
+            <strong>
+              Read the guide <Icon name="arrow" size={17} />
+            </strong>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
   <FAQ items={page.faqs} />
   <section class="related">
     <div class="container section">

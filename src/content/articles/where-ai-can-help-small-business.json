@@ -1,0 +1,109 @@
+{
+  "slug": "where-ai-can-help-small-business",
+  "title": "Where AI can help a small business—and where a person should stay in control",
+  "seoTitle": "Where AI Can Help a Small Business",
+  "description": "Find useful AI opportunities in your business: request summaries, knowledge search and draft replies, with practical checks for accuracy, access and human review.",
+  "author": "Karol Songin",
+  "category": "Automation & AI",
+  "takeaway": "Give AI a defined job with approved inputs and a checkable result. Use a simpler rule when that solves the problem, and keep consequential decisions under appropriate human control.",
+  "publishedDate": "2026-10-14",
+  "substantiveUpdatedDate": null,
+  "publicationState": "published",
+  "reviewed": true,
+  "relatedServices": [
+    "custom-business-apps",
+    "system-integrations",
+    "ai-assistants"
+  ],
+  "relatedArticles": [
+    "small-business-automation-where-to-start",
+    "website-with-admin-dashboard"
+  ],
+  "cta": {
+    "heading": "Your business needs a better flow. Start there.",
+    "body": "We look at how your business works, identify the bottlenecks and define a first improvement. Then we build the website, dashboard or automation the work actually needs.",
+    "label": "Explore the business review and build approach",
+    "href": "/services/custom-business-apps/"
+  },
+  "sources": [
+    {
+      "label": "ICO: artificial intelligence guidance",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/artificial-intelligence/"
+    },
+    {
+      "label": "OWASP: prompt injection prevention",
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Start with the work, not the technology",
+      "body": "“We should use AI” is not yet a business problem. “Someone spends half an hour turning a long customer request into a usable brief” is. The second statement gives you a task, inputs and a result to inspect.\n\nA useful business review asks where work needs interpretation, where information is hard to find and where a draft could help someone move faster. It also asks whether a normal rule, a better form or a direct integration would solve the problem more reliably.\n\nAI is a building option. It should earn its place in the process rather than become the purpose of the project."
+    },
+    {
+      "heading": "Four useful opportunities to investigate",
+      "body": "These are starting points for a trial, not guarantees. Suitability depends on the information available, access permissions, quality expectations and the cost of an incorrect result.",
+      "table": {
+        "columns": [
+          "Task",
+          "Potential AI role",
+          "Human check"
+        ],
+        "rows": [
+          [
+            "Long customer request",
+            "Prepare a structured summary and list of missing information.",
+            "Check the original request before quoting or committing."
+          ],
+          [
+            "Approved internal knowledge",
+            "Find relevant guidance and present an answer with its source.",
+            "Verify important details and handle exceptions."
+          ],
+          [
+            "Routine reply",
+            "Prepare a draft using approved wording and record context.",
+            "Review before sending where the message needs judgement."
+          ],
+          [
+            "Incoming requests",
+            "Suggest a category or route for a person to confirm.",
+            "Review uncertain or consequential classifications."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Keep fixed rules fixed",
+      "body": "If every valid enquiry needs a record, an owner and a task, a normal workflow rule may be enough. You do not need a language model to add a standard reminder or move a known field between systems.\n\nA clear rule is easier to test: given these inputs, expect this result. AI output can vary and needs a different evaluation approach. Use it when interpretation adds value, not merely because the task happens on a computer.\n\nThe strongest setup may combine both. AI prepares a draft summary; a person approves it; a deterministic workflow creates the agreed task."
+    },
+    {
+      "heading": "Work through a request-summary example",
+      "body": "A customer sends a long message about an installation. It includes a location, preferred dates, access constraints and several questions. An assistant can prepare a draft brief from that message, including points that still need clarification.\n\nThe owner sees the original message beside the draft. They check that important details are present and that the summary has not invented missing facts. They then confirm the next action.\n\nIf the request is ambiguous, the correct outcome may be asking the customer a question. A confident-looking paragraph is not evidence that the assistant understood everything.\n\nTest examples with conflicting dates, unclear instructions and missing details. Include messages that do not fit the service. Decide what a useful summary looks like before judging the trial."
+    },
+    {
+      "heading": "Access and data handling are part of the design",
+      "body": "An assistant should only receive information needed for its agreed job. Consider which records a user is allowed to access and enforce that access in the connected system, rather than relying on the assistant to decide.\n\nReview the provider’s data handling, retention, account settings and relevant agreements before sending customer information. The right arrangement depends on the service and information involved. ICO guidance addresses data protection questions around AI.\n\nContent from messages or documents can contain instructions that attempt to alter an assistant’s behaviour. OWASP describes prompt injection as an application risk. Treat external content as information to process, keep tool actions constrained and check permissions before acting."
+    },
+    {
+      "heading": "Measure whether it helps after review",
+      "body": "A fast draft that takes longer to correct has not improved the process. Compare the existing task with the whole assisted workflow, including checking and corrections.\n\nUse a representative set of examples and record the outcomes. Define what counts as an unacceptable error, what requires escalation and what should happen when the provider is unavailable. A useful system needs a fallback as well as a success path.",
+      "bullets": [
+        "Time to reach an approved result, including review.",
+        "Important details missed or incorrectly added.",
+        "Requests that correctly ask for clarification.",
+        "Access checks for restricted information.",
+        "Clear handling of uncertainty and unavailable services.",
+        "Usage costs and the effort needed to maintain the setup."
+      ]
+    },
+    {
+      "heading": "Give the first AI feature a narrow boundary",
+      "body": "Start with one checkable task and the people responsible for it. You can learn from that trial without giving an assistant broad authority over customer messages, quotes or payments.\n\nEfiOps can review where AI might help alongside ordinary automation and integration. If it has a useful role, we define the inputs, boundaries, review steps and evaluation criteria before building it into your website or business app.",
+      "callout": {
+        "title": "A useful first question",
+        "body": "Where would a good draft help someone do their job, and who can verify it? That is a stronger starting point than asking an assistant to run the business."
+      }
+    }
+  ]
+}

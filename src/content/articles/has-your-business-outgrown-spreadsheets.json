@@ -1,0 +1,121 @@
+{
+  "slug": "has-your-business-outgrown-spreadsheets",
+  "title": "Has your business outgrown spreadsheets? Seven signs it is time for a better system.",
+  "seoTitle": "Has Your Business Outgrown Spreadsheets?",
+  "description": "Seven signs your business needs more than spreadsheets, plus a practical way to choose between a better process, existing software and a custom business app.",
+  "author": "Karol Songin",
+  "category": "Business systems",
+  "takeaway": "A spreadsheet has become a bottleneck when people must work around it to keep the business running. Fix the workflow before choosing the replacement.",
+  "publishedDate": "2026-10-14",
+  "substantiveUpdatedDate": null,
+  "publicationState": "published",
+  "reviewed": true,
+  "relatedServices": [
+    "custom-business-apps",
+    "system-integrations",
+    "power-automate"
+  ],
+  "relatedArticles": [
+    "crm-off-the-shelf-or-custom-business-app",
+    "small-business-automation-where-to-start"
+  ],
+  "cta": {
+    "heading": "Your business needs a better flow. Start there.",
+    "body": "We look at how your business works, identify the bottlenecks and define a first improvement. Then we build the website, dashboard or automation the work actually needs.",
+    "label": "Explore the business review and build approach",
+    "href": "/services/custom-business-apps/"
+  },
+  "sources": [
+    {
+      "label": "Microsoft Support: Excel help and learning",
+      "url": "https://support.microsoft.com/en-gb/excel"
+    },
+    {
+      "label": "ICO: data minimisation",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/data-minimisation/"
+    }
+  ],
+  "sections": [
+    {
+      "heading": "The spreadsheet is doing a job it was never designed to own",
+      "body": "The sheet started as a helpful list. Now it holds customer details, quotes, job stages, staff availability and reminders. Someone has added colour codes. Someone else keeps a second version. Before answering a simple question, you ask which copy is current.\n\nSpreadsheets are useful for analysis, calculations and flexible planning. The problem begins when a growing team relies on a workbook to coordinate live work, enforce permissions and make sure the next action happens. You may be keeping the business moving by doing the connecting work yourself.\n\nThe right response is not automatically to buy a platform. First identify the point where your current process costs time, creates uncertainty or makes a customer wait."
+    },
+    {
+      "heading": "Seven signs the workaround has become the process",
+      "body": "Look for repeated behaviour, rather than one frustrating afternoon. If the same difficulty returns every week, it deserves a closer look.",
+      "bullets": [
+        "You enter the same customer or job details into several places.",
+        "Different people use different versions and cannot agree which record is current.",
+        "A missed cell update means a follow-up, approval or job handover gets forgotten.",
+        "People need different access, but the practical choice is sharing the whole workbook.",
+        "Important context sits in an inbox while the status sits in a spreadsheet.",
+        "Preparing a routine report requires someone to assemble and check several exports.",
+        "The person who knows how the workbook works has become essential to every update."
+      ]
+    },
+    {
+      "heading": "Count the cost of the friction",
+      "body": "Spend a normal week recording the repeated tasks around the sheet. Include checking, correcting and chasing, as well as data entry. Note who performs each task and what happens when they cannot do it.\n\nSuppose a team handles 30 requests a week and spends four minutes copying each one into another tool. That is two hours of copying. It is a planning estimate, not a promised saving: an improved process may still need review, and exception handling adds work.\n\nTime is only one part of the picture. A quote that never gets followed up, a job handed over without the right details or a report nobody trusts can matter more than a few minutes of typing.",
+      "callout": {
+        "title": "Ask a better question",
+        "body": "“What work exists because the information is scattered?” is more useful than “Which app should replace Excel?”"
+      }
+    },
+    {
+      "heading": "A service business example",
+      "body": "Imagine an installation business. Website enquiries arrive by email, quotes live in another tool and accepted jobs are copied into a shared sheet. The owner checks three places to see what needs attention.\n\nA focused improvement could create one opportunity record from an enquiry, assign an owner and store the next action. When a quote is accepted, agreed details can move into a job checklist. The customer does not need a portal on day one for that to be useful.\n\nThe first version should make one important question easy to answer: who needs a reply, and what should happen next? If that works reliably, later phases can address scheduling, customer updates or reporting."
+    },
+    {
+      "heading": "Choose the smallest change that solves the problem",
+      "body": "The best option depends on the work, the number of users and the systems already involved. Compare the practical alternatives before committing.",
+      "table": {
+        "columns": [
+          "Option",
+          "When it can fit",
+          "What to check"
+        ],
+        "rows": [
+          [
+            "Improve the spreadsheet",
+            "A small team needs clearer definitions and a manageable planning tool.",
+            "Ownership, validation, shared working and a repeatable backup process."
+          ],
+          [
+            "Use an existing product",
+            "Your workflow matches a CRM, job management or other established product.",
+            "Permissions, integrations, migration, recurring licences and fit with everyday work."
+          ],
+          [
+            "Connect existing tools",
+            "The tools work, but information is being copied between them.",
+            "Which system owns each field, duplicate handling and visible failures."
+          ],
+          [
+            "Build a custom app",
+            "The team needs a shared workflow or screen that existing tools do not handle well.",
+            "A defined scope, access rules, testing, running costs and maintenance."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Make a first version easier to judge",
+      "body": "Choose a workflow you can describe from start to finish. Define its inputs, the people involved and the expected result. Decide which information is genuinely needed before importing an entire old workbook.\n\nAgree a few realistic checks: a normal request, a duplicate, a missing value, a user without permission and an unavailable connection. A useful system should explain a problem rather than silently carrying on.\n\nKeep access and ownership explicit. Microsoft documents co-authoring and version history for supported Excel setups, but those features still need an agreed working process; they do not define your business workflow for you."
+    },
+    {
+      "heading": "Your next step: bring one real example",
+      "body": "Pick a recent request or job and write down every place its information travelled. Mark the copied steps, delays and decisions. That is enough to begin a useful business conversation.",
+      "bullets": [
+        "What is the job the sheet is trying to manage?",
+        "Which step creates the most avoidable work?",
+        "Who needs to see, edit or approve each record?",
+        "What should the first improvement make easier?",
+        "What result would show the change helped?"
+      ],
+      "callout": {
+        "title": "Start with the bottleneck",
+        "body": "EfiOps reviews the process first, then scopes the website, dashboard, integration or custom app around the improvement. You do not need a software specification to explain what is getting in the way."
+      }
+    }
+  ]
+}

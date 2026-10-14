@@ -1,38 +1,49 @@
 {
   "slug": "custom-business-apps",
   "title": "Custom business apps",
-  "seoTitle": "Custom Business Apps & Internal Tools | EfiOps",
-  "metaDescription": "Purpose-built planning tools, operational applications and portals. EfiOps develops business software around your workflow, data and users.",
-  "h1": "Your process deserves a better tool.",
-  "eyebrow": "Custom applications · Built around your team",
-  "lead": "When your process has outgrown the spreadsheet, give your team a tool that fits the work. Build a clear place to plan, track and act, with the permissions and handovers your operation needs.",
+  "seoTitle": "Custom Business Apps, Websites & Automation | EfiOps",
+  "metaDescription": "Outgrown spreadsheets and disconnected tools? EfiOps reviews how your business works, then builds connected websites, admin dashboards, automations and useful AI.",
+  "h1": "Your business has grown. Your systems should catch up.",
+  "eyebrow": "Business review → A focused plan → A connected system",
+  "lead": "The same details entered twice. Quotes chased from memory. A website that stops at the contact form. Let’s find what is slowing your business down, then build the tools that move it forward.",
   "sections": [
     {
-      "heading": "You shouldn't need five workarounds to complete one job.",
+      "heading": "Your team shouldn’t be the connection between every system.",
       "paragraphs": [
-        "A plan lives in one spreadsheet. Actual results come from another system. Staff requirements are calculated elsewhere. People copy the same information between tools and lose track of which version is current.",
-        "A custom application can connect the relevant information and give each person a clear view of the work they need to do."
+        "A customer sends a request. Someone copies it into a spreadsheet. Someone else creates a quote. The job details move into another tool. When the customer asks for an update, you search the inbox to piece it together.",
+        "Each workaround seems small. Together, they take attention away from customers, make ownership unclear and leave important work dependent on memory. We start by finding those gaps in your actual process."
       ],
       "items": [],
       "caption": ""
     },
     {
-      "heading": "Build the tool your workflow is missing.",
-      "paragraphs": [],
-      "items": [
-        "Planning and scheduling tools. Work with forecasts, capacity, staffing and operational requirements.",
-        "Internal portals. Give teams a clearer way to enter, review and manage information.",
-        "Operational dashboards. Combine current status with the actions people need to take.",
-        "Customer or supplier interfaces. Scope a controlled portal for an agreed exchange of information.",
-        "Existing app improvements. Add a missing feature, improve usability or connect an application to another system."
+      "heading": "Build the missing connections. Keep what already works.",
+      "paragraphs": [
+        "The right answer might be a better website, a shared dashboard, an integration or a custom application. You don’t have to choose the technology before we understand the work."
       ],
+      "items": [
+        "A website that starts the right conversation. Clear services, useful forms and a route into your internal workflow.",
+        "An admin dashboard that shows what needs attention. Customer records, job stages, owners, next actions and relevant reporting in one working view.",
+        "Automations that move routine work forward. Capture a request, create a task, ask for approval or flag a delay, with visible failures and a manual fallback.",
+        "Customer portals where they earn their place. Give customers controlled access to agreed progress, documents or actions without exposing internal records.",
+        "AI with a defined job. Help search approved knowledge, summarise a request or prepare a draft, with permissions and human review where needed."
+      ],
+      "caption": "These are building options, not a bundle you have to buy. The agreed scope determines what is included."
+    },
+    {
+      "heading": "First understand the business. Then decide what to build.",
+      "paragraphs": [
+        "The first conversation covers what you do, how customers reach you, how work gets delivered and where the team spends time chasing, copying or checking. Bring one recent job or customer enquiry and the tools involved.",
+        "If deeper discovery is needed, we agree that work and its cost separately. A business review can map the workflow, assess improvement opportunities and prioritise a first project. Before development, you receive a defined scope, deliverables, dependencies, cost and acceptance checks."
+      ],
+      "items": [],
       "caption": ""
     },
     {
-      "heading": "Prove the important workflow first.",
+      "heading": "One useful improvement. Room to grow.",
       "paragraphs": [
-        "We map the users, the information and the steps the application needs to support. A first version focuses on the core workflow, with access rules and data handling included in the design.",
-        "Testing uses realistic tasks rather than only checking whether the screens look right. The handover covers the application, its dependencies and options for maintaining it."
+        "Start with the workflow creating the most friction. A first build might connect website enquiries to an opportunity dashboard. A later phase could add job handovers, a customer portal or more reporting when the need is clear.",
+        "You review the working system, test realistic situations and receive guidance for running it. Hosting, subscriptions, account ownership, maintenance and any ongoing support are discussed explicitly, so they don’t become surprises after launch."
       ],
       "items": [],
       "caption": ""
@@ -40,142 +51,155 @@
   ],
   "faqs": [
     {
-      "question": "Can you work on an existing React application?",
-      "answer": "Yes. React and JavaScript are part of Karol's practical development experience. We inspect the codebase and current architecture before agreeing changes."
+      "question": "Do I need to know which software I want?",
+      "answer": "No. Start with what your business does, the tools you use and the work you want to improve. We assess whether an existing product, an integration or a custom build is the best fit."
     },
     {
-      "question": "Can the app use our existing database?",
-      "answer": "Often, through a suitable API or integration. Access, performance and the data's structure need to be considered."
+      "question": "What happens in the first business conversation?",
+      "answer": "We discuss how customers find you, how enquiries and jobs move through the business, who does the work and where things get stuck. It is a fit and scoping conversation. A detailed audit or written roadmap is separately agreed work if needed."
     },
     {
-      "question": "Should we build an app or use an existing product?",
-      "answer": "That is a discovery question. If a suitable existing product solves the problem well, custom development may not be necessary."
+      "question": "Can you build the website and the admin dashboard together?",
+      "answer": "Yes, where that fits the agreed project. We can connect public forms to private records, permissions, stages and actions. Existing websites and systems can also be reviewed for integration rather than automatically replaced."
     },
     {
-      "question": "Can we add AI later?",
-      "answer": "Potentially. A clear data model, permission system and API make it easier to evaluate a useful AI feature without rebuilding the whole application."
+      "question": "Does every project need AI?",
+      "answer": "No. A reliable rule or a simpler process may solve the problem better. AI is considered when interpretation, summarisation or knowledge retrieval has a useful role, with appropriate checks and data access."
+    },
+    {
+      "question": "How much does a connected business system cost?",
+      "answer": "The cost depends on workflows, screens, integrations, permissions and data requirements. We define a first scope before quoting development. Discovery, hosting, software licences, maintenance and ongoing support are identified separately where relevant."
+    },
+    {
+      "question": "Can we start small and add more later?",
+      "answer": "Yes. A first phase can focus on one valuable workflow. We consider future needs in the design without making you pay for every possible feature at the start."
+    },
+    {
+      "question": "What happens after the build?",
+      "answer": "You receive the agreed handover covering everyday use, account ownership, dependencies and running the system. Any maintenance or ongoing support arrangement is separately agreed."
     }
   ],
   "cta": {
-    "label": "Discuss your application",
-    "heading": "What is your team working around?",
-    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
+    "label": "Talk through your business",
+    "heading": "What are you tired of working around?",
+    "text": "Bring the repeated task, awkward spreadsheet or disconnected customer journey. Tell me how your business works today, and we’ll identify a sensible first improvement."
   },
   "relatedServices": [
-    "power-bi",
+    "web-design-development",
+    "power-automate",
     "system-integrations",
     "ai-assistants"
   ],
   "visualKey": "custom-business-apps",
-  "primaryIntent": "custom business application developer; internal tools development.",
+  "primaryIntent": "custom business apps; business process review; connected websites and admin dashboards; business automation",
   "publicationState": "published",
-  "summary": "Bring plans, records and actions into an application built for the way your team works.",
+  "summary": "Start with a business review. Build the website, dashboard and automations your operation needs.",
   "useCases": [
     {
-      "audience": "Planning and scheduling",
-      "title": "What happens if another order comes in?",
-      "body": "Change the volume, compare the hours required with available staffing, and see which part of the plan needs reviewing."
+      "audience": "Service businesses",
+      "title": "From new enquiry to booked work.",
+      "body": "Capture the request, assign an owner, track the quote and carry agreed details into the job. See what needs a reply without reconstructing the inbox."
     },
     {
-      "audience": "Operations management",
-      "title": "One place for the current status.",
-      "body": "Give each role the records and actions it needs. Keep updates attached to the work instead of scattered across inboxes."
+      "audience": "Teams that deliver jobs or orders",
+      "title": "Know what is ready. Know what is blocked.",
+      "body": "Bring tasks, capacity and customer commitments into a shared view. Give each person the next action and surface the exceptions that need a decision."
     },
     {
-      "audience": "Customer or supplier coordination",
-      "title": "A clearer way to exchange information.",
-      "body": "Scope a controlled portal for requests, documents or progress updates, with the access rules designed around the users."
+      "audience": "Businesses with several tools",
+      "title": "Enter it once. Use it where it belongs.",
+      "body": "Connect website forms, existing applications and internal records. Agree which system owns each field and how failed or duplicate updates are handled."
     }
   ],
   "journey": {
-    "heading": "From an awkward spreadsheet to a plan the team can act on.",
-    "example": "A packing team needs to see whether next week’s orders fit its available hours.",
+    "heading": "Follow one enquiry all the way into the job.",
+    "example": "Consider an installation business where website enquiries, quotes and job details are scattered across forms, inboxes and spreadsheets.",
     "sources": [
-      "Weekly orders",
-      "Handling time",
-      "Available staff hours"
+      "Website enquiries",
+      "Quote and job records",
+      "Team roles and actions"
     ],
-    "question": "Can the team cover the workload?",
+    "question": "Who needs a reply, and what should happen next?",
     "scope": [
-      "Weekly units and staffing inputs",
-      "Required and available hours",
-      "Visible capacity gap"
+      "Website intake and opportunity dashboard",
+      "Owner, stage and dated next action",
+      "Agreed handover from quote to job"
     ],
-    "boundary": "Payroll, shift scheduling and stock control need their own agreed scope.",
+    "boundary": "Invoicing, payments, scheduling and customer portal features are separate decisions, included only when agreed.",
     "build": [
-      "Demand · 1,200 units",
-      "Required · 80 hours",
-      "Available · 96 hours"
+      "Website · Capture the request",
+      "Dashboard · Assign the next action",
+      "Workflow · Hand over the agreed job"
     ],
     "stages": [
       {
         "id": "understand",
         "label": "Understand",
-        "title": "Watch how the plan is made today.",
-        "body": "We follow the spreadsheet, the copied inputs and the decisions made from it. We ask who edits the plan, which values change and where a missing or outdated input can mislead the team.",
-        "output": "A workflow map, input inventory and user roles."
+        "title": "Walk through the work behind the website.",
+        "body": "We trace a recent enquiry from the first message to the completed job. We inspect where information lives, who handles it and where the team copies, chases or loses context.",
+        "output": "A workflow map, bottleneck list and clear starting problem."
       },
       {
         "id": "agree",
         "label": "Agree",
-        "title": "Agree the calculation and the first screen.",
-        "body": "The first planner uses units, handling time and actual available hours. Four minutes per unit and 32 hours per person make the workload visible. We agree validation, account access and the delivery scope.",
-        "output": "A focused screen specification and calculation rules."
+        "title": "Choose the first improvement worth building.",
+        "body": "The first phase captures enquiries, assigns owners, records next actions and carries accepted quote details into a job. We agree permissions, existing-system connections, cost and the situations used to check success.",
+        "output": "A prioritised first scope, proposed cost and acceptance checklist."
       },
       {
         "id": "build",
         "label": "Build",
-        "title": "Build around the decision the team makes.",
-        "body": "The team reviews a working planner with editable demand and staffing. Required hours and capacity update together, making it easier to discuss the gap instead of rebuilding the spreadsheet.",
-        "output": "A reviewable planning screen and validated inputs."
+        "title": "Connect the customer journey to the working system.",
+        "body": "A public enquiry form connects to a private dashboard. The owner can review a request, record the next action and progress the opportunity. Approved job details move forward without asking the team to retype them.",
+        "output": "A reviewable website-to-dashboard workflow with defined access."
       },
       {
         "id": "test",
         "label": "Test",
-        "title": "Check the numbers at the edges as well as the centre.",
-        "body": "We verify known workloads, demand above capacity, input limits and relevant access controls. A useful planner should explain a shortfall clearly and keep invalid inputs out of the calculation.",
-        "output": "Calculation checks, input validation and user-flow results."
+        "title": "Check the awkward cases before relying on it.",
+        "body": "We test normal enquiries, duplicate submissions, failed connections and account permissions. Alerts and recovery are checked so a broken link does not quietly leave the team believing work was done.",
+        "output": "Workflow, permission and failure-handling checks against agreed criteria."
       },
       {
         "id": "handover",
         "label": "Hand over",
-        "title": "Hand over the tool and the assumptions.",
-        "body": "The team learns how to enter the plan, interpret the result and update agreed assumptions. The handover covers hosting, accounts, data ownership and any ongoing support arrangement.",
-        "output": "A user guide, assumption record and ownership plan."
+        "title": "Make the system useful beyond launch day.",
+        "body": "You learn how to review enquiries, update the next action and handle exceptions. The handover records account ownership, hosting, dependencies, data responsibilities and any agreed support.",
+        "output": "A working guide, ownership record and running-cost overview."
       }
     ],
     "tests": [
       {
-        "label": "Current plan",
-        "input": "1,200 units · 3 people",
-        "result": "16 hours spare",
-        "reason": "1,200 × 4 ÷ 60 = 80 hours required; 3 × 32 = 96 available."
+        "label": "New request",
+        "input": "Valid website enquiry",
+        "result": "Opportunity ready to review",
+        "reason": "Create one record, assign the agreed owner and make the next action visible."
       },
       {
-        "label": "Higher demand",
-        "input": "1,800 units · 3 people",
-        "result": "24 hours to cover",
-        "reason": "120 hours are required against 96 available."
+        "label": "Duplicate",
+        "input": "Same submission sent again",
+        "result": "Keep the existing opportunity",
+        "reason": "An agreed submission identifier prevents an accidental retry creating duplicate records."
       },
       {
-        "label": "Another person",
-        "input": "1,800 units · 4 people",
-        "result": "8 hours spare",
-        "reason": "Capacity becomes 128 hours; workload stays at 120."
+        "label": "Connection fails",
+        "input": "Destination unavailable",
+        "result": "Visible failure; manual fallback",
+        "reason": "Do not show success without confirmed storage. Give a retry or alternate contact route and flag the issue."
       }
     ],
     "handover": [
       {
-        "title": "Everyday tasks",
-        "body": "Entering demand, updating staffing and interpreting the capacity result."
+        "title": "Use it every day",
+        "body": "Review requests, assign ownership, update stages and record the next action."
       },
       {
-        "title": "Assumptions & data",
-        "body": "Handling time, available hours, input ownership and storage requirements."
+        "title": "Handle the exceptions",
+        "body": "Recognise failed updates, avoid duplicate work and follow the agreed recovery process."
       },
       {
-        "title": "Running the application",
-        "body": "Hosting, access, maintenance and the separately agreed support route."
+        "title": "Know what you own",
+        "body": "Accounts, source code arrangements, hosting, subscriptions, data access and any agreed maintenance."
       }
     ]
   }

@@ -1,6 +1,12 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-for (const route of ['/articles/', '/articles/template-preview/', '/articles/small-business-automation-where-to-start/', '/articles/manage-website-enquiries-without-losing-leads/']) {
+import fs from 'node:fs';
+const publishedRoutes = fs
+  .readdirSync('src/content/articles')
+  .map((file) => JSON.parse(fs.readFileSync('src/content/articles/' + file, 'utf8')))
+  .filter((entry) => entry.publicationState === 'published' && entry.reviewed)
+  .map((entry) => '/articles/' + entry.slug + '/');
+for (const route of ['/articles/', '/articles/template-preview/', ...publishedRoutes]) {
   test(`article layout is accessible and responsive: ${route}`, async ({ page }) => {
     for (const width of [360, 390, 768, 801, 900, 1024, 1440]) {
       await page.setViewportSize({ width, height: 950 });

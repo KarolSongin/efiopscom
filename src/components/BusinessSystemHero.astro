@@ -1,0 +1,236 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  page: { h1: string; eyebrow: string; lead: string; cta: { label: string } };
+}
+const { page } = Astro.props;
+const scenarios = [
+  {
+    id: 'enquiry',
+    label: 'New enquiry',
+    title: 'A customer asks for a quote.',
+    owner: 'Customer enquiries',
+    stage: 'Opportunity',
+    next: 'Review the request and confirm the scope.',
+    automation: 'Create the record and flag the next action.',
+    human: 'Decide fit, clarify the work and prepare the quote.',
+    icon: 'message',
+  },
+  {
+    id: 'job',
+    label: 'Quote accepted',
+    title: 'The agreed work is ready to move.',
+    owner: 'Job coordination',
+    stage: 'Agreed → Delivery',
+    next: 'Confirm the start date and job requirements.',
+    automation: 'Create an agreed job checklist from the record.',
+    human: 'Confirm readiness, resources and customer commitments.',
+    icon: 'workflow',
+  },
+  {
+    id: 'ai',
+    label: 'AI assistance',
+    title: 'A long request needs a clear summary.',
+    owner: 'The request owner',
+    stage: 'Review required',
+    next: 'Check the draft against the original message.',
+    automation: 'Prepare a summary from authorised information.',
+    human: 'Verify details before quoting or making commitments.',
+    icon: 'search',
+  },
+];
+---
+
+<section class="business-system-hero">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <a href="/services/">Services</a>
+      <span>/</span>
+      <span>Custom business apps</span>
+    </nav>
+    <div class="business-hero-grid">
+      <div class="business-hero-copy">
+        <p class="eyebrow">{page.eyebrow}</p>
+        <h1>{page.h1}</h1>
+        <p class="hero-lead">{page.lead}</p>
+        <a class="button" href="/contact/?service=custom-business-apps">
+          {page.cta.label}
+          <Icon name="arrow" size={20} />
+        </a>
+        <p class="business-hero-note">
+          Start with how the business works. No software specification needed.
+        </p>
+      </div>
+      <div class="connected-system" data-business-system>
+        <div class="system-window-head">
+          <div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span>YOUR BUSINESS, CONNECTED</span>
+          <Icon name="link" size={17} />
+        </div>
+        <div class="system-path" aria-label="Connected business workflow">
+          <span>
+            <Icon name="globe" size={17} />
+            Website
+          </span>
+          <Icon name="arrow" size={16} />
+          <span>
+            <Icon name="grid" size={17} />
+            Dashboard
+          </span>
+          <Icon name="arrow" size={16} />
+          <span>
+            <Icon name="workflow" size={17} />
+            Next action
+          </span>
+        </div>
+        <div class="system-example-controls" role="group" aria-label="Explore a connected workflow">
+          {scenarios.map((scenario, i) => (
+            <button
+              type="button"
+              data-system-example={scenario.id}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+            >
+              {scenario.label}
+            </button>
+          ))}
+        </div>
+        {scenarios.map((scenario, i) => (
+          <div
+            class:list={['system-example', { 'is-current': i === 0 }]}
+            data-system-panel={scenario.id}
+          >
+            <div class="system-example-title">
+              <span class="system-example-icon">
+                <Icon name={scenario.icon} size={24} />
+              </span>
+              <div>
+                <p class="small-label">{scenario.stage}</p>
+                <h2>{scenario.title}</h2>
+              </div>
+            </div>
+            <dl>
+              <div>
+                <dt>Responsible role</dt>
+                <dd>{scenario.owner}</dd>
+              </div>
+              <div>
+                <dt>Next action</dt>
+                <dd>{scenario.next}</dd>
+              </div>
+            </dl>
+            <div class="system-responsibilities">
+              <div>
+                <span>Routine work</span>
+                <p>{scenario.automation}</p>
+              </div>
+              <div>
+                <span>Human judgement</span>
+                <p>{scenario.human}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+        <p class="system-feedback" role="status" aria-live="polite">
+          New enquiry: the record and next action stay together.
+        </p>
+        <div class="system-window-foot">
+          <Icon name="shield" size={16} />
+          <span>Clear ownership. Controlled access. Review where it matters.</span>
+        </div>
+      </div>
+    </div>
+    <div class="business-hero-footer">
+      <span>
+        <Icon name="person" size={18} />
+        Work directly with Karol.
+      </span>
+      <span>Website + admin dashboard + automation + useful AI</span>
+      <a href="#business-review">
+        See what we look at <Icon name="down" size={17} />
+      </a>
+    </div>
+  </div>
+</section>
+<section class="business-review" id="business-review">
+  <div class="container section">
+    <div class="section-title">
+      <div>
+        <p class="eyebrow">Find the right improvement first</p>
+        <h2>
+          You don’t need another tool.
+          <br />
+          You need the right next move.
+        </h2>
+      </div>
+      <p>
+        We look at the work, the cost of the friction and the options. Then we choose what is worth
+        building.
+      </p>
+    </div>
+    <div class="business-review-grid">
+      <article>
+        <span>01 / The customer journey</span>
+        <h3>Where does good interest get stuck?</h3>
+        <p>
+          How people find you, understand the offer, enquire, receive a quote and become a customer.
+        </p>
+      </article>
+      <article>
+        <span>02 / The everyday work</span>
+        <h3>What is your team doing twice?</h3>
+        <p>
+          Repeated entry, chasing, approvals and handovers. Where a simpler rule or connection could
+          help.
+        </p>
+      </article>
+      <article>
+        <span>03 / The information</span>
+        <h3>What do you need to know sooner?</h3>
+        <p>
+          The records, access and reporting behind your decisions, plus where AI has a useful,
+          defined job.
+        </p>
+      </article>
+    </div>
+    <div class="business-review-output">
+      <Icon name="file" size={24} />
+      <div>
+        <strong>
+          A first conversation to establish fit. A defined review when deeper work is needed.
+        </strong>
+        <p>
+          Detailed mapping, a written roadmap or technical discovery is separately scoped and
+          priced. You know what is included before work starts.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-business-system]').forEach((root) => {
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-system-example]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-system-panel]')];
+    const messages: Record<string, string> = {
+      enquiry: 'New enquiry: the record and next action stay together.',
+      job: 'Quote accepted: agreed details move into a job handover.',
+      ai: 'AI assistance: prepare the draft; a person checks it before action.',
+    };
+    buttons.forEach((button) =>
+      button.addEventListener('click', () => {
+        const key = button.dataset.systemExample!;
+        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        panels.forEach((panel) =>
+          panel.classList.toggle('is-current', panel.dataset.systemPanel === key),
+        );
+        const status = root.querySelector<HTMLElement>('.system-feedback');
+        if (status) status.textContent = messages[key];
+      }),
+    );
+  });
+</script>
