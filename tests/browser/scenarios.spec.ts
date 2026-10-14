@@ -50,3 +50,23 @@ test('mobile hero copy and interactive controls stay inside the viewport', async
     }
   }
 });
+
+test('transformation comparison updates all outcomes and keeps its controls accessible', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const comparison = page.locator('[data-transformation]');
+  const before = comparison.getByRole('button', { name: 'The friction', exact: true });
+  const after = comparison.getByRole('button', { name: 'The better flow' });
+  await before.click();
+  await expect(before).toHaveAttribute('aria-pressed', 'true');
+  await expect(comparison.getByRole('heading', { name: '“Did anyone reply?”' })).toBeVisible();
+  await expect(comparison.getByRole('status')).toContainText('missing ownership');
+  await after.click();
+  await expect(after).toHaveAttribute('aria-pressed', 'true');
+  await expect(before).toHaveAttribute('aria-pressed', 'false');
+  await expect(
+    comparison.getByRole('heading', { name: 'Every enquiry. A clear next step.' }),
+  ).toBeVisible();
+  await expect(comparison.getByRole('status')).toContainText('clear ownership');
+});

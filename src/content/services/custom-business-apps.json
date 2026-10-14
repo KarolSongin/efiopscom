@@ -5,7 +5,7 @@
   "metaDescription": "Purpose-built planning tools, operational applications and portals. EfiOps develops business software around your workflow, data and users.",
   "h1": "Your process deserves a better tool.",
   "eyebrow": "Custom applications · Built around your team",
-  "lead": "If your working day depends on copied cells, extra tabs and knowing which file is current, there may be a better way. Build a focused planning tool, portal or operational screen that fits the job.",
+  "lead": "When your process has outgrown the spreadsheet, give your team a tool that fits the work. Build a clear place to plan, track and act, with the permissions and handovers your operation needs.",
   "sections": [
     {
       "heading": "You shouldn't need five workarounds to complete one job.",
@@ -59,9 +59,13 @@
   "cta": {
     "label": "Discuss your application",
     "heading": "What is your team working around?",
-    "text": "Show us the spreadsheets, screens or steps that make the job harder than it needs to be."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["power-bi", "system-integrations", "ai-assistants"],
+  "relatedServices": [
+    "power-bi",
+    "system-integrations",
+    "ai-assistants"
+  ],
   "visualKey": "custom-business-apps",
   "primaryIntent": "custom business application developer; internal tools development.",
   "publicationState": "published",
@@ -86,7 +90,11 @@
   "journey": {
     "heading": "From an awkward spreadsheet to a plan the team can act on.",
     "example": "A packing team needs to see whether next week’s orders fit its available hours.",
-    "sources": ["Weekly orders", "Handling time", "Available staff hours"],
+    "sources": [
+      "Weekly orders",
+      "Handling time",
+      "Available staff hours"
+    ],
     "question": "Can the team cover the workload?",
     "scope": [
       "Weekly units and staffing inputs",
@@ -94,7 +102,11 @@
       "Visible capacity gap"
     ],
     "boundary": "Payroll, shift scheduling and stock control need their own agreed scope.",
-    "build": ["Demand · 1,200 units", "Required · 80 hours", "Available · 96 hours"],
+    "build": [
+      "Demand · 1,200 units",
+      "Required · 80 hours",
+      "Available · 96 hours"
+    ],
     "stages": [
       {
         "id": "understand",

@@ -5,7 +5,7 @@
   "metaDescription": "Connect business applications, APIs and databases. EfiOps builds focused integrations for data exchange, reporting and more dependable workflows.",
   "h1": "Close the gaps between your systems.",
   "eyebrow": "System integrations · Information that travels",
-  "lead": "When one system finishes, another person shouldn’t have to start copying. Connect the records your applications, reports and workflows need—with validation, ownership and somewhere for failed transfers to go.",
+  "lead": "Stop entering the same information in two places. Connect the systems your business relies on, agree where each record belongs and give failed updates a visible route to resolution.",
   "sections": [
     {
       "heading": "The gap between two systems becomes somebody's job.",
@@ -59,9 +59,13 @@
   "cta": {
     "label": "Discuss your systems",
     "heading": "Where are people moving the same information twice?",
-    "text": "Tell us which systems are involved, which records need to move and what currently happens between them."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["power-automate", "custom-business-apps", "power-bi"],
+  "relatedServices": [
+    "power-automate",
+    "custom-business-apps",
+    "power-bi"
+  ],
   "visualKey": "system-integrations",
   "primaryIntent": "business system integration; API integration developer; SQL integration.",
   "publicationState": "published",
@@ -86,7 +90,11 @@
   "journey": {
     "heading": "From two disconnected records to one agreed mapping.",
     "example": "A business wants order records to reach reporting without being retyped.",
-    "sources": ["Order system", "Product identifiers", "Reporting destination"],
+    "sources": [
+      "Order system",
+      "Product identifiers",
+      "Reporting destination"
+    ],
     "question": "Can this record transfer without losing its meaning?",
     "scope": [
       "Map order ID, product code and quantity",

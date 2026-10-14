@@ -5,7 +5,7 @@
   "metaDescription": "Explore camera-based measurement and inspection with a focused computer vision prototype. Python, image processing and edge-device integration around a defined use case.",
   "h1": "Turn a visual check into a useful signal.",
   "eyebrow": "Computer vision · Test the practical fit",
-  "lead": "Can a camera help measure an object, spot a condition or create a record for review? Start with a defined task, representative images and a prototype that shows where the approach works—and where it needs help.",
+  "lead": "Find out whether visual inspection can solve a specific problem before committing to a bigger build. Test a focused prototype against representative images, agreed criteria and the exceptions that matter.",
   "sections": [
     {
       "heading": "Start with the observation you need to make.",
@@ -59,9 +59,13 @@
   "cta": {
     "label": "Discuss a vision prototype",
     "heading": "What do you need the camera to recognise or measure?",
-    "text": "Describe the material, the environment and what the result would be used for."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["system-integrations", "power-bi", "custom-business-apps"],
+  "relatedServices": [
+    "system-integrations",
+    "power-bi",
+    "custom-business-apps"
+  ],
   "visualKey": "computer-vision",
   "primaryIntent": "computer vision prototype developer; edge AI proof of concept.",
   "publicationState": "published",
@@ -86,7 +90,11 @@
   "journey": {
     "heading": "From a visual task to a measurement worth reviewing.",
     "example": "A team wants to explore measuring fruit width from a camera image.",
-    "sources": ["Camera images", "Reference measurements", "Lighting conditions"],
+    "sources": [
+      "Camera images",
+      "Reference measurements",
+      "Lighting conditions"
+    ],
     "question": "Can the object boundary be measured consistently?",
     "scope": [
       "A focused width-measurement prototype",

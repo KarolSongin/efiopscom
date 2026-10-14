@@ -1,0 +1,117 @@
+---
+import Icon from './Icon.astro';
+const cards = [
+  {
+    label: 'Your enquiries',
+    icon: 'message',
+    before: '“Did anyone reply?”',
+    after: 'Every enquiry. A clear next step.',
+    old: 'A message in the inbox. A reminder in someone’s head.',
+    next: 'One owner, one status and a follow-up date attached to the record.',
+    detail: 'New enquiry → Review → Quote → Follow up',
+  },
+  {
+    label: 'Your reporting',
+    icon: 'chart',
+    before: '“Which number is right?”',
+    after: 'The answer beside the question.',
+    old: 'Exports, spreadsheet versions and another round of checking.',
+    next: 'Sales, costs and capacity in one view, with agreed definitions.',
+    detail: 'Source records → Checked measures → Decision',
+  },
+  {
+    label: 'Your website',
+    icon: 'globe',
+    before: '“What do you actually do?”',
+    after: 'A clear reason to choose you.',
+    old: 'A visitor has to piece together your offer and find the next step.',
+    next: 'A clear service, a relevant example and a direct route to enquire.',
+    detail: 'Understand the offer → Find the fit → Enquire',
+  },
+];
+---
+
+<section class="transformation-section" aria-labelledby="transformation-title" data-transformation>
+  <div class="container section">
+    <div class="transformation-heading">
+      <div>
+        <p class="eyebrow">The difference you’re buying</p>
+        <h2 id="transformation-title">
+          Same business.
+          <br />
+          <em>A different working day.</em>
+        </h2>
+      </div>
+      <div>
+        <p>
+          You already do good work. Give your team systems that make it easier to keep doing it.
+        </p>
+        <div class="transformation-switch" role="group" aria-label="Compare ways of working">
+          <button type="button" data-view="before" aria-pressed="false">
+            The friction
+          </button>
+          <button type="button" data-view="after" aria-pressed="true">
+            The better flow <Icon name="arrow" size={16} />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="transformation-grid">
+      {cards.map((card, i) => (
+        <article>
+          <div class="transformation-top">
+            <span>
+              0{i + 1} / {card.label}
+            </span>
+            <Icon name={card.icon} size={26} />
+          </div>
+          <h3 data-before={card.before} data-after={card.after}>
+            {card.after}
+          </h3>
+          <p data-before={card.old} data-after={card.next}>
+            {card.next}
+          </p>
+          <div class="transformation-route">
+            <span class="route-dot"></span>
+            <span
+              data-before={
+                [
+                  'Inbox → Memory → Chasing',
+                  'Exports → Versions → Checking',
+                  'Browse → Guess → Keep looking',
+                ][i]
+              }
+              data-after={card.detail}
+            >
+              {card.detail}
+            </span>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="transformation-status" role="status" aria-live="polite">
+      A better flow: clear ownership, useful information and a next step people can take.
+    </p>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-transformation]').forEach((root) => {
+    const buttons = root.querySelectorAll<HTMLButtonElement>('[data-view]');
+    buttons.forEach((button) =>
+      button.addEventListener('click', () => {
+        const mode = button.dataset.view || 'after';
+        root.dataset.mode = mode;
+        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        root.querySelectorAll<HTMLElement>('[data-before][data-after]').forEach((item) => {
+          item.textContent = item.dataset[mode] || '';
+        });
+        const status = root.querySelector<HTMLElement>('.transformation-status');
+        if (status)
+          status.textContent =
+            mode === 'before'
+              ? 'The friction: missing ownership, scattered information and unclear next steps.'
+              : 'A better flow: clear ownership, useful information and a next step people can take.';
+      }),
+    );
+  });
+</script>

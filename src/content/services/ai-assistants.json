@@ -5,7 +5,7 @@
   "metaDescription": "Connect AI assistants to business knowledge, records and defined workflows. Scope a practical text or voice assistant with clear limits and human handover.",
   "h1": "Ask a question. Get somewhere useful.",
   "eyebrow": "AI assistants · Connected to the work",
-  "lead": "“When will this order arrive?” “Where is that procedure?” Give your team a more direct route to authorised information, with useful source references and a person to help when the answer needs a closer look.",
+  "lead": "Make routine questions easier to answer without leaving your team to check every guess. Connect an assistant to approved information, define what it can do and keep a clear route to a person.",
   "sections": [
     {
       "heading": "The useful answer often lives behind another screen.",
@@ -59,9 +59,13 @@
   "cta": {
     "label": "Explore an AI use case",
     "heading": "Which question or request keeps interrupting your team?",
-    "text": "Tell us what people ask, where the answer lives and what should happen after the conversation."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["jev-ai-integration", "system-integrations", "custom-business-apps"],
+  "relatedServices": [
+    "jev-ai-integration",
+    "system-integrations",
+    "custom-business-apps"
+  ],
   "visualKey": "ai-assistants",
   "primaryIntent": "AI business assistant development; AI integration into existing systems.",
   "publicationState": "published",
@@ -86,7 +90,11 @@
   "journey": {
     "heading": "From a customer question to an answer with a source.",
     "example": "A support team wants delivery answers from authorised order records.",
-    "sources": ["Customer question", "Order record", "Support guidance"],
+    "sources": [
+      "Customer question",
+      "Order record",
+      "Support guidance"
+    ],
     "question": "Can we answer this—or should a person help?",
     "scope": [
       "Read authorised order status",

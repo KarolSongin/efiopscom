@@ -42,6 +42,9 @@ const split = (text: string) => {
               <path d="M5 19L19 5M5 5h14v14" />
             </svg>
           </a>
+          <p class="service-assurance">
+            Clear scope before development. Direct contact with Karol.
+          </p>
         </div>
         <ServiceVisual kind={page.visualKey} />
       </div>
@@ -113,6 +116,28 @@ const split = (text: string) => {
       </div>
     </section>
   )}
+  <section class="container section service-delivery">
+    <div class="section-title">
+      <div>
+        <p class="eyebrow">Built, checked and handed over</p>
+        <h2>
+          Know what you’re getting.
+          <br />
+          Know how to use it.
+        </h2>
+      </div>
+      <p>The scope is tailored to your project. The working relationship stays clear.</p>
+    </div>
+    <div class="delivery-grid">
+      {page.journey.handover.map((item, i) => (
+        <article>
+          <span>0{i + 1} / Handover</span>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
   <FAQ items={page.faqs} />
   <section class="related">
     <div class="container section">

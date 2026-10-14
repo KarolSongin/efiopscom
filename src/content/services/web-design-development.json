@@ -5,7 +5,7 @@
   "metaDescription": "Distinctive business websites with clear content, thoughtful design and fast performance. Maidstone-based web development for businesses in Kent and across the UK.",
   "h1": "Make it easier to choose you.",
   "eyebrow": "Web design · Maidstone, Kent & across the UK",
-  "lead": "Your website should make a good business easy to understand. Bring the offer, the design and the enquiry journey together in a distinctive site that feels right on every screen.",
+  "lead": "Give potential customers a clear reason to choose your business. Bring your offer, service examples and enquiry journey into a distinctive website that works on a phone and makes the next step obvious.",
   "sections": [
     {
       "heading": "Your business has moved forward. Has your website?",
@@ -58,9 +58,13 @@
   "cta": {
     "label": "Discuss your website",
     "heading": "What should people understand when they visit your website?",
-    "text": "Tell us about the business, the current site and what the next version needs to achieve."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["website-optimisation", "seo", "system-integrations"],
+  "relatedServices": [
+    "website-optimisation",
+    "seo",
+    "system-integrations"
+  ],
   "visualKey": "web-design-development",
   "primaryIntent": "web design Maidstone; business website development.",
   "publicationState": "published",
@@ -85,7 +89,11 @@
   "journey": {
     "heading": "From “what do you do?” to a useful project enquiry.",
     "example": "A renovation business wants visitors to understand its services and enquire comfortably.",
-    "sources": ["Customer questions", "Service information", "Brand assets"],
+    "sources": [
+      "Customer questions",
+      "Service information",
+      "Brand assets"
+    ],
     "question": "What does a visitor need before asking for a quote?",
     "scope": [
       "Clear renovation service pages",

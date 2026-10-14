@@ -5,7 +5,7 @@
   "metaDescription": "Technical SEO, clearer service pages and practical local-search improvements. EfiOps helps businesses in Maidstone, Kent and across the UK build stronger search foundations.",
   "h1": "Be easier to find. And easier to choose.",
   "eyebrow": "SEO · Useful pages, stronger foundations",
-  "lead": "People search for a problem they want solved—not a list of technologies. Give each service a useful page, remove technical barriers and build local relevance around where your business really works.",
+  "lead": "Help the right customers find a clear answer to what they need. Build search visibility around useful service pages, sound technical foundations and content that gives people a reason to enquire.",
   "sections": [
     {
       "heading": "A good service needs a page that explains it properly.",
@@ -59,9 +59,12 @@
   "cta": {
     "label": "Discuss your search visibility",
     "heading": "Which services are difficult for customers to find?",
-    "text": "Share your website, the services you want to grow and any search data you already have."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["web-design-development", "website-optimisation"],
+  "relatedServices": [
+    "web-design-development",
+    "website-optimisation"
+  ],
   "visualKey": "seo",
   "primaryIntent": "SEO services Maidstone; technical SEO consultant.",
   "publicationState": "published",
@@ -86,7 +89,11 @@
   "journey": {
     "heading": "From a search question to a page with a clear purpose.",
     "example": "A garden-maintenance business wants pages that match local service searches and customer questions.",
-    "sources": ["Service locations", "Customer questions", "Existing pages"],
+    "sources": [
+      "Service locations",
+      "Customer questions",
+      "Existing pages"
+    ],
     "question": "Does the page answer what the searcher needs?",
     "scope": [
       "A focused local service page",

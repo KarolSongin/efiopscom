@@ -5,7 +5,7 @@
   "metaDescription": "Automate reminders, approvals, alerts and recurring admin with Microsoft Power Automate. Practical workflows scoped around your business process.",
   "h1": "Keep work moving. Lose the chasing.",
   "eyebrow": "Power Automate · A dependable next step",
-  "lead": "A quote needs following up. An approval is waiting. A review is due. Turn the steps someone has to remember into workflows with clear rules—and a visible place for exceptions.",
+  "lead": "Every copied detail and forgotten follow-up adds work your team could do without. Connect the routine steps, put approvals in the right hands and make exceptions visible before they become tomorrow’s problem.",
   "sections": [
     {
       "heading": "Some work only happens because somebody remembers.",
@@ -59,9 +59,13 @@
   "cta": {
     "label": "Discuss a workflow",
     "heading": "Which repeated task would you like to stop chasing?",
-    "text": "Describe the trigger, the steps and the tools involved. We can work out whether the process is ready to automate."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["system-integrations", "power-bi", "ai-assistants"],
+  "relatedServices": [
+    "system-integrations",
+    "power-bi",
+    "ai-assistants"
+  ],
   "visualKey": "power-automate",
   "primaryIntent": "Power Automate consultant; Microsoft workflow automation.",
   "publicationState": "published",
@@ -86,7 +90,11 @@
   "journey": {
     "heading": "From a sent quote to a follow-up that knows when to stop.",
     "example": "A service business wants every quote to have a clear next step.",
-    "sources": ["Enquiry inbox", "Quote record", "Customer replies"],
+    "sources": [
+      "Enquiry inbox",
+      "Quote record",
+      "Customer replies"
+    ],
     "question": "Who follows up, and when?",
     "scope": [
       "Capture the enquiry and owner",

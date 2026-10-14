@@ -5,7 +5,7 @@
   "metaDescription": "Improve an existing website's performance, usability and enquiry journey. EfiOps identifies practical changes and checks their impact against a baseline.",
   "h1": "Make the website you have work harder.",
   "eyebrow": "Website optimisation · Remove the friction",
-  "lead": "The useful change isn’t always a rebuild. Find the slow page, the awkward menu, the unclear offer or the form that asks too much—and improve the part standing between a visit and a useful enquiry.",
+  "lead": "Before you pay for more traffic, make the visit work better. Find the slow pages, confusing journeys and avoidable friction, then make focused improvements to the site you already have.",
   "sections": [
     {
       "heading": "A useful improvement may be smaller than a rebuild.",
@@ -59,9 +59,13 @@
   "cta": {
     "label": "Discuss website improvements",
     "heading": "Where does your website make things harder?",
-    "text": "Share the URL and the part of the experience you want to improve."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["seo", "web-design-development", "system-integrations"],
+  "relatedServices": [
+    "seo",
+    "web-design-development",
+    "system-integrations"
+  ],
   "visualKey": "website-optimisation",
   "primaryIntent": "website optimisation services; website speed and conversion improvements.",
   "publicationState": "published",
@@ -86,7 +90,11 @@
   "journey": {
     "heading": "From a hard-to-find contact page to a clearer next step.",
     "example": "A garden-care business wants mobile visitors to find the enquiry step more easily.",
-    "sources": ["Current website", "Mobile visitor journey", "Available performance data"],
+    "sources": [
+      "Current website",
+      "Mobile visitor journey",
+      "Available performance data"
+    ],
     "question": "Where does a visitor lose the next step?",
     "scope": [
       "Improve the service-page structure",

@@ -5,7 +5,7 @@
   "metaDescription": "Integrate TypeSafe's Jev into applications for intent routing and structured decisions. Define workflows, evaluate uncertain cases and keep action rules in your code.",
   "h1": "Turn a request into the right next step.",
   "eyebrow": "Jev integration · Decisions with structure",
-  "lead": "A question, an action and an unclear request need different responses. Use TypeSafe’s Jev to help choose a defined route, then let your application check access, apply the rules and handle what comes next.",
+  "lead": "Give AI a defined job inside your software. Connect requests to structured decisions, approved information and explicit workflows, with checks before anything consequential happens.",
   "sections": [
     {
       "heading": "Give each part of the system a clear job.",
@@ -66,9 +66,13 @@
   "cta": {
     "label": "Discuss a Jev integration",
     "heading": "What decision would your software benefit from making?",
-    "text": "Bring a few real examples and the possible outcomes. We can evaluate whether Jev is a useful fit."
+    "text": "Tell me what happens today and what you need to change. We’ll discuss the fit, define a useful scope and agree the deliverables and cost before development starts."
   },
-  "relatedServices": ["ai-assistants", "system-integrations", "custom-business-apps"],
+  "relatedServices": [
+    "ai-assistants",
+    "system-integrations",
+    "custom-business-apps"
+  ],
   "visualKey": "jev-ai-integration",
   "primaryIntent": "Jev integration; TypeSafe AI developer; structured AI workflow decisions.",
   "publicationState": "published",
@@ -93,7 +97,11 @@
   "journey": {
     "heading": "From a natural-language request to a defined application route.",
     "example": "An operational application needs to separate stock questions from stock changes.",
-    "sources": ["User request", "Application context", "Access rules"],
+    "sources": [
+      "User request",
+      "Application context",
+      "Access rules"
+    ],
     "question": "A lookup, an action or a question to clarify?",
     "scope": [
       "Route a stock-location question",
